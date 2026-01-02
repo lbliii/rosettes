@@ -111,7 +111,7 @@ wheels = [
 [[package]]
 name = "bengal"
 version = "0.1.6"
-source = { editable = "../bengal" }
+source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "click" },
     { name = "httpx" },
@@ -129,78 +129,9 @@ dependencies = [
     { name = "uvloop", marker = "sys_platform != 'win32'" },
     { name = "watchfiles" },
 ]
-
-[package.metadata]
-requires-dist = [
-    { name = "aiohttp", marker = "extra == 'all-sources'", specifier = ">=3.9.0" },
-    { name = "aiohttp", marker = "extra == 'github'", specifier = ">=3.9.0" },
-    { name = "aiohttp", marker = "extra == 'notion'", specifier = ">=3.9.0" },
-    { name = "aiohttp", marker = "extra == 'rest'", specifier = ">=3.9.0" },
-    { name = "cachetools", marker = "extra == 'all-sources'", specifier = ">=5.0.0" },
-    { name = "cachetools", marker = "extra == 'notion'", specifier = ">=5.0.0" },
-    { name = "click", specifier = ">=8.1.7" },
-    { name = "httpx", specifier = ">=0.27.0" },
-    { name = "jinja2", specifier = ">=3.1.0" },
-    { name = "jsmin", specifier = ">=3.0.1" },
-    { name = "lunr", marker = "extra == 'search'", specifier = ">=0.7.0" },
-    { name = "markupsafe", specifier = ">=3.0.0" },
-    { name = "mistune", specifier = ">=3.0.0" },
-    { name = "pillow", specifier = ">=10.0.0" },
-    { name = "pillow", marker = "extra == 'avif'", specifier = ">=10.0" },
-    { name = "pillow", marker = "extra == 'images'", specifier = ">=10.0" },
-    { name = "pillow", marker = "extra == 'smartcrop'", specifier = ">=10.0" },
-    { name = "pillow-avif-plugin", marker = "extra == 'avif'", specifier = ">=1.3" },
-    { name = "psutil", specifier = ">=5.9.0" },
-    { name = "python-frontmatter", specifier = ">=1.0.0" },
-    { name = "pyvips", marker = "extra == 'fast-images'", specifier = ">=2.2" },
-    { name = "pyyaml", specifier = ">=6.0" },
-    { name = "questionary", specifier = ">=2.0.0" },
-    { name = "smartcrop", marker = "extra == 'smartcrop'", specifier = ">=0.3" },
-    { name = "textual", specifier = ">=0.96" },
-    { name = "textual-serve", specifier = ">=0.1.0" },
-    { name = "tree-sitter", marker = "extra == 'tree-sitter'", specifier = ">=0.22" },
-    { name = "tree-sitter", marker = "extra == 'tree-sitter-common'", specifier = ">=0.22" },
-    { name = "tree-sitter-bash", marker = "extra == 'tree-sitter-common'", specifier = ">=0.21.0" },
-    { name = "tree-sitter-c", marker = "extra == 'tree-sitter-common'", specifier = ">=0.21.0" },
-    { name = "tree-sitter-cpp", marker = "extra == 'tree-sitter-common'", specifier = ">=0.22.0" },
-    { name = "tree-sitter-css", marker = "extra == 'tree-sitter-common'", specifier = ">=0.21.0" },
-    { name = "tree-sitter-go", marker = "extra == 'tree-sitter-common'", specifier = ">=0.21.0" },
-    { name = "tree-sitter-html", marker = "extra == 'tree-sitter-common'", specifier = ">=0.20.0" },
-    { name = "tree-sitter-javascript", marker = "extra == 'tree-sitter-common'", specifier = ">=0.21.0" },
-    { name = "tree-sitter-json", marker = "extra == 'tree-sitter-common'", specifier = ">=0.21.0" },
-    { name = "tree-sitter-python", marker = "extra == 'tree-sitter-common'", specifier = ">=0.21.0" },
-    { name = "tree-sitter-rust", marker = "extra == 'tree-sitter-common'", specifier = ">=0.21.0" },
-    { name = "tree-sitter-toml", marker = "extra == 'tree-sitter-common'", specifier = ">=0.5.0" },
-    { name = "tree-sitter-typescript", marker = "extra == 'tree-sitter-common'", specifier = ">=0.21.0" },
-    { name = "tree-sitter-yaml", marker = "extra == 'tree-sitter-common'", specifier = ">=0.5.0" },
-    { name = "uvloop", marker = "sys_platform != 'win32'", specifier = ">=0.21.0" },
-    { name = "watchfiles", specifier = ">=0.20" },
-]
-provides-extras = ["search", "images", "smartcrop", "avif", "fast-images", "github", "notion", "rest", "all-sources", "tree-sitter", "tree-sitter-common"]
-
-[package.metadata.requires-dev]
-dev = [
-    { name = "beautifulsoup4", specifier = ">=4.12.0" },
-    { name = "hypothesis", specifier = ">=6.92.0" },
-    { name = "markdown", specifier = ">=3.5.0" },
-    { name = "mypy", specifier = ">=1.11.0" },
-    { name = "pytest", specifier = ">=8.0.0" },
-    { name = "pytest-asyncio", specifier = ">=0.23.0" },
-    { name = "pytest-benchmark", specifier = ">=5.2.3" },
-    { name = "pytest-cov", specifier = ">=4.1.0" },
-    { name = "pytest-forked", specifier = ">=1.6.0" },
-    { name = "pytest-mock", specifier = ">=3.11.0" },
-    { name = "pytest-textual-snapshot", specifier = ">=0.4.0" },
-    { name = "pytest-timeout", specifier = ">=2.2.0" },
-    { name = "pytest-xdist", specifier = ">=3.3.0" },
-    { name = "ruff", specifier = ">=0.14.0" },
-    { name = "tomli-w", specifier = ">=1.0.0" },
-    { name = "types-jinja2", specifier = ">=2.11.0" },
-    { name = "types-markdown", specifier = ">=3.5.0" },
-    { name = "types-psutil", specifier = ">=5.9.0" },
-    { name = "types-pygments", specifier = ">=2.18.0" },
-    { name = "types-python-dateutil", specifier = ">=2.9.0" },
-    { name = "types-pyyaml", specifier = ">=6.0.12" },
+sdist = { url = "https://files.pythonhosted.org/packages/15/88/fbc95f158df7ad6a10f5d40b5c41eaed347fefd732b3c6547019b1811ec9/bengal-0.1.6.tar.gz", hash = "sha256:edb806adc21d966d5bc60f337f391a98360192135ca9957f2da3af2efb12123c", size = 2547478, upload-time = "2026-01-02T21:08:51.111Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/97/3e/03c8f07b43d72676c294f0c2160b89d46d736d9d2e4b78cb0c50e80ea326/bengal-0.1.6-py3-none-any.whl", hash = "sha256:c49a3e3ef384fc7554fc892f1b96f86a23f50301239b936e56b2a8378a631e99", size = 3333860, upload-time = "2026-01-02T21:08:49.368Z" },
 ]
 
 [[package]]
@@ -753,7 +684,7 @@ wheels = [
 
 [[package]]
 name = "rosettes"
-version = "0.3.0"
+version = "0.1.0"
 source = { editable = "." }
 
 [package.dev-dependencies]
@@ -772,7 +703,7 @@ dev = [
     { name = "pytest", specifier = ">=9.0.2" },
     { name = "pytest-cov", specifier = ">=6.0.0" },
 ]
-docs = [{ name = "bengal", editable = "../bengal" }]
+docs = [{ name = "bengal" }]
 
 [[package]]
 name = "textual"
