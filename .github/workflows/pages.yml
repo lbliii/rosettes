@@ -47,10 +47,6 @@ jobs:
         env:
           PYTHON_GIL: "0"
 
-      - name: Clean previous output
-        working-directory: site
-        run: rm -rf public/*
-
       - name: Build documentation site
         working-directory: site
         run: uv run bengal site build --environment production
