@@ -34,7 +34,7 @@ jobs:
             uv-${{ runner.os }}-
 
       - name: Install dependencies
-        run: uv sync --group dev --group docs --no-sources
+        run: uv sync --group dev --group docs
         env:
           PYTHON_GIL: "0"
 

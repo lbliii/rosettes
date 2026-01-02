@@ -703,7 +703,7 @@ dev = [
     { name = "pytest", specifier = ">=9.0.2" },
     { name = "pytest-cov", specifier = ">=6.0.0" },
 ]
-docs = [{ name = "bengal" }]
+docs = [{ name = "bengal", specifier = ">=0.1.6" }]
 
 [[package]]
 name = "textual"
