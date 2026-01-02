@@ -57,6 +57,11 @@ Thumbs.db
 # Documentation site build output
 site/public/
 site/.bengal/
+public/
+.bengal/
+
+# uv cache (usually in ~/.cache, but just in case)
+.uv/
 
 # Auto-generated API documentation
 site/content/api/rosettes/

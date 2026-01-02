@@ -5,6 +5,13 @@ build:
   output_dir: "public"
   incremental: true
 
+# Build-time badge artifacts (written after build finishes)
+# Outputs:
+# - public/rosettes/build.svg
+# - public/rosettes/build.json
+build_badge:
+  enabled: true
+
 assets:
   minify: true
   fingerprint: true

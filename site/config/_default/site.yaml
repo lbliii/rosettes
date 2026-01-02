@@ -4,7 +4,7 @@
 site:
   title: "Rosettes"
   baseurl: ""  # Empty allows env override (GitHub Actions sets this)
-  logo_text: "❀"
+  logo_text: "⌾⌾⌾"
   description: "Modern syntax highlighting for Python 3.14t"
   language: "en"
 
