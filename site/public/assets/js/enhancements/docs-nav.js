@@ -1,1 +1,0 @@
-(function(){'use strict';if(window.Bengal&&window.Bengal.enhance){if(!window.Bengal.enhance.get('docs-nav')){window.Bengal.enhance.register('docs-nav',function(el,options){});}}})();

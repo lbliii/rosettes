@@ -1,0 +1,112 @@
+name: Tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: tests-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.14t"]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Cache uv dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/uv
+          key: uv-${{ runner.os }}-${{ hashFiles('uv.lock') }}
+          restore-keys: |
+            uv-${{ runner.os }}-
+
+      - name: Install dependencies
+        run: uv sync --group dev
+
+      - name: Run tests
+        env:
+          CI: true
+          PYTHON_GIL: "0"
+        run: |
+          uv run pytest -q --tb=short
+
+      - name: Run tests with coverage
+        if: matrix.python-version == '3.14t'
+        env:
+          CI: true
+          PYTHON_GIL: "0"
+        run: |
+          uv run pytest -q --tb=short --cov=rosettes --cov-report=xml
+
+  # Security tests (ReDoS resistance)
+  security:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v4
+        with:
+          python-version: "3.14t"
+
+      - name: Cache uv dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/uv
+          key: uv-${{ runner.os }}-${{ hashFiles('uv.lock') }}
+          restore-keys: |
+            uv-${{ runner.os }}-
+
+      - name: Install dependencies
+        run: uv sync --group dev
+
+      - name: Run security tests (ReDoS resistance)
+        env:
+          CI: true
+          PYTHON_GIL: "0"
+        run: |
+          uv run pytest tests/security -v --tb=short
+
+  # Thread safety tests
+  thread-safety:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v4
+        with:
+          python-version: "3.14t"
+
+      - name: Cache uv dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/uv
+          key: uv-${{ runner.os }}-${{ hashFiles('uv.lock') }}
+          restore-keys: |
+            uv-${{ runner.os }}-
+
+      - name: Install dependencies
+        run: uv sync --group dev
+
+      - name: Run thread safety tests
+        env:
+          CI: true
+          PYTHON_GIL: "0"
+        run: |
+          uv run pytest tests/test_thread_safety.py tests/test_parallel.py -v --tb=short
+

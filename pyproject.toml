@@ -61,4 +61,4 @@ line-length = 100
 select = ["E", "F", "I", "UP", "B", "SIM"]
 
 [dependency-groups]
-dev = ["pytest>=9.0.2"]
+dev = ["pytest>=9.0.2", "pytest-cov>=6.0.0"]
