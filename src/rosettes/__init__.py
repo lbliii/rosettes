@@ -41,7 +41,7 @@ from rosettes.formatters import HtmlFormatter
 if TYPE_CHECKING:
     from collections.abc import Iterable
 
-__version__ = "0.3.0"
+__version__ = "0.1.0"
 
 __all__ = [
     # Version
