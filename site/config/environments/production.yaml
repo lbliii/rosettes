@@ -6,7 +6,7 @@ site:
   baseurl: "/rosettes"
 
 build:
-  incremental: false  # CI runs are clean slate, no cache
+  incremental: true
   strict_mode: true
 
 assets:

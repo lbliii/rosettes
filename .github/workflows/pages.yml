@@ -33,10 +33,22 @@ jobs:
           restore-keys: |
             uv-${{ runner.os }}-
 
+      - name: Cache Bengal build state
+        uses: actions/cache@v4
+        with:
+          path: site/.bengal
+          key: bengal-${{ runner.os }}-${{ hashFiles('site/content/**', 'site/config/**') }}
+          restore-keys: |
+            bengal-${{ runner.os }}-
+
       - name: Install dependencies
         run: uv sync --group dev --group docs
         env:
           PYTHON_GIL: "0"
+
+      - name: Clean previous output
+        working-directory: site
+        run: rm -rf public/*
 
       - name: Build documentation site
         working-directory: site
