@@ -1,0 +1,79 @@
+# Rosettes Makefile
+# Wraps uv commands to ensure Python 3.14t is used
+
+PYTHON_VERSION ?= 3.14t
+VENV_DIR ?= .venv
+
+.PHONY: all help setup install install-docs test test-cov bench typecheck clean shell docs docs-serve
+
+all: help
+
+help:
+	@echo "Rosettes Development CLI"
+	@echo "========================"
+	@echo "Python Version: $(PYTHON_VERSION)"
+	@echo ""
+	@echo "Available commands:"
+	@echo "  make setup      - Create virtual environment with Python $(PYTHON_VERSION)"
+	@echo "  make install    - Install dependencies in development mode"
+	@echo "  make install-docs - Install docs dependencies (Bengal from local path)"
+	@echo "  make test       - Run the test suite"
+	@echo "  make test-cov   - Run tests with coverage report"
+	@echo "  make bench      - Run benchmarks"
+	@echo "  make typecheck  - Run pyright type checking"
+	@echo "  make docs       - Build documentation site (requires bengal)"
+	@echo "  make docs-serve - Start dev server for docs (requires bengal)"
+	@echo "  make clean      - Remove venv, build artifacts, and caches"
+	@echo "  make shell      - Start a shell with the environment activated"
+
+setup:
+	@echo "Creating virtual environment with Python $(PYTHON_VERSION)..."
+	uv venv --python $(PYTHON_VERSION) $(VENV_DIR)
+
+install:
+	@echo "Installing dependencies..."
+	@if [ ! -d "$(VENV_DIR)" ]; then \
+		echo "Error: $(VENV_DIR) not found. Run 'make setup' first."; \
+		exit 1; \
+	fi
+	@bash -c 'source "$(VENV_DIR)/bin/activate" && uv sync --active --group dev --frozen'
+
+install-docs:
+	@echo "Installing docs dependencies (Bengal from local path)..."
+	uv sync --group docs
+
+test:
+	uv run pytest
+
+test-cov:
+	uv run pytest --cov=src/rosettes --cov-report=term-missing
+
+bench:
+	@echo "Running benchmarks..."
+	uv run python -m benchmarks
+
+typecheck:
+	@echo "Running pyright type checking..."
+	uv run pyright src/rosettes
+
+docs: install-docs
+	@echo "Building documentation site..."
+	cd site && uv run bengal build
+
+docs-serve: install-docs
+	@echo "Starting documentation dev server..."
+	cd site && uv run bengal serve
+
+clean:
+	rm -rf $(VENV_DIR)
+	rm -rf build/ dist/ *.egg-info src/*.egg-info
+	rm -rf site/public
+	find . -type d -name "__pycache__" -exec rm -rf {} + 2>/dev/null || true
+	find . -type d -name ".pytest_cache" -exec rm -rf {} + 2>/dev/null || true
+	find . -type d -name ".mypy_cache" -exec rm -rf {} + 2>/dev/null || true
+	find . -type d -name ".ruff_cache" -exec rm -rf {} + 2>/dev/null || true
+
+shell:
+	@echo "Activating environment with GIL disabled..."
+	@bash -c 'source $(VENV_DIR)/bin/activate && export PYTHON_GIL=0 && echo "✓ venv active, GIL disabled" && exec bash'
+

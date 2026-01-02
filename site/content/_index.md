@@ -89,11 +89,11 @@ results = highlight_many(blocks)  # 1.5-2x speedup on 3.14t
 
 ## Performance
 
-Benchmarked against Pygments on a 10,000-line Python file:
+Benchmarked against Pygments ([source](https://github.com/lbliii/rosettes/tree/main/benchmarks)):
 
-| Operation | Rosettes | Pygments | Speedup |
+| File Size | Rosettes | Pygments | Speedup |
 |-----------|----------|----------|---------|
-| Tokenize | 12ms | 45ms | 3.75x |
-| Highlight | 18ms | 52ms | 2.89x |
-| Parallel (8 blocks) | 22ms | 48ms | 2.18x |
+| ~50 lines | 0.5ms | 1.5ms | 2.8x |
+| ~500 lines | 5ms | 15ms | 3.2x |
+| 10,000 lines | 220ms | 860ms | 3.9x |
 

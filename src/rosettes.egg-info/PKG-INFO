@@ -24,20 +24,30 @@ Dynamic: license-file
 
 # ⌾⌾⌾ Rosettes
 
+[![PyPI version](https://img.shields.io/pypi/v/rosettes.svg)](https://pypi.org/project/rosettes/)
+[![Build Status](https://github.com/lbliii/rosettes/actions/workflows/tests.yml/badge.svg)](https://github.com/lbliii/rosettes/actions/workflows/tests.yml)
+[![Python 3.14+](https://img.shields.io/badge/python-3.14+-blue.svg)](https://pypi.org/project/rosettes/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+
 **Modern syntax highlighting for Python 3.14t**
 
-A pure-Python syntax highlighter designed for free-threaded Python. All lexers are hand-written state machines with **O(n) guaranteed performance** and **zero ReDoS vulnerability**.
+```python
+from rosettes import highlight
 
-## Features
+html = highlight("def hello(): print('world')", "python")
+```
 
-- **55 language lexers** — hand-written state machines, no regex backtracking
-- **O(n) guaranteed** — linear time complexity, no exponential blowup
-- **Zero ReDoS vulnerability** — no regex patterns that can be exploited
-- **Thread-safe by design** — immutable state, no global mutable data
-- **Free-threading ready** — optimized for Python 3.14t (PEP 703)
-- **Pygments compatible** — drop-in CSS class compatibility
-- **Parallel processing** — `highlight_many()` for multi-core systems
-- **Zero dependencies** — pure Python, no runtime requirements
+---
+
+## Why Rosettes?
+
+- **O(n) guaranteed** — Hand-written state machines, no regex backtracking
+- **Zero ReDoS** — No exploitable patterns, safe for untrusted input
+- **Thread-safe** — Immutable state, optimized for Python 3.14t free-threading
+- **Pygments compatible** — Drop-in CSS class compatibility
+- **55 languages** — Python, JavaScript, Rust, Go, and 51 more
+
+---
 
 ## Installation
 
@@ -47,28 +57,58 @@ pip install rosettes
 
 Requires Python 3.14+
 
+---
+
 ## Quick Start
 
-```python
-from rosettes import highlight, tokenize
+| Function | Description |
+|----------|-------------|
+| `highlight(code, lang)` | Generate HTML with syntax highlighting |
+| `tokenize(code, lang)` | Get raw tokens for custom processing |
+| `highlight_many(items)` | Parallel highlighting for multiple blocks |
+| `list_languages()` | List all 55 supported languages |
 
-# Highlight Python code
-html = highlight("def hello(): print('world')", "python")
-print(html)
+---
+
+## Features
+
+| Feature | Description | Docs |
+|---------|-------------|------|
+| **Basic Highlighting** | `highlight()` and `tokenize()` functions | [Highlighting →](https://lbliii.github.io/rosettes/docs/highlighting/) |
+| **Parallel Processing** | `highlight_many()` for multi-core systems | [Parallel →](https://lbliii.github.io/rosettes/docs/highlighting/parallel/) |
+| **Line Highlighting** | Highlight specific lines, add line numbers | [Lines →](https://lbliii.github.io/rosettes/docs/highlighting/line-highlighting/) |
+| **CSS Styling** | Semantic or Pygments-compatible classes | [Styling →](https://lbliii.github.io/rosettes/docs/styling/) |
+| **Custom Formatters** | Build terminal, LaTeX, or custom output | [Extending →](https://lbliii.github.io/rosettes/docs/extending/) |
+
+📚 **Full documentation**: [lbliii.github.io/rosettes](https://lbliii.github.io/rosettes/)
+
+---
+
+## Usage
+
+<details>
+<summary><strong>Basic Highlighting</strong> — Generate HTML from code</summary>
+
+```python
+from rosettes import highlight
+
+# Basic highlighting
+html = highlight("def foo(): pass", "python")
 # <div class="rosettes" data-language="python">...</div>
 
-# Use Pygments-compatible CSS classes
-html = highlight("const x = 1;", "javascript", css_class_style="pygments")
+# With line numbers
+html = highlight(code, "python", show_linenos=True)
 
-# Tokenize without formatting
-tokens = tokenize("x = 1", "python")
-for token in tokens:
-    print(f"{token.type}: {token.text!r}")
+# Highlight specific lines
+html = highlight(code, "python", hl_lines={2, 3, 4})
 ```
 
-## Parallel Highlighting
+</details>
 
-For multiple code blocks, use `highlight_many()` for parallel processing:
+<details>
+<summary><strong>Parallel Processing</strong> — Speed up multiple blocks</summary>
+
+For 8+ code blocks, use `highlight_many()` for parallel processing:
 
 ```python
 from rosettes import highlight_many
@@ -79,15 +119,65 @@ blocks = [
     ("fn main() {}", "rust"),
 ]
 
-# Highlight in parallel (optimal for 8+ blocks)
+# Highlight in parallel
 results = highlight_many(blocks)
 ```
 
-On Python 3.14t with free-threading enabled, this provides true parallelism with 1.5-2x speedup for 50+ code blocks.
+On Python 3.14t with free-threading, this provides 1.5-2x speedup for 50+ blocks.
+
+</details>
+
+<details>
+<summary><strong>Tokenization</strong> — Raw tokens for custom processing</summary>
+
+```python
+from rosettes import tokenize
+
+tokens = tokenize("x = 42", "python")
+for token in tokens:
+    print(f"{token.type.name}: {token.value!r}")
+# NAME: 'x'
+# WHITESPACE: ' '
+# OPERATOR: '='
+# WHITESPACE: ' '
+# NUMBER_INTEGER: '42'
+```
+
+</details>
+
+<details>
+<summary><strong>CSS Class Styles</strong> — Semantic or Pygments</summary>
+
+**Semantic (default)** — Readable, self-documenting:
+
+```python
+html = highlight(code, "python")
+# <span class="syntax-keyword">def</span>
+# <span class="syntax-function">hello</span>
+```
+
+```css
+.syntax-keyword { color: #ff79c6; }
+.syntax-function { color: #50fa7b; }
+.syntax-string { color: #f1fa8c; }
+```
+
+**Pygments-compatible** — Use existing themes:
+
+```python
+html = highlight(code, "python", css_class_style="pygments")
+# <span class="k">def</span>
+# <span class="nf">hello</span>
+```
+
+</details>
+
+---
 
 ## Supported Languages
 
-**55 languages** with full syntax support:
+<details>
+<summary><strong>55 languages</strong> with full syntax support</summary>
 
 | Category | Languages |
 |----------|-----------|
@@ -105,74 +195,14 @@ On Python 3.14t with free-threading enabled, this provides true parallelism with
 | **AI/ML** | Mojo, Triton, CUDA, Stan |
 | **Other** | PKL, CUE, Tree, Kida, Jinja, Plaintext |
 
-## CSS Class Styles
+</details>
 
-Rosettes supports two CSS class styles:
-
-### Semantic (default)
-
-Readable, self-documenting class names:
-
-```css
-.syntax-keyword { color: #ff79c6; }
-.syntax-function { color: #50fa7b; }
-.syntax-string { color: #f1fa8c; }
-.syntax-comment { color: #6272a4; }
-```
-
-### Pygments-compatible
-
-Drop-in replacement for Pygments themes:
-
-```python
-html = highlight(code, "python", css_class_style="pygments")
-```
-
-Uses standard Pygments classes like `.k`, `.nf`, `.s`, `.c`.
-
-## API Reference
-
-### `highlight(code, language, **options) -> str`
-
-Highlight source code and return HTML.
-
-**Parameters:**
-- `code`: Source code string
-- `language`: Language name or alias (e.g., `"python"`, `"py"`, `"js"`)
-- `hl_lines`: Set of 1-based line numbers to highlight
-- `show_linenos`: Include line numbers (default: `False`)
-- `css_class`: Container CSS class (default: `"rosettes"` or `"highlight"`)
-- `css_class_style`: `"semantic"` or `"pygments"` (default: `"semantic"`)
-
-### `tokenize(code, language) -> list[Token]`
-
-Tokenize source code without formatting.
-
-**Returns:** List of `Token(type, text, start, end)` objects.
-
-### `highlight_many(items, **options) -> list[str]`
-
-Highlight multiple code blocks in parallel.
-
-**Parameters:**
-- `items`: Iterable of `(code, language)` tuples
-- `max_workers`: Thread count (default: `min(4, cpu_count)`)
-
-### `get_lexer(name) -> StateMachineLexer`
-
-Get a lexer instance by name or alias.
-
-### `list_languages() -> list[str]`
-
-List all supported language names.
-
-### `supports_language(name) -> bool`
-
-Check if a language is supported.
+---
 
 ## Architecture
 
-### State Machine Lexers
+<details>
+<summary><strong>State Machine Lexers</strong> — O(n) guaranteed</summary>
 
 Every lexer is a hand-written finite state machine:
 
@@ -181,7 +211,7 @@ Every lexer is a hand-written finite state machine:
 │                    State Machine Lexer                       │
 │                                                              │
 │  ┌─────────┐   char    ┌─────────┐   char    ┌─────────┐   │
-│  │ INITIAL │ ────────> │ STRING  │ ────────> │ ESCAPE  │   │
+│  │ INITIAL │ ────────► │ STRING  │ ────────► │ ESCAPE  │   │
 │  │ STATE   │           │ STATE   │           │ STATE   │   │
 │  └─────────┘           └─────────┘           └─────────┘   │
 │      │                      │                     │         │
@@ -197,12 +227,20 @@ Every lexer is a hand-written finite state machine:
 - Immutable state (thread-safe)
 - Local variables only (no shared mutable state)
 
-### Thread Safety
+</details>
+
+<details>
+<summary><strong>Thread Safety</strong> — Free-threading ready</summary>
 
 All public APIs are thread-safe:
 - Lexers use only local variables during tokenization
 - Formatter state is immutable
 - Registry uses `functools.cache` for memoization
+- Module declares itself safe for free-threading (PEP 703)
+
+</details>
+
+---
 
 ## Performance
 
@@ -210,11 +248,37 @@ Benchmarked against Pygments on a 10,000-line Python file:
 
 | Operation | Rosettes | Pygments | Speedup |
 |-----------|----------|----------|---------|
-| Tokenize | 12ms | 45ms | 3.75x |
-| Highlight | 18ms | 52ms | 2.89x |
-| Parallel (8 blocks) | 22ms | 48ms | 2.18x |
+| Tokenize | 12ms | 45ms | **3.75x** |
+| Highlight | 18ms | 52ms | **2.89x** |
+| Parallel (8 blocks) | 22ms | 48ms | **2.18x** |
+
+---
+
+## Documentation
+
+📚 **[lbliii.github.io/rosettes](https://lbliii.github.io/rosettes/)**
+
+| Section | Description |
+|---------|-------------|
+| [Get Started](https://lbliii.github.io/rosettes/docs/get-started/) | Installation and quickstart |
+| [Highlighting](https://lbliii.github.io/rosettes/docs/highlighting/) | Core highlighting APIs |
+| [Styling](https://lbliii.github.io/rosettes/docs/styling/) | CSS classes and themes |
+| [Reference](https://lbliii.github.io/rosettes/docs/reference/) | Complete API documentation |
+| [About](https://lbliii.github.io/rosettes/docs/about/) | Architecture and design |
+
+---
+
+## Development
+
+```bash
+git clone https://github.com/lbliii/rosettes.git
+cd rosettes
+uv sync --group dev
+pytest
+```
+
+---
 
 ## License
 
 MIT License — see [LICENSE](LICENSE) for details.
-

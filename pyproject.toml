@@ -62,3 +62,8 @@ select = ["E", "F", "I", "UP", "B", "SIM"]
 
 [dependency-groups]
 dev = ["pytest>=9.0.2", "pytest-cov>=6.0.0"]
+# Documentation site (Bengal from local sibling directory)
+docs = ["bengal"]
+
+[tool.uv.sources]
+bengal = { path = "../bengal", editable = true }
