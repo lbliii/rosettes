@@ -1,0 +1,40 @@
+{
+  "version": 1,
+  "name": "category",
+  "entries": {
+    "home": {
+      "key": "home",
+      "page_paths": [
+        "/Users/llane/Documents/github/python/rosettes/site/content/_index.md"
+      ],
+      "metadata": {
+        "display_name": "home"
+      },
+      "updated_at": "2026-01-02T14:57:44.275410",
+      "content_hash": "e4278bfd85f94400"
+    },
+    "onboarding": {
+      "key": "onboarding",
+      "page_paths": [
+        "/Users/llane/Documents/github/python/rosettes/site/content/docs/get-started/_index.md"
+      ],
+      "metadata": {
+        "display_name": "onboarding"
+      },
+      "updated_at": "2026-01-02T14:57:44.275429",
+      "content_hash": "cd2a522051d71842"
+    },
+    "documentation": {
+      "key": "documentation",
+      "page_paths": [
+        "/Users/llane/Documents/github/python/rosettes/site/content/docs/_index.md"
+      ],
+      "metadata": {
+        "display_name": "documentation"
+      },
+      "updated_at": "2026-01-02T14:57:44.275451",
+      "content_hash": "a205cbd78feac721"
+    }
+  },
+  "updated_at": "2026-01-02T14:58:09.966174"
+}

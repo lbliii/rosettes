@@ -1,0 +1,15 @@
+# About
+
+URL: /docs/about/
+Section: about
+Tags: about, architecture
+
+--------------------------------------------------------------------------------
+
+About Rosettes Rosettes is a modern syntax highlighter designed for Python 3.14's free-threading era. Every design decision prioritizes safety, predictability, and performance. Core Principles Principle Meaning O(n) guaranteed Linear time complexity, no exponential blowup Zero ReDoS No regex patterns that can be exploited Thread-safe by design Immutable state, no global mutable data Pygments compatible Drop-in CSS class compatibility Why Rosettes? Traditional syntax highlighters use regular expressions, which can exhibit exponential worst-case behavior (ReDoS). A carefully crafted input can freeze your application for minutes or hours. Rosettes eliminates this risk entirely by using hand-written state machine lexers. Every lexer processes input character-by-character with single-character lookahead, guaranteeing O(n) time complexity. In This Section Cpu Architecture State machine lexer design and internals Shield Thread Safety Thread-safe design and free-threading support Performance Benchmarks and performance characteristics Rosettes vs Pygments Feature and performance comparison Info FAQ Frequently asked questions about Rosettes
+
+--------------------------------------------------------------------------------
+
+Metadata:
+- Word Count: 146
+- Reading Time: 1 minutes

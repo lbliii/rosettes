@@ -1,0 +1,15 @@
+# Get Started
+
+URL: /docs/get-started/
+Section: get-started
+Tags: onboarding, quickstart
+
+--------------------------------------------------------------------------------
+
+Get Started Install pip install rosettes Requires Python 3.14 or later. See installation for alternative methods. Highlight Code from rosettes import highlight html = highlight(&quot;def hello(): print(&#x27;world&#x27;)&quot;, &quot;python&quot;) print(html) Output: &lt;div class=&quot;rosettes&quot; data-language=&quot;python&quot;&gt; &lt;pre&gt;&lt;code&gt;&lt;span class=&quot;syntax-keyword&quot;&gt;def&lt;/span&gt; ... What's Next? Quickstart Start Here Highlight code in 2 minutes Complete walkthrough from install to styled output. Cpu Parallel Processing Process multiple blocks concurrently For sites with many code blocks, highlight_many() provides 1.5-2x speedup. Palette Styling CSS classes and themes Use semantic classes or Pygments-compatible themes. Quick Links API Reference — Complete function signatures Languages — All 55 supported languages vs Pygments — Feature and performance comparison
+
+--------------------------------------------------------------------------------
+
+Metadata:
+- Word Count: 103
+- Reading Time: 1 minutes

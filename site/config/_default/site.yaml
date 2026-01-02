@@ -1,0 +1,13 @@
+# Rosettes Documentation Site Configuration
+# ==========================================
+
+site:
+  title: "Rosettes"
+  baseurl: ""  # Empty allows env override (GitHub Actions sets this)
+  logo_text: "❀"
+  description: "Modern syntax highlighting for Python 3.14t"
+  language: "en"
+
+# Template Engine
+template_engine: kida
+

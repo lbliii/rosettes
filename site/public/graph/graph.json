@@ -1,0 +1,710 @@
+{
+  "nodes": [
+    {
+      "id": "6382984564784364971",
+      "label": "Rosettes",
+      "url": "/",
+      "type": "orphan",
+      "tags": [],
+      "incoming_refs": 0,
+      "outgoing_refs": 0,
+      "connectivity": 0,
+      "reading_time": 1,
+      "size": 8.8,
+      "color": "var(--graph-node-orphan)"
+    },
+    {
+      "id": "6906473773664142929",
+      "label": "About",
+      "url": "/docs/about/",
+      "type": "regular",
+      "tags": [
+        "about",
+        "architecture"
+      ],
+      "incoming_refs": 3,
+      "outgoing_refs": 5,
+      "connectivity": 8,
+      "reading_time": 1,
+      "size": 20.8,
+      "color": "var(--graph-node-regular)"
+    },
+    {
+      "id": "6850105790164573809",
+      "label": "Architecture",
+      "url": "/docs/about/architecture/",
+      "type": "regular",
+      "tags": [
+        "architecture",
+        "design"
+      ],
+      "incoming_refs": 3,
+      "outgoing_refs": 2,
+      "connectivity": 5,
+      "reading_time": 3,
+      "size": 17.9,
+      "color": "var(--graph-node-regular)"
+    },
+    {
+      "id": "-7244252348580726750",
+      "label": "Rosettes vs Pygments",
+      "url": "/docs/about/comparison/",
+      "type": "regular",
+      "tags": [
+        "comparison",
+        "pygments"
+      ],
+      "incoming_refs": 5,
+      "outgoing_refs": 4,
+      "connectivity": 9,
+      "reading_time": 4,
+      "size": 24.7,
+      "color": "var(--graph-node-regular)"
+    },
+    {
+      "id": "-8394151012272594714",
+      "label": "FAQ",
+      "url": "/docs/about/faq/",
+      "type": "regular",
+      "tags": [
+        "faq"
+      ],
+      "incoming_refs": 1,
+      "outgoing_refs": 1,
+      "connectivity": 2,
+      "reading_time": 3,
+      "size": 13.4,
+      "color": "var(--graph-node-regular)"
+    },
+    {
+      "id": "3146124063214178861",
+      "label": "Performance",
+      "url": "/docs/about/performance/",
+      "type": "regular",
+      "tags": [
+        "performance",
+        "benchmarks"
+      ],
+      "incoming_refs": 4,
+      "outgoing_refs": 3,
+      "connectivity": 7,
+      "reading_time": 3,
+      "size": 20.9,
+      "color": "var(--graph-node-regular)"
+    },
+    {
+      "id": "8660230327628514180",
+      "label": "Thread Safety",
+      "url": "/docs/about/thread-safety/",
+      "type": "regular",
+      "tags": [
+        "threading",
+        "safety"
+      ],
+      "incoming_refs": 3,
+      "outgoing_refs": 2,
+      "connectivity": 5,
+      "reading_time": 3,
+      "size": 17.9,
+      "color": "var(--graph-node-regular)"
+    },
+    {
+      "id": "8959327404264249969",
+      "label": "Extending",
+      "url": "/docs/extending/",
+      "type": "regular",
+      "tags": [
+        "extending",
+        "customization"
+      ],
+      "incoming_refs": 3,
+      "outgoing_refs": 1,
+      "connectivity": 4,
+      "reading_time": 1,
+      "size": 14.8,
+      "color": "var(--graph-node-regular)"
+    },
+    {
+      "id": "7983002193751202743",
+      "label": "Custom Formatter",
+      "url": "/docs/extending/custom-formatter/",
+      "type": "regular",
+      "tags": [
+        "formatter",
+        "customization"
+      ],
+      "incoming_refs": 3,
+      "outgoing_refs": 1,
+      "connectivity": 4,
+      "reading_time": 2,
+      "size": 15.6,
+      "color": "var(--graph-node-regular)"
+    },
+    {
+      "id": "-3720440628856263042",
+      "label": "Get Started",
+      "url": "/docs/get-started/",
+      "type": "regular",
+      "tags": [
+        "onboarding",
+        "quickstart"
+      ],
+      "incoming_refs": 3,
+      "outgoing_refs": 2,
+      "connectivity": 5,
+      "reading_time": 1,
+      "size": 16.3,
+      "color": "var(--graph-node-regular)"
+    },
+    {
+      "id": "-2431363867897208233",
+      "label": "Installation",
+      "url": "/docs/get-started/installation/",
+      "type": "regular",
+      "tags": [
+        "installation"
+      ],
+      "incoming_refs": 1,
+      "outgoing_refs": 1,
+      "connectivity": 2,
+      "reading_time": 1,
+      "size": 11.8,
+      "color": "var(--graph-node-regular)"
+    },
+    {
+      "id": "-5793673097107169744",
+      "label": "Quickstart",
+      "url": "/docs/get-started/quickstart/",
+      "type": "regular",
+      "tags": [
+        "quickstart",
+        "tutorial"
+      ],
+      "incoming_refs": 3,
+      "outgoing_refs": 2,
+      "connectivity": 5,
+      "reading_time": 1,
+      "size": 16.3,
+      "color": "var(--graph-node-regular)"
+    },
+    {
+      "id": "-2680059364504895038",
+      "label": "Highlighting",
+      "url": "/docs/highlighting/",
+      "type": "regular",
+      "tags": [
+        "highlighting",
+        "api"
+      ],
+      "incoming_refs": 6,
+      "outgoing_refs": 5,
+      "connectivity": 11,
+      "reading_time": 1,
+      "size": 25.3,
+      "color": "var(--graph-node-regular)"
+    },
+    {
+      "id": "-6014002478458981531",
+      "label": "Basic Usage",
+      "url": "/docs/highlighting/basic-usage/",
+      "type": "regular",
+      "tags": [
+        "highlighting",
+        "api"
+      ],
+      "incoming_refs": 4,
+      "outgoing_refs": 5,
+      "connectivity": 9,
+      "reading_time": 2,
+      "size": 23.1,
+      "color": "var(--graph-node-regular)"
+    },
+    {
+      "id": "4241832673428245673",
+      "label": "Line Highlighting",
+      "url": "/docs/highlighting/line-highlighting/",
+      "type": "regular",
+      "tags": [
+        "highlighting",
+        "lines"
+      ],
+      "incoming_refs": 4,
+      "outgoing_refs": 3,
+      "connectivity": 7,
+      "reading_time": 2,
+      "size": 20.1,
+      "color": "var(--graph-node-regular)"
+    },
+    {
+      "id": "-106756179683539329",
+      "label": "Parallel Processing",
+      "url": "/docs/highlighting/parallel/",
+      "type": "regular",
+      "tags": [
+        "parallel",
+        "performance"
+      ],
+      "incoming_refs": 4,
+      "outgoing_refs": 3,
+      "connectivity": 7,
+      "reading_time": 2,
+      "size": 20.1,
+      "color": "var(--graph-node-regular)"
+    },
+    {
+      "id": "2091112251267089877",
+      "label": "Reference",
+      "url": "/docs/reference/",
+      "type": "regular",
+      "tags": [
+        "reference",
+        "api"
+      ],
+      "incoming_refs": 8,
+      "outgoing_refs": 5,
+      "connectivity": 13,
+      "reading_time": 1,
+      "size": 28.3,
+      "color": "var(--graph-node-regular)"
+    },
+    {
+      "id": "2744152432949460445",
+      "label": "API Reference",
+      "url": "/docs/reference/api/",
+      "type": "regular",
+      "tags": [
+        "api",
+        "reference"
+      ],
+      "incoming_refs": 8,
+      "outgoing_refs": 5,
+      "connectivity": 13,
+      "reading_time": 5,
+      "size": 31.5,
+      "color": "var(--graph-node-regular)"
+    },
+    {
+      "id": "-3736415934078126191",
+      "label": "Configuration",
+      "url": "/docs/reference/configuration/",
+      "type": "regular",
+      "tags": [
+        "configuration",
+        "reference"
+      ],
+      "incoming_refs": 6,
+      "outgoing_refs": 4,
+      "connectivity": 10,
+      "reading_time": 2,
+      "size": 24.6,
+      "color": "var(--graph-node-regular)"
+    },
+    {
+      "id": "-6916302928838581689",
+      "label": "Supported Languages",
+      "url": "/docs/reference/languages/",
+      "type": "regular",
+      "tags": [
+        "languages",
+        "reference"
+      ],
+      "incoming_refs": 7,
+      "outgoing_refs": 4,
+      "connectivity": 11,
+      "reading_time": 4,
+      "size": 27.7,
+      "color": "var(--graph-node-regular)"
+    },
+    {
+      "id": "-8259593056738023788",
+      "label": "Token Types",
+      "url": "/docs/reference/token-types/",
+      "type": "regular",
+      "tags": [
+        "tokens",
+        "reference"
+      ],
+      "incoming_refs": 7,
+      "outgoing_refs": 4,
+      "connectivity": 11,
+      "reading_time": 5,
+      "size": 28.5,
+      "color": "var(--graph-node-regular)"
+    },
+    {
+      "id": "-8232999895001367158",
+      "label": "Styling",
+      "url": "/docs/styling/",
+      "type": "regular",
+      "tags": [
+        "styling",
+        "css",
+        "themes"
+      ],
+      "incoming_refs": 6,
+      "outgoing_refs": 3,
+      "connectivity": 9,
+      "reading_time": 1,
+      "size": 22.3,
+      "color": "var(--graph-node-regular)"
+    },
+    {
+      "id": "-2747038378329072815",
+      "label": "CSS Classes",
+      "url": "/docs/styling/css-classes/",
+      "type": "regular",
+      "tags": [
+        "css",
+        "classes"
+      ],
+      "incoming_refs": 4,
+      "outgoing_refs": 3,
+      "connectivity": 7,
+      "reading_time": 3,
+      "size": 20.9,
+      "color": "var(--graph-node-regular)"
+    },
+    {
+      "id": "-3422891011620497449",
+      "label": "Custom Themes",
+      "url": "/docs/styling/custom-themes/",
+      "type": "regular",
+      "tags": [
+        "themes",
+        "css"
+      ],
+      "incoming_refs": 5,
+      "outgoing_refs": 3,
+      "connectivity": 8,
+      "reading_time": 2,
+      "size": 21.6,
+      "color": "var(--graph-node-regular)"
+    },
+    {
+      "id": "-678809353069934221",
+      "label": "Pygments Themes",
+      "url": "/docs/styling/pygments-themes/",
+      "type": "regular",
+      "tags": [
+        "pygments",
+        "themes"
+      ],
+      "incoming_refs": 7,
+      "outgoing_refs": 5,
+      "connectivity": 12,
+      "reading_time": 2,
+      "size": 27.6,
+      "color": "var(--graph-node-regular)"
+    },
+    {
+      "id": "3445525177282725641",
+      "label": "Tutorials",
+      "url": "/docs/tutorials/",
+      "type": "regular",
+      "tags": [
+        "tutorials"
+      ],
+      "incoming_refs": 1,
+      "outgoing_refs": 1,
+      "connectivity": 2,
+      "reading_time": 1,
+      "size": 11.8,
+      "color": "var(--graph-node-regular)"
+    },
+    {
+      "id": "-5340775064317139517",
+      "label": "Migrate from Pygments",
+      "url": "/docs/tutorials/migrate-from-pygments/",
+      "type": "regular",
+      "tags": [
+        "migration",
+        "pygments"
+      ],
+      "incoming_refs": 4,
+      "outgoing_refs": 2,
+      "connectivity": 6,
+      "reading_time": 3,
+      "size": 19.4,
+      "color": "var(--graph-node-regular)"
+    },
+    {
+      "id": "2401548206048339579",
+      "label": "Documentation",
+      "url": "/docs/",
+      "type": "regular",
+      "tags": [
+        "documentation"
+      ],
+      "incoming_refs": 1,
+      "outgoing_refs": 0,
+      "connectivity": 1,
+      "reading_time": 1,
+      "size": 10.3,
+      "color": "var(--graph-node-regular)"
+    },
+    {
+      "id": "-6004664436495969082",
+      "label": "v0.3.0",
+      "url": "/releases/0.3.0/",
+      "type": "regular",
+      "tags": [
+        "release"
+      ],
+      "incoming_refs": 1,
+      "outgoing_refs": 0,
+      "connectivity": 1,
+      "reading_time": 2,
+      "size": 11.1,
+      "color": "var(--graph-node-regular)"
+    },
+    {
+      "id": "4495448781673924098",
+      "label": "Releases",
+      "url": "/releases/",
+      "type": "regular",
+      "tags": [
+        "releases",
+        "changelog"
+      ],
+      "incoming_refs": 2,
+      "outgoing_refs": 1,
+      "connectivity": 3,
+      "reading_time": 1,
+      "size": 13.3,
+      "color": "var(--graph-node-regular)"
+    }
+  ],
+  "edges": [
+    {
+      "source": "6906473773664142929",
+      "target": "6850105790164573809",
+      "weight": 2
+    },
+    {
+      "source": "6906473773664142929",
+      "target": "-7244252348580726750",
+      "weight": 1
+    },
+    {
+      "source": "6906473773664142929",
+      "target": "8660230327628514180",
+      "weight": 1
+    },
+    {
+      "source": "6906473773664142929",
+      "target": "-8394151012272594714",
+      "weight": 1
+    },
+    {
+      "source": "6906473773664142929",
+      "target": "3146124063214178861",
+      "weight": 1
+    },
+    {
+      "source": "6850105790164573809",
+      "target": "8660230327628514180",
+      "weight": 2
+    },
+    {
+      "source": "-7244252348580726750",
+      "target": "-678809353069934221",
+      "weight": 2
+    },
+    {
+      "source": "-7244252348580726750",
+      "target": "3146124063214178861",
+      "weight": 2
+    },
+    {
+      "source": "-7244252348580726750",
+      "target": "-5340775064317139517",
+      "weight": 2
+    },
+    {
+      "source": "-7244252348580726750",
+      "target": "-8394151012272594714",
+      "weight": 2
+    },
+    {
+      "source": "3146124063214178861",
+      "target": "8660230327628514180",
+      "weight": 2
+    },
+    {
+      "source": "3146124063214178861",
+      "target": "-106756179683539329",
+      "weight": 2
+    },
+    {
+      "source": "8959327404264249969",
+      "target": "7983002193751202743",
+      "weight": 2
+    },
+    {
+      "source": "-3720440628856263042",
+      "target": "-5793673097107169744",
+      "weight": 2
+    },
+    {
+      "source": "-3720440628856263042",
+      "target": "-2431363867897208233",
+      "weight": 1
+    },
+    {
+      "source": "-2431363867897208233",
+      "target": "-5793673097107169744",
+      "weight": 2
+    },
+    {
+      "source": "-2680059364504895038",
+      "target": "-6014002478458981531",
+      "weight": 2
+    },
+    {
+      "source": "-2680059364504895038",
+      "target": "2091112251267089877",
+      "weight": 2
+    },
+    {
+      "source": "-2680059364504895038",
+      "target": "4241832673428245673",
+      "weight": 2
+    },
+    {
+      "source": "-2680059364504895038",
+      "target": "2744152432949460445",
+      "weight": 2
+    },
+    {
+      "source": "-2680059364504895038",
+      "target": "-106756179683539329",
+      "weight": 1
+    },
+    {
+      "source": "-6014002478458981531",
+      "target": "2091112251267089877",
+      "weight": 1
+    },
+    {
+      "source": "-6014002478458981531",
+      "target": "4241832673428245673",
+      "weight": 2
+    },
+    {
+      "source": "-6014002478458981531",
+      "target": "2744152432949460445",
+      "weight": 1
+    },
+    {
+      "source": "-6014002478458981531",
+      "target": "-106756179683539329",
+      "weight": 2
+    },
+    {
+      "source": "4241832673428245673",
+      "target": "-106756179683539329",
+      "weight": 2
+    },
+    {
+      "source": "2091112251267089877",
+      "target": "-3736415934078126191",
+      "weight": 2
+    },
+    {
+      "source": "2091112251267089877",
+      "target": "-8259593056738023788",
+      "weight": 2
+    },
+    {
+      "source": "2091112251267089877",
+      "target": "-6916302928838581689",
+      "weight": 2
+    },
+    {
+      "source": "2091112251267089877",
+      "target": "2744152432949460445",
+      "weight": 2
+    },
+    {
+      "source": "2744152432949460445",
+      "target": "-3736415934078126191",
+      "weight": 2
+    },
+    {
+      "source": "2744152432949460445",
+      "target": "-8259593056738023788",
+      "weight": 2
+    },
+    {
+      "source": "2744152432949460445",
+      "target": "-6916302928838581689",
+      "weight": 2
+    },
+    {
+      "source": "-3736415934078126191",
+      "target": "-8259593056738023788",
+      "weight": 2
+    },
+    {
+      "source": "-3736415934078126191",
+      "target": "-6916302928838581689",
+      "weight": 2
+    },
+    {
+      "source": "-6916302928838581689",
+      "target": "-8259593056738023788",
+      "weight": 2
+    },
+    {
+      "source": "-8232999895001367158",
+      "target": "-2747038378329072815",
+      "weight": 2
+    },
+    {
+      "source": "-8232999895001367158",
+      "target": "-678809353069934221",
+      "weight": 2
+    },
+    {
+      "source": "-8232999895001367158",
+      "target": "-3422891011620497449",
+      "weight": 2
+    },
+    {
+      "source": "-2747038378329072815",
+      "target": "-678809353069934221",
+      "weight": 2
+    },
+    {
+      "source": "-2747038378329072815",
+      "target": "-3422891011620497449",
+      "weight": 2
+    },
+    {
+      "source": "-3422891011620497449",
+      "target": "-678809353069934221",
+      "weight": 2
+    },
+    {
+      "source": "-678809353069934221",
+      "target": "-5340775064317139517",
+      "weight": 2
+    },
+    {
+      "source": "3445525177282725641",
+      "target": "-5340775064317139517",
+      "weight": 1
+    },
+    {
+      "source": "4495448781673924098",
+      "target": "-6004664436495969082",
+      "weight": 1
+    }
+  ],
+  "stats": {
+    "total_pages": 30,
+    "total_links": 45,
+    "hubs": 0,
+    "orphans": 37
+  }
+}

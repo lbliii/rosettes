@@ -1,0 +1,15 @@
+# Line Highlighting
+
+URL: /docs/highlighting/line-highlighting/
+Section: highlighting
+Tags: highlighting, lines
+
+--------------------------------------------------------------------------------
+
+Line Highlighting Draw attention to specific lines or add line numbers to code blocks. Highlight Specific Lines Use hl_lines to highlight specific lines: from rosettes import highlight code = &#x27;&#x27;&#x27;def greet(name): message = f&quot;Hello, {name}!&quot; return message &#x27;&#x27;&#x27; # Highlight line 2 (1-based indexing) html = highlight(code, &quot;python&quot;, hl_lines={2}) The highlighted line receives the .hll CSS class: &lt;div class=&quot;rosettes&quot; data-language=&quot;python&quot;&gt; &lt;pre&gt;&lt;code&gt; &lt;span class=&quot;line&quot;&gt;def greet(name):&lt;/span&gt; &lt;span class=&quot;line hll&quot;&gt; message = f&quot;Hello, {name}!&quot;&lt;/span&gt; &lt;span class=&quot;line&quot;&gt; return message&lt;/span&gt; &lt;/code&gt;&lt;/pre&gt; &lt;/div&gt; Multiple Lines Pass a set of line numbers: # Highlight lines 2 and 3 html = highlight(code, &quot;python&quot;, hl_lines={2, 3}) # Highlight a range html = highlight(code, &quot;python&quot;, hl_lines=set(range(2, 5))) # lines 2, 3, 4 Styling Highlighted Lines /* Subtle background highlight */ .rosettes .hll { background-color: rgba(255, 255, 0, 0.1); display: block; } /* Or with a border */ .rosettes .hll { border-left: 3px solid #f1fa8c; padding-left: 0.5em; margin-left: -0.5em; } Line Numbers Add line numbers with show_linenos: html = highlight(code, &quot;python&quot;, show_linenos=True) Output structure: &lt;div class=&quot;rosettes&quot; data-language=&quot;python&quot;&gt; &lt;pre&gt;&lt;code&gt; &lt;span class=&quot;lineno&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;line&quot;&gt;def greet(name):&lt;/span&gt; &lt;span class=&quot;lineno&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;line&quot;&gt; message = f&quot;Hello, {name}!&quot;&lt;/span&gt; &lt;span class=&quot;lineno&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;line&quot;&gt; return message&lt;/span&gt; &lt;/code&gt;&lt;/pre&gt; &lt;/div&gt; Styling Line Numbers .rosettes .lineno { color: #6272a4; user-select: none; /* Don&#x27;t include in copy */ padding-right: 1em; text-align: right; min-width: 2em; display: inline-block; } Combining Options Use both together: html = highlight( code, &quot;python&quot;, show_linenos=True, hl_lines={2, 3}, ) Performance Note Line highlighting and line numbers use the &quot;slow path&quot; internally, which processes tokens line-by-line. For maximum performance without these features, the &quot;fast path&quot; streams tokens directly. Mode Use Case Relative Speed Fast path No line features 1.0x Slow path hl_lines or show_linenos ~0.85x The difference is negligible for most use cases. Next Steps CSS Classes — Full list of CSS classes Basic Usage — Core highlight() API
+
+--------------------------------------------------------------------------------
+
+Metadata:
+- Word Count: 293
+- Reading Time: 1 minutes

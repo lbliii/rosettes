@@ -1,0 +1,196 @@
+# Rosettes 
+
+**Modern syntax highlighting for Python 3.14t**
+
+A pure-Python syntax highlighter designed for free-threaded Python. All lexers are hand-written state machines with **O(n) guaranteed performance** and **zero ReDoS vulnerability**.
+
+## Features
+
+- **55 language lexers** — hand-written state machines, no regex backtracking
+- **O(n) guaranteed** — linear time complexity, no exponential blowup
+- **Zero ReDoS vulnerability** — no regex patterns that can be exploited
+- **Thread-safe by design** — immutable state, no global mutable data
+- **Free-threading ready** — optimized for Python 3.14t (PEP 703)
+- **Pygments compatible** — drop-in CSS class compatibility
+- **Parallel processing** — `highlight_many()` for multi-core systems
+- **Zero dependencies** — pure Python, no runtime requirements
+
+## Installation
+
+```bash
+pip install rosettes
+```
+
+Requires Python 3.14+
+
+## Quick Start
+
+```python
+from rosettes import highlight, tokenize
+
+# Highlight Python code
+html = highlight("def hello(): print('world')", "python")
+print(html)
+# <div class="rosettes" data-language="python">...</div>
+
+# Use Pygments-compatible CSS classes
+html = highlight("const x = 1;", "javascript", css_class_style="pygments")
+
+# Tokenize without formatting
+tokens = tokenize("x = 1", "python")
+for token in tokens:
+    print(f"{token.type}: {token.text!r}")
+```
+
+## Parallel Highlighting
+
+For multiple code blocks, use `highlight_many()` for parallel processing:
+
+```python
+from rosettes import highlight_many
+
+blocks = [
+    ("def foo(): pass", "python"),
+    ("const x = 1;", "javascript"),
+    ("fn main() {}", "rust"),
+]
+
+# Highlight in parallel (optimal for 8+ blocks)
+results = highlight_many(blocks)
+```
+
+On Python 3.14t with free-threading enabled, this provides true parallelism with 1.5-2x speedup for 50+ code blocks.
+
+## Supported Languages
+
+**55 languages** with full syntax support:
+
+| Category | Languages |
+|----------|-----------|
+| **Core** | Python, JavaScript, TypeScript, JSON, YAML, TOML, Bash, HTML, CSS, Diff |
+| **Systems** | C, C++, Rust, Go, Zig |
+| **JVM** | Java, Kotlin, Scala, Groovy, Clojure |
+| **Apple** | Swift |
+| **Scripting** | Ruby, Perl, PHP, Lua, R, PowerShell |
+| **Functional** | Haskell, Elixir |
+| **Data/Query** | SQL, CSV, GraphQL |
+| **Markup** | Markdown, XML |
+| **Config** | INI, Nginx, Dockerfile, Makefile, HCL |
+| **Schema** | Protobuf |
+| **Modern** | Dart, Julia, Nim, Gleam, V |
+| **AI/ML** | Mojo, Triton, CUDA, Stan |
+| **Other** | PKL, CUE, Tree, Kida, Jinja, Plaintext |
+
+## CSS Class Styles
+
+Rosettes supports two CSS class styles:
+
+### Semantic (default)
+
+Readable, self-documenting class names:
+
+```css
+.syntax-keyword { color: #ff79c6; }
+.syntax-function { color: #50fa7b; }
+.syntax-string { color: #f1fa8c; }
+.syntax-comment { color: #6272a4; }
+```
+
+### Pygments-compatible
+
+Drop-in replacement for Pygments themes:
+
+```python
+html = highlight(code, "python", css_class_style="pygments")
+```
+
+Uses standard Pygments classes like `.k`, `.nf`, `.s`, `.c`.
+
+## API Reference
+
+### `highlight(code, language, **options) -> str`
+
+Highlight source code and return HTML.
+
+**Parameters:**
+- `code`: Source code string
+- `language`: Language name or alias (e.g., `"python"`, `"py"`, `"js"`)
+- `hl_lines`: Set of 1-based line numbers to highlight
+- `show_linenos`: Include line numbers (default: `False`)
+- `css_class`: Container CSS class (default: `"rosettes"` or `"highlight"`)
+- `css_class_style`: `"semantic"` or `"pygments"` (default: `"semantic"`)
+
+### `tokenize(code, language) -> list[Token]`
+
+Tokenize source code without formatting.
+
+**Returns:** List of `Token(type, text, start, end)` objects.
+
+### `highlight_many(items, **options) -> list[str]`
+
+Highlight multiple code blocks in parallel.
+
+**Parameters:**
+- `items`: Iterable of `(code, language)` tuples
+- `max_workers`: Thread count (default: `min(4, cpu_count)`)
+
+### `get_lexer(name) -> StateMachineLexer`
+
+Get a lexer instance by name or alias.
+
+### `list_languages() -> list[str]`
+
+List all supported language names.
+
+### `supports_language(name) -> bool`
+
+Check if a language is supported.
+
+## Architecture
+
+### State Machine Lexers
+
+Every lexer is a hand-written finite state machine:
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                    State Machine Lexer                       │
+│                                                              │
+│  ┌─────────┐   char    ┌─────────┐   char    ┌─────────┐   │
+│  │ INITIAL │ ────────> │ STRING  │ ────────> │ ESCAPE  │   │
+│  │ STATE   │           │ STATE   │           │ STATE   │   │
+│  └─────────┘           └─────────┘           └─────────┘   │
+│      │                      │                     │         │
+│      │ emit                 │ emit                │ emit    │
+│      ▼                      ▼                     ▼         │
+│  [Token]               [Token]               [Token]        │
+└─────────────────────────────────────────────────────────────┘
+```
+
+**Key properties:**
+- Single character lookahead (O(n) guaranteed)
+- No backtracking (no ReDoS possible)
+- Immutable state (thread-safe)
+- Local variables only (no shared mutable state)
+
+### Thread Safety
+
+All public APIs are thread-safe:
+- Lexers use only local variables during tokenization
+- Formatter state is immutable
+- Registry uses `functools.cache` for memoization
+
+## Performance
+
+Benchmarked against Pygments on a 10,000-line Python file:
+
+| Operation | Rosettes | Pygments | Speedup |
+|-----------|----------|----------|---------|
+| Tokenize | 12ms | 45ms | 3.75x |
+| Highlight | 18ms | 52ms | 2.89x |
+| Parallel (8 blocks) | 22ms | 48ms | 2.18x |
+
+## License
+
+MIT License — see [LICENSE](LICENSE) for details.
+

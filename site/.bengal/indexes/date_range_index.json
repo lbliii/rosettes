@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "name": "date_range",
+  "entries": {
+    "2025": {
+      "key": "2025",
+      "page_paths": [
+        "/Users/llane/Documents/github/python/rosettes/site/content/releases/0.3.0.md"
+      ],
+      "metadata": {
+        "type": "year",
+        "year": 2025
+      },
+      "updated_at": "2026-01-02T14:57:44.276136",
+      "content_hash": "1fb47dc2ca30a812"
+    },
+    "2025-01": {
+      "key": "2025-01",
+      "page_paths": [
+        "/Users/llane/Documents/github/python/rosettes/site/content/releases/0.3.0.md"
+      ],
+      "metadata": {
+        "type": "month",
+        "year": 2025,
+        "month": 1
+      },
+      "updated_at": "2026-01-02T14:57:44.276145",
+      "content_hash": "1fb47dc2ca30a812"
+    }
+  },
+  "updated_at": "2026-01-02T14:58:09.967640"
+}

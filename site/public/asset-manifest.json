@@ -1,0 +1,1071 @@
+{
+  "version": 1,
+  "generated_at": "2026-01-02T19:58:11.182412Z",
+  "assets": {
+    "android-chrome-192x192.png": {
+      "output_path": "assets/android-chrome-192x192.png",
+      "size_bytes": 5969,
+      "updated_at": "2026-01-02T19:58:10.006125Z"
+    },
+    "android-chrome-512x512.png": {
+      "output_path": "assets/android-chrome-512x512.png",
+      "size_bytes": 8458,
+      "updated_at": "2026-01-02T19:58:10.014986Z"
+    },
+    "apple-touch-icon.png": {
+      "output_path": "assets/apple-touch-icon.png",
+      "size_bytes": 5356,
+      "updated_at": "2026-01-02T19:58:10.000454Z"
+    },
+    "css/experimental/holo-cards-demo.html": {
+      "output_path": "assets/css/experimental/holo-cards-demo.html",
+      "size_bytes": 17132,
+      "updated_at": "2026-01-02T14:00:49.916700Z"
+    },
+    "css/experimental/holo-tcg-demo.html": {
+      "output_path": "assets/css/experimental/holo-tcg-demo.html",
+      "size_bytes": 10835,
+      "updated_at": "2026-01-02T14:00:49.860170Z"
+    },
+    "css/style.css": {
+      "output_path": "assets/css/style.css",
+      "size_bytes": 719739,
+      "updated_at": "2026-01-02T19:58:11.070762Z"
+    },
+    "favicon-16x16.png": {
+      "output_path": "assets/favicon-16x16.png",
+      "size_bytes": 321,
+      "updated_at": "2026-01-02T19:58:09.993025Z"
+    },
+    "favicon-32x32.png": {
+      "output_path": "assets/favicon-32x32.png",
+      "size_bytes": 742,
+      "updated_at": "2026-01-02T19:58:09.993152Z"
+    },
+    "favicon.ico": {
+      "output_path": "assets/favicon.ico",
+      "size_bytes": 15406,
+      "updated_at": "2025-12-03T20:14:55.764777Z"
+    },
+    "fonts/outfit-400.ttf": {
+      "output_path": "assets/fonts/outfit-400.ttf",
+      "size_bytes": 47844,
+      "updated_at": "2026-01-02T19:51:37.241293Z"
+    },
+    "fonts/outfit-400.woff2": {
+      "output_path": "assets/fonts/outfit-400.woff2",
+      "size_bytes": 32292,
+      "updated_at": "2026-01-02T19:51:37.226300Z"
+    },
+    "fonts/outfit-600.woff2": {
+      "output_path": "assets/fonts/outfit-600.woff2",
+      "size_bytes": 32292,
+      "updated_at": "2026-01-02T19:51:37.230159Z"
+    },
+    "fonts/outfit-700.ttf": {
+      "output_path": "assets/fonts/outfit-700.ttf",
+      "size_bytes": 48340,
+      "updated_at": "2026-01-02T19:51:37.247962Z"
+    },
+    "fonts/outfit-700.woff2": {
+      "output_path": "assets/fonts/outfit-700.woff2",
+      "size_bytes": 32292,
+      "updated_at": "2026-01-02T19:51:37.234766Z"
+    },
+    "icons/ai-chatgpt.svg": {
+      "output_path": "assets/icons/ai-chatgpt.svg",
+      "size_bytes": 335,
+      "updated_at": "2026-01-02T14:00:49.875710Z"
+    },
+    "icons/ai-claude.svg": {
+      "output_path": "assets/icons/ai-claude.svg",
+      "size_bytes": 254,
+      "updated_at": "2026-01-02T14:00:49.859966Z"
+    },
+    "icons/ai-copilot.svg": {
+      "output_path": "assets/icons/ai-copilot.svg",
+      "size_bytes": 216,
+      "updated_at": "2026-01-02T14:00:49.899168Z"
+    },
+    "icons/ai-gemini.svg": {
+      "output_path": "assets/icons/ai-gemini.svg",
+      "size_bytes": 154,
+      "updated_at": "2026-01-02T14:00:49.902980Z"
+    },
+    "icons/arrow-clockwise.svg": {
+      "output_path": "assets/icons/arrow-clockwise.svg",
+      "size_bytes": 342,
+      "updated_at": "2025-12-09T22:30:57.858188Z"
+    },
+    "icons/arrow-left.svg": {
+      "output_path": "assets/icons/arrow-left.svg",
+      "size_bytes": 249,
+      "updated_at": "2025-12-09T22:30:57.858315Z"
+    },
+    "icons/arrow-right.svg": {
+      "output_path": "assets/icons/arrow-right.svg",
+      "size_bytes": 246,
+      "updated_at": "2025-12-09T22:30:57.858470Z"
+    },
+    "icons/arrow-up.svg": {
+      "output_path": "assets/icons/arrow-up.svg",
+      "size_bytes": 300,
+      "updated_at": "2026-01-02T13:58:50.748015Z"
+    },
+    "icons/article.svg": {
+      "output_path": "assets/icons/article.svg",
+      "size_bytes": 432,
+      "updated_at": "2025-12-24T15:21:05.028901Z"
+    },
+    "icons/atomic.svg": {
+      "output_path": "assets/icons/atomic.svg",
+      "size_bytes": 1333,
+      "updated_at": "2026-01-02T14:00:49.882529Z"
+    },
+    "icons/bengal-rosette.svg": {
+      "output_path": "assets/icons/bengal-rosette.svg",
+      "size_bytes": 1428,
+      "updated_at": "2026-01-02T13:58:50.748034Z"
+    },
+    "icons/book-open.svg": {
+      "output_path": "assets/icons/book-open.svg",
+      "size_bytes": 397,
+      "updated_at": "2025-12-09T22:30:57.858861Z"
+    },
+    "icons/book.svg": {
+      "output_path": "assets/icons/book.svg",
+      "size_bytes": 288,
+      "updated_at": "2026-01-02T14:00:49.888120Z"
+    },
+    "icons/bookmark.svg": {
+      "output_path": "assets/icons/bookmark.svg",
+      "size_bytes": 379,
+      "updated_at": "2026-01-02T13:58:50.747965Z"
+    },
+    "icons/boomerang.svg": {
+      "output_path": "assets/icons/boomerang.svg",
+      "size_bytes": 291,
+      "updated_at": "2026-01-02T14:00:49.861182Z"
+    },
+    "icons/briefcase.svg": {
+      "output_path": "assets/icons/briefcase.svg",
+      "size_bytes": 536,
+      "updated_at": "2025-12-24T15:21:04.572903Z"
+    },
+    "icons/bug.svg": {
+      "output_path": "assets/icons/bug.svg",
+      "size_bytes": 758,
+      "updated_at": "2026-01-02T14:00:49.879226Z"
+    },
+    "icons/calendar.svg": {
+      "output_path": "assets/icons/calendar.svg",
+      "size_bytes": 619,
+      "updated_at": "2026-01-02T13:58:50.137730Z"
+    },
+    "icons/caret-down.svg": {
+      "output_path": "assets/icons/caret-down.svg",
+      "size_bytes": 255,
+      "updated_at": "2025-12-09T22:30:57.859581Z"
+    },
+    "icons/caret-left.svg": {
+      "output_path": "assets/icons/caret-left.svg",
+      "size_bytes": 241,
+      "updated_at": "2025-12-09T22:30:57.859724Z"
+    },
+    "icons/caret-right.svg": {
+      "output_path": "assets/icons/caret-right.svg",
+      "size_bytes": 261,
+      "updated_at": "2025-12-09T22:30:57.859866Z"
+    },
+    "icons/caret-up.svg": {
+      "output_path": "assets/icons/caret-up.svg",
+      "size_bytes": 271,
+      "updated_at": "2025-12-09T22:30:57.859997Z"
+    },
+    "icons/caution.svg": {
+      "output_path": "assets/icons/caution.svg",
+      "size_bytes": 581,
+      "updated_at": "2025-12-09T22:30:57.860135Z"
+    },
+    "icons/check-circle.svg": {
+      "output_path": "assets/icons/check-circle.svg",
+      "size_bytes": 340,
+      "updated_at": "2025-12-09T22:30:57.860286Z"
+    },
+    "icons/check.svg": {
+      "output_path": "assets/icons/check.svg",
+      "size_bytes": 251,
+      "updated_at": "2026-01-02T13:58:50.026875Z"
+    },
+    "icons/chevron-down.svg": {
+      "output_path": "assets/icons/chevron-down.svg",
+      "size_bytes": 257,
+      "updated_at": "2026-01-02T13:58:50.779165Z"
+    },
+    "icons/chevron-left.svg": {
+      "output_path": "assets/icons/chevron-left.svg",
+      "size_bytes": 243,
+      "updated_at": "2026-01-02T13:58:50.779190Z"
+    },
+    "icons/chevron-right.svg": {
+      "output_path": "assets/icons/chevron-right.svg",
+      "size_bytes": 263,
+      "updated_at": "2026-01-02T13:58:50.779214Z"
+    },
+    "icons/chevron-up.svg": {
+      "output_path": "assets/icons/chevron-up.svg",
+      "size_bytes": 273,
+      "updated_at": "2026-01-02T13:58:50.779176Z"
+    },
+    "icons/clock.svg": {
+      "output_path": "assets/icons/clock.svg",
+      "size_bytes": 323,
+      "updated_at": "2026-01-02T13:58:50.779215Z"
+    },
+    "icons/close.svg": {
+      "output_path": "assets/icons/close.svg",
+      "size_bytes": 320,
+      "updated_at": "2026-01-02T13:58:50.779178Z"
+    },
+    "icons/cloud.svg": {
+      "output_path": "assets/icons/cloud.svg",
+      "size_bytes": 313,
+      "updated_at": "2025-12-24T15:21:04.765451Z"
+    },
+    "icons/code-branch.svg": {
+      "output_path": "assets/icons/code-branch.svg",
+      "size_bytes": 445,
+      "updated_at": "2026-01-02T14:00:49.932779Z"
+    },
+    "icons/code.svg": {
+      "output_path": "assets/icons/code.svg",
+      "size_bytes": 486,
+      "updated_at": "2026-01-02T13:58:50.779160Z"
+    },
+    "icons/compass.svg": {
+      "output_path": "assets/icons/compass.svg",
+      "size_bytes": 403,
+      "updated_at": "2025-12-09T22:30:57.862821Z"
+    },
+    "icons/container.svg": {
+      "output_path": "assets/icons/container.svg",
+      "size_bytes": 309,
+      "updated_at": "2026-01-02T14:00:49.840486Z"
+    },
+    "icons/copy.svg": {
+      "output_path": "assets/icons/copy.svg",
+      "size_bytes": 314,
+      "updated_at": "2026-01-02T13:58:50.779199Z"
+    },
+    "icons/cpu.svg": {
+      "output_path": "assets/icons/cpu.svg",
+      "size_bytes": 575,
+      "updated_at": "2025-12-24T15:21:04.795891Z"
+    },
+    "icons/cube.svg": {
+      "output_path": "assets/icons/cube.svg",
+      "size_bytes": 437,
+      "updated_at": "2025-12-24T15:21:04.390300Z"
+    },
+    "icons/danger.svg": {
+      "output_path": "assets/icons/danger.svg",
+      "size_bytes": 441,
+      "updated_at": "2025-12-09T22:30:57.863614Z"
+    },
+    "icons/database.svg": {
+      "output_path": "assets/icons/database.svg",
+      "size_bytes": 849,
+      "updated_at": "2025-12-24T15:21:04.712309Z"
+    },
+    "icons/docs.svg": {
+      "output_path": "assets/icons/docs.svg",
+      "size_bytes": 451,
+      "updated_at": "2026-01-02T13:58:50.779179Z"
+    },
+    "icons/download.svg": {
+      "output_path": "assets/icons/download.svg",
+      "size_bytes": 462,
+      "updated_at": "2026-01-02T13:58:50.779219Z"
+    },
+    "icons/edit.svg": {
+      "output_path": "assets/icons/edit.svg",
+      "size_bytes": 447,
+      "updated_at": "2026-01-02T13:58:50.779158Z"
+    },
+    "icons/enlarge.svg": {
+      "output_path": "assets/icons/enlarge.svg",
+      "size_bytes": 571,
+      "updated_at": "2025-12-09T22:30:57.865289Z"
+    },
+    "icons/error.svg": {
+      "output_path": "assets/icons/error.svg",
+      "size_bytes": 440,
+      "updated_at": "2026-01-02T13:58:50.779194Z"
+    },
+    "icons/example.svg": {
+      "output_path": "assets/icons/example.svg",
+      "size_bytes": 489,
+      "updated_at": "2025-12-09T22:30:57.866174Z"
+    },
+    "icons/external.svg": {
+      "output_path": "assets/icons/external.svg",
+      "size_bytes": 386,
+      "updated_at": "2026-01-02T13:58:50.779228Z"
+    },
+    "icons/eye.svg": {
+      "output_path": "assets/icons/eye.svg",
+      "size_bytes": 702,
+      "updated_at": "2025-12-09T22:30:57.866964Z"
+    },
+    "icons/facebook-logo.svg": {
+      "output_path": "assets/icons/facebook-logo.svg",
+      "size_bytes": 303,
+      "updated_at": "2025-12-09T22:30:57.867338Z"
+    },
+    "icons/feather.svg": {
+      "output_path": "assets/icons/feather.svg",
+      "size_bytes": 486,
+      "updated_at": "2025-12-24T15:21:04.627399Z"
+    },
+    "icons/file-code.svg": {
+      "output_path": "assets/icons/file-code.svg",
+      "size_bytes": 531,
+      "updated_at": "2026-01-02T14:00:49.856722Z"
+    },
+    "icons/file-js.svg": {
+      "output_path": "assets/icons/file-js.svg",
+      "size_bytes": 865,
+      "updated_at": "2025-12-24T15:21:05.077904Z"
+    },
+    "icons/file-py.svg": {
+      "output_path": "assets/icons/file-py.svg",
+      "size_bytes": 556,
+      "updated_at": "2025-12-24T15:21:05.054911Z"
+    },
+    "icons/file-text.svg": {
+      "output_path": "assets/icons/file-text.svg",
+      "size_bytes": 456,
+      "updated_at": "2025-12-09T22:30:57.867742Z"
+    },
+    "icons/file-ts.svg": {
+      "output_path": "assets/icons/file-ts.svg",
+      "size_bytes": 847,
+      "updated_at": "2025-12-24T15:21:05.105945Z"
+    },
+    "icons/file.svg": {
+      "output_path": "assets/icons/file.svg",
+      "size_bytes": 331,
+      "updated_at": "2026-01-02T13:58:50.027575Z"
+    },
+    "icons/filter.svg": {
+      "output_path": "assets/icons/filter.svg",
+      "size_bytes": 414,
+      "updated_at": "2026-01-02T14:00:49.843909Z"
+    },
+    "icons/flask.svg": {
+      "output_path": "assets/icons/flask.svg",
+      "size_bytes": 540,
+      "updated_at": "2025-12-24T15:21:04.907581Z"
+    },
+    "icons/folder.svg": {
+      "output_path": "assets/icons/folder.svg",
+      "size_bytes": 342,
+      "updated_at": "2026-01-02T13:58:50.027560Z"
+    },
+    "icons/function.svg": {
+      "output_path": "assets/icons/function.svg",
+      "size_bytes": 395,
+      "updated_at": "2025-12-24T15:21:04.598972Z"
+    },
+    "icons/funnel.svg": {
+      "output_path": "assets/icons/funnel.svg",
+      "size_bytes": 386,
+      "updated_at": "2025-12-09T22:30:57.868995Z"
+    },
+    "icons/git-branch.svg": {
+      "output_path": "assets/icons/git-branch.svg",
+      "size_bytes": 452,
+      "updated_at": "2025-12-24T15:21:04.328170Z"
+    },
+    "icons/git-commit.svg": {
+      "output_path": "assets/icons/git-commit.svg",
+      "size_bytes": 288,
+      "updated_at": "2025-12-24T15:21:04.510593Z"
+    },
+    "icons/github-logo.svg": {
+      "output_path": "assets/icons/github-logo.svg",
+      "size_bytes": 891,
+      "updated_at": "2025-12-09T22:30:57.869320Z"
+    },
+    "icons/globe.svg": {
+      "output_path": "assets/icons/globe.svg",
+      "size_bytes": 892,
+      "updated_at": "2025-12-24T15:21:04.657749Z"
+    },
+    "icons/graduation-cap.svg": {
+      "output_path": "assets/icons/graduation-cap.svg",
+      "size_bytes": 655,
+      "updated_at": "2025-12-09T22:30:57.869490Z"
+    },
+    "icons/hard-drives.svg": {
+      "output_path": "assets/icons/hard-drives.svg",
+      "size_bytes": 460,
+      "updated_at": "2025-12-24T15:21:43.937361Z"
+    },
+    "icons/heart.svg": {
+      "output_path": "assets/icons/heart.svg",
+      "size_bytes": 525,
+      "updated_at": "2026-01-02T13:58:50.146794Z"
+    },
+    "icons/house.svg": {
+      "output_path": "assets/icons/house.svg",
+      "size_bytes": 357,
+      "updated_at": "2025-12-09T22:30:57.869760Z"
+    },
+    "icons/image.svg": {
+      "output_path": "assets/icons/image.svg",
+      "size_bytes": 401,
+      "updated_at": "2025-12-09T22:30:57.869908Z"
+    },
+    "icons/info.svg": {
+      "output_path": "assets/icons/info.svg",
+      "size_bytes": 383,
+      "updated_at": "2026-01-02T13:58:50.027968Z"
+    },
+    "icons/key.svg": {
+      "output_path": "assets/icons/key.svg",
+      "size_bytes": 674,
+      "updated_at": "2025-12-24T15:21:04.448152Z"
+    },
+    "icons/layers.svg": {
+      "output_path": "assets/icons/layers.svg",
+      "size_bytes": 484,
+      "updated_at": "2025-12-09T22:30:57.870164Z"
+    },
+    "icons/lightbulb.svg": {
+      "output_path": "assets/icons/lightbulb.svg",
+      "size_bytes": 744,
+      "updated_at": "2025-12-24T15:21:04.236572Z"
+    },
+    "icons/lightning.svg": {
+      "output_path": "assets/icons/lightning.svg",
+      "size_bytes": 416,
+      "updated_at": "2025-12-24T15:21:04.933912Z"
+    },
+    "icons/link.svg": {
+      "output_path": "assets/icons/link.svg",
+      "size_bytes": 725,
+      "updated_at": "2026-01-02T13:58:50.084139Z"
+    },
+    "icons/linkedin-logo.svg": {
+      "output_path": "assets/icons/linkedin-logo.svg",
+      "size_bytes": 416,
+      "updated_at": "2025-12-09T22:30:57.870432Z"
+    },
+    "icons/list.svg": {
+      "output_path": "assets/icons/list.svg",
+      "size_bytes": 288,
+      "updated_at": "2025-12-09T22:30:57.870568Z"
+    },
+    "icons/lock.svg": {
+      "output_path": "assets/icons/lock.svg",
+      "size_bytes": 356,
+      "updated_at": "2025-12-24T15:21:04.481280Z"
+    },
+    "icons/magnifying-glass.svg": {
+      "output_path": "assets/icons/magnifying-glass.svg",
+      "size_bytes": 290,
+      "updated_at": "2025-12-09T22:30:57.870728Z"
+    },
+    "icons/map.svg": {
+      "output_path": "assets/icons/map.svg",
+      "size_bytes": 431,
+      "updated_at": "2025-12-09T22:30:57.870857Z"
+    },
+    "icons/menu.svg": {
+      "output_path": "assets/icons/menu.svg",
+      "size_bytes": 288,
+      "updated_at": "2026-01-02T13:58:50.026887Z"
+    },
+    "icons/monitor.svg": {
+      "output_path": "assets/icons/monitor.svg",
+      "size_bytes": 360,
+      "updated_at": "2026-01-02T14:00:49.880708Z"
+    },
+    "icons/moon.svg": {
+      "output_path": "assets/icons/moon.svg",
+      "size_bytes": 502,
+      "updated_at": "2026-01-02T13:58:50.028067Z"
+    },
+    "icons/network.svg": {
+      "output_path": "assets/icons/network.svg",
+      "size_bytes": 530,
+      "updated_at": "2025-12-24T15:21:04.848633Z"
+    },
+    "icons/newspaper.svg": {
+      "output_path": "assets/icons/newspaper.svg",
+      "size_bytes": 433,
+      "updated_at": "2025-12-24T15:21:04.540388Z"
+    },
+    "icons/note.svg": {
+      "output_path": "assets/icons/note.svg",
+      "size_bytes": 383,
+      "updated_at": "2025-12-09T22:30:57.871432Z"
+    },
+    "icons/notepad.svg": {
+      "output_path": "assets/icons/notepad.svg",
+      "size_bytes": 493,
+      "updated_at": "2026-01-02T13:58:50.027976Z"
+    },
+    "icons/package.svg": {
+      "output_path": "assets/icons/package.svg",
+      "size_bytes": 524,
+      "updated_at": "2025-12-24T15:21:04.360607Z"
+    },
+    "icons/palette.svg": {
+      "output_path": "assets/icons/palette.svg",
+      "size_bytes": 740,
+      "updated_at": "2026-01-02T13:58:50.101214Z"
+    },
+    "icons/pencil.svg": {
+      "output_path": "assets/icons/pencil.svg",
+      "size_bytes": 349,
+      "updated_at": "2025-12-09T22:30:57.871894Z"
+    },
+    "icons/pin.svg": {
+      "output_path": "assets/icons/pin.svg",
+      "size_bytes": 493,
+      "updated_at": "2026-01-02T13:58:50.027862Z"
+    },
+    "icons/puzzle-piece.svg": {
+      "output_path": "assets/icons/puzzle-piece.svg",
+      "size_bytes": 817,
+      "updated_at": "2025-12-24T15:21:04.682063Z"
+    },
+    "icons/puzzle.svg": {
+      "output_path": "assets/icons/puzzle.svg",
+      "size_bytes": 811,
+      "updated_at": "2025-12-24T15:21:43.972244Z"
+    },
+    "icons/question.svg": {
+      "output_path": "assets/icons/question.svg",
+      "size_bytes": 481,
+      "updated_at": "2026-01-02T14:00:49.934983Z"
+    },
+    "icons/recycle.svg": {
+      "output_path": "assets/icons/recycle.svg",
+      "size_bytes": 810,
+      "updated_at": "2025-12-09T22:30:57.872209Z"
+    },
+    "icons/reset.svg": {
+      "output_path": "assets/icons/reset.svg",
+      "size_bytes": 326,
+      "updated_at": "2025-12-09T22:30:57.872362Z"
+    },
+    "icons/rocket.svg": {
+      "output_path": "assets/icons/rocket.svg",
+      "size_bytes": 834,
+      "updated_at": "2025-12-09T22:30:57.872511Z"
+    },
+    "icons/search.svg": {
+      "output_path": "assets/icons/search.svg",
+      "size_bytes": 280,
+      "updated_at": "2026-01-02T13:58:50.027223Z"
+    },
+    "icons/server.svg": {
+      "output_path": "assets/icons/server.svg",
+      "size_bytes": 455,
+      "updated_at": "2025-12-24T15:21:43.960703Z"
+    },
+    "icons/settings.svg": {
+      "output_path": "assets/icons/settings.svg",
+      "size_bytes": 2016,
+      "updated_at": "2026-01-02T13:58:50.101234Z"
+    },
+    "icons/share.svg": {
+      "output_path": "assets/icons/share.svg",
+      "size_bytes": 408,
+      "updated_at": "2025-12-09T22:30:57.872993Z"
+    },
+    "icons/shield.svg": {
+      "output_path": "assets/icons/shield.svg",
+      "size_bytes": 467,
+      "updated_at": "2025-12-24T15:21:04.739294Z"
+    },
+    "icons/sidebar-simple.svg": {
+      "output_path": "assets/icons/sidebar-simple.svg",
+      "size_bytes": 236,
+      "updated_at": "2025-12-09T22:30:57.873171Z"
+    },
+    "icons/sidebar.svg": {
+      "output_path": "assets/icons/sidebar.svg",
+      "size_bytes": 309,
+      "updated_at": "2025-12-09T22:30:57.873314Z"
+    },
+    "icons/sparkle.svg": {
+      "output_path": "assets/icons/sparkle.svg",
+      "size_bytes": 704,
+      "updated_at": "2025-12-24T15:21:04.415809Z"
+    },
+    "icons/stack.svg": {
+      "output_path": "assets/icons/stack.svg",
+      "size_bytes": 519,
+      "updated_at": "2025-12-24T15:21:04.997840Z"
+    },
+    "icons/star.svg": {
+      "output_path": "assets/icons/star.svg",
+      "size_bytes": 845,
+      "updated_at": "2026-01-02T13:58:50.137744Z"
+    },
+    "icons/starburst.svg": {
+      "output_path": "assets/icons/starburst.svg",
+      "size_bytes": 472,
+      "updated_at": "2026-01-02T14:00:49.841581Z"
+    },
+    "icons/success.svg": {
+      "output_path": "assets/icons/success.svg",
+      "size_bytes": 377,
+      "updated_at": "2025-12-09T22:30:57.874129Z"
+    },
+    "icons/sun.svg": {
+      "output_path": "assets/icons/sun.svg",
+      "size_bytes": 719,
+      "updated_at": "2026-01-02T13:58:50.138251Z"
+    },
+    "icons/tag.svg": {
+      "output_path": "assets/icons/tag.svg",
+      "size_bytes": 379,
+      "updated_at": "2026-01-02T13:58:50.028268Z"
+    },
+    "icons/terminal.svg": {
+      "output_path": "assets/icons/terminal.svg",
+      "size_bytes": 280,
+      "updated_at": "2026-01-02T13:58:50.027719Z"
+    },
+    "icons/timer.svg": {
+      "output_path": "assets/icons/timer.svg",
+      "size_bytes": 387,
+      "updated_at": "2025-12-24T15:21:04.823254Z"
+    },
+    "icons/tip.svg": {
+      "output_path": "assets/icons/tip.svg",
+      "size_bytes": 738,
+      "updated_at": "2025-12-09T22:30:57.874671Z"
+    },
+    "icons/translate.svg": {
+      "output_path": "assets/icons/translate.svg",
+      "size_bytes": 650,
+      "updated_at": "2025-12-24T15:21:04.965424Z"
+    },
+    "icons/trash.svg": {
+      "output_path": "assets/icons/trash.svg",
+      "size_bytes": 427,
+      "updated_at": "2026-01-02T13:58:50.027870Z"
+    },
+    "icons/tree-structure.svg": {
+      "output_path": "assets/icons/tree-structure.svg",
+      "size_bytes": 569,
+      "updated_at": "2025-12-24T15:21:04.879831Z"
+    },
+    "icons/twitter-logo.svg": {
+      "output_path": "assets/icons/twitter-logo.svg",
+      "size_bytes": 850,
+      "updated_at": "2025-12-09T22:30:57.874936Z"
+    },
+    "icons/upload.svg": {
+      "output_path": "assets/icons/upload.svg",
+      "size_bytes": 467,
+      "updated_at": "2026-01-02T13:58:50.027583Z"
+    },
+    "icons/user.svg": {
+      "output_path": "assets/icons/user.svg",
+      "size_bytes": 375,
+      "updated_at": "2025-12-09T22:30:57.875197Z"
+    },
+    "icons/users.svg": {
+      "output_path": "assets/icons/users.svg",
+      "size_bytes": 507,
+      "updated_at": "2025-12-09T22:30:57.875325Z"
+    },
+    "icons/warning.svg": {
+      "output_path": "assets/icons/warning.svg",
+      "size_bytes": 581,
+      "updated_at": "2026-01-02T13:58:50.147020Z"
+    },
+    "icons/workflow.svg": {
+      "output_path": "assets/icons/workflow.svg",
+      "size_bytes": 458,
+      "updated_at": "2026-01-02T14:00:49.879225Z"
+    },
+    "icons/wrench.svg": {
+      "output_path": "assets/icons/wrench.svg",
+      "size_bytes": 690,
+      "updated_at": "2025-12-24T15:21:04.281917Z"
+    },
+    "icons/x.svg": {
+      "output_path": "assets/icons/x.svg",
+      "size_bytes": 316,
+      "updated_at": "2025-12-09T22:30:57.875586Z"
+    },
+    "icons/zap.svg": {
+      "output_path": "assets/icons/zap.svg",
+      "size_bytes": 377,
+      "updated_at": "2025-12-09T22:30:57.876169Z"
+    },
+    "icons/zoom-in.svg": {
+      "output_path": "assets/icons/zoom-in.svg",
+      "size_bytes": 377,
+      "updated_at": "2025-12-09T22:30:57.876751Z"
+    },
+    "icons/zoom-out.svg": {
+      "output_path": "assets/icons/zoom-out.svg",
+      "size_bytes": 327,
+      "updated_at": "2025-12-09T22:30:57.877282Z"
+    },
+    "icons_backup/atomic.svg": {
+      "output_path": "assets/icons_backup/atomic.svg",
+      "size_bytes": 1331,
+      "updated_at": "2025-12-09T22:30:57.877765Z"
+    },
+    "icons_backup/bengal-rosette.svg": {
+      "output_path": "assets/icons_backup/bengal-rosette.svg",
+      "size_bytes": 1428,
+      "updated_at": "2025-12-06T18:11:51.715502Z"
+    },
+    "icons_backup/bookmark.svg": {
+      "output_path": "assets/icons_backup/bookmark.svg",
+      "size_bytes": 377,
+      "updated_at": "2025-12-09T22:30:57.878218Z"
+    },
+    "icons_backup/boomerang.svg": {
+      "output_path": "assets/icons_backup/boomerang.svg",
+      "size_bytes": 289,
+      "updated_at": "2025-12-09T22:30:57.878607Z"
+    },
+    "icons_backup/calendar.svg": {
+      "output_path": "assets/icons_backup/calendar.svg",
+      "size_bytes": 617,
+      "updated_at": "2025-12-09T22:30:57.879025Z"
+    },
+    "icons_backup/check.svg": {
+      "output_path": "assets/icons_backup/check.svg",
+      "size_bytes": 249,
+      "updated_at": "2025-12-09T22:30:57.879494Z"
+    },
+    "icons_backup/chevron-down.svg": {
+      "output_path": "assets/icons_backup/chevron-down.svg",
+      "size_bytes": 255,
+      "updated_at": "2025-12-09T22:30:57.879874Z"
+    },
+    "icons_backup/chevron-left.svg": {
+      "output_path": "assets/icons_backup/chevron-left.svg",
+      "size_bytes": 241,
+      "updated_at": "2025-12-09T22:30:57.880212Z"
+    },
+    "icons_backup/chevron-right.svg": {
+      "output_path": "assets/icons_backup/chevron-right.svg",
+      "size_bytes": 261,
+      "updated_at": "2025-12-09T22:30:57.880559Z"
+    },
+    "icons_backup/chevron-up.svg": {
+      "output_path": "assets/icons_backup/chevron-up.svg",
+      "size_bytes": 271,
+      "updated_at": "2025-12-09T22:30:57.880886Z"
+    },
+    "icons_backup/clock.svg": {
+      "output_path": "assets/icons_backup/clock.svg",
+      "size_bytes": 321,
+      "updated_at": "2025-12-09T22:30:57.881247Z"
+    },
+    "icons_backup/close.svg": {
+      "output_path": "assets/icons_backup/close.svg",
+      "size_bytes": 318,
+      "updated_at": "2025-12-09T22:30:57.881640Z"
+    },
+    "icons_backup/code.svg": {
+      "output_path": "assets/icons_backup/code.svg",
+      "size_bytes": 484,
+      "updated_at": "2025-12-09T22:30:57.882170Z"
+    },
+    "icons_backup/copy.svg": {
+      "output_path": "assets/icons_backup/copy.svg",
+      "size_bytes": 312,
+      "updated_at": "2025-12-09T22:30:57.882596Z"
+    },
+    "icons_backup/docs.svg": {
+      "output_path": "assets/icons_backup/docs.svg",
+      "size_bytes": 449,
+      "updated_at": "2025-12-09T22:30:57.882993Z"
+    },
+    "icons_backup/download.svg": {
+      "output_path": "assets/icons_backup/download.svg",
+      "size_bytes": 460,
+      "updated_at": "2025-12-09T22:30:57.883341Z"
+    },
+    "icons_backup/edit.svg": {
+      "output_path": "assets/icons_backup/edit.svg",
+      "size_bytes": 445,
+      "updated_at": "2025-12-09T22:30:57.883682Z"
+    },
+    "icons_backup/error.svg": {
+      "output_path": "assets/icons_backup/error.svg",
+      "size_bytes": 438,
+      "updated_at": "2025-12-09T22:30:57.884037Z"
+    },
+    "icons_backup/external.svg": {
+      "output_path": "assets/icons_backup/external.svg",
+      "size_bytes": 384,
+      "updated_at": "2025-12-09T22:30:57.884471Z"
+    },
+    "icons_backup/file.svg": {
+      "output_path": "assets/icons_backup/file.svg",
+      "size_bytes": 329,
+      "updated_at": "2025-12-09T22:30:57.884876Z"
+    },
+    "icons_backup/folder.svg": {
+      "output_path": "assets/icons_backup/folder.svg",
+      "size_bytes": 340,
+      "updated_at": "2025-12-09T22:30:57.885301Z"
+    },
+    "icons_backup/heart.svg": {
+      "output_path": "assets/icons_backup/heart.svg",
+      "size_bytes": 523,
+      "updated_at": "2025-12-09T22:30:57.885736Z"
+    },
+    "icons_backup/info.svg": {
+      "output_path": "assets/icons_backup/info.svg",
+      "size_bytes": 381,
+      "updated_at": "2025-12-09T22:30:57.886181Z"
+    },
+    "icons_backup/link.svg": {
+      "output_path": "assets/icons_backup/link.svg",
+      "size_bytes": 723,
+      "updated_at": "2025-12-09T22:30:57.886607Z"
+    },
+    "icons_backup/menu.svg": {
+      "output_path": "assets/icons_backup/menu.svg",
+      "size_bytes": 286,
+      "updated_at": "2025-12-09T22:30:57.886998Z"
+    },
+    "icons_backup/moon.svg": {
+      "output_path": "assets/icons_backup/moon.svg",
+      "size_bytes": 500,
+      "updated_at": "2025-12-09T22:30:57.887423Z"
+    },
+    "icons_backup/notepad.svg": {
+      "output_path": "assets/icons_backup/notepad.svg",
+      "size_bytes": 491,
+      "updated_at": "2025-12-09T22:30:57.887839Z"
+    },
+    "icons_backup/palette.svg": {
+      "output_path": "assets/icons_backup/palette.svg",
+      "size_bytes": 738,
+      "updated_at": "2025-12-09T22:30:57.888291Z"
+    },
+    "icons_backup/pin.svg": {
+      "output_path": "assets/icons_backup/pin.svg",
+      "size_bytes": 491,
+      "updated_at": "2025-12-09T22:30:57.888690Z"
+    },
+    "icons_backup/search.svg": {
+      "output_path": "assets/icons_backup/search.svg",
+      "size_bytes": 278,
+      "updated_at": "2025-12-09T22:30:57.889125Z"
+    },
+    "icons_backup/settings.svg": {
+      "output_path": "assets/icons_backup/settings.svg",
+      "size_bytes": 2014,
+      "updated_at": "2025-12-09T22:30:57.889528Z"
+    },
+    "icons_backup/star.svg": {
+      "output_path": "assets/icons_backup/star.svg",
+      "size_bytes": 843,
+      "updated_at": "2025-12-09T22:30:57.889956Z"
+    },
+    "icons_backup/starburst.svg": {
+      "output_path": "assets/icons_backup/starburst.svg",
+      "size_bytes": 470,
+      "updated_at": "2025-12-09T22:30:57.890346Z"
+    },
+    "icons_backup/sun.svg": {
+      "output_path": "assets/icons_backup/sun.svg",
+      "size_bytes": 717,
+      "updated_at": "2025-12-09T22:30:57.890726Z"
+    },
+    "icons_backup/tag.svg": {
+      "output_path": "assets/icons_backup/tag.svg",
+      "size_bytes": 377,
+      "updated_at": "2025-12-09T22:30:57.891102Z"
+    },
+    "icons_backup/terminal.svg": {
+      "output_path": "assets/icons_backup/terminal.svg",
+      "size_bytes": 278,
+      "updated_at": "2025-12-09T22:30:57.891492Z"
+    },
+    "icons_backup/trash.svg": {
+      "output_path": "assets/icons_backup/trash.svg",
+      "size_bytes": 425,
+      "updated_at": "2025-12-09T22:30:57.891735Z"
+    },
+    "icons_backup/upload.svg": {
+      "output_path": "assets/icons_backup/upload.svg",
+      "size_bytes": 465,
+      "updated_at": "2025-12-09T22:30:57.891887Z"
+    },
+    "icons_backup/warning.svg": {
+      "output_path": "assets/icons_backup/warning.svg",
+      "size_bytes": 579,
+      "updated_at": "2025-12-09T22:30:57.892033Z"
+    },
+    "js/bengal-enhance.js": {
+      "output_path": "assets/js/bengal-enhance.js",
+      "size_bytes": 3867,
+      "updated_at": "2026-01-02T19:58:10.015657Z"
+    },
+    "js/biome.json": {
+      "output_path": "assets/js/biome.json",
+      "size_bytes": 1623,
+      "updated_at": "2026-01-02T14:00:49.875607Z"
+    },
+    "js/core/build-badge.js": {
+      "output_path": "assets/js/core/build-badge.js",
+      "size_bytes": 8002,
+      "updated_at": "2026-01-02T19:58:11.095503Z"
+    },
+    "js/core/nav-dropdown.js": {
+      "output_path": "assets/js/core/nav-dropdown.js",
+      "size_bytes": 3321,
+      "updated_at": "2026-01-02T19:58:11.102724Z"
+    },
+    "js/core/search.js": {
+      "output_path": "assets/js/core/search.js",
+      "size_bytes": 36960,
+      "updated_at": "2026-01-02T19:58:11.095724Z"
+    },
+    "js/core/session-path-tracker.js": {
+      "output_path": "assets/js/core/session-path-tracker.js",
+      "size_bytes": 1755,
+      "updated_at": "2026-01-02T19:58:11.096296Z"
+    },
+    "js/core/theme.js": {
+      "output_path": "assets/js/core/theme.js",
+      "size_bytes": 4979,
+      "updated_at": "2026-01-02T19:58:11.096393Z"
+    },
+    "js/core/version-selector.js": {
+      "output_path": "assets/js/core/version-selector.js",
+      "size_bytes": 484,
+      "updated_at": "2026-01-02T19:58:11.096479Z"
+    },
+    "js/enhancements/action-bar.js": {
+      "output_path": "assets/js/enhancements/action-bar.js",
+      "size_bytes": 6811,
+      "updated_at": "2026-01-02T19:58:11.096408Z"
+    },
+    "js/enhancements/copy-link.js": {
+      "output_path": "assets/js/enhancements/copy-link.js",
+      "size_bytes": 2359,
+      "updated_at": "2026-01-02T19:58:11.113099Z"
+    },
+    "js/enhancements/data-table.js": {
+      "output_path": "assets/js/enhancements/data-table.js",
+      "size_bytes": 2985,
+      "updated_at": "2026-01-02T19:58:11.107684Z"
+    },
+    "js/enhancements/docs-nav.js": {
+      "output_path": "assets/js/enhancements/docs-nav.js",
+      "size_bytes": 182,
+      "updated_at": "2026-01-02T19:58:11.119407Z"
+    },
+    "js/enhancements/holo.js": {
+      "output_path": "assets/js/enhancements/holo.js",
+      "size_bytes": 6391,
+      "updated_at": "2026-01-02T19:58:11.107572Z"
+    },
+    "js/enhancements/interactive.js": {
+      "output_path": "assets/js/enhancements/interactive.js",
+      "size_bytes": 9241,
+      "updated_at": "2026-01-02T19:58:11.120746Z"
+    },
+    "js/enhancements/lazy-loaders.js": {
+      "output_path": "assets/js/enhancements/lazy-loaders.js",
+      "size_bytes": 3014,
+      "updated_at": "2026-01-02T19:58:11.120540Z"
+    },
+    "js/enhancements/lightbox.js": {
+      "output_path": "assets/js/enhancements/lightbox.js",
+      "size_bytes": 5687,
+      "updated_at": "2026-01-02T19:58:11.120336Z"
+    },
+    "js/enhancements/link-previews.js": {
+      "output_path": "assets/js/enhancements/link-previews.js",
+      "size_bytes": 11414,
+      "updated_at": "2026-01-02T19:58:11.111178Z"
+    },
+    "js/enhancements/mobile-nav.js": {
+      "output_path": "assets/js/enhancements/mobile-nav.js",
+      "size_bytes": 3385,
+      "updated_at": "2026-01-02T19:58:11.120814Z"
+    },
+    "js/enhancements/tabs.js": {
+      "output_path": "assets/js/enhancements/tabs.js",
+      "size_bytes": 6696,
+      "updated_at": "2026-01-02T19:58:11.110787Z"
+    },
+    "js/enhancements/toc.js": {
+      "output_path": "assets/js/enhancements/toc.js",
+      "size_bytes": 8446,
+      "updated_at": "2026-01-02T19:58:11.111520Z"
+    },
+    "js/enhancements/tracks.js": {
+      "output_path": "assets/js/enhancements/tracks.js",
+      "size_bytes": 7172,
+      "updated_at": "2026-01-02T19:58:11.111472Z"
+    },
+    "js/graph-contextual.js": {
+      "output_path": "assets/js/graph-contextual.js",
+      "size_bytes": 15315,
+      "updated_at": "2026-01-02T19:58:10.015580Z"
+    },
+    "js/graph-minimap.js": {
+      "output_path": "assets/js/graph-minimap.js",
+      "size_bytes": 9439,
+      "updated_at": "2026-01-02T19:58:10.004049Z"
+    },
+    "js/main.js": {
+      "output_path": "assets/js/main.js",
+      "size_bytes": 8533,
+      "updated_at": "2026-01-02T19:58:10.006929Z"
+    },
+    "js/mermaid-theme.js": {
+      "output_path": "assets/js/mermaid-theme.js",
+      "size_bytes": 10378,
+      "updated_at": "2026-01-02T19:58:09.999113Z"
+    },
+    "js/mermaid-toolbar.js": {
+      "output_path": "assets/js/mermaid-toolbar.js",
+      "size_bytes": 14509,
+      "updated_at": "2026-01-02T19:58:09.986435Z"
+    },
+    "js/utils.js": {
+      "output_path": "assets/js/utils.js",
+      "size_bytes": 3630,
+      "updated_at": "2026-01-02T19:58:10.006545Z"
+    },
+    "js/vendor/lunr.min.js": {
+      "output_path": "assets/js/vendor/lunr.min.js",
+      "size_bytes": 29510,
+      "updated_at": "2025-12-06T18:11:51.739500Z"
+    },
+    "js/vendor/tabulator.min.js": {
+      "output_path": "assets/js/vendor/tabulator.min.js",
+      "size_bytes": 437387,
+      "updated_at": "2025-12-06T18:11:51.740138Z"
+    },
+    "site.webmanifest": {
+      "output_path": "assets/site.webmanifest",
+      "size_bytes": 443,
+      "updated_at": "2025-12-03T20:14:55.775176Z"
+    }
+  }
+}

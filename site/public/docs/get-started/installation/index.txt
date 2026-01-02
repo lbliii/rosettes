@@ -1,0 +1,15 @@
+# Installation
+
+URL: /docs/get-started/installation/
+Section: get-started
+Tags: installation
+
+--------------------------------------------------------------------------------
+
+Installation Requirements Python 3.14+ (required) No runtime dependencies (pure Python) Using pip pip install rosettes Using uv uv add rosettes From Source git clone https://github.com/lbliii/rosettes.git cd rosettes pip install -e . Verify Installation import rosettes print(rosettes.__version__) # 0.3.0 Or from the command line: python -c &quot;import rosettes; print(rosettes.__version__)&quot; Python 3.14t (Free-Threading) Rosettes is optimized for Python 3.14t with free-threading enabled (PEP 703). To use free-threading: Build or install Python 3.14 with --disable-gil Install Rosettes normally Use highlight_many() for true parallelism from rosettes import highlight_many # On 3.14t, this runs with true parallelism blocks = [(&quot;code&quot;, &quot;python&quot;) for _ in range(100)] results = highlight_many(blocks) # 1.5-2x speedup See Thread Safety for details on Rosettes' free-threading support.
+
+--------------------------------------------------------------------------------
+
+Metadata:
+- Word Count: 115
+- Reading Time: 1 minutes

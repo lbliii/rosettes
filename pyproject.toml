@@ -1,0 +1,64 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rosettes"
+version = "0.3.0"
+description = "Modern syntax highlighting for Python 3.14t — O(n) guaranteed, zero ReDoS"
+readme = "README.md"
+requires-python = ">=3.14"
+license = "MIT"
+keywords = [
+    "syntax-highlighting",
+    "lexer",
+    "free-threading",
+    "pygments",
+    "code-highlighting",
+]
+authors = [{ name = "Bengal Contributors" }]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Text Processing :: Markup :: HTML",
+    "Typing :: Typed",
+]
+dependencies = [] # Pure Python, no runtime deps
+
+[project.urls]
+Homepage = "https://github.com/lbliii/rosettes"
+Documentation = "https://github.com/lbliii/rosettes"
+Repository = "https://github.com/lbliii/rosettes"
+Issues = "https://github.com/lbliii/rosettes/issues"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+rosettes = ["py.typed"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_functions = ["test_*"]
+addopts = ["-ra", "-q", "--strict-markers"]
+
+[tool.pyright]
+include = ["src"]
+pythonVersion = "3.14"
+typeCheckingMode = "strict"
+reportMissingTypeStubs = false
+
+[tool.ruff]
+target-version = "py314"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+
+[dependency-groups]
+dev = ["pytest>=9.0.2"]

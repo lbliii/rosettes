@@ -1,0 +1,15 @@
+# Styling
+
+URL: /docs/styling/
+Section: styling
+Tags: styling, css, themes
+
+--------------------------------------------------------------------------------
+
+Styling Rosettes generates semantic HTML with CSS classes for styling. Choose between readable semantic classes or Pygments-compatible classes for drop-in theme support. Two Class Styles Style Classes Use Case Semantic .syntax-keyword, .syntax-function Readable, self-documenting Pygments .k, .nf Drop-in Pygments theme compatibility # Semantic (default) html = highlight(code, &quot;python&quot;) # &lt;span class=&quot;syntax-keyword&quot;&gt;def&lt;/span&gt; # Pygments-compatible html = highlight(code, &quot;python&quot;, css_class_style=&quot;pygments&quot;) # &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; Quick Start Add this CSS to style semantic classes: /* Dark theme basics */ .rosettes { background: #282a36; padding: 1em; border-radius: 4px; overflow-x: auto; } .rosettes pre { margin: 0; font-family: &#x27;Fira Code&#x27;, monospace; } .syntax-keyword { color: #ff79c6; } .syntax-function { color: #50fa7b; } .syntax-string { color: #f1fa8c; } .syntax-comment { color: #6272a4; } .syntax-number { color: #bd93f9; } In This Section Tag CSS Classes Complete reference for semantic and Pygments CSS classes Palette Pygments Themes Use existing Pygments themes with Rosettes Palette Custom Themes Build your own syntax highlighting theme
+
+--------------------------------------------------------------------------------
+
+Metadata:
+- Word Count: 153
+- Reading Time: 1 minutes

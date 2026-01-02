@@ -1,0 +1,15 @@
+# Quickstart
+
+URL: /docs/get-started/quickstart/
+Section: get-started
+Tags: quickstart, tutorial
+
+--------------------------------------------------------------------------------
+
+Quickstart Highlight your first code block in under 2 minutes. 1. Install pip install rosettes 2. Highlight Code from rosettes import highlight code = &#x27;&#x27;&#x27; def greet(name: str) -&gt; str: &quot;&quot;&quot;Return a greeting.&quot;&quot;&quot; return f&quot;Hello, {name}!&quot; &#x27;&#x27;&#x27; html = highlight(code, &quot;python&quot;) print(html) Output: &lt;div class=&quot;rosettes&quot; data-language=&quot;python&quot;&gt; &lt;pre&gt;&lt;code&gt;&lt;span class=&quot;syntax-keyword&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;syntax-function&quot;&gt;greet&lt;/span&gt;... 3. Try Different Languages from rosettes import highlight # JavaScript js_html = highlight(&quot;const x = 42;&quot;, &quot;javascript&quot;) # Rust rust_html = highlight(&quot;fn main() { println!(\&quot;Hello\&quot;); }&quot;, &quot;rust&quot;) # JSON json_html = highlight(&#x27;{&quot;key&quot;: &quot;value&quot;}&#x27;, &quot;json&quot;) 4. Check Available Languages from rosettes import list_languages, supports_language # List all 55 supported languages print(list_languages()) # [&#x27;bash&#x27;, &#x27;c&#x27;, &#x27;clojure&#x27;, &#x27;cpp&#x27;, &#x27;css&#x27;, ...] # Check if a language is supported print(supports_language(&quot;python&quot;)) # True print(supports_language(&quot;cobol&quot;)) # False 5. Add Line Numbers html = highlight(code, &quot;python&quot;, show_linenos=True) 6. Highlight Specific Lines html = highlight(code, &quot;python&quot;, hl_lines={2, 3}) Lines 2 and 3 receive the .hll CSS class for highlighting. Next Steps Basic Usage — Full highlight() and tokenize() API Parallel Processing — Speed up with highlight_many() CSS Classes — Style your highlighted code Languages — All 55 supported languages
+
+--------------------------------------------------------------------------------
+
+Metadata:
+- Word Count: 180
+- Reading Time: 1 minutes

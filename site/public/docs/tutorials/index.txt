@@ -1,0 +1,15 @@
+# Tutorials
+
+URL: /docs/tutorials/
+Section: tutorials
+Tags: tutorials
+
+--------------------------------------------------------------------------------
+
+Tutorials Step-by-step guides for common Rosettes use cases. Available Tutorials Migrate from Pygments Switch from Pygments to Rosettes for HTML highlighting Quick Links Quickstart — Get started in 2 minutes Parallel Processing — Speed up with highlight_many() Custom Themes — Build your own theme
+
+--------------------------------------------------------------------------------
+
+Metadata:
+- Word Count: 44
+- Reading Time: 1 minutes
