@@ -1,6 +1,6 @@
 Metadata-Version: 2.4
 Name: rosettes
-Version: 0.3.0
+Version: 0.1.0
 Summary: Modern syntax highlighting for Python 3.14t — O(n) guaranteed, zero ReDoS
 Author: Bengal Contributors
 License-Expression: MIT
