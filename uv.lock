@@ -110,7 +110,7 @@ wheels = [
 
 [[package]]
 name = "bengal"
-version = "0.1.6"
+version = "0.1.7"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "click" },
@@ -129,9 +129,9 @@ dependencies = [
     { name = "uvloop", marker = "sys_platform != 'win32'" },
     { name = "watchfiles" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/15/88/fbc95f158df7ad6a10f5d40b5c41eaed347fefd732b3c6547019b1811ec9/bengal-0.1.6.tar.gz", hash = "sha256:edb806adc21d966d5bc60f337f391a98360192135ca9957f2da3af2efb12123c", size = 2547478, upload-time = "2026-01-02T21:08:51.111Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/5e/cc/a930b67b17b89a33a130cb6a84ecdf3f2e852d52dbba4babb0d28c1375af/bengal-0.1.7.tar.gz", hash = "sha256:6d9a38b3282395abdb9d413bb8defe5ecae6b54919767fcde8a5fe53cabc4fec", size = 2550876, upload-time = "2026-01-03T15:27:46.336Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/97/3e/03c8f07b43d72676c294f0c2160b89d46d736d9d2e4b78cb0c50e80ea326/bengal-0.1.6-py3-none-any.whl", hash = "sha256:c49a3e3ef384fc7554fc892f1b96f86a23f50301239b936e56b2a8378a631e99", size = 3333860, upload-time = "2026-01-02T21:08:49.368Z" },
+    { url = "https://files.pythonhosted.org/packages/1d/3a/ab4e056c5902eeef370acb4f37b0e38992e2e8fa10fc4af64a6d1ccc39bb/bengal-0.1.7-py3-none-any.whl", hash = "sha256:2e58ae4d95a32d96fcd33d54f9da6512b5deaf7c0c675cdce9571f96a9da2123", size = 3336745, upload-time = "2026-01-03T15:27:44.229Z" },
 ]
 
 [[package]]
@@ -703,7 +703,7 @@ dev = [
     { name = "pytest", specifier = ">=9.0.2" },
     { name = "pytest-cov", specifier = ">=6.0.0" },
 ]
-docs = [{ name = "bengal", specifier = ">=0.1.6" }]
+docs = [{ name = "bengal", specifier = ">=0.1.7" }]
 
 [[package]]
 name = "textual"
