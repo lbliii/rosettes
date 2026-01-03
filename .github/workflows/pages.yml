@@ -47,6 +47,12 @@ jobs:
         env:
           PYTHON_GIL: "0"
 
+      - name: Clean cache and output
+        working-directory: site
+        run: uv run python -m bengal.cli site clean --cache --force
+        env:
+          PYTHON_GIL: "0"
+
       - name: Build documentation site
         working-directory: site
         run: uv run bengal site build --environment production
