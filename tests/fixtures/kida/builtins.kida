@@ -1,0 +1,13 @@
+{{ x | upper }}
+{{ x | lower }}
+{{ x | trim }}
+{{ x | slugify }}
+{{ items | first }}
+{{ items | last }}
+{{ items | length }}
+{{ items | reverse }}
+{{ items | sort }}
+{{ value | default("N/A") }}
+{% if x is defined %}defined{% end %}
+{% if x is empty %}empty{% end %}
+{% if x is iterable %}iterable{% end %}

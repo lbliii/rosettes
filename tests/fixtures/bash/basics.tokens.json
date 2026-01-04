@@ -1,0 +1,830 @@
+[
+  {
+    "type": "COMMENT_SINGLE",
+    "value": "#!/bin/bash",
+    "line": 1,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 1,
+    "column": 12
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 2,
+    "column": 1
+  },
+  {
+    "type": "COMMENT_SINGLE",
+    "value": "# Variables",
+    "line": 3,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 3,
+    "column": 12
+  },
+  {
+    "type": "NAME",
+    "value": "NAME",
+    "line": 4,
+    "column": 1
+  },
+  {
+    "type": "OPERATOR",
+    "value": "=",
+    "line": 4,
+    "column": 5
+  },
+  {
+    "type": "STRING",
+    "value": "\"world\"",
+    "line": 4,
+    "column": 6
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 4,
+    "column": 13
+  },
+  {
+    "type": "NAME",
+    "value": "COUNT",
+    "line": 5,
+    "column": 1
+  },
+  {
+    "type": "OPERATOR",
+    "value": "=",
+    "line": 5,
+    "column": 6
+  },
+  {
+    "type": "NUMBER_INTEGER",
+    "value": "10",
+    "line": 5,
+    "column": 7
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 5,
+    "column": 9
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 6,
+    "column": 1
+  },
+  {
+    "type": "COMMENT_SINGLE",
+    "value": "# Function",
+    "line": 7,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 7,
+    "column": 11
+  },
+  {
+    "type": "NAME",
+    "value": "greet",
+    "line": 8,
+    "column": 1
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "(",
+    "line": 8,
+    "column": 6
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": ")",
+    "line": 8,
+    "column": 7
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 8,
+    "column": 8
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "{",
+    "line": 8,
+    "column": 9
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 8,
+    "column": 10
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "    ",
+    "line": 9,
+    "column": 1
+  },
+  {
+    "type": "KEYWORD",
+    "value": "echo",
+    "line": 9,
+    "column": 5
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 9,
+    "column": 9
+  },
+  {
+    "type": "STRING",
+    "value": "\"Hello, $1!\"",
+    "line": 9,
+    "column": 10
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 9,
+    "column": 22
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "}",
+    "line": 10,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 10,
+    "column": 2
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 11,
+    "column": 1
+  },
+  {
+    "type": "COMMENT_SINGLE",
+    "value": "# Conditionals",
+    "line": 12,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 12,
+    "column": 15
+  },
+  {
+    "type": "KEYWORD",
+    "value": "if",
+    "line": 13,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 13,
+    "column": 3
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "[",
+    "line": 13,
+    "column": 4
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 13,
+    "column": 5
+  },
+  {
+    "type": "STRING",
+    "value": "\"$NAME\"",
+    "line": 13,
+    "column": 6
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 13,
+    "column": 13
+  },
+  {
+    "type": "OPERATOR",
+    "value": "=",
+    "line": 13,
+    "column": 14
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 13,
+    "column": 15
+  },
+  {
+    "type": "STRING",
+    "value": "\"world\"",
+    "line": 13,
+    "column": 16
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 13,
+    "column": 23
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "]",
+    "line": 13,
+    "column": 24
+  },
+  {
+    "type": "OPERATOR",
+    "value": ";",
+    "line": 13,
+    "column": 25
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 13,
+    "column": 26
+  },
+  {
+    "type": "KEYWORD",
+    "value": "then",
+    "line": 13,
+    "column": 27
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 13,
+    "column": 31
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "    ",
+    "line": 14,
+    "column": 1
+  },
+  {
+    "type": "KEYWORD",
+    "value": "echo",
+    "line": 14,
+    "column": 5
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 14,
+    "column": 9
+  },
+  {
+    "type": "STRING",
+    "value": "\"Hello World\"",
+    "line": 14,
+    "column": 10
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 14,
+    "column": 23
+  },
+  {
+    "type": "KEYWORD",
+    "value": "elif",
+    "line": 15,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 15,
+    "column": 5
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "[",
+    "line": 15,
+    "column": 6
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 15,
+    "column": 7
+  },
+  {
+    "type": "OPERATOR",
+    "value": "-",
+    "line": 15,
+    "column": 8
+  },
+  {
+    "type": "NAME",
+    "value": "z",
+    "line": 15,
+    "column": 9
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 15,
+    "column": 10
+  },
+  {
+    "type": "STRING",
+    "value": "\"$NAME\"",
+    "line": 15,
+    "column": 11
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 15,
+    "column": 18
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "]",
+    "line": 15,
+    "column": 19
+  },
+  {
+    "type": "OPERATOR",
+    "value": ";",
+    "line": 15,
+    "column": 20
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 15,
+    "column": 21
+  },
+  {
+    "type": "KEYWORD",
+    "value": "then",
+    "line": 15,
+    "column": 22
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 15,
+    "column": 26
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "    ",
+    "line": 16,
+    "column": 1
+  },
+  {
+    "type": "KEYWORD",
+    "value": "echo",
+    "line": 16,
+    "column": 5
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 16,
+    "column": 9
+  },
+  {
+    "type": "STRING",
+    "value": "\"No name\"",
+    "line": 16,
+    "column": 10
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 16,
+    "column": 19
+  },
+  {
+    "type": "KEYWORD",
+    "value": "else",
+    "line": 17,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 17,
+    "column": 5
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "    ",
+    "line": 18,
+    "column": 1
+  },
+  {
+    "type": "KEYWORD",
+    "value": "echo",
+    "line": 18,
+    "column": 5
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 18,
+    "column": 9
+  },
+  {
+    "type": "STRING",
+    "value": "\"Hello $NAME\"",
+    "line": 18,
+    "column": 10
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 18,
+    "column": 23
+  },
+  {
+    "type": "KEYWORD",
+    "value": "fi",
+    "line": 19,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 19,
+    "column": 3
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 20,
+    "column": 1
+  },
+  {
+    "type": "COMMENT_SINGLE",
+    "value": "# Loops",
+    "line": 21,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 21,
+    "column": 8
+  },
+  {
+    "type": "KEYWORD",
+    "value": "for",
+    "line": 22,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 22,
+    "column": 4
+  },
+  {
+    "type": "NAME",
+    "value": "i",
+    "line": 22,
+    "column": 5
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 22,
+    "column": 6
+  },
+  {
+    "type": "KEYWORD",
+    "value": "in",
+    "line": 22,
+    "column": 7
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 22,
+    "column": 9
+  },
+  {
+    "type": "NAME_VARIABLE",
+    "value": "$(seq 1 $COUNT)",
+    "line": 22,
+    "column": 10
+  },
+  {
+    "type": "OPERATOR",
+    "value": ";",
+    "line": 22,
+    "column": 25
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 22,
+    "column": 26
+  },
+  {
+    "type": "KEYWORD",
+    "value": "do",
+    "line": 22,
+    "column": 27
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 22,
+    "column": 29
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "    ",
+    "line": 23,
+    "column": 1
+  },
+  {
+    "type": "KEYWORD",
+    "value": "echo",
+    "line": 23,
+    "column": 5
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 23,
+    "column": 9
+  },
+  {
+    "type": "STRING",
+    "value": "\"Iteration $i\"",
+    "line": 23,
+    "column": 10
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 23,
+    "column": 24
+  },
+  {
+    "type": "KEYWORD",
+    "value": "done",
+    "line": 24,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 24,
+    "column": 5
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 25,
+    "column": 1
+  },
+  {
+    "type": "KEYWORD",
+    "value": "while",
+    "line": 26,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 26,
+    "column": 6
+  },
+  {
+    "type": "NAME",
+    "value": "true",
+    "line": 26,
+    "column": 7
+  },
+  {
+    "type": "OPERATOR",
+    "value": ";",
+    "line": 26,
+    "column": 11
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 26,
+    "column": 12
+  },
+  {
+    "type": "KEYWORD",
+    "value": "do",
+    "line": 26,
+    "column": 13
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 26,
+    "column": 15
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "    ",
+    "line": 27,
+    "column": 1
+  },
+  {
+    "type": "KEYWORD",
+    "value": "break",
+    "line": 27,
+    "column": 5
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 27,
+    "column": 10
+  },
+  {
+    "type": "KEYWORD",
+    "value": "done",
+    "line": 28,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 28,
+    "column": 5
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 29,
+    "column": 1
+  },
+  {
+    "type": "COMMENT_SINGLE",
+    "value": "# Arrays",
+    "line": 30,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 30,
+    "column": 9
+  },
+  {
+    "type": "NAME",
+    "value": "arr",
+    "line": 31,
+    "column": 1
+  },
+  {
+    "type": "OPERATOR",
+    "value": "=",
+    "line": 31,
+    "column": 4
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "(",
+    "line": 31,
+    "column": 5
+  },
+  {
+    "type": "NAME",
+    "value": "one",
+    "line": 31,
+    "column": 6
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 31,
+    "column": 9
+  },
+  {
+    "type": "NAME",
+    "value": "two",
+    "line": 31,
+    "column": 10
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 31,
+    "column": 13
+  },
+  {
+    "type": "NAME",
+    "value": "three",
+    "line": 31,
+    "column": 14
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": ")",
+    "line": 31,
+    "column": 19
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 31,
+    "column": 20
+  },
+  {
+    "type": "KEYWORD",
+    "value": "echo",
+    "line": 32,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 32,
+    "column": 5
+  },
+  {
+    "type": "STRING",
+    "value": "\"${arr[0]}\"",
+    "line": 32,
+    "column": 6
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 32,
+    "column": 17
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 33,
+    "column": 1
+  },
+  {
+    "type": "COMMENT_SINGLE",
+    "value": "# Command substitution",
+    "line": 34,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 34,
+    "column": 23
+  },
+  {
+    "type": "NAME",
+    "value": "TODAY",
+    "line": 35,
+    "column": 1
+  },
+  {
+    "type": "OPERATOR",
+    "value": "=",
+    "line": 35,
+    "column": 6
+  },
+  {
+    "type": "NAME_VARIABLE",
+    "value": "$(date +%Y-%m-%d)",
+    "line": 35,
+    "column": 7
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 35,
+    "column": 24
+  }
+]

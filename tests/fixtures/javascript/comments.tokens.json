@@ -1,0 +1,200 @@
+[
+  {
+    "type": "COMMENT_SINGLE",
+    "value": "// Single line comment",
+    "line": 1,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 1,
+    "column": 23
+  },
+  {
+    "type": "KEYWORD_DECLARATION",
+    "value": "const",
+    "line": 2,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 2,
+    "column": 6
+  },
+  {
+    "type": "NAME",
+    "value": "x",
+    "line": 2,
+    "column": 7
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 2,
+    "column": 8
+  },
+  {
+    "type": "OPERATOR",
+    "value": "=",
+    "line": 2,
+    "column": 9
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 2,
+    "column": 10
+  },
+  {
+    "type": "NUMBER_INTEGER",
+    "value": "1",
+    "line": 2,
+    "column": 11
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": ";",
+    "line": 2,
+    "column": 12
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 2,
+    "column": 13
+  },
+  {
+    "type": "COMMENT_SINGLE",
+    "value": "// inline comment",
+    "line": 2,
+    "column": 14
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n\n",
+    "line": 2,
+    "column": 31
+  },
+  {
+    "type": "COMMENT_MULTILINE",
+    "value": "/* \n * Multi-line comment\n * spanning multiple lines\n */",
+    "line": 4,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n\n",
+    "line": 7,
+    "column": 4
+  },
+  {
+    "type": "COMMENT_MULTILINE",
+    "value": "/**\n * JSDoc comment\n * @param {string} name - The name\n * @returns {string} Greeting\n */",
+    "line": 9,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 13,
+    "column": 4
+  },
+  {
+    "type": "KEYWORD_DECLARATION",
+    "value": "function",
+    "line": 14,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 14,
+    "column": 9
+  },
+  {
+    "type": "NAME",
+    "value": "greet",
+    "line": 14,
+    "column": 10
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "(",
+    "line": 14,
+    "column": 15
+  },
+  {
+    "type": "NAME",
+    "value": "name",
+    "line": 14,
+    "column": 16
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": ")",
+    "line": 14,
+    "column": 20
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 14,
+    "column": 21
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "{",
+    "line": 14,
+    "column": 22
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n    ",
+    "line": 14,
+    "column": 23
+  },
+  {
+    "type": "KEYWORD",
+    "value": "return",
+    "line": 15,
+    "column": 5
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 15,
+    "column": 11
+  },
+  {
+    "type": "STRING",
+    "value": "`Hello, ${name}`",
+    "line": 15,
+    "column": 12
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": ";",
+    "line": 15,
+    "column": 28
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 15,
+    "column": 29
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "}",
+    "line": 16,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 16,
+    "column": 2
+  }
+]

@@ -1,0 +1,5 @@
+{{ value |> upper }}
+{{ value |> trim |> slugify }}
+{{ items |> first |> upper }}
+{{ text |> split(",") |> join(" - ") }}
+{{ data |> json_encode }}

@@ -1,0 +1,398 @@
+[
+  {
+    "type": "PUNCTUATION",
+    "value": "{",
+    "line": 1,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n    ",
+    "line": 1,
+    "column": 2
+  },
+  {
+    "type": "STRING",
+    "value": "\"name\"",
+    "line": 2,
+    "column": 5
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": ":",
+    "line": 2,
+    "column": 11
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 2,
+    "column": 12
+  },
+  {
+    "type": "STRING",
+    "value": "\"my-app\"",
+    "line": 2,
+    "column": 13
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": ",",
+    "line": 2,
+    "column": 21
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n    ",
+    "line": 2,
+    "column": 22
+  },
+  {
+    "type": "STRING",
+    "value": "\"version\"",
+    "line": 3,
+    "column": 5
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": ":",
+    "line": 3,
+    "column": 14
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 3,
+    "column": 15
+  },
+  {
+    "type": "STRING",
+    "value": "\"1.0.0\"",
+    "line": 3,
+    "column": 16
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": ",",
+    "line": 3,
+    "column": 23
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n    ",
+    "line": 3,
+    "column": 24
+  },
+  {
+    "type": "STRING",
+    "value": "\"enabled\"",
+    "line": 4,
+    "column": 5
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": ":",
+    "line": 4,
+    "column": 14
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 4,
+    "column": 15
+  },
+  {
+    "type": "KEYWORD_CONSTANT",
+    "value": "true",
+    "line": 4,
+    "column": 16
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": ",",
+    "line": 4,
+    "column": 20
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n    ",
+    "line": 4,
+    "column": 21
+  },
+  {
+    "type": "STRING",
+    "value": "\"count\"",
+    "line": 5,
+    "column": 5
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": ":",
+    "line": 5,
+    "column": 12
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 5,
+    "column": 13
+  },
+  {
+    "type": "NUMBER_INTEGER",
+    "value": "42",
+    "line": 5,
+    "column": 14
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": ",",
+    "line": 5,
+    "column": 16
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n    ",
+    "line": 5,
+    "column": 17
+  },
+  {
+    "type": "STRING",
+    "value": "\"ratio\"",
+    "line": 6,
+    "column": 5
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": ":",
+    "line": 6,
+    "column": 12
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 6,
+    "column": 13
+  },
+  {
+    "type": "NUMBER_FLOAT",
+    "value": "3.14",
+    "line": 6,
+    "column": 14
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": ",",
+    "line": 6,
+    "column": 18
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n    ",
+    "line": 6,
+    "column": 19
+  },
+  {
+    "type": "STRING",
+    "value": "\"data\"",
+    "line": 7,
+    "column": 5
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": ":",
+    "line": 7,
+    "column": 11
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 7,
+    "column": 12
+  },
+  {
+    "type": "KEYWORD_CONSTANT",
+    "value": "null",
+    "line": 7,
+    "column": 13
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": ",",
+    "line": 7,
+    "column": 17
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n    ",
+    "line": 7,
+    "column": 18
+  },
+  {
+    "type": "STRING",
+    "value": "\"items\"",
+    "line": 8,
+    "column": 5
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": ":",
+    "line": 8,
+    "column": 12
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 8,
+    "column": 13
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "[",
+    "line": 8,
+    "column": 14
+  },
+  {
+    "type": "NUMBER_INTEGER",
+    "value": "1",
+    "line": 8,
+    "column": 15
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": ",",
+    "line": 8,
+    "column": 16
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 8,
+    "column": 17
+  },
+  {
+    "type": "NUMBER_INTEGER",
+    "value": "2",
+    "line": 8,
+    "column": 18
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": ",",
+    "line": 8,
+    "column": 19
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 8,
+    "column": 20
+  },
+  {
+    "type": "NUMBER_INTEGER",
+    "value": "3",
+    "line": 8,
+    "column": 21
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "]",
+    "line": 8,
+    "column": 22
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": ",",
+    "line": 8,
+    "column": 23
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n    ",
+    "line": 8,
+    "column": 24
+  },
+  {
+    "type": "STRING",
+    "value": "\"nested\"",
+    "line": 9,
+    "column": 5
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": ":",
+    "line": 9,
+    "column": 13
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 9,
+    "column": 14
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "{",
+    "line": 9,
+    "column": 15
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n        ",
+    "line": 9,
+    "column": 16
+  },
+  {
+    "type": "STRING",
+    "value": "\"key\"",
+    "line": 10,
+    "column": 9
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": ":",
+    "line": 10,
+    "column": 14
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 10,
+    "column": 15
+  },
+  {
+    "type": "STRING",
+    "value": "\"value\"",
+    "line": 10,
+    "column": 16
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n    ",
+    "line": 10,
+    "column": 23
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "}",
+    "line": 11,
+    "column": 5
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 11,
+    "column": 6
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "}",
+    "line": 12,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 12,
+    "column": 2
+  }
+]

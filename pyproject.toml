@@ -46,6 +46,10 @@ testpaths = ["tests"]
 python_files = ["test_*.py"]
 python_functions = ["test_*"]
 addopts = ["-ra", "-q", "--strict-markers"]
+markers = [
+    "slow: marks tests as slow (deselect with '-m \"not slow\"')",
+    "property: property-based tests (may take longer)",
+]
 
 [tool.pyright]
 include = ["src"]
@@ -78,7 +82,9 @@ select = [
 dev = [
     "pytest>=9.0.2",
     "pytest-cov>=6.0.0",
-    "ruff>=0.14.0",      # 0.14+ required for Python 3.14 support
+    "pytest-timeout>=2.3.0",  # Prevent hung tests
+    "ruff>=0.14.0",           # 0.14+ required for Python 3.14 support
+    "hypothesis>=6.100.0",    # Property-based testing
 ]
 # Documentation site (uses bengal from PyPI)
 docs = ["bengal>=0.1.7"]

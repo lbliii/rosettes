@@ -1,0 +1,32 @@
+/* Base styles */
+:root {
+    --primary: #3498db;
+    --spacing: 16px;
+}
+
+body {
+    margin: 0;
+    padding: var(--spacing);
+    font-family: system-ui, sans-serif;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+#header {
+    background: linear-gradient(to right, #fff, #eee);
+    border: 1px solid #ddd;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 8px;
+    }
+}
+
+.button:hover {
+    transform: scale(1.05);
+    transition: transform 0.2s ease;
+}

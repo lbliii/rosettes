@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<root xmlns:custom="http://example.com/ns">
+    <!-- Comment -->
+    <element attribute="value">
+        Text content
+    </element>
+    <self-closing />
+    <custom:element>
+        Namespaced content
+    </custom:element>
+    <![CDATA[
+        Raw content here
+    ]]>
+</root>

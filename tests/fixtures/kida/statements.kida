@@ -1,0 +1,19 @@
+{% if condition %}
+    Content when true
+{% else %}
+    Content when false
+{% end %}
+
+{% for item in items %}
+    {{ item }}
+{% end %}
+
+{% set x = 1 %}
+
+{% include "partial.html" %}
+
+{% block content %}
+    Default content
+{% end %}
+
+{% extends "base.html" %}

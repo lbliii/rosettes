@@ -1,0 +1,10 @@
+{% match status %}
+{% case "active" %}
+    Active user
+{% case "pending" %}
+    Waiting for approval
+{% case "inactive" %}
+    Deactivated
+{% default %}
+    Unknown status
+{% end %}

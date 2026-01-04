@@ -1,0 +1,530 @@
+[
+  {
+    "type": "COMMENT_SINGLE",
+    "value": "# Project configuration",
+    "line": 1,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 1,
+    "column": 24
+  },
+  {
+    "type": "NAME_TAG",
+    "value": "[project]",
+    "line": 2,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 2,
+    "column": 10
+  },
+  {
+    "type": "NAME_ATTRIBUTE",
+    "value": "name",
+    "line": 3,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 3,
+    "column": 5
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "=",
+    "line": 3,
+    "column": 6
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 3,
+    "column": 7
+  },
+  {
+    "type": "STRING",
+    "value": "\"my-app\"",
+    "line": 3,
+    "column": 8
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 3,
+    "column": 16
+  },
+  {
+    "type": "NAME_ATTRIBUTE",
+    "value": "version",
+    "line": 4,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 4,
+    "column": 8
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "=",
+    "line": 4,
+    "column": 9
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 4,
+    "column": 10
+  },
+  {
+    "type": "STRING",
+    "value": "\"1.0.0\"",
+    "line": 4,
+    "column": 11
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 4,
+    "column": 18
+  },
+  {
+    "type": "NAME_ATTRIBUTE",
+    "value": "description",
+    "line": 5,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 5,
+    "column": 12
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "=",
+    "line": 5,
+    "column": 13
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 5,
+    "column": 14
+  },
+  {
+    "type": "STRING",
+    "value": "\"A sample application\"",
+    "line": 5,
+    "column": 15
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 5,
+    "column": 37
+  },
+  {
+    "type": "NAME_ATTRIBUTE",
+    "value": "authors",
+    "line": 6,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 6,
+    "column": 8
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "=",
+    "line": 6,
+    "column": 9
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 6,
+    "column": 10
+  },
+  {
+    "type": "NAME_TAG",
+    "value": "[\"Developer <dev@example.com>\"]",
+    "line": 6,
+    "column": 11
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 6,
+    "column": 42
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 7,
+    "column": 1
+  },
+  {
+    "type": "NAME_TAG",
+    "value": "[project.dependencies]",
+    "line": 8,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 8,
+    "column": 23
+  },
+  {
+    "type": "NAME_ATTRIBUTE",
+    "value": "requests",
+    "line": 9,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 9,
+    "column": 9
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "=",
+    "line": 9,
+    "column": 10
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 9,
+    "column": 11
+  },
+  {
+    "type": "STRING",
+    "value": "\"^2.28.0\"",
+    "line": 9,
+    "column": 12
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 9,
+    "column": 21
+  },
+  {
+    "type": "NAME_ATTRIBUTE",
+    "value": "pydantic",
+    "line": 10,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 10,
+    "column": 9
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "=",
+    "line": 10,
+    "column": 10
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 10,
+    "column": 11
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "{",
+    "line": 10,
+    "column": 12
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 10,
+    "column": 13
+  },
+  {
+    "type": "NAME_ATTRIBUTE",
+    "value": "version",
+    "line": 10,
+    "column": 14
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 10,
+    "column": 21
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "=",
+    "line": 10,
+    "column": 22
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 10,
+    "column": 23
+  },
+  {
+    "type": "STRING",
+    "value": "\"^2.0\"",
+    "line": 10,
+    "column": 24
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": ",",
+    "line": 10,
+    "column": 30
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 10,
+    "column": 31
+  },
+  {
+    "type": "NAME_ATTRIBUTE",
+    "value": "extras",
+    "line": 10,
+    "column": 32
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 10,
+    "column": 38
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "=",
+    "line": 10,
+    "column": 39
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 10,
+    "column": 40
+  },
+  {
+    "type": "NAME_TAG",
+    "value": "[\"email\"]",
+    "line": 10,
+    "column": 41
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 10,
+    "column": 50
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "}",
+    "line": 10,
+    "column": 51
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 10,
+    "column": 52
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 11,
+    "column": 1
+  },
+  {
+    "type": "NAME_TAG",
+    "value": "[tool.ruff]",
+    "line": 12,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 12,
+    "column": 12
+  },
+  {
+    "type": "NAME_ATTRIBUTE",
+    "value": "line-length",
+    "line": 13,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 13,
+    "column": 12
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "=",
+    "line": 13,
+    "column": 13
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 13,
+    "column": 14
+  },
+  {
+    "type": "NUMBER_INTEGER",
+    "value": "100",
+    "line": 13,
+    "column": 15
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 13,
+    "column": 18
+  },
+  {
+    "type": "NAME_ATTRIBUTE",
+    "value": "target-version",
+    "line": 14,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 14,
+    "column": 15
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "=",
+    "line": 14,
+    "column": 16
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 14,
+    "column": 17
+  },
+  {
+    "type": "STRING",
+    "value": "\"py312\"",
+    "line": 14,
+    "column": 18
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 14,
+    "column": 25
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 15,
+    "column": 1
+  },
+  {
+    "type": "NAME_TAG",
+    "value": "[[tool.mypy.overrides]]",
+    "line": 16,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 16,
+    "column": 24
+  },
+  {
+    "type": "NAME_ATTRIBUTE",
+    "value": "module",
+    "line": 17,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 17,
+    "column": 7
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "=",
+    "line": 17,
+    "column": 8
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 17,
+    "column": 9
+  },
+  {
+    "type": "STRING",
+    "value": "\"tests.*\"",
+    "line": 17,
+    "column": 10
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 17,
+    "column": 19
+  },
+  {
+    "type": "NAME_ATTRIBUTE",
+    "value": "ignore_errors",
+    "line": 18,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 18,
+    "column": 14
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "=",
+    "line": 18,
+    "column": 15
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 18,
+    "column": 16
+  },
+  {
+    "type": "KEYWORD_CONSTANT",
+    "value": "true",
+    "line": 18,
+    "column": 17
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 18,
+    "column": 21
+  }
+]

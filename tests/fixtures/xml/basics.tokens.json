@@ -1,0 +1,272 @@
+[
+  {
+    "type": "COMMENT_PREPROC",
+    "value": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>",
+    "line": 1,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 2,
+    "column": 39
+  },
+  {
+    "type": "COMMENT_PREPROC",
+    "value": "<!DOCTYPE html>",
+    "line": 2,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 3,
+    "column": 16
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "<",
+    "line": 3,
+    "column": 1
+  },
+  {
+    "type": "NAME_TAG",
+    "value": "root",
+    "line": 3,
+    "column": 2
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 3,
+    "column": 1
+  },
+  {
+    "type": "NAME_NAMESPACE",
+    "value": "xmlns:custom",
+    "line": 3,
+    "column": 7
+  },
+  {
+    "type": "OPERATOR",
+    "value": "=",
+    "line": 3,
+    "column": 19
+  },
+  {
+    "type": "STRING",
+    "value": "\"http://example.com/ns\"",
+    "line": 3,
+    "column": 20
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": ">",
+    "line": 3,
+    "column": 43
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n    ",
+    "line": 4,
+    "column": 44
+  },
+  {
+    "type": "COMMENT_MULTILINE",
+    "value": "<!-- Comment -->",
+    "line": 4,
+    "column": 5
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n    ",
+    "line": 5,
+    "column": 21
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "<",
+    "line": 5,
+    "column": 5
+  },
+  {
+    "type": "NAME_TAG",
+    "value": "element",
+    "line": 5,
+    "column": 6
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 5,
+    "column": 5
+  },
+  {
+    "type": "NAME_ATTRIBUTE",
+    "value": "attribute",
+    "line": 5,
+    "column": 14
+  },
+  {
+    "type": "OPERATOR",
+    "value": "=",
+    "line": 5,
+    "column": 23
+  },
+  {
+    "type": "STRING",
+    "value": "\"value\"",
+    "line": 5,
+    "column": 24
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": ">",
+    "line": 5,
+    "column": 31
+  },
+  {
+    "type": "TEXT",
+    "value": "\n        Text content\n    ",
+    "line": 7,
+    "column": 32
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "</",
+    "line": 7,
+    "column": 5
+  },
+  {
+    "type": "NAME_TAG",
+    "value": "element",
+    "line": 7,
+    "column": 7
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": ">",
+    "line": 7,
+    "column": 14
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n    ",
+    "line": 8,
+    "column": 15
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "<",
+    "line": 8,
+    "column": 5
+  },
+  {
+    "type": "NAME_TAG",
+    "value": "self-closing",
+    "line": 8,
+    "column": 6
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 8,
+    "column": 5
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "/>",
+    "line": 8,
+    "column": 19
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n    ",
+    "line": 9,
+    "column": 21
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "<",
+    "line": 9,
+    "column": 5
+  },
+  {
+    "type": "NAME_TAG",
+    "value": "custom:element",
+    "line": 9,
+    "column": 6
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": ">",
+    "line": 9,
+    "column": 20
+  },
+  {
+    "type": "TEXT",
+    "value": "\n        Namespaced content\n    ",
+    "line": 11,
+    "column": 21
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "</",
+    "line": 11,
+    "column": 5
+  },
+  {
+    "type": "NAME_TAG",
+    "value": "custom:element",
+    "line": 11,
+    "column": 7
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": ">",
+    "line": 11,
+    "column": 21
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n    ",
+    "line": 12,
+    "column": 22
+  },
+  {
+    "type": "STRING",
+    "value": "<![CDATA[\n        Raw content here\n    ]]>",
+    "line": 12,
+    "column": 5
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 15,
+    "column": 8
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "</",
+    "line": 15,
+    "column": 1
+  },
+  {
+    "type": "NAME_TAG",
+    "value": "root",
+    "line": 15,
+    "column": 3
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": ">",
+    "line": 15,
+    "column": 7
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 16,
+    "column": 8
+  }
+]

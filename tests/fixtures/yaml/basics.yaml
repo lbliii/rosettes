@@ -1,0 +1,28 @@
+# Configuration file
+name: my-app
+version: 1.0.0
+
+settings:
+  debug: true
+  port: 8080
+  timeout: 30.5
+
+database:
+  host: localhost
+  port: 5432
+  credentials:
+    username: admin
+    password: secret
+
+features:
+  - authentication
+  - logging
+  - caching
+
+defaults: &defaults
+  adapter: postgres
+  pool: 5
+
+production:
+  <<: *defaults
+  pool: 25

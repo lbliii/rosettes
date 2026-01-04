@@ -12,17 +12,25 @@ class TestPaletteLoading:
 
     def test_builtin_palettes_load(self) -> None:
         """Built-in palettes should load correctly."""
-        palettes = ["bengal-tiger", "monokai", "dracula", "github"]
+        # Regular palettes with direct text/background
+        regular_palettes = ["bengal-tiger", "monokai", "dracula"]
+        # Adaptive palettes with light/dark sub-palettes
+        adaptive_palettes = ["github"]
 
-        for name in palettes:
-            try:
-                palette = get_palette(name)
-                assert palette is not None
-                assert hasattr(palette, "text")
-                assert hasattr(palette, "background")
-            except Exception:
-                # Palette might not exist yet or raise different error
-                pytest.skip(f"Palette {name} not available")
+        for name in regular_palettes:
+            palette = get_palette(name)
+            assert palette is not None
+            assert hasattr(palette, "text")
+            assert hasattr(palette, "background")
+
+        for name in adaptive_palettes:
+            palette = get_palette(name)
+            assert palette is not None
+            # Adaptive palettes have light and dark sub-palettes
+            assert hasattr(palette, "light")
+            assert hasattr(palette, "dark")
+            assert hasattr(palette.light, "text")
+            assert hasattr(palette.light, "background")
 
     def test_unknown_palette_raises(self) -> None:
         """Unknown palette should raise LookupError."""

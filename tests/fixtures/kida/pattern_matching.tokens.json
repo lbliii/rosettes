@@ -1,0 +1,266 @@
+[
+  {
+    "type": "PUNCTUATION_MARKER",
+    "value": "{%",
+    "line": 1,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 1,
+    "column": 3
+  },
+  {
+    "type": "KEYWORD",
+    "value": "match",
+    "line": 1,
+    "column": 4
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 1,
+    "column": 9
+  },
+  {
+    "type": "NAME_VARIABLE",
+    "value": "status",
+    "line": 1,
+    "column": 10
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 1,
+    "column": 16
+  },
+  {
+    "type": "PUNCTUATION_MARKER",
+    "value": "%}",
+    "line": 1,
+    "column": 17
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 1,
+    "column": 19
+  },
+  {
+    "type": "PUNCTUATION_MARKER",
+    "value": "{%",
+    "line": 2,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 2,
+    "column": 3
+  },
+  {
+    "type": "KEYWORD",
+    "value": "case",
+    "line": 2,
+    "column": 4
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 2,
+    "column": 8
+  },
+  {
+    "type": "STRING",
+    "value": "\"active\"",
+    "line": 2,
+    "column": 9
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 2,
+    "column": 17
+  },
+  {
+    "type": "PUNCTUATION_MARKER",
+    "value": "%}",
+    "line": 2,
+    "column": 18
+  },
+  {
+    "type": "TEXT",
+    "value": "\n    Active user\n",
+    "line": 2,
+    "column": 20
+  },
+  {
+    "type": "PUNCTUATION_MARKER",
+    "value": "{%",
+    "line": 4,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 4,
+    "column": 3
+  },
+  {
+    "type": "KEYWORD",
+    "value": "case",
+    "line": 4,
+    "column": 4
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 4,
+    "column": 8
+  },
+  {
+    "type": "STRING",
+    "value": "\"pending\"",
+    "line": 4,
+    "column": 9
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 4,
+    "column": 18
+  },
+  {
+    "type": "PUNCTUATION_MARKER",
+    "value": "%}",
+    "line": 4,
+    "column": 19
+  },
+  {
+    "type": "TEXT",
+    "value": "\n    Waiting for approval\n",
+    "line": 4,
+    "column": 21
+  },
+  {
+    "type": "PUNCTUATION_MARKER",
+    "value": "{%",
+    "line": 6,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 6,
+    "column": 3
+  },
+  {
+    "type": "KEYWORD",
+    "value": "case",
+    "line": 6,
+    "column": 4
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 6,
+    "column": 8
+  },
+  {
+    "type": "STRING",
+    "value": "\"inactive\"",
+    "line": 6,
+    "column": 9
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 6,
+    "column": 19
+  },
+  {
+    "type": "PUNCTUATION_MARKER",
+    "value": "%}",
+    "line": 6,
+    "column": 20
+  },
+  {
+    "type": "TEXT",
+    "value": "\n    Deactivated\n",
+    "line": 6,
+    "column": 22
+  },
+  {
+    "type": "PUNCTUATION_MARKER",
+    "value": "{%",
+    "line": 8,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 8,
+    "column": 3
+  },
+  {
+    "type": "NAME_FUNCTION",
+    "value": "default",
+    "line": 8,
+    "column": 4
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 8,
+    "column": 11
+  },
+  {
+    "type": "PUNCTUATION_MARKER",
+    "value": "%}",
+    "line": 8,
+    "column": 12
+  },
+  {
+    "type": "TEXT",
+    "value": "\n    Unknown status\n",
+    "line": 8,
+    "column": 14
+  },
+  {
+    "type": "PUNCTUATION_MARKER",
+    "value": "{%",
+    "line": 10,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 10,
+    "column": 3
+  },
+  {
+    "type": "KEYWORD",
+    "value": "end",
+    "line": 10,
+    "column": 4
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 10,
+    "column": 7
+  },
+  {
+    "type": "PUNCTUATION_MARKER",
+    "value": "%}",
+    "line": 10,
+    "column": 8
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 10,
+    "column": 10
+  }
+]

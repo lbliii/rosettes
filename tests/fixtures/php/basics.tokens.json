@@ -1,0 +1,1058 @@
+[
+  {
+    "type": "COMMENT_PREPROC",
+    "value": "<?php",
+    "line": 1,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 1,
+    "column": 6
+  },
+  {
+    "type": "KEYWORD_NAMESPACE",
+    "value": "namespace",
+    "line": 2,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 2,
+    "column": 10
+  },
+  {
+    "type": "NAME_CLASS",
+    "value": "App\\Models",
+    "line": 2,
+    "column": 11
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": ";",
+    "line": 2,
+    "column": 21
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n\n",
+    "line": 2,
+    "column": 22
+  },
+  {
+    "type": "KEYWORD_NAMESPACE",
+    "value": "use",
+    "line": 4,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 4,
+    "column": 4
+  },
+  {
+    "type": "NAME_CLASS",
+    "value": "App\\Traits\\Loggable",
+    "line": 4,
+    "column": 5
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": ";",
+    "line": 4,
+    "column": 24
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n\n",
+    "line": 4,
+    "column": 25
+  },
+  {
+    "type": "KEYWORD_DECLARATION",
+    "value": "class",
+    "line": 6,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 6,
+    "column": 6
+  },
+  {
+    "type": "NAME_CLASS",
+    "value": "User",
+    "line": 6,
+    "column": 7
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 6,
+    "column": 11
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "{",
+    "line": 6,
+    "column": 12
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n    ",
+    "line": 6,
+    "column": 13
+  },
+  {
+    "type": "KEYWORD",
+    "value": "public",
+    "line": 7,
+    "column": 5
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 7,
+    "column": 11
+  },
+  {
+    "type": "KEYWORD_TYPE",
+    "value": "string",
+    "line": 7,
+    "column": 12
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 7,
+    "column": 18
+  },
+  {
+    "type": "NAME_VARIABLE",
+    "value": "$name",
+    "line": 7,
+    "column": 19
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": ";",
+    "line": 7,
+    "column": 24
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n    ",
+    "line": 7,
+    "column": 25
+  },
+  {
+    "type": "KEYWORD",
+    "value": "private",
+    "line": 8,
+    "column": 5
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 8,
+    "column": 12
+  },
+  {
+    "type": "KEYWORD_TYPE",
+    "value": "int",
+    "line": 8,
+    "column": 13
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 8,
+    "column": 16
+  },
+  {
+    "type": "NAME_VARIABLE",
+    "value": "$age",
+    "line": 8,
+    "column": 17
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": ";",
+    "line": 8,
+    "column": 21
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n    \n    ",
+    "line": 8,
+    "column": 22
+  },
+  {
+    "type": "KEYWORD",
+    "value": "public",
+    "line": 10,
+    "column": 5
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 10,
+    "column": 11
+  },
+  {
+    "type": "KEYWORD_DECLARATION",
+    "value": "function",
+    "line": 10,
+    "column": 12
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 10,
+    "column": 20
+  },
+  {
+    "type": "NAME",
+    "value": "__construct",
+    "line": 10,
+    "column": 21
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "(",
+    "line": 10,
+    "column": 32
+  },
+  {
+    "type": "KEYWORD_TYPE",
+    "value": "string",
+    "line": 10,
+    "column": 33
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 10,
+    "column": 39
+  },
+  {
+    "type": "NAME_VARIABLE",
+    "value": "$name",
+    "line": 10,
+    "column": 40
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": ",",
+    "line": 10,
+    "column": 45
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 10,
+    "column": 46
+  },
+  {
+    "type": "KEYWORD_TYPE",
+    "value": "int",
+    "line": 10,
+    "column": 47
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 10,
+    "column": 50
+  },
+  {
+    "type": "NAME_VARIABLE",
+    "value": "$age",
+    "line": 10,
+    "column": 51
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": ")",
+    "line": 10,
+    "column": 55
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 10,
+    "column": 56
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "{",
+    "line": 10,
+    "column": 57
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n        ",
+    "line": 10,
+    "column": 58
+  },
+  {
+    "type": "NAME_VARIABLE",
+    "value": "$this",
+    "line": 11,
+    "column": 9
+  },
+  {
+    "type": "OPERATOR",
+    "value": "->",
+    "line": 11,
+    "column": 14
+  },
+  {
+    "type": "NAME",
+    "value": "name",
+    "line": 11,
+    "column": 16
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 11,
+    "column": 20
+  },
+  {
+    "type": "OPERATOR",
+    "value": "=",
+    "line": 11,
+    "column": 21
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 11,
+    "column": 22
+  },
+  {
+    "type": "NAME_VARIABLE",
+    "value": "$name",
+    "line": 11,
+    "column": 23
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": ";",
+    "line": 11,
+    "column": 28
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n        ",
+    "line": 11,
+    "column": 29
+  },
+  {
+    "type": "NAME_VARIABLE",
+    "value": "$this",
+    "line": 12,
+    "column": 9
+  },
+  {
+    "type": "OPERATOR",
+    "value": "->",
+    "line": 12,
+    "column": 14
+  },
+  {
+    "type": "NAME",
+    "value": "age",
+    "line": 12,
+    "column": 16
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 12,
+    "column": 19
+  },
+  {
+    "type": "OPERATOR",
+    "value": "=",
+    "line": 12,
+    "column": 20
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 12,
+    "column": 21
+  },
+  {
+    "type": "NAME_VARIABLE",
+    "value": "$age",
+    "line": 12,
+    "column": 22
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": ";",
+    "line": 12,
+    "column": 26
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n    ",
+    "line": 12,
+    "column": 27
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "}",
+    "line": 13,
+    "column": 5
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n    \n    ",
+    "line": 13,
+    "column": 6
+  },
+  {
+    "type": "KEYWORD",
+    "value": "public",
+    "line": 15,
+    "column": 5
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 15,
+    "column": 11
+  },
+  {
+    "type": "KEYWORD_DECLARATION",
+    "value": "function",
+    "line": 15,
+    "column": 12
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 15,
+    "column": 20
+  },
+  {
+    "type": "NAME",
+    "value": "greet",
+    "line": 15,
+    "column": 21
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "(",
+    "line": 15,
+    "column": 26
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": ")",
+    "line": 15,
+    "column": 27
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": ":",
+    "line": 15,
+    "column": 28
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 15,
+    "column": 29
+  },
+  {
+    "type": "KEYWORD_TYPE",
+    "value": "string",
+    "line": 15,
+    "column": 30
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 15,
+    "column": 36
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "{",
+    "line": 15,
+    "column": 37
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n        ",
+    "line": 15,
+    "column": 38
+  },
+  {
+    "type": "KEYWORD",
+    "value": "return",
+    "line": 16,
+    "column": 9
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 16,
+    "column": 15
+  },
+  {
+    "type": "STRING",
+    "value": "\"Hello, {$this->name}!\"",
+    "line": 16,
+    "column": 16
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": ";",
+    "line": 16,
+    "column": 39
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n    ",
+    "line": 16,
+    "column": 40
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "}",
+    "line": 17,
+    "column": 5
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 17,
+    "column": 6
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "}",
+    "line": 18,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n\n",
+    "line": 18,
+    "column": 2
+  },
+  {
+    "type": "NAME_VARIABLE",
+    "value": "$user",
+    "line": 20,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 20,
+    "column": 6
+  },
+  {
+    "type": "OPERATOR",
+    "value": "=",
+    "line": 20,
+    "column": 7
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 20,
+    "column": 8
+  },
+  {
+    "type": "KEYWORD",
+    "value": "new",
+    "line": 20,
+    "column": 9
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 20,
+    "column": 12
+  },
+  {
+    "type": "NAME_CLASS",
+    "value": "User",
+    "line": 20,
+    "column": 13
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "(",
+    "line": 20,
+    "column": 17
+  },
+  {
+    "type": "STRING",
+    "value": "\"John\"",
+    "line": 20,
+    "column": 18
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": ",",
+    "line": 20,
+    "column": 24
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 20,
+    "column": 25
+  },
+  {
+    "type": "NUMBER_INTEGER",
+    "value": "30",
+    "line": 20,
+    "column": 26
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": ")",
+    "line": 20,
+    "column": 28
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": ";",
+    "line": 20,
+    "column": 29
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 20,
+    "column": 30
+  },
+  {
+    "type": "KEYWORD",
+    "value": "echo",
+    "line": 21,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 21,
+    "column": 5
+  },
+  {
+    "type": "NAME_VARIABLE",
+    "value": "$user",
+    "line": 21,
+    "column": 6
+  },
+  {
+    "type": "OPERATOR",
+    "value": "->",
+    "line": 21,
+    "column": 11
+  },
+  {
+    "type": "NAME",
+    "value": "greet",
+    "line": 21,
+    "column": 13
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "(",
+    "line": 21,
+    "column": 18
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": ")",
+    "line": 21,
+    "column": 19
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": ";",
+    "line": 21,
+    "column": 20
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n\n",
+    "line": 21,
+    "column": 21
+  },
+  {
+    "type": "COMMENT_SINGLE",
+    "value": "// Arrow function",
+    "line": 23,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 23,
+    "column": 18
+  },
+  {
+    "type": "NAME_VARIABLE",
+    "value": "$double",
+    "line": 24,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 24,
+    "column": 8
+  },
+  {
+    "type": "OPERATOR",
+    "value": "=",
+    "line": 24,
+    "column": 9
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 24,
+    "column": 10
+  },
+  {
+    "type": "KEYWORD_DECLARATION",
+    "value": "fn",
+    "line": 24,
+    "column": 11
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "(",
+    "line": 24,
+    "column": 13
+  },
+  {
+    "type": "NAME_VARIABLE",
+    "value": "$x",
+    "line": 24,
+    "column": 14
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": ")",
+    "line": 24,
+    "column": 16
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 24,
+    "column": 17
+  },
+  {
+    "type": "OPERATOR",
+    "value": "=>",
+    "line": 24,
+    "column": 18
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 24,
+    "column": 20
+  },
+  {
+    "type": "NAME_VARIABLE",
+    "value": "$x",
+    "line": 24,
+    "column": 21
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 24,
+    "column": 23
+  },
+  {
+    "type": "OPERATOR",
+    "value": "*",
+    "line": 24,
+    "column": 24
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 24,
+    "column": 25
+  },
+  {
+    "type": "NUMBER_INTEGER",
+    "value": "2",
+    "line": 24,
+    "column": 26
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": ";",
+    "line": 24,
+    "column": 27
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n\n",
+    "line": 24,
+    "column": 28
+  },
+  {
+    "type": "COMMENT_SINGLE",
+    "value": "// Match expression",
+    "line": 26,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 26,
+    "column": 20
+  },
+  {
+    "type": "NAME_VARIABLE",
+    "value": "$result",
+    "line": 27,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 27,
+    "column": 8
+  },
+  {
+    "type": "OPERATOR",
+    "value": "=",
+    "line": 27,
+    "column": 9
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 27,
+    "column": 10
+  },
+  {
+    "type": "KEYWORD",
+    "value": "match",
+    "line": 27,
+    "column": 11
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "(",
+    "line": 27,
+    "column": 16
+  },
+  {
+    "type": "NAME_VARIABLE",
+    "value": "$status",
+    "line": 27,
+    "column": 17
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": ")",
+    "line": 27,
+    "column": 24
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 27,
+    "column": 25
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "{",
+    "line": 27,
+    "column": 26
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n    ",
+    "line": 27,
+    "column": 27
+  },
+  {
+    "type": "STRING",
+    "value": "\"active\"",
+    "line": 28,
+    "column": 5
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 28,
+    "column": 13
+  },
+  {
+    "type": "OPERATOR",
+    "value": "=>",
+    "line": 28,
+    "column": 14
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 28,
+    "column": 16
+  },
+  {
+    "type": "NUMBER_INTEGER",
+    "value": "1",
+    "line": 28,
+    "column": 17
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": ",",
+    "line": 28,
+    "column": 18
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n    ",
+    "line": 28,
+    "column": 19
+  },
+  {
+    "type": "STRING",
+    "value": "\"inactive\"",
+    "line": 29,
+    "column": 5
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 29,
+    "column": 15
+  },
+  {
+    "type": "OPERATOR",
+    "value": "=>",
+    "line": 29,
+    "column": 16
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 29,
+    "column": 18
+  },
+  {
+    "type": "NUMBER_INTEGER",
+    "value": "0",
+    "line": 29,
+    "column": 19
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": ",",
+    "line": 29,
+    "column": 20
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n    ",
+    "line": 29,
+    "column": 21
+  },
+  {
+    "type": "KEYWORD",
+    "value": "default",
+    "line": 30,
+    "column": 5
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 30,
+    "column": 12
+  },
+  {
+    "type": "OPERATOR",
+    "value": "=>",
+    "line": 30,
+    "column": 13
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 30,
+    "column": 15
+  },
+  {
+    "type": "OPERATOR",
+    "value": "-",
+    "line": 30,
+    "column": 16
+  },
+  {
+    "type": "NUMBER_INTEGER",
+    "value": "1",
+    "line": 30,
+    "column": 17
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": ",",
+    "line": 30,
+    "column": 18
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 30,
+    "column": 19
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "}",
+    "line": 31,
+    "column": 1
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": ";",
+    "line": 31,
+    "column": 2
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 31,
+    "column": 3
+  },
+  {
+    "type": "COMMENT_PREPROC",
+    "value": "?>",
+    "line": 32,
+    "column": 1
+  },
+  {
+    "type": "TEXT",
+    "value": "\n",
+    "line": 33,
+    "column": 3
+  }
+]

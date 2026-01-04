@@ -2,19 +2,21 @@
 
 | Field | Value |
 |-------|-------|
-| **Status** | Draft |
+| **Status** | Implemented |
 | **Created** | 2026-01-04 |
 | **Updated** | 2026-01-04 |
 | **Author** | Bengal Team |
 | **Scope** | Quality Assurance |
 | **Goal** | Strengthen test coverage and add property-based testing for lexer correctness guarantees |
+| **Reviewed** | 2026-01-04 |
 
 ## Summary
 
 Improve Rosettes test coverage from 53% to 80%+ with a focus on:
+0. Establish verified baseline metrics
 1. Property-based testing for lexer invariants
 2. Expanded lexer tests for high-traffic languages
-3. Missing fixture files for golden tests
+3. Automated fixture generation for golden tests
 4. Theme/CSS generation coverage
 
 ## Motivation
@@ -35,7 +37,7 @@ Improve Rosettes test coverage from 53% to 80%+ with a focus on:
 
 ### Lexer Coverage Concerns
 
-Only 4 of 54 lexers have dedicated test files:
+Only 4 of 55 lexers have dedicated test files:
 
 | Lexer | Has Tests | Coverage |
 |-------|-----------|----------|
@@ -81,7 +83,7 @@ PytestUnknownMarkWarning: Unknown pytest.mark.slow
 Rosettes makes **strong guarantees**:
 - O(n) performance (no ReDoS)
 - Thread-safe tokenization
-- Correct highlighting across 54 languages
+- Correct highlighting across 55 languages
 
 Without comprehensive tests, we cannot verify the "correct highlighting" claim for most languages.
 
@@ -89,7 +91,7 @@ Without comprehensive tests, we cannot verify the "correct highlighting" claim f
 
 ### Core Principle: Property-Based Testing
 
-Rather than hand-writing tests for every language construct in 54 languages, use **property-based testing** to verify invariants that must hold for ALL lexers:
+Rather than hand-writing tests for every language construct in 55 languages, use **property-based testing** to verify invariants that must hold for ALL lexers:
 
 #### Invariant 1: Token Concatenation
 
@@ -128,11 +130,11 @@ def test_no_empty_tokens(lexer, code):
 ```python
 # Token positions should advance (within same line)
 def test_monotonic_columns(lexer, code):
-    prev_line, prev_col = 0, 0
+    prev_line, prev_col, prev_len = 0, 0, 0
     for token in lexer.tokenize(code):
         if token.line == prev_line:
-            assert token.column >= prev_col + len(prev_value)
-        prev_line, prev_col = token.line, token.column
+            assert token.column >= prev_col + prev_len
+        prev_line, prev_col, prev_len = token.line, token.column, len(token.value)
 ```
 
 ### Test Categories
@@ -146,6 +148,28 @@ def test_monotonic_columns(lexer, code):
 | **Performance Tests** | O(n) guarantee | Existing + benchmarks |
 
 ## Implementation
+
+### Phase 0: Baseline Verification (15 min)
+
+Before investing implementation time, verify current state claims:
+
+```bash
+# Capture baseline metrics
+uv run pytest --cov=rosettes --cov-report=term-missing 2>&1 | tee baseline-coverage.txt
+
+# Count skipped tests
+uv run pytest -v 2>&1 | grep -c SKIPPED
+
+# Verify lexer count
+ls src/rosettes/lexers/*_sm.py | wc -l  # Should be 55
+```
+
+**Expected outputs**:
+- Overall coverage: ~53%
+- Skipped tests: ~28
+- Lexer files: 55
+
+If metrics differ significantly, adjust RFC targets accordingly.
 
 ### Phase 1: Infrastructure (30 min)
 
@@ -171,8 +195,9 @@ markers = [
 dev = [
     "pytest>=9.0.2",
     "pytest-cov>=6.0.0",
+    "pytest-timeout>=2.3.0",  # NEW: Prevent hung tests
     "ruff>=0.14.0",
-    "hypothesis>=6.100.0",  # NEW
+    "hypothesis>=6.100.0",   # NEW: Property-based testing
 ]
 ```
 
@@ -256,7 +281,7 @@ def test_no_empty_internal_tokens(language: str, code: str) -> None:
 
 
 @pytest.mark.property
-@pytest.mark.parametrize("language", list_languages()[:10])  # Subset for speed
+@pytest.mark.parametrize("language", list_languages()[:10])  # Subset for speed (55 total)
 @given(code=random_bytes_strategy)
 @settings(max_examples=20, deadline=2000)
 def test_lexer_handles_random_bytes(language: str, code: str) -> None:
@@ -537,21 +562,32 @@ import pytest
 from rosettes.themes import list_palettes, get_palette
 
 
-class TestPaletteRegistry:
-    """Test palette registry."""
+class TestPaletteApi:
+    """Verify palette API exists before testing CSS generation."""
 
-    def test_list_palettes(self) -> None:
-        """Should list available palettes."""
+    def test_list_palettes_returns_list(self) -> None:
+        """list_palettes should return a list."""
         palettes = list_palettes()
         assert isinstance(palettes, list)
-        assert len(palettes) >= 1
-        assert "bengal-tiger" in palettes
+        assert len(palettes) >= 1, "No palettes registered"
 
-    def test_get_palette(self) -> None:
-        """Should get palette by name."""
+    def test_bengal_tiger_palette_exists(self) -> None:
+        """Default palette should exist."""
+        palettes = list_palettes()
+        assert "bengal-tiger" in palettes, f"bengal-tiger not in {palettes}"
+
+    def test_get_palette_returns_valid_object(self) -> None:
+        """get_palette should return object with required methods."""
         palette = get_palette("bengal-tiger")
         assert palette is not None
-        assert hasattr(palette, "name")
+        assert hasattr(palette, "name"), "Palette missing 'name' attribute"
+        assert hasattr(palette, "generate_css"), "Palette missing 'generate_css' method"
+        assert callable(palette.generate_css), "generate_css must be callable"
+
+    def test_get_palette_invalid_name_raises(self) -> None:
+        """get_palette should raise for unknown palette."""
+        with pytest.raises((KeyError, ValueError)):
+            get_palette("nonexistent-palette-name")
 
 
 class TestCssGeneration:
@@ -563,12 +599,12 @@ class TestCssGeneration:
         palette = get_palette(palette_name)
         css = palette.generate_css()
 
-        assert isinstance(css, str)
-        assert len(css) > 0
+        assert isinstance(css, str), f"Expected str, got {type(css)}"
+        assert len(css) > 0, "Generated CSS is empty"
         # Should have CSS rules
-        assert "{" in css and "}" in css
+        assert "{" in css and "}" in css, "Missing CSS rule blocks"
         # Should have color values
-        assert "#" in css or "rgb" in css
+        assert "#" in css or "rgb" in css, "No color values in CSS"
 
     @pytest.mark.parametrize("palette_name", list_palettes())
     def test_css_contains_core_token_types(self, palette_name: str) -> None:
@@ -576,17 +612,9 @@ class TestCssGeneration:
         palette = get_palette(palette_name)
         css = palette.generate_css()
 
-        # Check for common token class patterns
-        # (either semantic or pygments style)
-        core_patterns = [
-            (".syntax-", ".s", ".k"),  # semantic or pygments
-        ]
-        
-        has_any = any(
-            any(p in css for p in patterns)
-            for patterns in core_patterns
-        )
-        assert has_any, f"CSS missing core token styles: {css[:200]}..."
+        # Check for common token class patterns (semantic or pygments style)
+        has_syntax_classes = ".syntax-" in css or ".s" in css or ".k" in css
+        assert has_syntax_classes, f"CSS missing core token styles: {css[:200]}..."
 
     def test_css_valid_syntax(self) -> None:
         """Generated CSS should have valid syntax."""
@@ -596,39 +624,48 @@ class TestCssGeneration:
         # Basic syntax checks
         open_braces = css.count("{")
         close_braces = css.count("}")
-        assert open_braces == close_braces, "Mismatched braces in CSS"
+        assert open_braces == close_braces, f"Mismatched braces: {open_braces} open, {close_braces} close"
         
         # Should not have obvious errors
-        assert "undefined" not in css.lower()
-        assert "null" not in css.lower()
+        assert "undefined" not in css.lower(), "CSS contains 'undefined'"
+        assert "null" not in css.lower(), "CSS contains 'null'"
+
+    def test_css_generation_is_deterministic(self) -> None:
+        """Same palette should generate identical CSS."""
+        palette = get_palette("bengal-tiger")
+        css1 = palette.generate_css()
+        css2 = palette.generate_css()
+        assert css1 == css2, "CSS generation is non-deterministic"
 ```
 
-### Phase 5: Fix Skipped Tests (1 hour)
+### Phase 5: Automated Fixture Generation (1.5 hours)
 
-#### 5.1 Create missing fixture files
+Hand-writing 50+ lexer fixtures is impractical. Use a generation script.
 
-Structure for `tests/fixtures/`:
-
-```
-tests/fixtures/
-├── javascript/
-│   ├── keywords.js
-│   ├── keywords.tokens
-│   ├── strings.js
-│   ├── strings.tokens
-│   └── ...
-├── python/
-│   ├── keywords.py
-│   ├── keywords.tokens
-│   └── ...
-└── ...
-```
-
-Example `tests/fixtures/python/keywords.py`:
+#### 5.1 Create fixture generation script
 
 ```python
-# Test: Python keywords
-if True:
+# scripts/generate_fixtures.py
+"""Generate golden fixtures for lexer tests.
+
+Usage:
+    uv run python scripts/generate_fixtures.py --all
+    uv run python scripts/generate_fixtures.py --language python
+    uv run python scripts/generate_fixtures.py --update  # Regenerate existing
+"""
+from __future__ import annotations
+
+import json
+from pathlib import Path
+
+from rosettes import get_lexer, list_languages
+
+FIXTURES_DIR = Path("tests/fixtures")
+
+# Sample code for each language (representative constructs)
+LANGUAGE_SAMPLES: dict[str, dict[str, str]] = {
+    "python": {
+        "keywords": '''if True:
     pass
 elif False:
     pass
@@ -638,9 +675,6 @@ else:
 for x in range(10):
     continue
     break
-
-while True:
-    pass
 
 def func():
     return None
@@ -652,25 +686,192 @@ try:
     raise Exception
 except Exception:
     pass
-finally:
-    pass
-
-with open("file") as f:
-    pass
 
 import os
 from sys import path
 
 async def async_func():
     await something()
+''',
+        "strings": '''x = "hello"
+y = 'world'
+z = """multiline
+string"""
+f = f"interpolated {value}"
+r = r"raw\\string"
+''',
+        "numbers": '''a = 42
+b = 3.14
+c = 1e-10
+d = 0xFF
+e = 0b1010
+f = 1_000_000
+''',
+    },
+    "javascript": {
+        "keywords": '''if (true) {
+    const x = 1;
+    let y = 2;
+    var z = 3;
+}
 
-lambda x: x + 1
+for (const item of items) {
+    continue;
+    break;
+}
 
-assert True
-del x
-global y
-nonlocal z
-yield value
+function greet(name) {
+    return `Hello ${name}`;
+}
+
+class MyClass extends Base {
+    constructor() {
+        super();
+    }
+}
+
+async function fetchData() {
+    await fetch(url);
+}
+
+import { x } from "module";
+export default MyClass;
+''',
+    },
+    # Add more languages as needed...
+}
+
+
+def generate_fixture(language: str, name: str, code: str) -> None:
+    """Generate fixture files for a test case."""
+    lang_dir = FIXTURES_DIR / language
+    lang_dir.mkdir(parents=True, exist_ok=True)
+
+    # Write source file
+    ext = get_extension(language)
+    source_file = lang_dir / f"{name}{ext}"
+    source_file.write_text(code)
+
+    # Generate and write tokens
+    lexer = get_lexer(language)
+    tokens = [
+        {"type": t.type.name, "value": t.value, "line": t.line, "column": t.column}
+        for t in lexer.tokenize(code)
+    ]
+    tokens_file = lang_dir / f"{name}.tokens.json"
+    tokens_file.write_text(json.dumps(tokens, indent=2))
+
+    print(f"Generated: {source_file}, {tokens_file}")
+
+
+def get_extension(language: str) -> str:
+    """Get file extension for language."""
+    extensions = {
+        "python": ".py",
+        "javascript": ".js",
+        "typescript": ".ts",
+        "rust": ".rs",
+        "go": ".go",
+        "yaml": ".yaml",
+        "json": ".json",
+        "php": ".php",
+        # ... add others
+    }
+    return extensions.get(language, ".txt")
+
+
+def main() -> None:
+    import argparse
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--all", action="store_true")
+    parser.add_argument("--language", type=str)
+    args = parser.parse_args()
+
+    if args.all:
+        for lang, samples in LANGUAGE_SAMPLES.items():
+            for name, code in samples.items():
+                generate_fixture(lang, name, code)
+    elif args.language:
+        samples = LANGUAGE_SAMPLES.get(args.language, {})
+        for name, code in samples.items():
+            generate_fixture(args.language, name, code)
+
+
+if __name__ == "__main__":
+    main()
+```
+
+#### 5.2 Fixture directory structure
+
+```
+tests/fixtures/
+├── python/
+│   ├── keywords.py
+│   ├── keywords.tokens.json
+│   ├── strings.py
+│   ├── strings.tokens.json
+│   └── numbers.py
+│   └── numbers.tokens.json
+├── javascript/
+│   ├── keywords.js
+│   └── keywords.tokens.json
+└── ...
+```
+
+#### 5.3 Update conftest.py to use JSON fixtures
+
+```python
+# tests/lexers/conftest.py
+import json
+from pathlib import Path
+
+import pytest
+
+FIXTURES_DIR = Path(__file__).parent.parent / "fixtures"
+
+
+@pytest.fixture
+def load_fixture():
+    """Load fixture source and expected tokens."""
+    def _load(language: str, name: str):
+        lang_dir = FIXTURES_DIR / language
+        
+        # Find source file (try common extensions)
+        source_file = None
+        for ext in [".py", ".js", ".ts", ".rs", ".go", ".yaml", ".json", ".php", ".txt"]:
+            candidate = lang_dir / f"{name}{ext}"
+            if candidate.exists():
+                source_file = candidate
+                break
+        
+        if source_file is None:
+            pytest.skip(f"Fixture {name} not found for {language}")
+        
+        tokens_file = lang_dir / f"{name}.tokens.json"
+        if not tokens_file.exists():
+            pytest.skip(f"Tokens file not found: {tokens_file}")
+        
+        return source_file.read_text(), json.loads(tokens_file.read_text())
+    
+    return _load
+```
+
+#### 5.4 Prioritize fixture generation
+
+Generate fixtures for high-priority languages first:
+
+```bash
+# Phase 5a: Core languages (already have some tests)
+uv run python scripts/generate_fixtures.py --language python
+uv run python scripts/generate_fixtures.py --language javascript
+uv run python scripts/generate_fixtures.py --language rust
+
+# Phase 5b: Low-coverage languages (from gap analysis)
+uv run python scripts/generate_fixtures.py --language php
+uv run python scripts/generate_fixtures.py --language yaml
+uv run python scripts/generate_fixtures.py --language toml
+uv run python scripts/generate_fixtures.py --language xml
 ```
 
 ### Phase 6: CI Integration (30 min)
@@ -701,33 +902,41 @@ jobs:
 
 | Criterion | Target | Measurement |
 |-----------|--------|-------------|
-| **Overall coverage** | 80%+ | `pytest --cov` |
-| **Lexer average coverage** | 70%+ | Per-lexer coverage |
-| **Property tests pass** | 100% | All invariants hold |
-| **No skipped tests** | 0 | All fixtures present |
-| **Theme tests pass** | 100% | CSS generation works |
+| **Overall coverage** | 80%+ | `uv run pytest --cov` |
+| **Lexer average coverage** | 70%+ | Per-lexer coverage report |
+| **Property tests pass** | 100% | All 4 invariants hold for all 55 lexers |
+| **Skipped tests reduced** | <10 | Down from ~28 |
+| **Theme API verified** | 100% | API exists, CSS generates |
 | **CI green** | 100% | All jobs pass |
+| **Baseline verified** | ✅ | Phase 0 metrics match expectations |
 
 ## Timeline
 
 | Phase | Duration | Deliverables |
 |-------|----------|--------------|
-| 1: Infrastructure | 30 min | pytest config, hypothesis dep |
-| 2: Property tests | 2 hours | `test_lexer_invariants.py` |
-| 3: Lexer tests | 2 hours | YAML, PHP, TOML lexer tests |
-| 4: Theme tests | 1 hour | CSS generation tests |
-| 5: Fixtures | 1 hour | Missing fixture files |
+| 0: Baseline | 15 min | Verified metrics, adjust targets if needed |
+| 1: Infrastructure | 30 min | pytest config, hypothesis + pytest-timeout deps |
+| 2: Property tests | 2 hours | `test_lexer_invariants.py` (highest ROI) |
+| 3: Lexer tests | 2 hours | YAML, PHP, TOML, XML lexer tests |
+| 4: Theme tests | 1 hour | API verification + CSS generation tests |
+| 5: Fixtures | 1.5 hours | Generation script + priority language fixtures |
 | 6: CI | 30 min | Workflow updates |
-| **Total** | ~7 hours | |
+| **Total** | ~8 hours | |
+
+**Priority Order**: Phase 0 → 1 → 2 → 4 → 3 → 5 → 6
+
+Phase 2 (property tests) provides the highest ROI by testing all 55 lexers with minimal code.
 
 ## Risks and Mitigations
 
 | Risk | Impact | Mitigation |
 |------|--------|------------|
-| Property tests find bugs | Medium | Fix bugs, add regression tests |
-| Hypothesis slow on CI | Low | Use `--hypothesis-seed=0` for determinism |
-| Some lexers fail invariants | Medium | Fix lexers or document exceptions |
-| Coverage target too aggressive | Low | Adjust to 75% if needed |
+| Property tests find bugs | Medium | Fix bugs, add regression tests (this is a feature!) |
+| Hypothesis slow on CI | Low | Use `--hypothesis-seed=0` for determinism, limit examples |
+| Some lexers fail invariants | Medium | Fix lexers or document exceptions with `@pytest.mark.xfail` |
+| Coverage target too aggressive | Low | Adjust to 75% if needed; Phase 0 validates baseline |
+| Fixture generation scope creep | Low | Generate for priority languages first; expand incrementally |
+| Theme API missing methods | Medium | Phase 4 tests verify API exists before CSS tests run |
 
 ## Future Considerations
 
@@ -788,10 +997,22 @@ def test_python_lexer_performance(benchmark):
     assert benchmark.stats["mean"] < 0.05  # 50ms
 ```
 
+## Decision Log
+
+| Decision | Rationale |
+|----------|-----------|
+| **Property-based over hand-written tests** | 55 lexers × N constructs = impractical to maintain; invariants cover all lexers with minimal code |
+| **Hypothesis over random testing** | Shrinking, reproducibility, and example database make debugging feasible |
+| **JSON fixtures over inline tokens** | Machine-readable, diffable, regeneratable; supports automated updates |
+| **Phase 0 baseline verification** | Prevents wasted effort if current metrics differ from assumptions |
+| **pytest-timeout added** | Secondary safety net for ReDoS; catches hung tests CI might miss |
+| **Priority language order** | PHP (19%) > XML (19%) > TOML (29%) > Ruby (32%) maximizes coverage gain |
+
 ## References
 
 - Current test suite: `tests/`
 - Coverage report: `uv run pytest --cov=rosettes --cov-report=term-missing`
 - Hypothesis documentation: https://hypothesis.readthedocs.io/
 - Rosettes design philosophy: `src/rosettes/__init__.py` docstring
+- pytest-timeout: https://pypi.org/project/pytest-timeout/
 

@@ -1,0 +1,8 @@
+{{ variable }}
+{{ user.name }}
+{{ items[0] }}
+{{ value | upper }}
+{{ value | slugify | trim }}
+{{ "Hello, " ~ name ~ "!" }}
+{{ count + 1 }}
+{{ price * quantity }}
