@@ -205,6 +205,8 @@ class XmlStateMachineLexer(StateMachineLexer):
                             )
                             continue
 
+                        # Unexpected character inside tag - emit as error
+                        yield Token(TokenType.ERROR, code[pos], line, pos - line_start + 1)
                         pos += 1
                 else:
                     yield Token(TokenType.TEXT, "<", line, col)
