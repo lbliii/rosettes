@@ -47,12 +47,6 @@ jobs:
         env:
           PYTHON_GIL: "0"
 
-      - name: Clean cache and output
-        working-directory: site
-        run: uv run python -m bengal.cli site clean --cache --force
-        env:
-          PYTHON_GIL: "0"
-
       - name: Build documentation site
         working-directory: site
         run: uv run bengal site build --environment production
@@ -63,13 +57,6 @@ jobs:
         run: |
           touch site/public/.nojekyll
           echo "" > site/public/.gitignore
-
-      - name: Verify build output
-        run: |
-          echo "=== Build output ==="
-          ls -la site/public/
-          echo "=== Page count ==="
-          find site/public -name "*.html" | wc -l
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
