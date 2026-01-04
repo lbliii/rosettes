@@ -5,8 +5,8 @@ theme:
   name: "default"
 
   # Appearance
-  default_appearance: "dark"
-  default_palette: "snow-lynx"
+  default_appearance: "light"
+  default_palette: "brown-bengal"
 
   # Syntax Highlighting
   syntax_highlighting:

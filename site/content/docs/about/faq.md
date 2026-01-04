@@ -58,11 +58,13 @@ No. Rosettes requires explicit language specification. For auto-detection, use f
 
 2-4x faster for typical code blocks:
 
-| Operation | Speedup |
+| Code Size | Speedup |
 |-----------|---------|
-| Tokenize | 3.75x |
-| Highlight | 2.89x |
-| Parallel (8 blocks) | 2.18x |
+| Medium (~50 lines) | 2-4x |
+| Large (~500+ lines) | 3-5x |
+| Parallel (8+ blocks) | Additional gains on 3.14t |
+
+Run `python -m benchmarks.benchmark_vs_pygments` for your hardware.
 
 ### What is ReDoS and why should I care?
 
@@ -90,8 +92,8 @@ html = highlight(code, "python", css_class_style="pygments")
 
 | Style | Example Class | Readable |
 |-------|---------------|----------|
-| Semantic | `.syntax-keyword` | ✅ Yes |
-| Pygments | `.k` | ❌ Cryptic |
+| Semantic | `.syntax-function` | ✅ Yes |
+| Pygments | `.nf` | ❌ Cryptic |
 
 Semantic classes are self-documenting. Pygments classes are compatible with existing themes.
 
@@ -164,8 +166,8 @@ print(list_languages())
 
 ### How do I add a new language?
 
-1. Create `lexers/mylang_sm.py` with a state machine lexer
-2. Register in `lexers/__init__.py`
+1. Create `src/rosettes/lexers/mylang_sm.py` with a state machine lexer
+2. Register in `src/rosettes/_registry.py`
 3. Add tests in `tests/lexers/test_mylang.py`
 4. Submit a pull request
 

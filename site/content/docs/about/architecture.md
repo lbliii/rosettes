@@ -117,16 +117,28 @@ Because each character is processed exactly once, time complexity is always O(n)
 Each lexer follows the same pattern:
 
 ```python
-class PythonLexer:
+class PythonStateMachineLexer(StateMachineLexer):
     name = "python"
-    aliases = ("py", "python3")
+    aliases = ("py", "python3", "py3")
     
-    def tokenize(self, code: str, start: int = 0, end: int | None = None) -> Iterator[Token]:
+    def tokenize(
+        self,
+        code: str,
+        config: LexerConfig | None = None,
+        *,
+        start: int = 0,
+        end: int | None = None,
+    ) -> Iterator[Token]:
         # State machine implementation
         ...
     
-    def tokenize_fast(self, code: str, start: int = 0, end: int | None = None) -> Iterator[Token]:
-        # Optimized path without line tracking
+    def tokenize_fast(
+        self,
+        code: str,
+        start: int = 0,
+        end: int | None = None,
+    ) -> Iterator[tuple[TokenType, str]]:
+        # Optimized path: yields (type, value) tuples without line tracking
         ...
 ```
 
@@ -143,16 +155,31 @@ The `highlight()` function automatically chooses the appropriate path based on o
 
 ## Registry
 
-Lexers are registered with their canonical name and aliases:
+Lexers are registered with their canonical name and aliases using a lazy-loading pattern:
 
 ```python
-# Internal registry structure
-LEXERS = {
-    "python": PythonLexer,
-    "py": PythonLexer,      # alias
-    "python3": PythonLexer, # alias
-    "javascript": JavaScriptLexer,
-    "js": JavaScriptLexer,  # alias
+from dataclasses import dataclass
+from functools import cache
+
+@dataclass(frozen=True, slots=True)
+class LexerSpec:
+    """Specification for lazy-loading a lexer."""
+    module: str
+    class_name: str
+    aliases: tuple[str, ...] = ()
+
+# Static registry — lexers loaded on-demand
+_LEXER_SPECS: dict[str, LexerSpec] = {
+    "python": LexerSpec(
+        "rosettes.lexers.python_sm",
+        "PythonStateMachineLexer",
+        aliases=("py", "python3", "py3"),
+    ),
+    "javascript": LexerSpec(
+        "rosettes.lexers.javascript_sm",
+        "JavaScriptStateMachineLexer",
+        aliases=("js", "jsx"),
+    ),
     # ...
 }
 ```
@@ -160,11 +187,17 @@ LEXERS = {
 The registry uses `functools.cache` for thread-safe memoization:
 
 ```python
-@functools.cache
-def get_lexer(name: str) -> Lexer:
-    lexer_class = LEXERS.get(name.lower())
-    if lexer_class is None:
-        raise LookupError(f"Unknown language: {name}")
+def get_lexer(name: str) -> StateMachineLexer:
+    """Get a lexer by name or alias. Cached for performance."""
+    canonical = _normalize_name(name)
+    return _get_lexer_by_canonical(canonical)
+
+@cache
+def _get_lexer_by_canonical(canonical: str) -> StateMachineLexer:
+    """Internal cached loader - keyed by canonical name."""
+    spec = _LEXER_SPECS[canonical]
+    module = import_module(spec.module)
+    lexer_class = getattr(module, spec.class_name)
     return lexer_class()
 ```
 
@@ -174,20 +207,31 @@ def get_lexer(name: str) -> Lexer:
 
 To add a new language lexer:
 
-1. Create `lexers/mylang_sm.py` with a state machine class
-2. Register in `lexers/__init__.py`
+1. Create `rosettes/lexers/mylang_sm.py` with a state machine class
+2. Register in `rosettes/_registry.py` with a `LexerSpec` entry
 3. Add tests in `tests/lexers/test_mylang.py`
 
 Example minimal lexer:
 
 ```python
-from rosettes._types import Token, TokenType
+from collections.abc import Iterator
 
-class MyLangLexer:
+from rosettes._config import LexerConfig
+from rosettes._types import Token, TokenType
+from rosettes.lexers._state_machine import StateMachineLexer
+
+class MyLangStateMachineLexer(StateMachineLexer):
     name = "mylang"
     aliases = ("ml",)
     
-    def tokenize(self, code: str, start: int = 0, end: int | None = None) -> Iterator[Token]:
+    def tokenize(
+        self,
+        code: str,
+        config: LexerConfig | None = None,
+        *,
+        start: int = 0,
+        end: int | None = None,
+    ) -> Iterator[Token]:
         if end is None:
             end = len(code)
         
@@ -202,9 +246,19 @@ class MyLangLexer:
             pos += 1
             col += 1
     
-    def tokenize_fast(self, code: str, start: int = 0, end: int | None = None) -> Iterator[Token]:
-        # Same as tokenize but without line/col tracking
-        yield from self.tokenize(code, start, end)
+    def tokenize_fast(
+        self,
+        code: str,
+        start: int = 0,
+        end: int | None = None,
+    ) -> Iterator[tuple[TokenType, str]]:
+        # Yields (type, value) tuples without line/col tracking
+        if end is None:
+            end = len(code)
+        pos = start
+        while pos < end:
+            yield (TokenType.TEXT, code[pos])
+            pos += 1
 ```
 
 ---

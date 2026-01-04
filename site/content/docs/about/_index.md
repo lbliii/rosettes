@@ -2,7 +2,7 @@
 title: About
 description: Architecture, design philosophy, and background
 draft: false
-weight: 60
+weight: 00
 lang: en
 type: doc
 cascade:
@@ -34,7 +34,7 @@ Rosettes is a modern syntax highlighter designed for Python 3.14's free-threadin
 
 Traditional syntax highlighters use regular expressions, which can exhibit exponential worst-case behavior (ReDoS). A carefully crafted input can freeze your application for minutes or hours.
 
-Rosettes eliminates this risk entirely by using hand-written state machine lexers. Every lexer processes input character-by-character with single-character lookahead, guaranteeing O(n) time complexity.
+Rosettes eliminates this risk entirely by using hand-written state machine lexers. Every lexer processes input character-by-character with no backtracking, guaranteeing O(n) time complexity.
 
 ## In This Section
 

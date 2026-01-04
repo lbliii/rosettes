@@ -46,7 +46,7 @@ A detailed comparison of Rosettes and Pygments for syntax highlighting.
 ❌ **Choose Pygments when:**
 
 - You need obscure language support (500+ languages)
-- You need output formats beyond HTML (LaTeX, RTF, terminal)
+- You need output formats beyond HTML and terminal (LaTeX, RTF, SVG)
 - You're on Python < 3.14
 - You need battle-tested stability
 
@@ -72,13 +72,13 @@ A detailed comparison of Rosettes and Pygments for syntax highlighting.
 | Format | Rosettes | Pygments |
 |--------|----------|----------|
 | HTML | ✅ | ✅ |
-| Terminal/ANSI | ❌ | ✅ |
+| Terminal/ANSI | ✅ | ✅ |
 | LaTeX | ❌ | ✅ |
 | RTF | ❌ | ✅ |
 | SVG | ❌ | ✅ |
 | IRC | ❌ | ✅ |
 
-Rosettes focuses on HTML output. For other formats, use Pygments or build a custom formatter.
+Rosettes supports HTML and terminal (ANSI) output. For LaTeX, RTF, SVG, or IRC, use Pygments.
 
 ### CSS Compatibility
 
@@ -144,7 +144,12 @@ Rosettes eliminates this entire category of vulnerability by design.
 **Rosettes:**
 ```python
 from rosettes import highlight
+
+# HTML output (default)
 html = highlight("def foo(): pass", "python")
+
+# Terminal output (ANSI colors)
+ansi = highlight("def foo(): pass", "python", formatter="terminal")
 ```
 
 **Pygments:**
@@ -239,9 +244,9 @@ See [[docs/tutorials/migrate-from-pygments|Migration Guide]] for a complete walk
 | **Security** | Rosettes |
 | **Performance** | Rosettes |
 | **Language coverage** | Pygments |
-| **Output formats** | Pygments |
+| **Output formats** | Pygments (more formats) |
 | **Modern Python** | Rosettes |
 | **Stability** | Pygments |
 
-For most web applications highlighting popular languages, Rosettes provides better performance and security. For specialized needs (obscure languages, non-HTML output), Pygments remains the comprehensive choice.
+For most web applications highlighting popular languages, Rosettes provides better performance and security. For specialized needs (obscure languages, LaTeX/RTF output), Pygments remains the comprehensive choice.
 

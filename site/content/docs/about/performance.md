@@ -30,7 +30,7 @@ Tested on a 10,000-line Python file:
 | Highlight | 18ms | 52ms | **2.89x** |
 | Parallel (8 blocks) | 22ms | 48ms | **2.18x** |
 
-*Benchmarked on Apple M1 Pro, Python 3.14*
+*Benchmarked on Apple M1 Pro, Python 3.14. Results vary by hardware—run `python -m benchmarks.benchmark_vs_pygments` to measure on your system.*
 
 ---
 
@@ -70,8 +70,8 @@ Rosettes uses minimal memory:
 | Component | Memory |
 |-----------|--------|
 | Lexer instance | ~1 KB |
-| Token | 80 bytes |
-| 10,000 tokens | ~800 KB |
+| Token | 72 bytes |
+| 10,000 tokens | ~720 KB |
 
 Tokens are `NamedTuple`s—lightweight and cache-friendly.
 
@@ -198,7 +198,7 @@ print(f"Average: {time/100*1000:.2f}ms")
 | ReDoS vulnerable | No | Yes (some lexers) |
 | Parallel support | Native | Manual only |
 | Free-threading | Optimized | Not tested |
-| Memory per token | 80 bytes | ~200 bytes |
+| Memory per token | 72 bytes | ~200 bytes |
 | Dependencies | None | None |
 
 ---

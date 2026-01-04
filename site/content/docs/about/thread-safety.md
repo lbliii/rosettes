@@ -18,7 +18,7 @@ icon: shield
 
 # Thread Safety
 
-Rosettes is thread-safe by design, with explicit support for Python 3.14t's free-threading mode (PEP 703).
+Rosettes is thread-safe by design, with explicit support for Python's free-threading mode (PEP 703, available in 3.13t+).
 
 ## Thread-Safe Guarantees
 
@@ -70,25 +70,35 @@ No instance variables or global state are modified during tokenization.
 
 ### 3. Cached Registry
 
-The lexer registry uses `functools.cache`:
+The lexer registry uses a two-layer design with `functools.cache` for thread-safe memoization:
 
 ```python
-@functools.cache
-def get_lexer(name: str) -> Lexer:
-    return LEXERS[name.lower()]()
+def get_lexer(name: str) -> StateMachineLexer:
+    """Public API - normalizes name, delegates to cached loader."""
+    canonical = _normalize_name(name)
+    return _get_lexer_by_canonical(canonical)
+
+@cache
+def _get_lexer_by_canonical(canonical: str) -> StateMachineLexer:
+    """Internal cached loader - lazily imports and instantiates."""
+    spec = _LEXER_SPECS[canonical]
+    module = import_module(spec.module)
+    return getattr(module, spec.class_name)()
 ```
 
-This provides thread-safe memoization—the same lexer instance is returned for the same name across all threads.
+This provides thread-safe memoization—the same lexer instance is returned for the same name across all threads. Lexers are loaded lazily on first access.
 
 ### 4. Immutable Configuration
 
-All configuration classes are frozen dataclasses:
+All configuration classes are frozen dataclasses with slots for memory efficiency:
 
 ```python
-@dataclass(frozen=True)
+@dataclass(frozen=True, slots=True)
 class FormatConfig:
-    css_class: str = "rosettes"
-    data_language: str = ""
+    css_class: str = "highlight"
+    wrap_code: bool = True
+    class_prefix: str = ""
+    data_language: str | None = None
 ```
 
 ---
@@ -104,7 +114,7 @@ def __getattr__(name: str) -> object:
     raise AttributeError(f"module 'rosettes' has no attribute {name!r}")
 ```
 
-This tells Python 3.14t that Rosettes:
+This tells free-threaded Python (3.13t+) that Rosettes:
 - Does not require the GIL
 - Can run with true parallelism
 - Is safe for concurrent access without locks
@@ -173,15 +183,17 @@ rosettes.SOME_SETTING = True  # ❌ No effect, not supported
 
 ---
 
-## Performance on 3.14t
+## Performance on Free-Threaded Python
 
-On Python 3.14t with free-threading enabled, `highlight_many()` provides true parallelism:
+On free-threaded Python (3.13t+), `highlight_many()` provides true parallelism:
 
 | Scenario | GIL Python | Free-Threading | Speedup |
 |----------|------------|----------------|---------|
 | 10 blocks | 15ms | 12ms | 1.25x |
 | 50 blocks | 75ms | 42ms | 1.78x |
 | 100 blocks | 150ms | 78ms | 1.92x |
+
+*Numbers are illustrative. Actual performance varies by hardware, code complexity, and Python version. See [[docs/about/performance|Performance]] for benchmarking details.*
 
 The speedup comes from true parallel execution without GIL contention.
 
