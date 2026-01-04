@@ -1,0 +1,740 @@
+[
+  {
+    "type": "KEYWORD",
+    "value": "sealed",
+    "line": 1,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 1,
+    "column": 7
+  },
+  {
+    "type": "KEYWORD_DECLARATION",
+    "value": "class",
+    "line": 1,
+    "column": 8
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 1,
+    "column": 13
+  },
+  {
+    "type": "NAME_CLASS",
+    "value": "Result",
+    "line": 1,
+    "column": 14
+  },
+  {
+    "type": "OPERATOR",
+    "value": "<",
+    "line": 1,
+    "column": 20
+  },
+  {
+    "type": "KEYWORD",
+    "value": "out",
+    "line": 1,
+    "column": 21
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 1,
+    "column": 24
+  },
+  {
+    "type": "NAME_CLASS",
+    "value": "T",
+    "line": 1,
+    "column": 25
+  },
+  {
+    "type": "OPERATOR",
+    "value": ">",
+    "line": 1,
+    "column": 26
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 1,
+    "column": 27
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "{",
+    "line": 1,
+    "column": 28
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n    ",
+    "line": 1,
+    "column": 29
+  },
+  {
+    "type": "KEYWORD",
+    "value": "data",
+    "line": 2,
+    "column": 5
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 2,
+    "column": 9
+  },
+  {
+    "type": "KEYWORD_DECLARATION",
+    "value": "class",
+    "line": 2,
+    "column": 10
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 2,
+    "column": 15
+  },
+  {
+    "type": "NAME_CLASS",
+    "value": "Success",
+    "line": 2,
+    "column": 16
+  },
+  {
+    "type": "OPERATOR",
+    "value": "<",
+    "line": 2,
+    "column": 23
+  },
+  {
+    "type": "NAME_CLASS",
+    "value": "T",
+    "line": 2,
+    "column": 24
+  },
+  {
+    "type": "OPERATOR",
+    "value": ">",
+    "line": 2,
+    "column": 25
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "(",
+    "line": 2,
+    "column": 26
+  },
+  {
+    "type": "KEYWORD_DECLARATION",
+    "value": "val",
+    "line": 2,
+    "column": 27
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 2,
+    "column": 30
+  },
+  {
+    "type": "KEYWORD",
+    "value": "value",
+    "line": 2,
+    "column": 31
+  },
+  {
+    "type": "OPERATOR",
+    "value": ":",
+    "line": 2,
+    "column": 36
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 2,
+    "column": 37
+  },
+  {
+    "type": "NAME_CLASS",
+    "value": "T",
+    "line": 2,
+    "column": 38
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": ")",
+    "line": 2,
+    "column": 39
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 2,
+    "column": 40
+  },
+  {
+    "type": "OPERATOR",
+    "value": ":",
+    "line": 2,
+    "column": 41
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 2,
+    "column": 42
+  },
+  {
+    "type": "NAME_CLASS",
+    "value": "Result",
+    "line": 2,
+    "column": 43
+  },
+  {
+    "type": "OPERATOR",
+    "value": "<",
+    "line": 2,
+    "column": 49
+  },
+  {
+    "type": "NAME_CLASS",
+    "value": "T",
+    "line": 2,
+    "column": 50
+  },
+  {
+    "type": "OPERATOR",
+    "value": ">",
+    "line": 2,
+    "column": 51
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "(",
+    "line": 2,
+    "column": 52
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": ")",
+    "line": 2,
+    "column": 53
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n    ",
+    "line": 2,
+    "column": 54
+  },
+  {
+    "type": "KEYWORD",
+    "value": "data",
+    "line": 3,
+    "column": 5
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 3,
+    "column": 9
+  },
+  {
+    "type": "KEYWORD_DECLARATION",
+    "value": "class",
+    "line": 3,
+    "column": 10
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 3,
+    "column": 15
+  },
+  {
+    "type": "NAME_CLASS",
+    "value": "Error",
+    "line": 3,
+    "column": 16
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "(",
+    "line": 3,
+    "column": 21
+  },
+  {
+    "type": "KEYWORD_DECLARATION",
+    "value": "val",
+    "line": 3,
+    "column": 22
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 3,
+    "column": 25
+  },
+  {
+    "type": "NAME",
+    "value": "message",
+    "line": 3,
+    "column": 26
+  },
+  {
+    "type": "OPERATOR",
+    "value": ":",
+    "line": 3,
+    "column": 33
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 3,
+    "column": 34
+  },
+  {
+    "type": "KEYWORD_TYPE",
+    "value": "String",
+    "line": 3,
+    "column": 35
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": ")",
+    "line": 3,
+    "column": 41
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 3,
+    "column": 42
+  },
+  {
+    "type": "OPERATOR",
+    "value": ":",
+    "line": 3,
+    "column": 43
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 3,
+    "column": 44
+  },
+  {
+    "type": "NAME_CLASS",
+    "value": "Result",
+    "line": 3,
+    "column": 45
+  },
+  {
+    "type": "OPERATOR",
+    "value": "<",
+    "line": 3,
+    "column": 51
+  },
+  {
+    "type": "KEYWORD_TYPE",
+    "value": "Nothing",
+    "line": 3,
+    "column": 52
+  },
+  {
+    "type": "OPERATOR",
+    "value": ">",
+    "line": 3,
+    "column": 59
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "(",
+    "line": 3,
+    "column": 60
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": ")",
+    "line": 3,
+    "column": 61
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n    ",
+    "line": 3,
+    "column": 62
+  },
+  {
+    "type": "KEYWORD_DECLARATION",
+    "value": "object",
+    "line": 4,
+    "column": 5
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 4,
+    "column": 11
+  },
+  {
+    "type": "NAME_CLASS",
+    "value": "Loading",
+    "line": 4,
+    "column": 12
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 4,
+    "column": 19
+  },
+  {
+    "type": "OPERATOR",
+    "value": ":",
+    "line": 4,
+    "column": 20
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 4,
+    "column": 21
+  },
+  {
+    "type": "NAME_CLASS",
+    "value": "Result",
+    "line": 4,
+    "column": 22
+  },
+  {
+    "type": "OPERATOR",
+    "value": "<",
+    "line": 4,
+    "column": 28
+  },
+  {
+    "type": "KEYWORD_TYPE",
+    "value": "Nothing",
+    "line": 4,
+    "column": 29
+  },
+  {
+    "type": "OPERATOR",
+    "value": ">",
+    "line": 4,
+    "column": 36
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "(",
+    "line": 4,
+    "column": 37
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": ")",
+    "line": 4,
+    "column": 38
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 4,
+    "column": 39
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "}",
+    "line": 5,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n\n",
+    "line": 5,
+    "column": 2
+  },
+  {
+    "type": "KEYWORD_DECLARATION",
+    "value": "fun",
+    "line": 7,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 7,
+    "column": 4
+  },
+  {
+    "type": "OPERATOR",
+    "value": "<",
+    "line": 7,
+    "column": 5
+  },
+  {
+    "type": "NAME_CLASS",
+    "value": "T",
+    "line": 7,
+    "column": 6
+  },
+  {
+    "type": "OPERATOR",
+    "value": ">",
+    "line": 7,
+    "column": 7
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 7,
+    "column": 8
+  },
+  {
+    "type": "NAME_CLASS",
+    "value": "Result",
+    "line": 7,
+    "column": 9
+  },
+  {
+    "type": "OPERATOR",
+    "value": "<",
+    "line": 7,
+    "column": 15
+  },
+  {
+    "type": "NAME_CLASS",
+    "value": "T",
+    "line": 7,
+    "column": 16
+  },
+  {
+    "type": "OPERATOR",
+    "value": ">",
+    "line": 7,
+    "column": 17
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": ".",
+    "line": 7,
+    "column": 18
+  },
+  {
+    "type": "NAME",
+    "value": "getOrNull",
+    "line": 7,
+    "column": 19
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "(",
+    "line": 7,
+    "column": 28
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": ")",
+    "line": 7,
+    "column": 29
+  },
+  {
+    "type": "OPERATOR",
+    "value": ":",
+    "line": 7,
+    "column": 30
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 7,
+    "column": 31
+  },
+  {
+    "type": "NAME_CLASS",
+    "value": "T",
+    "line": 7,
+    "column": 32
+  },
+  {
+    "type": "OPERATOR",
+    "value": "?",
+    "line": 7,
+    "column": 33
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 7,
+    "column": 34
+  },
+  {
+    "type": "OPERATOR",
+    "value": "=",
+    "line": 7,
+    "column": 35
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 7,
+    "column": 36
+  },
+  {
+    "type": "KEYWORD",
+    "value": "when",
+    "line": 7,
+    "column": 37
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 7,
+    "column": 41
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "(",
+    "line": 7,
+    "column": 42
+  },
+  {
+    "type": "KEYWORD",
+    "value": "this",
+    "line": 7,
+    "column": 43
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": ")",
+    "line": 7,
+    "column": 47
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 7,
+    "column": 48
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "{",
+    "line": 7,
+    "column": 49
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n    ",
+    "line": 7,
+    "column": 50
+  },
+  {
+    "type": "KEYWORD",
+    "value": "is",
+    "line": 8,
+    "column": 5
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 8,
+    "column": 7
+  },
+  {
+    "type": "NAME_CLASS",
+    "value": "Result",
+    "line": 8,
+    "column": 8
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": ".",
+    "line": 8,
+    "column": 14
+  },
+  {
+    "type": "NAME_CLASS",
+    "value": "Success",
+    "line": 8,
+    "column": 15
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 8,
+    "column": 22
+  },
+  {
+    "type": "OPERATOR",
+    "value": "->",
+    "line": 8,
+    "column": 23
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 8,
+    "column": 25
+  },
+  {
+    "type": "KEYWORD",
+    "value": "value",
+    "line": 8,
+    "column": 26
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n    ",
+    "line": 8,
+    "column": 31
+  },
+  {
+    "type": "KEYWORD",
+    "value": "else",
+    "line": 9,
+    "column": 5
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 9,
+    "column": 9
+  },
+  {
+    "type": "OPERATOR",
+    "value": "->",
+    "line": 9,
+    "column": 10
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 9,
+    "column": 12
+  },
+  {
+    "type": "KEYWORD_CONSTANT",
+    "value": "null",
+    "line": 9,
+    "column": 13
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 9,
+    "column": 17
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "}",
+    "line": 10,
+    "column": 1
+  }
+]

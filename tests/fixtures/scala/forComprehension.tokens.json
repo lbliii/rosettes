@@ -1,0 +1,296 @@
+[
+  {
+    "type": "KEYWORD",
+    "value": "for",
+    "line": 1,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 1,
+    "column": 4
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "{",
+    "line": 1,
+    "column": 5
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n  ",
+    "line": 1,
+    "column": 6
+  },
+  {
+    "type": "NAME",
+    "value": "user",
+    "line": 2,
+    "column": 3
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 2,
+    "column": 7
+  },
+  {
+    "type": "OPERATOR",
+    "value": "<-",
+    "line": 2,
+    "column": 8
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 2,
+    "column": 10
+  },
+  {
+    "type": "NAME",
+    "value": "findUser",
+    "line": 2,
+    "column": 11
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "(",
+    "line": 2,
+    "column": 19
+  },
+  {
+    "type": "NAME",
+    "value": "id",
+    "line": 2,
+    "column": 20
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": ")",
+    "line": 2,
+    "column": 22
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n  ",
+    "line": 2,
+    "column": 23
+  },
+  {
+    "type": "NAME",
+    "value": "profile",
+    "line": 3,
+    "column": 3
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 3,
+    "column": 10
+  },
+  {
+    "type": "OPERATOR",
+    "value": "<-",
+    "line": 3,
+    "column": 11
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 3,
+    "column": 13
+  },
+  {
+    "type": "NAME",
+    "value": "fetchProfile",
+    "line": 3,
+    "column": 14
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "(",
+    "line": 3,
+    "column": 26
+  },
+  {
+    "type": "NAME",
+    "value": "user",
+    "line": 3,
+    "column": 27
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": ".",
+    "line": 3,
+    "column": 31
+  },
+  {
+    "type": "NAME",
+    "value": "id",
+    "line": 3,
+    "column": 32
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": ")",
+    "line": 3,
+    "column": 34
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n  ",
+    "line": 3,
+    "column": 35
+  },
+  {
+    "type": "NAME",
+    "value": "preferences",
+    "line": 4,
+    "column": 3
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 4,
+    "column": 14
+  },
+  {
+    "type": "OPERATOR",
+    "value": "<-",
+    "line": 4,
+    "column": 15
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 4,
+    "column": 17
+  },
+  {
+    "type": "NAME",
+    "value": "loadPreferences",
+    "line": 4,
+    "column": 18
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "(",
+    "line": 4,
+    "column": 33
+  },
+  {
+    "type": "NAME",
+    "value": "user",
+    "line": 4,
+    "column": 34
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": ".",
+    "line": 4,
+    "column": 38
+  },
+  {
+    "type": "NAME",
+    "value": "id",
+    "line": 4,
+    "column": 39
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": ")",
+    "line": 4,
+    "column": 41
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 4,
+    "column": 42
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "}",
+    "line": 5,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 5,
+    "column": 2
+  },
+  {
+    "type": "KEYWORD",
+    "value": "yield",
+    "line": 5,
+    "column": 3
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 5,
+    "column": 8
+  },
+  {
+    "type": "NAME_CLASS",
+    "value": "UserDetails",
+    "line": 5,
+    "column": 9
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "(",
+    "line": 5,
+    "column": 20
+  },
+  {
+    "type": "NAME",
+    "value": "user",
+    "line": 5,
+    "column": 21
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": ",",
+    "line": 5,
+    "column": 25
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 5,
+    "column": 26
+  },
+  {
+    "type": "NAME",
+    "value": "profile",
+    "line": 5,
+    "column": 27
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": ",",
+    "line": 5,
+    "column": 34
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 5,
+    "column": 35
+  },
+  {
+    "type": "NAME",
+    "value": "preferences",
+    "line": 5,
+    "column": 36
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": ")",
+    "line": 5,
+    "column": 47
+  }
+]

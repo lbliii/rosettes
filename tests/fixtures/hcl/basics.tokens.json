@@ -1,0 +1,1778 @@
+[
+  {
+    "type": "KEYWORD_DECLARATION",
+    "value": "terraform",
+    "line": 1,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 1,
+    "column": 10
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "{",
+    "line": 1,
+    "column": 11
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n  ",
+    "line": 1,
+    "column": 12
+  },
+  {
+    "type": "NAME",
+    "value": "required_version",
+    "line": 2,
+    "column": 3
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 2,
+    "column": 19
+  },
+  {
+    "type": "OPERATOR",
+    "value": "=",
+    "line": 2,
+    "column": 20
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 2,
+    "column": 21
+  },
+  {
+    "type": "STRING",
+    "value": "\">= 1.0\"",
+    "line": 2,
+    "column": 22
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n  \n  ",
+    "line": 2,
+    "column": 30
+  },
+  {
+    "type": "NAME",
+    "value": "required_providers",
+    "line": 4,
+    "column": 3
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 4,
+    "column": 21
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "{",
+    "line": 4,
+    "column": 22
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n    ",
+    "line": 4,
+    "column": 23
+  },
+  {
+    "type": "NAME",
+    "value": "aws",
+    "line": 5,
+    "column": 5
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 5,
+    "column": 8
+  },
+  {
+    "type": "OPERATOR",
+    "value": "=",
+    "line": 5,
+    "column": 9
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 5,
+    "column": 10
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "{",
+    "line": 5,
+    "column": 11
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n      ",
+    "line": 5,
+    "column": 12
+  },
+  {
+    "type": "NAME",
+    "value": "source",
+    "line": 6,
+    "column": 7
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "  ",
+    "line": 6,
+    "column": 13
+  },
+  {
+    "type": "OPERATOR",
+    "value": "=",
+    "line": 6,
+    "column": 15
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 6,
+    "column": 16
+  },
+  {
+    "type": "STRING",
+    "value": "\"hashicorp/aws\"",
+    "line": 6,
+    "column": 17
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n      ",
+    "line": 6,
+    "column": 32
+  },
+  {
+    "type": "NAME",
+    "value": "version",
+    "line": 7,
+    "column": 7
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 7,
+    "column": 14
+  },
+  {
+    "type": "OPERATOR",
+    "value": "=",
+    "line": 7,
+    "column": 15
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 7,
+    "column": 16
+  },
+  {
+    "type": "STRING",
+    "value": "\"~> 5.0\"",
+    "line": 7,
+    "column": 17
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n    ",
+    "line": 7,
+    "column": 25
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "}",
+    "line": 8,
+    "column": 5
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n  ",
+    "line": 8,
+    "column": 6
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "}",
+    "line": 9,
+    "column": 3
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n  \n  ",
+    "line": 9,
+    "column": 4
+  },
+  {
+    "type": "NAME",
+    "value": "backend",
+    "line": 11,
+    "column": 3
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 11,
+    "column": 10
+  },
+  {
+    "type": "STRING",
+    "value": "\"s3\"",
+    "line": 11,
+    "column": 11
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 11,
+    "column": 15
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "{",
+    "line": 11,
+    "column": 16
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n    ",
+    "line": 11,
+    "column": 17
+  },
+  {
+    "type": "NAME",
+    "value": "bucket",
+    "line": 12,
+    "column": 5
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 12,
+    "column": 11
+  },
+  {
+    "type": "OPERATOR",
+    "value": "=",
+    "line": 12,
+    "column": 12
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 12,
+    "column": 13
+  },
+  {
+    "type": "STRING",
+    "value": "\"terraform-state\"",
+    "line": 12,
+    "column": 14
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n    ",
+    "line": 12,
+    "column": 31
+  },
+  {
+    "type": "NAME",
+    "value": "key",
+    "line": 13,
+    "column": 5
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "    ",
+    "line": 13,
+    "column": 8
+  },
+  {
+    "type": "OPERATOR",
+    "value": "=",
+    "line": 13,
+    "column": 12
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 13,
+    "column": 13
+  },
+  {
+    "type": "STRING",
+    "value": "\"prod/terraform.tfstate\"",
+    "line": 13,
+    "column": 14
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n    ",
+    "line": 13,
+    "column": 38
+  },
+  {
+    "type": "NAME",
+    "value": "region",
+    "line": 14,
+    "column": 5
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 14,
+    "column": 11
+  },
+  {
+    "type": "OPERATOR",
+    "value": "=",
+    "line": 14,
+    "column": 12
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 14,
+    "column": 13
+  },
+  {
+    "type": "STRING",
+    "value": "\"us-east-1\"",
+    "line": 14,
+    "column": 14
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n  ",
+    "line": 14,
+    "column": 25
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "}",
+    "line": 15,
+    "column": 3
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 15,
+    "column": 4
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "}",
+    "line": 16,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n\n",
+    "line": 16,
+    "column": 2
+  },
+  {
+    "type": "KEYWORD_DECLARATION",
+    "value": "provider",
+    "line": 18,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 18,
+    "column": 9
+  },
+  {
+    "type": "STRING",
+    "value": "\"aws\"",
+    "line": 18,
+    "column": 10
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 18,
+    "column": 15
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "{",
+    "line": 18,
+    "column": 16
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n  ",
+    "line": 18,
+    "column": 17
+  },
+  {
+    "type": "NAME",
+    "value": "region",
+    "line": 19,
+    "column": 3
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 19,
+    "column": 9
+  },
+  {
+    "type": "OPERATOR",
+    "value": "=",
+    "line": 19,
+    "column": 10
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 19,
+    "column": 11
+  },
+  {
+    "type": "NAME",
+    "value": "var",
+    "line": 19,
+    "column": 12
+  },
+  {
+    "type": "OPERATOR",
+    "value": ".",
+    "line": 19,
+    "column": 15
+  },
+  {
+    "type": "NAME",
+    "value": "region",
+    "line": 19,
+    "column": 16
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 19,
+    "column": 22
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "}",
+    "line": 20,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n\n",
+    "line": 20,
+    "column": 2
+  },
+  {
+    "type": "KEYWORD_DECLARATION",
+    "value": "variable",
+    "line": 22,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 22,
+    "column": 9
+  },
+  {
+    "type": "STRING",
+    "value": "\"region\"",
+    "line": 22,
+    "column": 10
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 22,
+    "column": 18
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "{",
+    "line": 22,
+    "column": 19
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n  ",
+    "line": 22,
+    "column": 20
+  },
+  {
+    "type": "NAME_FUNCTION",
+    "value": "type",
+    "line": 23,
+    "column": 3
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "        ",
+    "line": 23,
+    "column": 7
+  },
+  {
+    "type": "OPERATOR",
+    "value": "=",
+    "line": 23,
+    "column": 15
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 23,
+    "column": 16
+  },
+  {
+    "type": "KEYWORD_TYPE",
+    "value": "string",
+    "line": 23,
+    "column": 17
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n  ",
+    "line": 23,
+    "column": 23
+  },
+  {
+    "type": "NAME",
+    "value": "default",
+    "line": 24,
+    "column": 3
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "     ",
+    "line": 24,
+    "column": 10
+  },
+  {
+    "type": "OPERATOR",
+    "value": "=",
+    "line": 24,
+    "column": 15
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 24,
+    "column": 16
+  },
+  {
+    "type": "STRING",
+    "value": "\"us-east-1\"",
+    "line": 24,
+    "column": 17
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n  ",
+    "line": 24,
+    "column": 28
+  },
+  {
+    "type": "NAME",
+    "value": "description",
+    "line": 25,
+    "column": 3
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 25,
+    "column": 14
+  },
+  {
+    "type": "OPERATOR",
+    "value": "=",
+    "line": 25,
+    "column": 15
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 25,
+    "column": 16
+  },
+  {
+    "type": "STRING",
+    "value": "\"AWS region\"",
+    "line": 25,
+    "column": 17
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 25,
+    "column": 29
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "}",
+    "line": 26,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n\n",
+    "line": 26,
+    "column": 2
+  },
+  {
+    "type": "KEYWORD_DECLARATION",
+    "value": "resource",
+    "line": 28,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 28,
+    "column": 9
+  },
+  {
+    "type": "STRING",
+    "value": "\"aws_instance\"",
+    "line": 28,
+    "column": 10
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 28,
+    "column": 24
+  },
+  {
+    "type": "STRING",
+    "value": "\"web\"",
+    "line": 28,
+    "column": 25
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 28,
+    "column": 30
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "{",
+    "line": 28,
+    "column": 31
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n  ",
+    "line": 28,
+    "column": 32
+  },
+  {
+    "type": "KEYWORD",
+    "value": "count",
+    "line": 29,
+    "column": 3
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "         ",
+    "line": 29,
+    "column": 8
+  },
+  {
+    "type": "OPERATOR",
+    "value": "=",
+    "line": 29,
+    "column": 17
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 29,
+    "column": 18
+  },
+  {
+    "type": "NAME",
+    "value": "var",
+    "line": 29,
+    "column": 19
+  },
+  {
+    "type": "OPERATOR",
+    "value": ".",
+    "line": 29,
+    "column": 22
+  },
+  {
+    "type": "NAME",
+    "value": "instance_count",
+    "line": 29,
+    "column": 23
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n  ",
+    "line": 29,
+    "column": 37
+  },
+  {
+    "type": "NAME",
+    "value": "ami",
+    "line": 30,
+    "column": 3
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "           ",
+    "line": 30,
+    "column": 6
+  },
+  {
+    "type": "OPERATOR",
+    "value": "=",
+    "line": 30,
+    "column": 17
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 30,
+    "column": 18
+  },
+  {
+    "type": "KEYWORD_DECLARATION",
+    "value": "data",
+    "line": 30,
+    "column": 19
+  },
+  {
+    "type": "OPERATOR",
+    "value": ".",
+    "line": 30,
+    "column": 23
+  },
+  {
+    "type": "NAME",
+    "value": "aws_ami",
+    "line": 30,
+    "column": 24
+  },
+  {
+    "type": "OPERATOR",
+    "value": ".",
+    "line": 30,
+    "column": 31
+  },
+  {
+    "type": "NAME",
+    "value": "ubuntu",
+    "line": 30,
+    "column": 32
+  },
+  {
+    "type": "OPERATOR",
+    "value": ".",
+    "line": 30,
+    "column": 38
+  },
+  {
+    "type": "NAME",
+    "value": "id",
+    "line": 30,
+    "column": 39
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n  ",
+    "line": 30,
+    "column": 41
+  },
+  {
+    "type": "NAME",
+    "value": "instance_type",
+    "line": 31,
+    "column": 3
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 31,
+    "column": 16
+  },
+  {
+    "type": "OPERATOR",
+    "value": "=",
+    "line": 31,
+    "column": 17
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 31,
+    "column": 18
+  },
+  {
+    "type": "STRING",
+    "value": "\"t3.micro\"",
+    "line": 31,
+    "column": 19
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n  \n  ",
+    "line": 31,
+    "column": 29
+  },
+  {
+    "type": "NAME",
+    "value": "tags",
+    "line": 33,
+    "column": 3
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 33,
+    "column": 7
+  },
+  {
+    "type": "OPERATOR",
+    "value": "=",
+    "line": 33,
+    "column": 8
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 33,
+    "column": 9
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "{",
+    "line": 33,
+    "column": 10
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n    ",
+    "line": 33,
+    "column": 11
+  },
+  {
+    "type": "NAME",
+    "value": "Name",
+    "line": 34,
+    "column": 5
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "        ",
+    "line": 34,
+    "column": 9
+  },
+  {
+    "type": "OPERATOR",
+    "value": "=",
+    "line": 34,
+    "column": 17
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 34,
+    "column": 18
+  },
+  {
+    "type": "STRING",
+    "value": "\"web-${count.index}\"",
+    "line": 34,
+    "column": 19
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n    ",
+    "line": 34,
+    "column": 39
+  },
+  {
+    "type": "NAME",
+    "value": "Environment",
+    "line": 35,
+    "column": 5
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 35,
+    "column": 16
+  },
+  {
+    "type": "OPERATOR",
+    "value": "=",
+    "line": 35,
+    "column": 17
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 35,
+    "column": 18
+  },
+  {
+    "type": "NAME",
+    "value": "var",
+    "line": 35,
+    "column": 19
+  },
+  {
+    "type": "OPERATOR",
+    "value": ".",
+    "line": 35,
+    "column": 22
+  },
+  {
+    "type": "NAME",
+    "value": "environment",
+    "line": 35,
+    "column": 23
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n  ",
+    "line": 35,
+    "column": 34
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "}",
+    "line": 36,
+    "column": 3
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n  \n  ",
+    "line": 36,
+    "column": 4
+  },
+  {
+    "type": "KEYWORD",
+    "value": "lifecycle",
+    "line": 38,
+    "column": 3
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 38,
+    "column": 12
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "{",
+    "line": 38,
+    "column": 13
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n    ",
+    "line": 38,
+    "column": 14
+  },
+  {
+    "type": "NAME",
+    "value": "create_before_destroy",
+    "line": 39,
+    "column": 5
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 39,
+    "column": 26
+  },
+  {
+    "type": "OPERATOR",
+    "value": "=",
+    "line": 39,
+    "column": 27
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 39,
+    "column": 28
+  },
+  {
+    "type": "KEYWORD_CONSTANT",
+    "value": "true",
+    "line": 39,
+    "column": 29
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n  ",
+    "line": 39,
+    "column": 33
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "}",
+    "line": 40,
+    "column": 3
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 40,
+    "column": 4
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "}",
+    "line": 41,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n\n",
+    "line": 41,
+    "column": 2
+  },
+  {
+    "type": "KEYWORD_DECLARATION",
+    "value": "data",
+    "line": 43,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 43,
+    "column": 5
+  },
+  {
+    "type": "STRING",
+    "value": "\"aws_ami\"",
+    "line": 43,
+    "column": 6
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 43,
+    "column": 15
+  },
+  {
+    "type": "STRING",
+    "value": "\"ubuntu\"",
+    "line": 43,
+    "column": 16
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 43,
+    "column": 24
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "{",
+    "line": 43,
+    "column": 25
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n  ",
+    "line": 43,
+    "column": 26
+  },
+  {
+    "type": "NAME",
+    "value": "most_recent",
+    "line": 44,
+    "column": 3
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 44,
+    "column": 14
+  },
+  {
+    "type": "OPERATOR",
+    "value": "=",
+    "line": 44,
+    "column": 15
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 44,
+    "column": 16
+  },
+  {
+    "type": "KEYWORD_CONSTANT",
+    "value": "true",
+    "line": 44,
+    "column": 17
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n  \n  ",
+    "line": 44,
+    "column": 21
+  },
+  {
+    "type": "NAME",
+    "value": "filter",
+    "line": 46,
+    "column": 3
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 46,
+    "column": 9
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "{",
+    "line": 46,
+    "column": 10
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n    ",
+    "line": 46,
+    "column": 11
+  },
+  {
+    "type": "NAME",
+    "value": "name",
+    "line": 47,
+    "column": 5
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "   ",
+    "line": 47,
+    "column": 9
+  },
+  {
+    "type": "OPERATOR",
+    "value": "=",
+    "line": 47,
+    "column": 12
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 47,
+    "column": 13
+  },
+  {
+    "type": "STRING",
+    "value": "\"name\"",
+    "line": 47,
+    "column": 14
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n    ",
+    "line": 47,
+    "column": 20
+  },
+  {
+    "type": "NAME_FUNCTION",
+    "value": "values",
+    "line": 48,
+    "column": 5
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 48,
+    "column": 11
+  },
+  {
+    "type": "OPERATOR",
+    "value": "=",
+    "line": 48,
+    "column": 12
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 48,
+    "column": 13
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "[",
+    "line": 48,
+    "column": 14
+  },
+  {
+    "type": "STRING",
+    "value": "\"ubuntu/images/hvm-ssd/ubuntu-*-amd64-server-*\"",
+    "line": 48,
+    "column": 15
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "]",
+    "line": 48,
+    "column": 62
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n  ",
+    "line": 48,
+    "column": 63
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "}",
+    "line": 49,
+    "column": 3
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 49,
+    "column": 4
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "}",
+    "line": 50,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n\n",
+    "line": 50,
+    "column": 2
+  },
+  {
+    "type": "KEYWORD_DECLARATION",
+    "value": "output",
+    "line": 52,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 52,
+    "column": 7
+  },
+  {
+    "type": "STRING",
+    "value": "\"instance_ids\"",
+    "line": 52,
+    "column": 8
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 52,
+    "column": 22
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "{",
+    "line": 52,
+    "column": 23
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n  ",
+    "line": 52,
+    "column": 24
+  },
+  {
+    "type": "NAME",
+    "value": "value",
+    "line": 53,
+    "column": 3
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "       ",
+    "line": 53,
+    "column": 8
+  },
+  {
+    "type": "OPERATOR",
+    "value": "=",
+    "line": 53,
+    "column": 15
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 53,
+    "column": 16
+  },
+  {
+    "type": "NAME",
+    "value": "aws_instance",
+    "line": 53,
+    "column": 17
+  },
+  {
+    "type": "OPERATOR",
+    "value": ".",
+    "line": 53,
+    "column": 29
+  },
+  {
+    "type": "NAME",
+    "value": "web",
+    "line": 53,
+    "column": 30
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "[",
+    "line": 53,
+    "column": 33
+  },
+  {
+    "type": "OPERATOR",
+    "value": "*",
+    "line": 53,
+    "column": 34
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "]",
+    "line": 53,
+    "column": 35
+  },
+  {
+    "type": "OPERATOR",
+    "value": ".",
+    "line": 53,
+    "column": 36
+  },
+  {
+    "type": "NAME",
+    "value": "id",
+    "line": 53,
+    "column": 37
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n  ",
+    "line": 53,
+    "column": 39
+  },
+  {
+    "type": "NAME",
+    "value": "description",
+    "line": 54,
+    "column": 3
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 54,
+    "column": 14
+  },
+  {
+    "type": "OPERATOR",
+    "value": "=",
+    "line": 54,
+    "column": 15
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 54,
+    "column": 16
+  },
+  {
+    "type": "STRING",
+    "value": "\"IDs of created instances\"",
+    "line": 54,
+    "column": 17
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 54,
+    "column": 43
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "}",
+    "line": 55,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n\n",
+    "line": 55,
+    "column": 2
+  },
+  {
+    "type": "KEYWORD_DECLARATION",
+    "value": "locals",
+    "line": 57,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 57,
+    "column": 7
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "{",
+    "line": 57,
+    "column": 8
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n  ",
+    "line": 57,
+    "column": 9
+  },
+  {
+    "type": "NAME",
+    "value": "common_tags",
+    "line": 58,
+    "column": 3
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 58,
+    "column": 14
+  },
+  {
+    "type": "OPERATOR",
+    "value": "=",
+    "line": 58,
+    "column": 15
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 58,
+    "column": 16
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "{",
+    "line": 58,
+    "column": 17
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n    ",
+    "line": 58,
+    "column": 18
+  },
+  {
+    "type": "NAME",
+    "value": "Project",
+    "line": 59,
+    "column": 5
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 59,
+    "column": 12
+  },
+  {
+    "type": "OPERATOR",
+    "value": "=",
+    "line": 59,
+    "column": 13
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 59,
+    "column": 14
+  },
+  {
+    "type": "STRING",
+    "value": "\"example\"",
+    "line": 59,
+    "column": 15
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n    ",
+    "line": 59,
+    "column": 24
+  },
+  {
+    "type": "NAME",
+    "value": "Owner",
+    "line": 60,
+    "column": 5
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "   ",
+    "line": 60,
+    "column": 10
+  },
+  {
+    "type": "OPERATOR",
+    "value": "=",
+    "line": 60,
+    "column": 13
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 60,
+    "column": 14
+  },
+  {
+    "type": "STRING",
+    "value": "\"team\"",
+    "line": 60,
+    "column": 15
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n  ",
+    "line": 60,
+    "column": 21
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "}",
+    "line": 61,
+    "column": 3
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 61,
+    "column": 4
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "}",
+    "line": 62,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n\n",
+    "line": 62,
+    "column": 2
+  },
+  {
+    "type": "KEYWORD_DECLARATION",
+    "value": "module",
+    "line": 64,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 64,
+    "column": 7
+  },
+  {
+    "type": "STRING",
+    "value": "\"vpc\"",
+    "line": 64,
+    "column": 8
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 64,
+    "column": 13
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "{",
+    "line": 64,
+    "column": 14
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n  ",
+    "line": 64,
+    "column": 15
+  },
+  {
+    "type": "NAME",
+    "value": "source",
+    "line": 65,
+    "column": 3
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "  ",
+    "line": 65,
+    "column": 9
+  },
+  {
+    "type": "OPERATOR",
+    "value": "=",
+    "line": 65,
+    "column": 11
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 65,
+    "column": 12
+  },
+  {
+    "type": "STRING",
+    "value": "\"terraform-aws-modules/vpc/aws\"",
+    "line": 65,
+    "column": 13
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n  ",
+    "line": 65,
+    "column": 44
+  },
+  {
+    "type": "NAME",
+    "value": "version",
+    "line": 66,
+    "column": 3
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 66,
+    "column": 10
+  },
+  {
+    "type": "OPERATOR",
+    "value": "=",
+    "line": 66,
+    "column": 11
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 66,
+    "column": 12
+  },
+  {
+    "type": "STRING",
+    "value": "\"5.0.0\"",
+    "line": 66,
+    "column": 13
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n  \n  ",
+    "line": 66,
+    "column": 20
+  },
+  {
+    "type": "NAME",
+    "value": "name",
+    "line": 68,
+    "column": 3
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 68,
+    "column": 7
+  },
+  {
+    "type": "OPERATOR",
+    "value": "=",
+    "line": 68,
+    "column": 8
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 68,
+    "column": 9
+  },
+  {
+    "type": "STRING",
+    "value": "\"my-vpc\"",
+    "line": 68,
+    "column": 10
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n  ",
+    "line": 68,
+    "column": 18
+  },
+  {
+    "type": "NAME",
+    "value": "cidr",
+    "line": 69,
+    "column": 3
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 69,
+    "column": 7
+  },
+  {
+    "type": "OPERATOR",
+    "value": "=",
+    "line": 69,
+    "column": 8
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 69,
+    "column": 9
+  },
+  {
+    "type": "STRING",
+    "value": "\"10.0.0.0/16\"",
+    "line": 69,
+    "column": 10
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 69,
+    "column": 23
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "}",
+    "line": 70,
+    "column": 1
+  }
+]

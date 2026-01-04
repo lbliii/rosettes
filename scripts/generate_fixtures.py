@@ -769,6 +769,1030 @@ def hello():
 ![Alt text](image.jpg)
 ''',
     },
+    # Tier 1: Critical languages
+    "java": {
+        "basics": '''public class Hello {
+    public static void main(String[] args) {
+        System.out.println("Hello, World!");
+    }
+}''',
+        "generics": '''public class Box<T extends Comparable<T>> {
+    private T value;
+    
+    public <U> void process(List<? super U> items) {
+        // Generic method
+    }
+}''',
+        "keywords": '''abstract class Example implements Runnable {
+    private final int count;
+    protected volatile boolean running;
+    
+    synchronized void process() throws Exception {
+        if (running) {
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            } finally {
+                running = false;
+            }
+        }
+    }
+}''',
+        "annotations": '''@Entity
+@Table(name = "users")
+public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    
+    @Column(nullable = false)
+    private String name;
+}''',
+        "lambdas": '''List<String> filtered = items.stream()
+    .filter(s -> s.length() > 3)
+    .map(String::toUpperCase)
+    .collect(Collectors.toList());''',
+    },
+    "cpp": {
+        "classes": '''template<typename T>
+class Container {
+public:
+    explicit Container(T value) : value_(std::move(value)) {}
+    
+    T& get() noexcept { return value_; }
+    const T& get() const noexcept { return value_; }
+    
+private:
+    T value_;
+};''',
+        "modern": '''auto process(std::vector<int>&& items) -> std::optional<int> {
+    if (auto it = std::ranges::find(items, 42); it != items.end()) {
+        return *it;
+    }
+    return std::nullopt;
+}
+
+constexpr auto lambda = [](auto x) constexpr { return x * 2; };''',
+    },
+    "c": {
+        "basics": '''#include <stdio.h>
+
+int main(int argc, char *argv[]) {
+    printf("Hello, World!\\n");
+    return 0;
+}''',
+        "preprocessor": '''#ifndef HEADER_H
+#define HEADER_H
+
+#define MAX(a, b) ((a) > (b) ? (a) : (b))
+#define VERSION 1
+
+#ifdef DEBUG
+    #define LOG(msg) printf("%s\\n", msg)
+#else
+    #define LOG(msg)
+#endif
+
+#pragma once
+
+#endif''',
+        "pointers": '''void process(int *ptr, int **pptr, void (*callback)(int)) {
+    int arr[10];
+    int *p = &arr[0];
+    *ptr = **pptr;
+    callback(*p);
+}''',
+    },
+    "ruby": {
+        "basics": '''class User
+  attr_accessor :name, :email
+  
+  def initialize(name, email)
+    @name = name
+    @email = email
+  end
+  
+  def greet
+    puts "Hello, #{@name}!"
+  end
+end''',
+        "blocks": '''items.each do |item|
+  puts item
+end
+
+items.map { |x| x * 2 }
+
+File.open("file.txt") do |f|
+  f.each_line { |line| process(line) }
+end''',
+        "symbols": '''options = {
+  name: "test",
+  :legacy => "value",
+  enabled: true
+}
+
+def method(arg, *args, **kwargs, &block)
+  yield if block_given?
+end''',
+        "regex": '''pattern = /\\A[a-z]+\\z/i
+text =~ /hello/
+text.match?(/world/)
+gsub(/old/, "new")''',
+        "heredoc": '''sql = <<~SQL
+  SELECT *
+  FROM users
+  WHERE active = true
+SQL
+
+html = <<-HTML
+  <div>Content</div>
+HTML''',
+    },
+    "swift": {
+        "basics": '''import Foundation
+
+struct User: Codable {
+    let id: Int
+    var name: String
+    var email: String?
+}
+
+class UserService {
+    func fetchUser(id: Int) async throws -> User {
+        let url = URL(string: "https://api.example.com/users/\\(id)")!
+        let (data, _) = try await URLSession.shared.data(from: url)
+        return try JSONDecoder().decode(User.self, from: data)
+    }
+}''',
+        "optionals": '''var name: String? = nil
+let unwrapped = name ?? "default"
+if let n = name {
+    print(n)
+}
+guard let n = name else { return }''',
+        "closures": '''let numbers = [1, 2, 3, 4, 5]
+let doubled = numbers.map { $0 * 2 }
+let sorted = numbers.sorted { $0 > $1 }
+
+func process(completion: @escaping (Result<Int, Error>) -> Void) {
+    DispatchQueue.main.async {
+        completion(.success(42))
+    }
+}''',
+        "generics": '''func swap<T>(_ a: inout T, _ b: inout T) {
+    let temp = a
+    a = b
+    b = temp
+}
+
+protocol Container {
+    associatedtype Item
+    var count: Int { get }
+    mutating func append(_ item: Item)
+}''',
+        "propertyWrappers": '''@propertyWrapper
+struct Clamped<Value: Comparable> {
+    var value: Value
+    let range: ClosedRange<Value>
+    
+    var wrappedValue: Value {
+        get { value }
+        set { value = min(max(newValue, range.lowerBound), range.upperBound) }
+    }
+}''',
+    },
+    "kotlin": {
+        "basics": '''data class User(
+    val id: Int,
+    val name: String,
+    val email: String?
+)
+
+fun main() {
+    val user = User(1, "Alice", "alice@example.com")
+    println("Hello, ${user.name}!")
+}''',
+        "nullSafety": '''val name: String? = null
+val length = name?.length ?: 0
+val forced = name!!.length
+
+name?.let { n ->
+    println(n.uppercase())
+}''',
+        "coroutines": '''suspend fun fetchData(): Result<String> = coroutineScope {
+    val deferred = async {
+        delay(100)
+        "data"
+    }
+    Result.success(deferred.await())
+}
+
+fun main() = runBlocking {
+    launch {
+        fetchData().onSuccess { println(it) }
+    }
+}''',
+        "extensions": '''fun String.isPalindrome(): Boolean {
+    return this == this.reversed()
+}
+
+val String.wordCount: Int
+    get() = this.split("\\\\s+".toRegex()).size''',
+        "sealed": '''sealed class Result<out T> {
+    data class Success<T>(val value: T) : Result<T>()
+    data class Error(val message: String) : Result<Nothing>()
+    object Loading : Result<Nothing>()
+}
+
+fun <T> Result<T>.getOrNull(): T? = when (this) {
+    is Result.Success -> value
+    else -> null
+}''',
+    },
+    # Tier 2: Popular languages
+    "dockerfile": {
+        "basics": '''FROM python:3.14-slim AS builder
+
+ARG VERSION=1.0
+ENV APP_HOME=/app \\
+    PYTHONUNBUFFERED=1
+
+WORKDIR ${APP_HOME}
+
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY . .
+
+EXPOSE 8080
+HEALTHCHECK --interval=30s CMD curl -f http://localhost:8080/health
+
+ENTRYPOINT ["python"]
+CMD ["app.py"]''',
+        "multistage": '''FROM node:20 AS frontend
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci
+COPY . .
+RUN npm run build
+
+FROM nginx:alpine
+COPY --from=frontend /app/dist /usr/share/nginx/html''',
+    },
+    "graphql": {
+        "schema": '''type Query {
+  user(id: ID!): User
+  users(filter: UserFilter, first: Int, after: String): UserConnection!
+}
+
+type Mutation {
+  createUser(input: CreateUserInput!): User!
+  updateUser(id: ID!, input: UpdateUserInput!): User
+  deleteUser(id: ID!): Boolean!
+}
+
+type User implements Node {
+  id: ID!
+  name: String!
+  email: String!
+  posts(first: Int): [Post!]!
+  createdAt: DateTime!
+}
+
+input CreateUserInput {
+  name: String!
+  email: String!
+}
+
+interface Node {
+  id: ID!
+}
+
+union SearchResult = User | Post | Comment
+
+enum Role {
+  ADMIN
+  USER
+  GUEST
+}
+
+scalar DateTime
+
+directive @auth(requires: Role = ADMIN) on FIELD_DEFINITION''',
+    },
+    "hcl": {
+        "basics": '''terraform {
+  required_version = ">= 1.0"
+  
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 5.0"
+    }
+  }
+  
+  backend "s3" {
+    bucket = "terraform-state"
+    key    = "prod/terraform.tfstate"
+    region = "us-east-1"
+  }
+}
+
+provider "aws" {
+  region = var.region
+}
+
+variable "region" {
+  type        = string
+  default     = "us-east-1"
+  description = "AWS region"
+}
+
+resource "aws_instance" "web" {
+  count         = var.instance_count
+  ami           = data.aws_ami.ubuntu.id
+  instance_type = "t3.micro"
+  
+  tags = {
+    Name        = "web-${count.index}"
+    Environment = var.environment
+  }
+  
+  lifecycle {
+    create_before_destroy = true
+  }
+}
+
+data "aws_ami" "ubuntu" {
+  most_recent = true
+  
+  filter {
+    name   = "name"
+    values = ["ubuntu/images/hvm-ssd/ubuntu-*-amd64-server-*"]
+  }
+}
+
+output "instance_ids" {
+  value       = aws_instance.web[*].id
+  description = "IDs of created instances"
+}
+
+locals {
+  common_tags = {
+    Project = "example"
+    Owner   = "team"
+  }
+}
+
+module "vpc" {
+  source  = "terraform-aws-modules/vpc/aws"
+  version = "5.0.0"
+  
+  name = "my-vpc"
+  cidr = "10.0.0.0/16"
+}''',
+    },
+    "scala": {
+        "basics": '''package com.example
+
+import scala.concurrent.{Future, ExecutionContext}
+import scala.util.{Try, Success, Failure}
+
+case class User(id: Long, name: String, email: Option[String])
+
+object UserService {
+  def findById(id: Long)(implicit ec: ExecutionContext): Future[Option[User]] = Future {
+    Some(User(id, "Alice", Some("alice@example.com")))
+  }
+}''',
+        "patternMatching": '''def process(value: Any): String = value match {
+  case i: Int if i > 0 => s"Positive: $i"
+  case s: String => s.toUpperCase
+  case Some(x) => s"Got: $x"
+  case None => "Nothing"
+  case (a, b) => s"Tuple: $a, $b"
+  case head :: tail => s"List head: $head"
+  case _ => "Unknown"
+}''',
+        "implicits": '''implicit class RichString(s: String) {
+  def isPalindrome: Boolean = s == s.reverse
+}
+
+implicit val defaultTimeout: Duration = 5.seconds
+
+def fetch(url: String)(implicit timeout: Duration): String = ???''',
+        "forComprehension": '''for {
+  user <- findUser(id)
+  profile <- fetchProfile(user.id)
+  preferences <- loadPreferences(user.id)
+} yield UserDetails(user, profile, preferences)''',
+    },
+    "perl": {
+        "basics": '''#!/usr/bin/env perl
+use strict;
+use warnings;
+use feature 'say';
+
+my $name = "World";
+say "Hello, $name!";
+
+my @items = (1, 2, 3, 4, 5);
+my %hash = (key => 'value', foo => 'bar');
+
+sub greet {
+    my ($name, $greeting) = @_;
+    $greeting //= "Hello";
+    return "$greeting, $name!";
+}''',
+        "regex": '''if ($text =~ /pattern/) {
+    print "Match!\\n";
+}
+
+$text =~ s/old/new/g;
+$text =~ tr/a-z/A-Z/;
+
+my @matches = $text =~ /(\\w+)/g;''',
+        "references": '''my $scalar_ref = \\$scalar;
+my $array_ref = \\@array;
+my $hash_ref = \\%hash;
+my $code_ref = \\&subroutine;
+
+my $anon_array = [1, 2, 3];
+my $anon_hash = {key => 'value'};
+my $anon_sub = sub { return $_[0] * 2 };
+
+print $$scalar_ref;
+print $array_ref->[0];
+print $hash_ref->{key};
+$code_ref->();''',
+    },
+    "lua": {
+        "basics": '''local function greet(name)
+    name = name or "World"
+    print("Hello, " .. name .. "!")
+end
+
+local items = {1, 2, 3, 4, 5}
+local config = {
+    host = "localhost",
+    port = 8080,
+    enabled = true
+}
+
+for i, v in ipairs(items) do
+    print(i, v)
+end
+
+for k, v in pairs(config) do
+    print(k .. " = " .. tostring(v))
+end''',
+        "metatables": '''local Vector = {}
+Vector.__index = Vector
+
+function Vector.new(x, y)
+    return setmetatable({x = x, y = y}, Vector)
+end
+
+function Vector:length()
+    return math.sqrt(self.x^2 + self.y^2)
+end
+
+function Vector.__add(a, b)
+    return Vector.new(a.x + b.x, a.y + b.y)
+end''',
+        "coroutines": '''local co = coroutine.create(function()
+    for i = 1, 10 do
+        coroutine.yield(i)
+    end
+end)
+
+while coroutine.status(co) ~= "dead" do
+    local ok, value = coroutine.resume(co)
+    if ok then print(value) end
+end''',
+    },
+    # Tier 3: Standard languages
+    "groovy": {
+        "basics": '''class User {
+    String name
+    String email
+    
+    User(String name, String email) {
+        this.name = name
+        this.email = email
+    }
+    
+    String greet() {
+        "Hello, ${name}!"
+    }
+}
+
+def user = new User("Alice", "alice@example.com")
+println user.greet()''',
+        "closures": '''def numbers = [1, 2, 3, 4, 5]
+def doubled = numbers.collect { it * 2 }
+def filtered = numbers.findAll { it > 2 }
+
+numbers.each { n ->
+    println n
+}''',
+    },
+    "r": {
+        "basics": '''# Variables and assignment
+x <- 42
+y <- 3.14
+name <- "Alice"
+
+# Functions
+greet <- function(name) {
+    paste("Hello,", name, "!")
+}
+
+result <- greet(name)
+
+# Vectors
+numbers <- c(1, 2, 3, 4, 5)
+doubled <- numbers * 2
+
+# Data frames
+df <- data.frame(
+    name = c("Alice", "Bob"),
+    age = c(30, 25)
+)''',
+        "statistics": '''# Statistical operations
+mean_value <- mean(numbers)
+sd_value <- sd(numbers)
+
+# Linear model
+model <- lm(y ~ x, data = df)
+summary(model)''',
+    },
+    "julia": {
+        "basics": '''struct User
+    id::Int
+    name::String
+    email::Union{String, Nothing}
+end
+
+function greet(user::User)
+    println("Hello, $(user.name)!")
+end
+
+user = User(1, "Alice", "alice@example.com")
+greet(user)''',
+        "multipleDispatch": '''abstract type Shape end
+
+struct Circle <: Shape
+    radius::Float64
+end
+
+struct Rectangle <: Shape
+    width::Float64
+    height::Float64
+end
+
+area(s::Circle) = π * s.radius^2
+area(s::Rectangle) = s.width * s.height''',
+    },
+    "elixir": {
+        "basics": '''defmodule User do
+  @moduledoc "User module"
+  
+  defstruct [:id, :name, :email]
+  
+  def new(name, email) do
+    %__MODULE__{id: UUID.uuid4(), name: name, email: email}
+  end
+  
+  def greet(%__MODULE__{name: name}) do
+    "Hello, #{name}!"
+  end
+end''',
+        "patternMatching": '''def process(value) do
+  case value do
+    {:ok, result} -> result
+    {:error, reason} -> raise reason
+    [head | _tail] -> head
+    %{key: value} -> value
+    _ -> nil
+  end
+end
+
+def handle_message({:ping, sender}), do: send(sender, :pong)
+def handle_message({:data, payload}), do: process(payload)
+def handle_message(_), do: :ignore''',
+        "pipes": '''result =
+  data
+  |> Enum.filter(&(&1 > 0))
+  |> Enum.map(&(&1 * 2))
+  |> Enum.reduce(0, &+/2)''',
+    },
+    "haskell": {
+        "basics": '''data User = User
+    { userId :: Int
+    , userName :: String
+    , userEmail :: Maybe String
+    }
+
+greet :: User -> String
+greet user = "Hello, " ++ userName user ++ "!"
+
+main :: IO ()
+main = do
+    let user = User 1 "Alice" (Just "alice@example.com")
+    putStrLn $ greet user''',
+        "typeclasses": '''class Show a where
+    show :: a -> String
+
+instance Show User where
+    show (User id name email) = name
+
+instance Functor Maybe where
+    fmap f Nothing = Nothing
+    fmap f (Just x) = Just (f x)''',
+    },
+    "nim": {
+        "basics": '''type
+  User = object
+    id: int
+    name: string
+    email: Option[string]
+
+proc greet(user: User): string =
+  "Hello, " & user.name & "!"
+
+let user = User(id: 1, name: "Alice", email: some("alice@example.com"))
+echo greet(user)''',
+        "generics": '''proc swap[T](a, b: var T) =
+  let temp = a
+  a = b
+  b = temp
+
+type
+  Container[T] = object
+    value: T''',
+    },
+    "zig": {
+        "basics": '''const std = @import("std");
+
+const User = struct {
+    id: u32,
+    name: []const u8,
+    email: ?[]const u8,
+};
+
+pub fn main() !void {
+    const user = User{
+        .id = 1,
+        .name = "Alice",
+        .email = "alice@example.com",
+    };
+    std.debug.print("Hello, {s}!\\n", .{user.name});
+}''',
+        "comptime": '''fn max(comptime T: type, a: T, b: T) T {
+    return if (a > b) a else b;
+}
+
+const result = max(u32, 10, 20);''',
+    },
+    "v": {
+        "basics": '''struct User {
+    id int
+    name string
+    email ?string
+}
+
+fn greet(user User) string {
+    return "Hello, ${user.name}!"
+}
+
+fn main() {
+    user := User{
+        id: 1
+        name: "Alice"
+        email: "alice@example.com"
+    }
+    println(greet(user))
+}''',
+        "interfaces": '''interface Drawable {
+    draw()
+}
+
+struct Circle {
+    radius f64
+}
+
+fn (c Circle) draw() {
+    println("Drawing circle")
+}''',
+    },
+    "dart": {
+        "basics": '''class User {
+  final int id;
+  final String name;
+  final String? email;
+  
+  User(this.id, this.name, this.email);
+  
+  String greet() {
+    return "Hello, $name!";
+  }
+}
+
+void main() {
+  final user = User(1, "Alice", "alice@example.com");
+  print(user.greet());
+}''',
+        "async": '''Future<String> fetchData() async {
+  await Future.delayed(Duration(seconds: 1));
+  return "data";
+}
+
+void main() async {
+  final data = await fetchData();
+  print(data);
+}''',
+    },
+    "gleam": {
+        "basics": '''import gleam/io
+
+pub type User {
+  User(id: Int, name: String, email: Option(String))
+}
+
+pub fn greet(user: User) {
+  case user {
+    User(_, name, _) -> "Hello, " <> name <> "!"
+  }
+}
+
+pub fn main() {
+  let user = User(1, "Alice", Some("alice@example.com"))
+  io.println(greet(user))
+}''',
+        "patternMatching": '''pub fn process(value: Result(String, String)) {
+  case value {
+    Ok(result) -> result
+    Error(reason) -> "Error: " <> reason
+  }
+}''',
+    },
+    # Tier 4: Minimal languages
+    "ini": {
+        "basics": '''; Configuration file
+[section]
+key = value
+number = 42
+boolean = true
+
+[database]
+host = localhost
+port = 5432''',
+    },
+    "csv": {
+        "basics": '''name,age,email
+Alice,30,alice@example.com
+Bob,25,bob@example.com''',
+    },
+    "diff": {
+        "basics": '''--- a/file.txt
++++ b/file.txt
+@@ -1,3 +1,4 @@
+ unchanged
+-removed line
++added line
++another added
+ unchanged''',
+    },
+    "makefile": {
+        "basics": '''CC = gcc
+CFLAGS = -Wall -g
+
+all: program
+
+program: main.o utils.o
+\t$(CC) $(CFLAGS) -o program main.o utils.o
+
+main.o: main.c
+\t$(CC) $(CFLAGS) -c main.c
+
+clean:
+\trm -f *.o program
+
+.PHONY: all clean''',
+    },
+    "nginx": {
+        "basics": '''server {
+    listen 80;
+    server_name example.com;
+    
+    location / {
+        root /var/www/html;
+        index index.html;
+    }
+    
+    location /api {
+        proxy_pass http://localhost:8080;
+    }
+}''',
+    },
+    "pkl": {
+        "basics": '''amends "package://pkl-lang/pkl-python@1.0.0"
+
+name = "my-app"
+version = "1.0.0"
+
+dependencies {
+    ["requests"] = "2.28.0"
+}
+
+server {
+    host = "localhost"
+    port = 8080
+}''',
+    },
+    "cue": {
+        "basics": '''package example
+
+#User: {
+    id: int
+    name: string
+    email?: string
+}
+
+user: #User & {
+    id: 1
+    name: "Alice"
+}''',
+    },
+    "protobuf": {
+        "basics": '''syntax = "proto3";
+
+package example;
+
+message User {
+    int32 id = 1;
+    string name = 2;
+    string email = 3;
+}
+
+service UserService {
+    rpc GetUser(UserRequest) returns (User);
+}''',
+    },
+    "mojo": {
+        "basics": '''struct User:
+    var id: Int
+    var name: String
+    var email: String
+    
+    fn __init__(inout self, id: Int, name: String, email: String):
+        self.id = id
+        self.name = name
+        self.email = email
+
+fn main():
+    let user = User(1, "Alice", "alice@example.com")
+    print("Hello,", user.name)''',
+    },
+    "triton": {
+        "basics": '''import triton
+
+@triton.jit
+def add_kernel(x_ptr, y_ptr, output_ptr, n_elements, BLOCK_SIZE: "constexpr"):
+    pid = triton.program_id(0)
+    block_start = pid * BLOCK_SIZE
+    offsets = block_start + triton.arange(0, BLOCK_SIZE)
+    mask = offsets < n_elements
+    x = triton.load(x_ptr + offsets, mask=mask)
+    y = triton.load(y_ptr + offsets, mask=mask)
+    output = x + y
+    triton.store(output_ptr + offsets, output, mask=mask)''',
+    },
+    "stan": {
+        "basics": '''data {
+    int<lower=0> N;
+    vector[N] x;
+    vector[N] y;
+}
+
+parameters {
+    real alpha;
+    real beta;
+    real<lower=0> sigma;
+}
+
+model {
+    alpha ~ normal(0, 1);
+    beta ~ normal(0, 1);
+    sigma ~ exponential(1);
+    y ~ normal(alpha + beta * x, sigma);
+}''',
+    },
+    "clojure": {
+        "basics": '''(ns example.user
+  (:require [clojure.string :as str]))
+
+(defrecord User [id name email])
+
+(defn greet [user]
+  (str "Hello, " (:name user) "!"))
+
+(def user (->User 1 "Alice" "alice@example.com"))
+(println (greet user))''',
+        "macros": '''(defmacro when [test & body]
+  `(if ~test (do ~@body)))
+
+(when true
+  (println "It's true!"))''',
+    },
+    "jinja": {
+        "basics": '''{% set name = "World" %}
+Hello, {{ name }}!
+
+{% if user %}
+    <p>Welcome, {{ user.name }}!</p>
+{% else %}
+    <p>Please log in.</p>
+{% endif %}
+
+{% for item in items %}
+    <li>{{ item }}</li>
+{% endfor %}''',
+        "filters": '''{{ name | upper }}
+{{ value | default("N/A") }}
+{{ items | join(", ") }}''',
+    },
+    "tree": {
+        "basics": '''.
+├── src
+│   ├── main.py
+│   └── utils.py
+├── tests
+│   └── test_main.py
+└── README.md''',
+    },
+    "powershell": {
+        "basics": '''# Variables
+$name = "World"
+$count = 10
+
+# Function
+function Greet {
+    param([string]$Name)
+    Write-Host "Hello, $Name!"
+}
+
+# Conditionals
+if ($name -eq "World") {
+    Write-Host "Hello World"
+} elseif ($name -eq "") {
+    Write-Host "No name"
+} else {
+    Write-Host "Hello $name"
+}
+
+# Loops
+foreach ($i in 1..$count) {
+    Write-Host "Iteration $i"
+}
+
+# Arrays
+$items = @("one", "two", "three")
+Write-Host $items[0]''',
+    },
+    "plaintext": {
+        "basics": '''This is a plain text file.
+
+It contains no special formatting or syntax highlighting.
+
+Lines can be of any length and contain any characters.
+
+Numbers: 123, 456.789
+Symbols: !@#$%^&*()
+Special: <tag> [bracket] {brace} (paren)''',
+    },
+    "cuda": {
+        "basics": '''__global__ void addKernel(float *a, float *b, float *c, int n) {
+    int idx = blockIdx.x * blockDim.x + threadIdx.x;
+    if (idx < n) {
+        c[idx] = a[idx] + b[idx];
+    }
+}
+
+int main() {
+    float *d_a, *d_b, *d_c;
+    cudaMalloc(&d_a, n * sizeof(float));
+    cudaMalloc(&d_b, n * sizeof(float));
+    cudaMalloc(&d_c, n * sizeof(float));
+    
+    addKernel<<<blocks, threads>>>(d_a, d_b, d_c, n);
+    cudaDeviceSynchronize();
+    
+    return 0;
+}''',
+    },
 }
 
 # Extension mapping
@@ -808,6 +1832,27 @@ EXTENSIONS: dict[str, str] = {
     "v": ".v",
     "mojo": ".mojo",
     "kida": ".kida",
+    "dockerfile": ".dockerfile",
+    "graphql": ".graphql",
+    "hcl": ".tf",
+    "groovy": ".groovy",
+    "ini": ".ini",
+    "csv": ".csv",
+    "diff": ".diff",
+    "makefile": ".makefile",
+    "nginx": ".nginx",
+    "pkl": ".pkl",
+    "cue": ".cue",
+    "protobuf": ".proto",
+    "triton": ".triton",
+    "stan": ".stan",
+    "jinja": ".jinja",
+    "tree": ".tree",
+    "powershell": ".ps1",
+    "plaintext": ".txt",
+    "cuda": ".cu",
+    "gleam": ".gleam",
+    "groovy": ".groovy",
 }
 
 

@@ -1,0 +1,284 @@
+[
+  {
+    "type": "KEYWORD_NAMESPACE",
+    "value": "amends",
+    "line": 1,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 1,
+    "column": 7
+  },
+  {
+    "type": "STRING",
+    "value": "\"package://pkl-lang/pkl-python@1.0.0\"",
+    "line": 1,
+    "column": 8
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n\n",
+    "line": 1,
+    "column": 45
+  },
+  {
+    "type": "NAME",
+    "value": "name",
+    "line": 3,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 3,
+    "column": 5
+  },
+  {
+    "type": "OPERATOR",
+    "value": "=",
+    "line": 3,
+    "column": 6
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 3,
+    "column": 7
+  },
+  {
+    "type": "STRING",
+    "value": "\"my-app\"",
+    "line": 3,
+    "column": 8
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 3,
+    "column": 16
+  },
+  {
+    "type": "NAME",
+    "value": "version",
+    "line": 4,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 4,
+    "column": 8
+  },
+  {
+    "type": "OPERATOR",
+    "value": "=",
+    "line": 4,
+    "column": 9
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 4,
+    "column": 10
+  },
+  {
+    "type": "STRING",
+    "value": "\"1.0.0\"",
+    "line": 4,
+    "column": 11
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n\n",
+    "line": 4,
+    "column": 18
+  },
+  {
+    "type": "NAME",
+    "value": "dependencies",
+    "line": 6,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 6,
+    "column": 13
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "{",
+    "line": 6,
+    "column": 14
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n    ",
+    "line": 6,
+    "column": 15
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "[",
+    "line": 7,
+    "column": 5
+  },
+  {
+    "type": "STRING",
+    "value": "\"requests\"",
+    "line": 7,
+    "column": 6
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "]",
+    "line": 7,
+    "column": 16
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 7,
+    "column": 17
+  },
+  {
+    "type": "OPERATOR",
+    "value": "=",
+    "line": 7,
+    "column": 18
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 7,
+    "column": 19
+  },
+  {
+    "type": "STRING",
+    "value": "\"2.28.0\"",
+    "line": 7,
+    "column": 20
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 7,
+    "column": 28
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "}",
+    "line": 8,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n\n",
+    "line": 8,
+    "column": 2
+  },
+  {
+    "type": "NAME",
+    "value": "server",
+    "line": 10,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 10,
+    "column": 7
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "{",
+    "line": 10,
+    "column": 8
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n    ",
+    "line": 10,
+    "column": 9
+  },
+  {
+    "type": "NAME",
+    "value": "host",
+    "line": 11,
+    "column": 5
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 11,
+    "column": 9
+  },
+  {
+    "type": "OPERATOR",
+    "value": "=",
+    "line": 11,
+    "column": 10
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 11,
+    "column": 11
+  },
+  {
+    "type": "STRING",
+    "value": "\"localhost\"",
+    "line": 11,
+    "column": 12
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n    ",
+    "line": 11,
+    "column": 23
+  },
+  {
+    "type": "NAME",
+    "value": "port",
+    "line": 12,
+    "column": 5
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 12,
+    "column": 9
+  },
+  {
+    "type": "OPERATOR",
+    "value": "=",
+    "line": 12,
+    "column": 10
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 12,
+    "column": 11
+  },
+  {
+    "type": "NUMBER_INTEGER",
+    "value": "8080",
+    "line": 12,
+    "column": 12
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 12,
+    "column": 16
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "}",
+    "line": 13,
+    "column": 1
+  }
+]

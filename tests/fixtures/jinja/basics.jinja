@@ -1,0 +1,12 @@
+{% set name = "World" %}
+Hello, {{ name }}!
+
+{% if user %}
+    <p>Welcome, {{ user.name }}!</p>
+{% else %}
+    <p>Please log in.</p>
+{% endif %}
+
+{% for item in items %}
+    <li>{{ item }}</li>
+{% endfor %}

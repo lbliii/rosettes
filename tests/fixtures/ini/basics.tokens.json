@@ -1,0 +1,218 @@
+[
+  {
+    "type": "COMMENT_SINGLE",
+    "value": "; Configuration file",
+    "line": 1,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 1,
+    "column": 21
+  },
+  {
+    "type": "NAME_TAG",
+    "value": "[section]",
+    "line": 2,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 2,
+    "column": 10
+  },
+  {
+    "type": "NAME_ATTRIBUTE",
+    "value": "key",
+    "line": 3,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 3,
+    "column": 4
+  },
+  {
+    "type": "OPERATOR",
+    "value": "=",
+    "line": 3,
+    "column": 5
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 3,
+    "column": 6
+  },
+  {
+    "type": "STRING",
+    "value": "value",
+    "line": 3,
+    "column": 7
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 3,
+    "column": 12
+  },
+  {
+    "type": "NAME_ATTRIBUTE",
+    "value": "number",
+    "line": 4,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 4,
+    "column": 7
+  },
+  {
+    "type": "OPERATOR",
+    "value": "=",
+    "line": 4,
+    "column": 8
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 4,
+    "column": 9
+  },
+  {
+    "type": "NUMBER_INTEGER",
+    "value": "42",
+    "line": 4,
+    "column": 10
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 4,
+    "column": 12
+  },
+  {
+    "type": "NAME_ATTRIBUTE",
+    "value": "boolean",
+    "line": 5,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 5,
+    "column": 8
+  },
+  {
+    "type": "OPERATOR",
+    "value": "=",
+    "line": 5,
+    "column": 9
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 5,
+    "column": 10
+  },
+  {
+    "type": "KEYWORD_CONSTANT",
+    "value": "true",
+    "line": 5,
+    "column": 11
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 5,
+    "column": 15
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 6,
+    "column": 1
+  },
+  {
+    "type": "NAME_TAG",
+    "value": "[database]",
+    "line": 7,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 7,
+    "column": 11
+  },
+  {
+    "type": "NAME_ATTRIBUTE",
+    "value": "host",
+    "line": 8,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 8,
+    "column": 5
+  },
+  {
+    "type": "OPERATOR",
+    "value": "=",
+    "line": 8,
+    "column": 6
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 8,
+    "column": 7
+  },
+  {
+    "type": "STRING",
+    "value": "localhost",
+    "line": 8,
+    "column": 8
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 8,
+    "column": 17
+  },
+  {
+    "type": "NAME_ATTRIBUTE",
+    "value": "port",
+    "line": 9,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 9,
+    "column": 5
+  },
+  {
+    "type": "OPERATOR",
+    "value": "=",
+    "line": 9,
+    "column": 6
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 9,
+    "column": 7
+  },
+  {
+    "type": "NUMBER_INTEGER",
+    "value": "5432",
+    "line": 9,
+    "column": 8
+  }
+]

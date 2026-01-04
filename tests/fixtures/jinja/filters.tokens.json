@@ -1,0 +1,212 @@
+[
+  {
+    "type": "PUNCTUATION_MARKER",
+    "value": "{{",
+    "line": 1,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 1,
+    "column": 3
+  },
+  {
+    "type": "NAME_VARIABLE",
+    "value": "name",
+    "line": 1,
+    "column": 4
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 1,
+    "column": 8
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "|",
+    "line": 1,
+    "column": 9
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 1,
+    "column": 10
+  },
+  {
+    "type": "NAME_FUNCTION",
+    "value": "upper",
+    "line": 1,
+    "column": 11
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 1,
+    "column": 16
+  },
+  {
+    "type": "PUNCTUATION_MARKER",
+    "value": "}}",
+    "line": 1,
+    "column": 17
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 1,
+    "column": 19
+  },
+  {
+    "type": "PUNCTUATION_MARKER",
+    "value": "{{",
+    "line": 2,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 2,
+    "column": 3
+  },
+  {
+    "type": "NAME_VARIABLE",
+    "value": "value",
+    "line": 2,
+    "column": 4
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 2,
+    "column": 9
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "|",
+    "line": 2,
+    "column": 10
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 2,
+    "column": 11
+  },
+  {
+    "type": "NAME_FUNCTION",
+    "value": "default",
+    "line": 2,
+    "column": 12
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "(",
+    "line": 2,
+    "column": 19
+  },
+  {
+    "type": "STRING",
+    "value": "\"N/A\"",
+    "line": 2,
+    "column": 20
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": ")",
+    "line": 2,
+    "column": 25
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 2,
+    "column": 26
+  },
+  {
+    "type": "PUNCTUATION_MARKER",
+    "value": "}}",
+    "line": 2,
+    "column": 27
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 2,
+    "column": 29
+  },
+  {
+    "type": "PUNCTUATION_MARKER",
+    "value": "{{",
+    "line": 3,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 3,
+    "column": 3
+  },
+  {
+    "type": "NAME_FUNCTION",
+    "value": "items",
+    "line": 3,
+    "column": 4
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 3,
+    "column": 9
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "|",
+    "line": 3,
+    "column": 10
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 3,
+    "column": 11
+  },
+  {
+    "type": "NAME_FUNCTION",
+    "value": "join",
+    "line": 3,
+    "column": 12
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "(",
+    "line": 3,
+    "column": 16
+  },
+  {
+    "type": "STRING",
+    "value": "\", \"",
+    "line": 3,
+    "column": 17
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": ")",
+    "line": 3,
+    "column": 21
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 3,
+    "column": 22
+  },
+  {
+    "type": "PUNCTUATION_MARKER",
+    "value": "}}",
+    "line": 3,
+    "column": 23
+  }
+]

@@ -1,0 +1,380 @@
+[
+  {
+    "type": "KEYWORD",
+    "value": "server",
+    "line": 1,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 1,
+    "column": 7
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "{",
+    "line": 1,
+    "column": 8
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 1,
+    "column": 9
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "    ",
+    "line": 2,
+    "column": 1
+  },
+  {
+    "type": "KEYWORD",
+    "value": "listen",
+    "line": 2,
+    "column": 5
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 2,
+    "column": 11
+  },
+  {
+    "type": "NUMBER_INTEGER",
+    "value": "80",
+    "line": 2,
+    "column": 12
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": ";",
+    "line": 2,
+    "column": 14
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 2,
+    "column": 15
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "    ",
+    "line": 3,
+    "column": 1
+  },
+  {
+    "type": "KEYWORD",
+    "value": "server_name",
+    "line": 3,
+    "column": 5
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 3,
+    "column": 16
+  },
+  {
+    "type": "NAME",
+    "value": "example",
+    "line": 3,
+    "column": 17
+  },
+  {
+    "type": "STRING",
+    "value": ".com",
+    "line": 3,
+    "column": 24
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": ";",
+    "line": 3,
+    "column": 28
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 3,
+    "column": 29
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "    ",
+    "line": 4,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 4,
+    "column": 5
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "    ",
+    "line": 5,
+    "column": 1
+  },
+  {
+    "type": "KEYWORD",
+    "value": "location",
+    "line": 5,
+    "column": 5
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 5,
+    "column": 13
+  },
+  {
+    "type": "STRING",
+    "value": "/",
+    "line": 5,
+    "column": 14
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 5,
+    "column": 15
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "{",
+    "line": 5,
+    "column": 16
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 5,
+    "column": 17
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "        ",
+    "line": 6,
+    "column": 1
+  },
+  {
+    "type": "KEYWORD",
+    "value": "root",
+    "line": 6,
+    "column": 9
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 6,
+    "column": 13
+  },
+  {
+    "type": "STRING",
+    "value": "/var/www/html",
+    "line": 6,
+    "column": 14
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": ";",
+    "line": 6,
+    "column": 27
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 6,
+    "column": 28
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "        ",
+    "line": 7,
+    "column": 1
+  },
+  {
+    "type": "KEYWORD",
+    "value": "index",
+    "line": 7,
+    "column": 9
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 7,
+    "column": 14
+  },
+  {
+    "type": "KEYWORD",
+    "value": "index",
+    "line": 7,
+    "column": 15
+  },
+  {
+    "type": "STRING",
+    "value": ".html",
+    "line": 7,
+    "column": 20
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": ";",
+    "line": 7,
+    "column": 25
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 7,
+    "column": 26
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "    ",
+    "line": 8,
+    "column": 1
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "}",
+    "line": 8,
+    "column": 5
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 8,
+    "column": 6
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "    ",
+    "line": 9,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 9,
+    "column": 5
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "    ",
+    "line": 10,
+    "column": 1
+  },
+  {
+    "type": "KEYWORD",
+    "value": "location",
+    "line": 10,
+    "column": 5
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 10,
+    "column": 13
+  },
+  {
+    "type": "STRING",
+    "value": "/api",
+    "line": 10,
+    "column": 14
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 10,
+    "column": 18
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "{",
+    "line": 10,
+    "column": 19
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 10,
+    "column": 20
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "        ",
+    "line": 11,
+    "column": 1
+  },
+  {
+    "type": "KEYWORD",
+    "value": "proxy_pass",
+    "line": 11,
+    "column": 9
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 11,
+    "column": 19
+  },
+  {
+    "type": "KEYWORD",
+    "value": "http",
+    "line": 11,
+    "column": 20
+  },
+  {
+    "type": "TEXT",
+    "value": ":",
+    "line": 11,
+    "column": 24
+  },
+  {
+    "type": "STRING",
+    "value": "//localhost:8080",
+    "line": 11,
+    "column": 25
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": ";",
+    "line": 11,
+    "column": 41
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 11,
+    "column": 42
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "    ",
+    "line": 12,
+    "column": 1
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "}",
+    "line": 12,
+    "column": 5
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 12,
+    "column": 6
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "}",
+    "line": 13,
+    "column": 1
+  }
+]

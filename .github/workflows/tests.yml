@@ -52,6 +52,88 @@ jobs:
         run: |
           uv run pytest -q --tb=short --cov=rosettes --cov-report=xml
 
+  # Fixture validation
+  fixtures:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v4
+        with:
+          python-version: "3.14t"
+
+      - name: Cache uv dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/uv
+          key: uv-${{ runner.os }}-${{ hashFiles('uv.lock') }}
+          restore-keys: |
+            uv-${{ runner.os }}-
+
+      - name: Install dependencies
+        run: uv sync --group dev
+
+      - name: Verify fixture coverage
+        run: |
+          # Count languages with fixtures
+          LANG_COUNT=$(find tests/fixtures -type d -mindepth 1 -maxdepth 1 | wc -l | tr -d ' ')
+          FIXTURE_COUNT=$(find tests/fixtures -name "*.tokens.json" | wc -l | tr -d ' ')
+          
+          echo "Languages with fixtures: $LANG_COUNT/55"
+          echo "Total fixture files: $FIXTURE_COUNT"
+          
+          # Verify tier coverage
+          TIER1_LANGS="java cpp c ruby swift kotlin"
+          TIER1_COUNT=0
+          for lang in $TIER1_LANGS; do
+            if [ -d "tests/fixtures/$lang" ]; then
+              count=$(find "tests/fixtures/$lang" -name "*.tokens.json" | wc -l | tr -d ' ')
+              if [ "$count" -ge 5 ]; then
+                TIER1_COUNT=$((TIER1_COUNT + 1))
+              fi
+            fi
+          done
+          echo "Tier 1 coverage: $TIER1_COUNT/6 languages with 5+ fixtures"
+          
+          # Verify all languages have at least 1 fixture
+          if [ "$LANG_COUNT" -lt 55 ]; then
+            echo "::warning::Missing fixtures for $((55 - LANG_COUNT)) languages"
+          fi
+          
+          # Verify JSON syntax
+          echo "Validating JSON syntax..."
+          for json_file in tests/fixtures/**/*.tokens.json; do
+            python -m json.tool "$json_file" > /dev/null || {
+              echo "::error::Invalid JSON: $json_file"
+              exit 1
+            }
+          done
+      
+      - name: Run fixture tests
+        env:
+          CI: true
+          PYTHON_GIL: "0"
+        run: |
+          uv run pytest tests/lexers/test_fixtures.py -v --tb=short
+      
+      - name: Verify fixture completeness
+        run: |
+          # Check that every .tokens.json has a corresponding source file
+          for tokens_file in tests/fixtures/**/*.tokens.json; do
+            base="${tokens_file%.tokens.json}"
+            found=false
+            for ext in .py .js .ts .rs .go .java .kt .swift .rb .pl .lua .scala .ex .hs .nim .zig .v .dart .gleam .yaml .json .php .sh .sql .toml .xml .html .css .md .kida .c .cpp .h .hpp .dockerfile .graphql .tf .groovy .r .jl .ini .csv .diff .makefile .nginx .proto .mojo .triton .cu .stan .pkl .cue .clj .jinja .tree .ps1 .txt; do
+              if [ -f "${base}${ext}" ]; then
+                found=true
+                break
+              fi
+            done
+            if [ "$found" = false ]; then
+              echo "::warning::Missing source file for $tokens_file"
+            fi
+          done
+
   # Security tests (ReDoS resistance)
   security:
     runs-on: ubuntu-latest

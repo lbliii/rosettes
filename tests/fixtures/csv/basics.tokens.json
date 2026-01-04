@@ -1,0 +1,104 @@
+[
+  {
+    "type": "TEXT",
+    "value": "name",
+    "line": 1,
+    "column": 1
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": ",",
+    "line": 1,
+    "column": 5
+  },
+  {
+    "type": "TEXT",
+    "value": "age",
+    "line": 1,
+    "column": 6
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": ",",
+    "line": 1,
+    "column": 9
+  },
+  {
+    "type": "TEXT",
+    "value": "email",
+    "line": 1,
+    "column": 10
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 1,
+    "column": 15
+  },
+  {
+    "type": "TEXT",
+    "value": "Alice",
+    "line": 2,
+    "column": 1
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": ",",
+    "line": 2,
+    "column": 6
+  },
+  {
+    "type": "NUMBER_INTEGER",
+    "value": "30",
+    "line": 2,
+    "column": 7
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": ",",
+    "line": 2,
+    "column": 9
+  },
+  {
+    "type": "TEXT",
+    "value": "alice@example.com",
+    "line": 2,
+    "column": 10
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 2,
+    "column": 27
+  },
+  {
+    "type": "TEXT",
+    "value": "Bob",
+    "line": 3,
+    "column": 1
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": ",",
+    "line": 3,
+    "column": 4
+  },
+  {
+    "type": "NUMBER_INTEGER",
+    "value": "25",
+    "line": 3,
+    "column": 5
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": ",",
+    "line": 3,
+    "column": 7
+  },
+  {
+    "type": "TEXT",
+    "value": "bob@example.com",
+    "line": 3,
+    "column": 8
+  }
+]

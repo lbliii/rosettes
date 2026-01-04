@@ -1,0 +1,284 @@
+[
+  {
+    "type": "KEYWORD_NAMESPACE",
+    "value": "package",
+    "line": 1,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 1,
+    "column": 8
+  },
+  {
+    "type": "NAME",
+    "value": "example",
+    "line": 1,
+    "column": 9
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n\n",
+    "line": 1,
+    "column": 16
+  },
+  {
+    "type": "KEYWORD_TYPE",
+    "value": "#User",
+    "line": 3,
+    "column": 1
+  },
+  {
+    "type": "OPERATOR",
+    "value": ":",
+    "line": 3,
+    "column": 6
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 3,
+    "column": 7
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "{",
+    "line": 3,
+    "column": 8
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n    ",
+    "line": 3,
+    "column": 9
+  },
+  {
+    "type": "NAME",
+    "value": "id",
+    "line": 4,
+    "column": 5
+  },
+  {
+    "type": "OPERATOR",
+    "value": ":",
+    "line": 4,
+    "column": 7
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 4,
+    "column": 8
+  },
+  {
+    "type": "KEYWORD_TYPE",
+    "value": "int",
+    "line": 4,
+    "column": 9
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n    ",
+    "line": 4,
+    "column": 12
+  },
+  {
+    "type": "NAME",
+    "value": "name",
+    "line": 5,
+    "column": 5
+  },
+  {
+    "type": "OPERATOR",
+    "value": ":",
+    "line": 5,
+    "column": 9
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 5,
+    "column": 10
+  },
+  {
+    "type": "KEYWORD_TYPE",
+    "value": "string",
+    "line": 5,
+    "column": 11
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n    ",
+    "line": 5,
+    "column": 17
+  },
+  {
+    "type": "NAME",
+    "value": "email",
+    "line": 6,
+    "column": 5
+  },
+  {
+    "type": "OPERATOR",
+    "value": "?",
+    "line": 6,
+    "column": 10
+  },
+  {
+    "type": "OPERATOR",
+    "value": ":",
+    "line": 6,
+    "column": 11
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 6,
+    "column": 12
+  },
+  {
+    "type": "KEYWORD_TYPE",
+    "value": "string",
+    "line": 6,
+    "column": 13
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 6,
+    "column": 19
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "}",
+    "line": 7,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n\n",
+    "line": 7,
+    "column": 2
+  },
+  {
+    "type": "NAME",
+    "value": "user",
+    "line": 9,
+    "column": 1
+  },
+  {
+    "type": "OPERATOR",
+    "value": ":",
+    "line": 9,
+    "column": 5
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 9,
+    "column": 6
+  },
+  {
+    "type": "KEYWORD_TYPE",
+    "value": "#User",
+    "line": 9,
+    "column": 7
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 9,
+    "column": 12
+  },
+  {
+    "type": "OPERATOR",
+    "value": "&",
+    "line": 9,
+    "column": 13
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 9,
+    "column": 14
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "{",
+    "line": 9,
+    "column": 15
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n    ",
+    "line": 9,
+    "column": 16
+  },
+  {
+    "type": "NAME",
+    "value": "id",
+    "line": 10,
+    "column": 5
+  },
+  {
+    "type": "OPERATOR",
+    "value": ":",
+    "line": 10,
+    "column": 7
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 10,
+    "column": 8
+  },
+  {
+    "type": "NUMBER_INTEGER",
+    "value": "1",
+    "line": 10,
+    "column": 9
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n    ",
+    "line": 10,
+    "column": 10
+  },
+  {
+    "type": "NAME",
+    "value": "name",
+    "line": 11,
+    "column": 5
+  },
+  {
+    "type": "OPERATOR",
+    "value": ":",
+    "line": 11,
+    "column": 9
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 11,
+    "column": 10
+  },
+  {
+    "type": "STRING",
+    "value": "\"Alice\"",
+    "line": 11,
+    "column": 11
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 11,
+    "column": 18
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "}",
+    "line": 12,
+    "column": 1
+  }
+]

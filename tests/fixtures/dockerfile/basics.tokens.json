@@ -1,0 +1,548 @@
+[
+  {
+    "type": "KEYWORD",
+    "value": "FROM",
+    "line": 1,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 1,
+    "column": 5
+  },
+  {
+    "type": "TEXT",
+    "value": "python:3.14-slim",
+    "line": 1,
+    "column": 6
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 1,
+    "column": 22
+  },
+  {
+    "type": "TEXT",
+    "value": "AS",
+    "line": 1,
+    "column": 23
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 1,
+    "column": 25
+  },
+  {
+    "type": "TEXT",
+    "value": "builder",
+    "line": 1,
+    "column": 26
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 1,
+    "column": 33
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 2,
+    "column": 1
+  },
+  {
+    "type": "KEYWORD",
+    "value": "ARG",
+    "line": 3,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 3,
+    "column": 4
+  },
+  {
+    "type": "TEXT",
+    "value": "VERSION",
+    "line": 3,
+    "column": 5
+  },
+  {
+    "type": "OPERATOR",
+    "value": "=",
+    "line": 3,
+    "column": 12
+  },
+  {
+    "type": "NUMBER_INTEGER",
+    "value": "1",
+    "line": 3,
+    "column": 13
+  },
+  {
+    "type": "TEXT",
+    "value": ".0",
+    "line": 3,
+    "column": 14
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 3,
+    "column": 16
+  },
+  {
+    "type": "KEYWORD",
+    "value": "ENV",
+    "line": 4,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 4,
+    "column": 4
+  },
+  {
+    "type": "TEXT",
+    "value": "APP_HOME",
+    "line": 4,
+    "column": 5
+  },
+  {
+    "type": "OPERATOR",
+    "value": "=",
+    "line": 4,
+    "column": 13
+  },
+  {
+    "type": "TEXT",
+    "value": "/app",
+    "line": 4,
+    "column": 14
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 4,
+    "column": 18
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\\\n",
+    "line": 4,
+    "column": 19
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "    ",
+    "line": 5,
+    "column": 1
+  },
+  {
+    "type": "TEXT",
+    "value": "PYTHONUNBUFFERED",
+    "line": 5,
+    "column": 5
+  },
+  {
+    "type": "OPERATOR",
+    "value": "=",
+    "line": 5,
+    "column": 21
+  },
+  {
+    "type": "NUMBER_INTEGER",
+    "value": "1",
+    "line": 5,
+    "column": 22
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 5,
+    "column": 23
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 6,
+    "column": 1
+  },
+  {
+    "type": "KEYWORD",
+    "value": "WORKDIR",
+    "line": 7,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 7,
+    "column": 8
+  },
+  {
+    "type": "NAME_VARIABLE",
+    "value": "${APP_HOME}",
+    "line": 7,
+    "column": 9
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 7,
+    "column": 20
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 8,
+    "column": 1
+  },
+  {
+    "type": "KEYWORD",
+    "value": "COPY",
+    "line": 9,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 9,
+    "column": 5
+  },
+  {
+    "type": "TEXT",
+    "value": "requirements.txt",
+    "line": 9,
+    "column": 6
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 9,
+    "column": 22
+  },
+  {
+    "type": "TEXT",
+    "value": ".",
+    "line": 9,
+    "column": 23
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 9,
+    "column": 24
+  },
+  {
+    "type": "KEYWORD",
+    "value": "RUN",
+    "line": 10,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 10,
+    "column": 4
+  },
+  {
+    "type": "TEXT",
+    "value": "pip",
+    "line": 10,
+    "column": 5
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 10,
+    "column": 8
+  },
+  {
+    "type": "TEXT",
+    "value": "install",
+    "line": 10,
+    "column": 9
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 10,
+    "column": 16
+  },
+  {
+    "type": "TEXT",
+    "value": "--no-cache-dir",
+    "line": 10,
+    "column": 17
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 10,
+    "column": 31
+  },
+  {
+    "type": "TEXT",
+    "value": "-r",
+    "line": 10,
+    "column": 32
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 10,
+    "column": 34
+  },
+  {
+    "type": "TEXT",
+    "value": "requirements.txt",
+    "line": 10,
+    "column": 35
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 10,
+    "column": 51
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 11,
+    "column": 1
+  },
+  {
+    "type": "KEYWORD",
+    "value": "COPY",
+    "line": 12,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 12,
+    "column": 5
+  },
+  {
+    "type": "TEXT",
+    "value": ".",
+    "line": 12,
+    "column": 6
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 12,
+    "column": 7
+  },
+  {
+    "type": "TEXT",
+    "value": ".",
+    "line": 12,
+    "column": 8
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 12,
+    "column": 9
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 13,
+    "column": 1
+  },
+  {
+    "type": "KEYWORD",
+    "value": "EXPOSE",
+    "line": 14,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 14,
+    "column": 7
+  },
+  {
+    "type": "NUMBER_INTEGER",
+    "value": "8080",
+    "line": 14,
+    "column": 8
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 14,
+    "column": 12
+  },
+  {
+    "type": "KEYWORD",
+    "value": "HEALTHCHECK",
+    "line": 15,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 15,
+    "column": 12
+  },
+  {
+    "type": "TEXT",
+    "value": "--interval",
+    "line": 15,
+    "column": 13
+  },
+  {
+    "type": "OPERATOR",
+    "value": "=",
+    "line": 15,
+    "column": 23
+  },
+  {
+    "type": "NUMBER_INTEGER",
+    "value": "30",
+    "line": 15,
+    "column": 24
+  },
+  {
+    "type": "TEXT",
+    "value": "s",
+    "line": 15,
+    "column": 26
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 15,
+    "column": 27
+  },
+  {
+    "type": "TEXT",
+    "value": "CMD",
+    "line": 15,
+    "column": 28
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 15,
+    "column": 31
+  },
+  {
+    "type": "TEXT",
+    "value": "curl",
+    "line": 15,
+    "column": 32
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 15,
+    "column": 36
+  },
+  {
+    "type": "TEXT",
+    "value": "-f",
+    "line": 15,
+    "column": 37
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 15,
+    "column": 39
+  },
+  {
+    "type": "TEXT",
+    "value": "http://localhost:8080/health",
+    "line": 15,
+    "column": 40
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 15,
+    "column": 68
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 16,
+    "column": 1
+  },
+  {
+    "type": "KEYWORD",
+    "value": "ENTRYPOINT",
+    "line": 17,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 17,
+    "column": 11
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "[",
+    "line": 17,
+    "column": 12
+  },
+  {
+    "type": "STRING",
+    "value": "\"python\"",
+    "line": 17,
+    "column": 13
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "]",
+    "line": 17,
+    "column": 21
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 17,
+    "column": 22
+  },
+  {
+    "type": "KEYWORD",
+    "value": "CMD",
+    "line": 18,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 18,
+    "column": 4
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "[",
+    "line": 18,
+    "column": 5
+  },
+  {
+    "type": "STRING",
+    "value": "\"app.py\"",
+    "line": 18,
+    "column": 6
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "]",
+    "line": 18,
+    "column": 14
+  }
+]

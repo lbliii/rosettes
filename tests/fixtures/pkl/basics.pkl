@@ -1,0 +1,13 @@
+amends "package://pkl-lang/pkl-python@1.0.0"
+
+name = "my-app"
+version = "1.0.0"
+
+dependencies {
+    ["requests"] = "2.28.0"
+}
+
+server {
+    host = "localhost"
+    port = 8080
+}

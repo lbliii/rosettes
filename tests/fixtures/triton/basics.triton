@@ -1,0 +1,12 @@
+import triton
+
+@triton.jit
+def add_kernel(x_ptr, y_ptr, output_ptr, n_elements, BLOCK_SIZE: "constexpr"):
+    pid = triton.program_id(0)
+    block_start = pid * BLOCK_SIZE
+    offsets = block_start + triton.arange(0, BLOCK_SIZE)
+    mask = offsets < n_elements
+    x = triton.load(x_ptr + offsets, mask=mask)
+    y = triton.load(y_ptr + offsets, mask=mask)
+    output = x + y
+    triton.store(output_ptr + offsets, output, mask=mask)

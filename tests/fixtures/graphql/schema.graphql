@@ -1,0 +1,39 @@
+type Query {
+  user(id: ID!): User
+  users(filter: UserFilter, first: Int, after: String): UserConnection!
+}
+
+type Mutation {
+  createUser(input: CreateUserInput!): User!
+  updateUser(id: ID!, input: UpdateUserInput!): User
+  deleteUser(id: ID!): Boolean!
+}
+
+type User implements Node {
+  id: ID!
+  name: String!
+  email: String!
+  posts(first: Int): [Post!]!
+  createdAt: DateTime!
+}
+
+input CreateUserInput {
+  name: String!
+  email: String!
+}
+
+interface Node {
+  id: ID!
+}
+
+union SearchResult = User | Post | Comment
+
+enum Role {
+  ADMIN
+  USER
+  GUEST
+}
+
+scalar DateTime
+
+directive @auth(requires: Role = ADMIN) on FIELD_DEFINITION

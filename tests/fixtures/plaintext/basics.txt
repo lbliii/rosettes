@@ -1,0 +1,9 @@
+This is a plain text file.
+
+It contains no special formatting or syntax highlighting.
+
+Lines can be of any length and contain any characters.
+
+Numbers: 123, 456.789
+Symbols: !@#$%^&*()
+Special: <tag> [bracket] {brace} (paren)

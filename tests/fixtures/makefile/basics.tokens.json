@@ -1,0 +1,356 @@
+[
+  {
+    "type": "NAME_LABEL",
+    "value": "CC",
+    "line": 1,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 1,
+    "column": 3
+  },
+  {
+    "type": "OPERATOR",
+    "value": "=",
+    "line": 1,
+    "column": 4
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 1,
+    "column": 5
+  },
+  {
+    "type": "NAME",
+    "value": "gcc",
+    "line": 1,
+    "column": 6
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 1,
+    "column": 9
+  },
+  {
+    "type": "NAME_LABEL",
+    "value": "CFLAGS",
+    "line": 2,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 2,
+    "column": 7
+  },
+  {
+    "type": "OPERATOR",
+    "value": "=",
+    "line": 2,
+    "column": 8
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 2,
+    "column": 9
+  },
+  {
+    "type": "TEXT",
+    "value": "-",
+    "line": 2,
+    "column": 10
+  },
+  {
+    "type": "NAME",
+    "value": "Wall",
+    "line": 2,
+    "column": 11
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 2,
+    "column": 15
+  },
+  {
+    "type": "TEXT",
+    "value": "-",
+    "line": 2,
+    "column": 16
+  },
+  {
+    "type": "NAME",
+    "value": "g",
+    "line": 2,
+    "column": 17
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 2,
+    "column": 18
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 3,
+    "column": 1
+  },
+  {
+    "type": "NAME_LABEL",
+    "value": "all",
+    "line": 4,
+    "column": 1
+  },
+  {
+    "type": "OPERATOR",
+    "value": ":",
+    "line": 4,
+    "column": 4
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 4,
+    "column": 5
+  },
+  {
+    "type": "NAME",
+    "value": "program",
+    "line": 4,
+    "column": 6
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 4,
+    "column": 13
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 5,
+    "column": 1
+  },
+  {
+    "type": "NAME_LABEL",
+    "value": "program",
+    "line": 6,
+    "column": 1
+  },
+  {
+    "type": "OPERATOR",
+    "value": ":",
+    "line": 6,
+    "column": 8
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 6,
+    "column": 9
+  },
+  {
+    "type": "NAME",
+    "value": "main.o",
+    "line": 6,
+    "column": 10
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 6,
+    "column": 16
+  },
+  {
+    "type": "NAME",
+    "value": "utils.o",
+    "line": 6,
+    "column": 17
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 6,
+    "column": 24
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\t",
+    "line": 7,
+    "column": 1
+  },
+  {
+    "type": "TEXT",
+    "value": "$(CC) $(CFLAGS) -o program main.o utils.o",
+    "line": 7,
+    "column": 2
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 7,
+    "column": 43
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 8,
+    "column": 1
+  },
+  {
+    "type": "NAME",
+    "value": "main",
+    "line": 9,
+    "column": 1
+  },
+  {
+    "type": "TEXT",
+    "value": ".",
+    "line": 9,
+    "column": 5
+  },
+  {
+    "type": "NAME",
+    "value": "o",
+    "line": 9,
+    "column": 6
+  },
+  {
+    "type": "OPERATOR",
+    "value": ":",
+    "line": 9,
+    "column": 7
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 9,
+    "column": 8
+  },
+  {
+    "type": "NAME",
+    "value": "main.c",
+    "line": 9,
+    "column": 9
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 9,
+    "column": 15
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\t",
+    "line": 10,
+    "column": 1
+  },
+  {
+    "type": "TEXT",
+    "value": "$(CC) $(CFLAGS) -c main.c",
+    "line": 10,
+    "column": 2
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 10,
+    "column": 27
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 11,
+    "column": 1
+  },
+  {
+    "type": "NAME_LABEL",
+    "value": "clean",
+    "line": 12,
+    "column": 1
+  },
+  {
+    "type": "OPERATOR",
+    "value": ":",
+    "line": 12,
+    "column": 6
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 12,
+    "column": 7
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\t",
+    "line": 13,
+    "column": 1
+  },
+  {
+    "type": "TEXT",
+    "value": "rm -f *.o program",
+    "line": 13,
+    "column": 2
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 13,
+    "column": 19
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 14,
+    "column": 1
+  },
+  {
+    "type": "TEXT",
+    "value": ".",
+    "line": 15,
+    "column": 1
+  },
+  {
+    "type": "NAME",
+    "value": "PHONY",
+    "line": 15,
+    "column": 2
+  },
+  {
+    "type": "OPERATOR",
+    "value": ":",
+    "line": 15,
+    "column": 7
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 15,
+    "column": 8
+  },
+  {
+    "type": "NAME",
+    "value": "all",
+    "line": 15,
+    "column": 9
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 15,
+    "column": 12
+  },
+  {
+    "type": "NAME",
+    "value": "clean",
+    "line": 15,
+    "column": 13
+  }
+]

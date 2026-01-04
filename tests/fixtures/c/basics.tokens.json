@@ -1,0 +1,200 @@
+[
+  {
+    "type": "COMMENT_PREPROC",
+    "value": "#include <stdio.h>",
+    "line": 1,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n\n",
+    "line": 1,
+    "column": 19
+  },
+  {
+    "type": "KEYWORD_TYPE",
+    "value": "int",
+    "line": 3,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 3,
+    "column": 4
+  },
+  {
+    "type": "NAME",
+    "value": "main",
+    "line": 3,
+    "column": 5
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "(",
+    "line": 3,
+    "column": 9
+  },
+  {
+    "type": "KEYWORD_TYPE",
+    "value": "int",
+    "line": 3,
+    "column": 10
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 3,
+    "column": 13
+  },
+  {
+    "type": "NAME",
+    "value": "argc",
+    "line": 3,
+    "column": 14
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": ",",
+    "line": 3,
+    "column": 18
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 3,
+    "column": 19
+  },
+  {
+    "type": "KEYWORD_TYPE",
+    "value": "char",
+    "line": 3,
+    "column": 20
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 3,
+    "column": 24
+  },
+  {
+    "type": "OPERATOR",
+    "value": "*",
+    "line": 3,
+    "column": 25
+  },
+  {
+    "type": "NAME",
+    "value": "argv",
+    "line": 3,
+    "column": 26
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "[",
+    "line": 3,
+    "column": 30
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "]",
+    "line": 3,
+    "column": 31
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": ")",
+    "line": 3,
+    "column": 32
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 3,
+    "column": 33
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "{",
+    "line": 3,
+    "column": 34
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n    ",
+    "line": 3,
+    "column": 35
+  },
+  {
+    "type": "NAME",
+    "value": "printf",
+    "line": 4,
+    "column": 5
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "(",
+    "line": 4,
+    "column": 11
+  },
+  {
+    "type": "STRING",
+    "value": "\"Hello, World!\\n\"",
+    "line": 4,
+    "column": 12
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": ")",
+    "line": 4,
+    "column": 29
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": ";",
+    "line": 4,
+    "column": 30
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n    ",
+    "line": 4,
+    "column": 31
+  },
+  {
+    "type": "KEYWORD",
+    "value": "return",
+    "line": 5,
+    "column": 5
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 5,
+    "column": 11
+  },
+  {
+    "type": "NUMBER_INTEGER",
+    "value": "0",
+    "line": 5,
+    "column": 12
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": ";",
+    "line": 5,
+    "column": 13
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 5,
+    "column": 14
+  },
+  {
+    "type": "PUNCTUATION",
+    "value": "}",
+    "line": 6,
+    "column": 1
+  }
+]

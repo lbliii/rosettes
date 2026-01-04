@@ -1,0 +1,314 @@
+[
+  {
+    "type": "KEYWORD",
+    "value": "FROM",
+    "line": 1,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 1,
+    "column": 5
+  },
+  {
+    "type": "TEXT",
+    "value": "node:20",
+    "line": 1,
+    "column": 6
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 1,
+    "column": 13
+  },
+  {
+    "type": "TEXT",
+    "value": "AS",
+    "line": 1,
+    "column": 14
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 1,
+    "column": 16
+  },
+  {
+    "type": "TEXT",
+    "value": "frontend",
+    "line": 1,
+    "column": 17
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 1,
+    "column": 25
+  },
+  {
+    "type": "KEYWORD",
+    "value": "WORKDIR",
+    "line": 2,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 2,
+    "column": 8
+  },
+  {
+    "type": "TEXT",
+    "value": "/app",
+    "line": 2,
+    "column": 9
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 2,
+    "column": 13
+  },
+  {
+    "type": "KEYWORD",
+    "value": "COPY",
+    "line": 3,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 3,
+    "column": 5
+  },
+  {
+    "type": "TEXT",
+    "value": "package*.json",
+    "line": 3,
+    "column": 6
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 3,
+    "column": 19
+  },
+  {
+    "type": "TEXT",
+    "value": "./",
+    "line": 3,
+    "column": 20
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 3,
+    "column": 22
+  },
+  {
+    "type": "KEYWORD",
+    "value": "RUN",
+    "line": 4,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 4,
+    "column": 4
+  },
+  {
+    "type": "TEXT",
+    "value": "npm",
+    "line": 4,
+    "column": 5
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 4,
+    "column": 8
+  },
+  {
+    "type": "TEXT",
+    "value": "ci",
+    "line": 4,
+    "column": 9
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 4,
+    "column": 11
+  },
+  {
+    "type": "KEYWORD",
+    "value": "COPY",
+    "line": 5,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 5,
+    "column": 5
+  },
+  {
+    "type": "TEXT",
+    "value": ".",
+    "line": 5,
+    "column": 6
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 5,
+    "column": 7
+  },
+  {
+    "type": "TEXT",
+    "value": ".",
+    "line": 5,
+    "column": 8
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 5,
+    "column": 9
+  },
+  {
+    "type": "KEYWORD",
+    "value": "RUN",
+    "line": 6,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 6,
+    "column": 4
+  },
+  {
+    "type": "TEXT",
+    "value": "npm",
+    "line": 6,
+    "column": 5
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 6,
+    "column": 8
+  },
+  {
+    "type": "TEXT",
+    "value": "run",
+    "line": 6,
+    "column": 9
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 6,
+    "column": 12
+  },
+  {
+    "type": "TEXT",
+    "value": "build",
+    "line": 6,
+    "column": 13
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 6,
+    "column": 18
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 7,
+    "column": 1
+  },
+  {
+    "type": "KEYWORD",
+    "value": "FROM",
+    "line": 8,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 8,
+    "column": 5
+  },
+  {
+    "type": "TEXT",
+    "value": "nginx:alpine",
+    "line": 8,
+    "column": 6
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 8,
+    "column": 18
+  },
+  {
+    "type": "KEYWORD",
+    "value": "COPY",
+    "line": 9,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 9,
+    "column": 5
+  },
+  {
+    "type": "TEXT",
+    "value": "--from",
+    "line": 9,
+    "column": 6
+  },
+  {
+    "type": "OPERATOR",
+    "value": "=",
+    "line": 9,
+    "column": 12
+  },
+  {
+    "type": "TEXT",
+    "value": "frontend",
+    "line": 9,
+    "column": 13
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 9,
+    "column": 21
+  },
+  {
+    "type": "TEXT",
+    "value": "/app/dist",
+    "line": 9,
+    "column": 22
+  },
+  {
+    "type": "WHITESPACE",
+    "value": " ",
+    "line": 9,
+    "column": 31
+  },
+  {
+    "type": "TEXT",
+    "value": "/usr/share/nginx/html",
+    "line": 9,
+    "column": 32
+  }
+]

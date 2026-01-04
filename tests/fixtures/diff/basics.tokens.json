@@ -1,0 +1,92 @@
+[
+  {
+    "type": "GENERIC_HEADING",
+    "value": "--- a/file.txt",
+    "line": 1,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 1,
+    "column": 15
+  },
+  {
+    "type": "GENERIC_HEADING",
+    "value": "+++ b/file.txt",
+    "line": 2,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 2,
+    "column": 15
+  },
+  {
+    "type": "GENERIC_SUBHEADING",
+    "value": "@@ -1,3 +1,4 @@",
+    "line": 3,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 3,
+    "column": 16
+  },
+  {
+    "type": "TEXT",
+    "value": " unchanged",
+    "line": 4,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 4,
+    "column": 11
+  },
+  {
+    "type": "GENERIC_DELETED",
+    "value": "-removed line",
+    "line": 5,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 5,
+    "column": 14
+  },
+  {
+    "type": "GENERIC_INSERTED",
+    "value": "+added line",
+    "line": 6,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 6,
+    "column": 12
+  },
+  {
+    "type": "GENERIC_INSERTED",
+    "value": "+another added",
+    "line": 7,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 7,
+    "column": 15
+  },
+  {
+    "type": "TEXT",
+    "value": " unchanged",
+    "line": 8,
+    "column": 1
+  }
+]
