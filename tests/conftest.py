@@ -148,13 +148,15 @@ def assert_tokens_match(
                 )
             if actual_token["value"] != expected_token["value"]:
                 raise AssertionError(
-                    f"Token {i}: value mismatch: {actual_token['value']} != {expected_token['value']}"
+                    f"Token {i}: value mismatch: "
+                    f"{actual_token['value']} != {expected_token['value']}"
                 )
             # Check column within tolerance
             col_diff = abs(actual_token["column"] - expected_token["column"])
             if col_diff > tolerance:
                 raise AssertionError(
-                    f"Token {i}: column out of tolerance: {actual_token['column']} vs {expected_token['column']}"
+                    f"Token {i}: column out of tolerance: "
+                    f"{actual_token['column']} vs {expected_token['column']}"
                 )
         else:
             # Strict matching

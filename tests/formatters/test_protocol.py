@@ -8,7 +8,6 @@ from rosettes import Token, TokenType
 from rosettes._protocol import Formatter
 from rosettes.formatters import HtmlFormatter, NullFormatter, TerminalFormatter
 
-
 # All built-in formatters should implement the full protocol
 FORMATTERS = [
     HtmlFormatter(),
@@ -142,4 +141,3 @@ class TestFormatterThreadSafety:
         # Try to modify the formatter — should raise
         with pytest.raises((AttributeError, TypeError)):
             formatter.name = "modified"  # type: ignore[misc]
-

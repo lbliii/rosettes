@@ -4,7 +4,7 @@
 PYTHON_VERSION ?= 3.14t
 VENV_DIR ?= .venv
 
-.PHONY: all help setup install install-docs test test-cov bench typecheck clean shell docs docs-serve
+.PHONY: all help setup install install-docs test test-cov bench lint lint-fix format typecheck clean shell docs docs-serve
 
 all: help
 
@@ -20,6 +20,9 @@ help:
 	@echo "  make test       - Run the test suite"
 	@echo "  make test-cov   - Run tests with coverage report"
 	@echo "  make bench      - Run benchmarks"
+	@echo "  make lint       - Run ruff linter"
+	@echo "  make lint-fix   - Run ruff linter with auto-fix"
+	@echo "  make format     - Run ruff formatter"
 	@echo "  make typecheck  - Run pyright type checking"
 	@echo "  make docs       - Build documentation site (requires bengal)"
 	@echo "  make docs-serve - Start dev server for docs (requires bengal)"
@@ -51,6 +54,18 @@ test-cov:
 bench:
 	@echo "Running benchmarks..."
 	uv run python -m benchmarks
+
+lint:
+	@echo "Running ruff linter..."
+	uv run ruff check src/ tests/
+
+lint-fix:
+	@echo "Running ruff linter with auto-fix..."
+	uv run ruff check src/ tests/ --fix
+
+format:
+	@echo "Running ruff formatter..."
+	uv run ruff format src/ tests/
 
 typecheck:
 	@echo "Running pyright type checking..."

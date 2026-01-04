@@ -132,4 +132,3 @@ def list_formatters() -> list[str]:
 def supports_formatter(name: str) -> bool:
     """Check if a formatter is supported."""
     return name.lower() in _ALIAS_TO_NAME
-

@@ -64,30 +64,30 @@ _RESET = "\033[0m"
 _BOLD = "\033[1m"
 
 _ANSI_COLORS: dict[SyntaxRole, str] = {
-    SyntaxRole.CONTROL_FLOW: "\033[35m",     # Magenta
-    SyntaxRole.DECLARATION: "\033[36m",      # Cyan
-    SyntaxRole.IMPORT: "\033[35m",           # Magenta
-    SyntaxRole.STRING: "\033[32m",           # Green
-    SyntaxRole.DOCSTRING: "\033[90m",        # Gray
-    SyntaxRole.NUMBER: "\033[33m",           # Yellow
-    SyntaxRole.BOOLEAN: "\033[33m",          # Yellow
-    SyntaxRole.TYPE: "\033[36m",             # Cyan
-    SyntaxRole.FUNCTION: "\033[34m",         # Blue
-    SyntaxRole.VARIABLE: "\033[37m",         # White
-    SyntaxRole.CONSTANT: "\033[33m",         # Yellow
-    SyntaxRole.COMMENT: "\033[90m",          # Gray
-    SyntaxRole.ERROR: "\033[31m",            # Red
-    SyntaxRole.WARNING: "\033[33m",          # Yellow
-    SyntaxRole.ADDED: "\033[32m",            # Green
-    SyntaxRole.REMOVED: "\033[31m",          # Red
-    SyntaxRole.MUTED: "\033[90m",            # Gray
-    SyntaxRole.PUNCTUATION: "\033[37m",      # White
-    SyntaxRole.OPERATOR: "\033[37m",         # White
-    SyntaxRole.ATTRIBUTE: "\033[36m",        # Cyan
-    SyntaxRole.NAMESPACE: "\033[35m",        # Magenta
-    SyntaxRole.TAG: "\033[34m",              # Blue
-    SyntaxRole.REGEX: "\033[32m",            # Green
-    SyntaxRole.ESCAPE: "\033[33m",           # Yellow
+    SyntaxRole.CONTROL_FLOW: "\033[35m",  # Magenta
+    SyntaxRole.DECLARATION: "\033[36m",  # Cyan
+    SyntaxRole.IMPORT: "\033[35m",  # Magenta
+    SyntaxRole.STRING: "\033[32m",  # Green
+    SyntaxRole.DOCSTRING: "\033[90m",  # Gray
+    SyntaxRole.NUMBER: "\033[33m",  # Yellow
+    SyntaxRole.BOOLEAN: "\033[33m",  # Yellow
+    SyntaxRole.TYPE: "\033[36m",  # Cyan
+    SyntaxRole.FUNCTION: "\033[34m",  # Blue
+    SyntaxRole.VARIABLE: "\033[37m",  # White
+    SyntaxRole.CONSTANT: "\033[33m",  # Yellow
+    SyntaxRole.COMMENT: "\033[90m",  # Gray
+    SyntaxRole.ERROR: "\033[31m",  # Red
+    SyntaxRole.WARNING: "\033[33m",  # Yellow
+    SyntaxRole.ADDED: "\033[32m",  # Green
+    SyntaxRole.REMOVED: "\033[31m",  # Red
+    SyntaxRole.MUTED: "\033[90m",  # Gray
+    SyntaxRole.PUNCTUATION: "\033[37m",  # White
+    SyntaxRole.OPERATOR: "\033[37m",  # White
+    SyntaxRole.ATTRIBUTE: "\033[36m",  # Cyan
+    SyntaxRole.NAMESPACE: "\033[35m",  # Magenta
+    SyntaxRole.TAG: "\033[34m",  # Blue
+    SyntaxRole.REGEX: "\033[32m",  # Green
+    SyntaxRole.ESCAPE: "\033[33m",  # Yellow
 }
 
 # Pre-compute token-to-ANSI mapping for maximum performance in hot path

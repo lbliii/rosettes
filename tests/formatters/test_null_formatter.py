@@ -133,4 +133,3 @@ class TestNullFormatterEdgeCases:
         code = 'x = "héllo wörld 日本語"'
         result = highlight(code, "python", formatter="null")
         assert result == code
-

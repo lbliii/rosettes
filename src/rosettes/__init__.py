@@ -192,10 +192,7 @@ def highlight(
     canonical_language = lexer.name
 
     # Resolve formatter
-    if isinstance(formatter, str):
-        formatter_inst = get_formatter(formatter)
-    else:
-        formatter_inst = formatter
+    formatter_inst = get_formatter(formatter) if isinstance(formatter, str) else formatter
 
     # Determine container class based on style
     if css_class is None:
@@ -205,9 +202,11 @@ def highlight(
     # Requires: no line numbers, no highlighted lines
     if not hl_lines and not show_linenos:
         # Apply HTML-specific configuration if it's an HtmlFormatter
-        if isinstance(formatter_inst, HtmlFormatter):
-            if formatter_inst.css_class_style != css_class_style:
-                formatter_inst = HtmlFormatter(css_class_style=css_class_style)
+        if (
+            isinstance(formatter_inst, HtmlFormatter)
+            and formatter_inst.css_class_style != css_class_style
+        ):
+            formatter_inst = HtmlFormatter(css_class_style=css_class_style)
 
         format_config = FormatConfig(css_class=css_class, data_language=canonical_language)
         return formatter_inst.format_string_fast(
@@ -223,9 +222,10 @@ def highlight(
     )
 
     # Re-instantiate HtmlFormatter with slow-path config if needed
-    if isinstance(formatter_inst, HtmlFormatter):
-        if formatter_inst.config != hl_config or formatter_inst.css_class_style != css_class_style:
-            formatter_inst = HtmlFormatter(config=hl_config, css_class_style=css_class_style)
+    if isinstance(formatter_inst, HtmlFormatter) and (
+        formatter_inst.config != hl_config or formatter_inst.css_class_style != css_class_style
+    ):
+        formatter_inst = HtmlFormatter(config=hl_config, css_class_style=css_class_style)
 
     return "".join(
         formatter_inst.format(lexer.tokenize(code, start=start, end=end), config=format_config)

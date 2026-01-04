@@ -58,9 +58,27 @@ target-version = "py314"
 line-length = 100
 
 [tool.ruff.lint]
-select = ["E", "F", "I", "UP", "B", "SIM"]
+# Enable Python upgrade rules and other quality checks
+select = [
+    "E",   # pycodestyle errors
+    "W",   # pycodestyle warnings
+    "F",   # pyflakes
+    "UP",  # pyupgrade - Python modernization
+    "B",   # flake8-bugbear - common bugs
+    "SIM", # flake8-simplify - simplify code
+    "I",   # isort - import sorting
+]
+
+# Per-file ignore rules
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["F401"]   # Allow unused imports in __init__ files
+"tests/**/*.py" = ["S101"] # Allow assert in tests
 
 [dependency-groups]
-dev = ["pytest>=9.0.2", "pytest-cov>=6.0.0"]
+dev = [
+    "pytest>=9.0.2",
+    "pytest-cov>=6.0.0",
+    "ruff>=0.14.0",      # 0.14+ required for Python 3.14 support
+]
 # Documentation site (uses bengal from PyPI)
 docs = ["bengal>=0.1.7"]

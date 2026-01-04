@@ -103,4 +103,3 @@ class NullFormatter:
     ) -> str:
         """Fast format and return as a single string."""
         return "".join(self.format_fast(tokens, config))
-
