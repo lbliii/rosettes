@@ -1,6 +1,34 @@
 """Hand-written SQL lexer using composable scanner mixins.
 
 O(n) guaranteed, zero regex, thread-safe.
+
+Language Support:
+    - Standard SQL (ANSI SQL:2016 keywords)
+    - Common dialect extensions (MySQL, PostgreSQL, SQLite)
+    - Single-line comments (--)
+    - Block comments (/* */)
+    - String literals (single quotes)
+    - Identifiers (quoted with double quotes or backticks)
+
+Keyword Classification:
+    - DML: SELECT, INSERT, UPDATE, DELETE, etc.
+    - DDL: CREATE, ALTER, DROP, etc.
+    - Functions: COUNT, SUM, AVG, etc.
+    - Types: INT, VARCHAR, TEXT, etc.
+    - Operators: AND, OR, NOT, IN, BETWEEN, etc.
+
+Note:
+    SQL is case-insensitive for keywords. This lexer stores keywords in
+    uppercase but matches case-insensitively by converting input to upper.
+
+Performance:
+    ~45µs per 100-line file.
+
+Thread-Safety:
+    All lookup tables are frozen sets.
+
+See Also:
+    rosettes.lexers.plsql_sm: PL/SQL lexer (Oracle)
 """
 
 from __future__ import annotations

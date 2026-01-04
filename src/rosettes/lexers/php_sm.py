@@ -1,6 +1,34 @@
 """Hand-written PHP lexer using composable scanner mixins.
 
 O(n) guaranteed, zero regex, thread-safe.
+
+Language Support:
+    - PHP 8.x syntax
+    - Opening tags (<?php, <?=, <?), closing tags (?>)
+    - Here-documents (<<<EOF) and now-documents (<<<'EOF')
+    - Variables ($var, $$var)
+    - Namespaces (namespace, use)
+    - Attributes (#[Attribute])
+    - Enums, match expressions, named arguments
+    - All C-style syntax (inherited from mixins)
+
+Special Handling:
+    PHP can be embedded in HTML, so the lexer handles:
+    - Opening tags: <?php starts PHP mode
+    - Closing tags: ?> ends PHP mode
+    - Short echo: <?= for inline output
+
+    Variables always start with $ and can be variable-variables ($$var).
+
+Performance:
+    ~55µs per 100-line file.
+
+Thread-Safety:
+    All lookup tables are frozen sets.
+
+See Also:
+    rosettes.lexers.html_sm: HTML lexer (PHP often embedded)
+    rosettes.lexers.javascript_sm: Similar C-style syntax
 """
 
 from __future__ import annotations

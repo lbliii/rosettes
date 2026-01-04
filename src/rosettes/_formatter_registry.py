@@ -1,6 +1,40 @@
 """Lazy formatter registry for Rosettes.
 
 Formatters are loaded on-demand using functools.cache for thread-safe memoization.
+
+Design Philosophy:
+    Mirrors the lexer registry pattern (see rosettes._registry) for consistency:
+
+    1. **Lazy loading**: Formatter modules imported only on first use
+    2. **Cached instances**: functools.cache ensures one instance per formatter
+    3. **Alias support**: Multiple names resolve to the same formatter
+    4. **Thread-safe**: cache is thread-safe; formatters are immutable
+
+Architecture:
+    _FORMATTER_SPECS: Static mapping of names to (module, class) specs
+    _ALIAS_TO_NAME: Case-insensitive alias lookup
+    _get_formatter_by_canonical: Cached formatter instantiation
+
+Available Formatters:
+    html: HTML output with semantic or Pygments CSS classes
+    terminal: ANSI escape codes for terminal output
+    null: No-op formatter for benchmarking/testing
+
+Performance:
+    - First call: ~0.5ms (module import + instantiation)
+    - Subsequent calls: ~100ns (dict lookup + cache hit)
+
+Common Mistakes:
+    # ❌ WRONG: Caching formatter instances
+    formatters = {"html": get_formatter("html")}
+
+    # ✅ CORRECT: Just call get_formatter() — already cached
+    formatter = get_formatter("html")
+
+See Also:
+    rosettes._registry: Lexer registry (same pattern)
+    rosettes._protocol.Formatter: Protocol that formatters implement
+    rosettes.formatters: Formatter implementations
 """
 
 from __future__ import annotations

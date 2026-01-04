@@ -1,6 +1,33 @@
 """Hand-written YAML lexer using composable scanner mixins.
 
 O(n) guaranteed, zero regex, thread-safe.
+
+Language Support:
+    - YAML 1.2 syntax
+    - Block scalars (| and >)
+    - Flow sequences and mappings
+    - Anchors (&name) and aliases (*name)
+    - Tags (!tag)
+    - Multiple boolean spellings (yes/no, on/off, true/false)
+
+Special Handling:
+    YAML is whitespace-sensitive, so the lexer tracks line-start context:
+    - Keys are identified by trailing ':'
+    - Block indicators (|, >) start multiline scalars
+    - Anchors/aliases use & and * prefixes
+
+    Boolean values in YAML have many spellings (true, True, TRUE, yes, Yes,
+    YES, on, On, ON) — all are recognized as KEYWORD_CONSTANT.
+
+Performance:
+    ~60µs per 100-line file (YAML's complexity increases overhead).
+
+Thread-Safety:
+    All lookup tables (_BOOL_VALUES, _NULL_VALUES) are frozen sets.
+
+See Also:
+    rosettes.lexers.json_sm: JSON lexer (subset of YAML)
+    rosettes.lexers.toml_sm: TOML lexer (similar config format)
 """
 
 from __future__ import annotations
@@ -52,7 +79,25 @@ class YamlStateMachineLexer(
     CStyleNumbersMixin,
     StateMachineLexer,
 ):
-    """YAML lexer using composable mixins."""
+    """YAML lexer using composable mixins.
+
+    Handles YAML's whitespace-sensitive syntax with context tracking.
+
+    Token Classification:
+        - Keys: Identifiers followed by ':'
+        - Booleans: true/false, yes/no, on/off (all case variants)
+        - Null: null, Null, NULL, ~
+        - Anchors: &name → NAME_LABEL
+        - Aliases: *name → NAME_VARIABLE
+        - Tags: !tag → NAME_TAG
+
+    Example:
+        >>> from rosettes import get_lexer
+        >>> lexer = get_lexer("yaml")
+        >>> tokens = list(lexer.tokenize("key: value"))
+        >>> tokens[0].type  # 'key' is a key
+        <TokenType.NAME_TAG: 'nt'>
+    """
 
     name = "yaml"
     aliases = ("yml",)

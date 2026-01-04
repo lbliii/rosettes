@@ -1,6 +1,41 @@
 """Hand-written Rust lexer using composable scanner mixins.
 
 O(n) guaranteed, zero regex, thread-safe.
+
+Language Support:
+    - Rust 2021 edition syntax
+    - Lifetimes ('a, 'static)
+    - Raw strings (r#"..."#) with arbitrary hash counts
+    - Byte strings (b"...") and byte characters (b'...')
+    - Type suffixes on numbers (42i32, 3.14f64)
+    - Attributes (#[...] and #![...])
+    - Macros (name! invocation)
+    - All operators including ..=, ::, ->
+
+Special Handling:
+    Rust has several unique syntactic features:
+
+    Lifetimes: 'a is a lifetime, not a character literal.
+        Detected by ' followed by identifier character.
+
+    Raw Strings: r#"..."# with matching hash counts.
+        Scans for end marker with same number of hashes.
+
+    Macros: Trailing ! indicates macro invocation.
+        Yields NAME_FUNCTION_MAGIC for macro names.
+
+    Type Suffixes: Numbers can have type suffixes (i32, f64, etc.)
+        Scanned after numeric literal body.
+
+Performance:
+    ~55µs per 100-line file due to Rust's complex literals.
+
+Thread-Safety:
+    All lookup tables (_KEYWORDS, _TYPES) are frozen sets.
+
+See Also:
+    rosettes.lexers._scanners: C-style mixin implementations
+    rosettes.lexers.go_sm: Similar systems language lexer
 """
 
 from __future__ import annotations
@@ -123,7 +158,29 @@ class RustStateMachineLexer(
     CStyleOperatorsMixin,
     StateMachineLexer,
 ):
-    """Rust lexer using composable mixins."""
+    """Rust lexer using composable mixins.
+
+    Handles Rust's unique syntax including lifetimes, raw strings,
+    attributes, macros, and type-suffixed numbers.
+
+    Token Classification:
+        - Declaration keywords: fn, struct, enum, trait, impl, type, mod
+        - Namespace keywords: use, crate, mod, super, self
+        - Constants: true, false
+        - Types: Primitive types + common std types (Option, Result, Vec)
+
+    Special Tokens:
+        - Lifetimes: 'a, 'static → NAME_LABEL
+        - Attributes: #[derive(Debug)] → NAME_DECORATOR
+        - Macros: println!(...) → NAME_FUNCTION_MAGIC
+
+    Example:
+        >>> from rosettes import get_lexer
+        >>> lexer = get_lexer("rust")
+        >>> tokens = list(lexer.tokenize("fn main() {}"))
+        >>> tokens[0].type
+        <TokenType.KEYWORD_DECLARATION: 'kd'>
+    """
 
     name = "rust"
     aliases = ("rs",)

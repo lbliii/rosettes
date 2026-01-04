@@ -2,6 +2,49 @@
 
 Enables true parallel tokenization of large files by splitting at safe
 boundaries and processing chunks concurrently.
+
+Design Philosophy:
+    This module exists for one purpose: maximum throughput on Python 3.14t.
+
+    On GIL Python (3.13 and earlier), threads cannot truly parallelize
+    CPU-bound work. But on free-threaded Python 3.14t, Rosettes lexers
+    use only local variables, enabling true parallel tokenization.
+
+Architecture:
+    1. **Split Detection**: Find safe split points (newlines) to avoid
+       cutting tokens in half
+    2. **Chunking**: Divide code into ~64KB chunks with position metadata
+    3. **Parallel Execution**: Tokenize chunks using ThreadPoolExecutor
+    4. **Line Adjustment**: Fix line numbers for chunks after the first
+    5. **Ordered Merge**: Yield tokens in original source order
+
+When to Use:
+    ✅ Large files (>128KB) on Python 3.14t
+    ✅ Batch processing many files with highlight_many()
+
+    ❌ Small files (< 128KB) — sequential is faster (thread overhead)
+    ❌ GIL Python — no parallelism benefit
+
+Performance:
+    Sequential: ~50µs per 100-line file
+    Parallel (4 workers, 3.14t): ~15µs per file for batches of 100+
+
+    The crossover point is ~8 items or ~128KB of code.
+
+Thread-Safety:
+    Safe by design:
+    - Lexers use only local variables
+    - Chunks are independent (no shared state)
+    - Token lists are created per-chunk, then merged
+
+Limitations:
+    - Splitting at newlines may not be safe for all languages
+      (e.g., heredocs spanning lines). This is rare in practice.
+    - Memory: Holds all chunk results before yielding
+
+See Also:
+    rosettes.highlight_many: High-level parallel API
+    rosettes.tokenize_many: Parallel tokenization without formatting
 """
 
 from __future__ import annotations

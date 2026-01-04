@@ -1,6 +1,31 @@
 """Frozen configuration dataclasses for Rosettes.
 
 All configuration objects are immutable (frozen) for thread-safety.
+
+Design Philosophy:
+    Configuration in Rosettes uses frozen dataclasses to ensure:
+
+    1. **Thread-Safety**: Immutable state can be safely shared across threads
+    2. **Predictability**: Config cannot change after creation
+    3. **Performance**: slots=True reduces memory overhead
+
+Configuration Types:
+    LexerConfig: Controls lexer behavior (whitespace handling, tab size)
+    FormatConfig: Controls formatter output (CSS class, wrapping)
+    HighlightConfig: Controls highlighting (line numbers, hl_lines)
+
+Usage:
+    Most users don't need to create config objects directly — the high-level
+    highlight() function accepts keyword arguments that create configs internally.
+
+    Direct config usage is for:
+        - Custom formatters needing specific settings
+        - Reusing config across multiple highlight calls
+        - Unit testing with controlled configuration
+
+See Also:
+    rosettes.highlight: High-level API that accepts config via kwargs
+    rosettes.formatters.html.HtmlFormatter: Uses HighlightConfig
 """
 
 from dataclasses import dataclass

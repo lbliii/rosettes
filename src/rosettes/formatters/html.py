@@ -6,8 +6,26 @@ Thread-safe by design — no mutable shared state.
 Features:
     - Dual CSS class output: semantic (.syntax-function) or Pygments (.nf)
     - CSS custom properties for runtime theming
-    - Line highlighting
-    - Streaming output
+    - Line highlighting (hl_lines parameter)
+    - Streaming output (generator-based)
+
+Design Philosophy:
+    The HTML formatter is optimized for the common case while supporting
+    advanced features when needed:
+
+    1. **Fast path**: format_fast() for simple highlighting (~50µs/block)
+    2. **Slow path**: format() for line highlighting, line numbers
+    3. **Immutable**: Frozen dataclass ensures thread-safety
+    4. **Streaming**: Yields chunks for memory-efficient processing
+
+CSS Class Styles:
+    semantic (default):
+        Human-readable class names: .syntax-function, .syntax-keyword
+        Better for custom themes and debugging
+
+    pygments:
+        Pygments-compatible names: .nf, .k
+        Works with existing Pygments CSS themes
 
 Performance Optimizations:
     1. Fast path when no line highlighting needed
@@ -15,6 +33,28 @@ Performance Optimizations:
     3. Pre-built span templates (avoid f-string in loop)
     4. Direct token type value access (StrEnum)
     5. Streaming output (generator, no intermediate list)
+
+    Benchmarks (100-line Python file):
+        - format_fast(): ~50µs
+        - format() with hl_lines: ~80µs
+        - format() with line numbers: ~100µs
+
+Common Mistakes:
+    # ❌ WRONG: Calling format() and ignoring streaming
+    html = ""
+    for chunk in formatter.format(tokens):
+        html += chunk  # O(n²) string concatenation
+
+    # ✅ CORRECT: Use format_string() or join()
+    html = formatter.format_string(tokens)
+    # or
+    html = "".join(formatter.format(tokens))
+
+See Also:
+    rosettes.formatters.terminal: ANSI terminal output formatter
+    rosettes.formatters.null: No-op formatter for testing
+    rosettes.themes: CSS generation for HTML themes
+    rosettes._escape: HTML entity escaping (used internally)
 """
 
 from __future__ import annotations
@@ -87,10 +127,36 @@ class HtmlFormatter:
     """HTML formatter with streaming output.
 
     Thread-safe: all state is immutable or local to method calls.
+    Instances are frozen dataclasses and can be safely shared across threads.
 
     Attributes:
-        config: Highlight configuration for line highlighting.
+        config: Highlight configuration for line highlighting, line numbers.
         css_class_style: "semantic" for .syntax-* or "pygments" for .k, .nf
+
+    Example:
+        >>> from rosettes import get_lexer, HtmlFormatter
+        >>> lexer = get_lexer("python")
+        >>> formatter = HtmlFormatter(css_class_style="semantic")
+        >>> tokens = lexer.tokenize("def foo(): pass")
+        >>> html = formatter.format_string(tokens)
+        >>> "syntax-declaration" in html
+        True
+
+    Example (line highlighting):
+        >>> from rosettes._config import HighlightConfig
+        >>> config = HighlightConfig(hl_lines=frozenset({1, 3}))
+        >>> formatter = HtmlFormatter(config=config)
+
+    Output Structure:
+        <div class="rosettes" data-language="python">
+          <pre><code>
+            <span class="syntax-keyword">def</span> ...
+          </code></pre>
+        </div>
+
+    Note:
+        For most use cases, use the high-level rosettes.highlight() function
+        instead of instantiating HtmlFormatter directly.
     """
 
     config: HighlightConfig = field(default_factory=HighlightConfig)

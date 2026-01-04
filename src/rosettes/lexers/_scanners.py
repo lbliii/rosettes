@@ -3,6 +3,37 @@
 These mixins provide common scanning patterns that can be composed
 into language-specific lexers, dramatically reducing code duplication.
 
+Design Philosophy:
+    Most programming languages share common syntax patterns:
+    - C-style comments (// and /* */)
+    - C-style numbers (hex, octal, binary, floats with exponents)
+    - C-style strings (double/single quotes with escape sequences)
+    - Multi-character operators (==, !=, +=, etc.)
+
+    Rather than re-implementing these in every lexer, Rosettes provides
+    **composable mixins** that handle common patterns. Language-specific
+    lexers only need to define keywords and override edge cases.
+
+Architecture:
+    Configuration Dataclasses:
+        NumberConfig: Customize prefixes, suffixes, underscores
+        StringConfig: Customize quote types, escape handling
+        CommentConfig: Customize comment markers
+        OperatorConfig: Define operator character sets
+
+    Mixin Classes:
+        WhitespaceMixin: Basic whitespace handling
+        CStyleCommentsMixin: // and /* */ comments
+        HashCommentsMixin: # comments (Python, Ruby, Bash)
+        CStyleNumbersMixin: Full numeric literal support
+        CStyleStringsMixin: Quote handling with escapes
+        CStyleOperatorsMixin: Configurable operator scanning
+
+    Standalone Functions:
+        scan_identifier(): Fast identifier scanning
+        scan_string(): String literal scanning
+        scan_block_comment(): Block comment scanning
+
 Usage:
     class MyLexer(
         CStyleCommentsMixin,
@@ -10,8 +41,20 @@ Usage:
         CStyleStringsMixin,
         StateMachineLexer,
     ):
-        # Just define keywords and operators
-        pass
+        # Override configuration for language-specific behavior
+        NUMBER_CONFIG = NumberConfig(integer_suffixes=("n",))
+
+        def tokenize(self, code, config=None, *, start=0, end=None):
+            # Call mixin methods: self._try_comment(), self._try_number()
+            ...
+
+Thread-Safety:
+    All configuration dataclasses are frozen. Mixin methods use only
+    local variables. Character sets are defined as module-level frozensets.
+
+See Also:
+    rosettes.lexers.javascript_sm: Example of full mixin composition
+    rosettes.lexers.python_sm: Reference implementation without mixins
 """
 
 from __future__ import annotations

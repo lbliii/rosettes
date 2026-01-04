@@ -2,6 +2,55 @@
 
 Provides frozen dataclasses for syntax highlighting palettes.
 All palettes are thread-safe by design.
+
+Design Philosophy:
+    Palettes define colors for semantic roles, not individual tokens.
+    This keeps themes manageable (~20 colors) while supporting 100+ token types.
+
+Architecture:
+    SyntaxPalette: Single theme with fixed colors
+        - ~20 color slots for semantic roles
+        - Style modifiers (bold, italic)
+        - CSS variable generation
+
+    AdaptivePalette: Light/dark mode support
+        - Contains two SyntaxPalette instances
+        - Generates @media (prefers-color-scheme) CSS
+
+Creating Palettes:
+    Minimal (only required fields):
+        >>> palette = SyntaxPalette(
+        ...     name="minimal",
+        ...     background="#1a1a1a",
+        ...     text="#f0f0f0",
+        ... )
+        >>> filled = palette.with_defaults()  # Fills missing colors
+
+    Complete (all roles specified):
+        >>> palette = SyntaxPalette(
+        ...     name="complete",
+        ...     background="#1a1a1a",
+        ...     text="#f0f0f0",
+        ...     string="#98c379",
+        ...     number="#d19a66",
+        ...     function="#61afef",
+        ...     # ... all other roles ...
+        ... )
+
+CSS Generation:
+    >>> css_vars = palette.to_css_vars(indent=2)
+    >>> print(css_vars)
+      --syntax-bg: #1a1a1a;
+      --syntax-string: #98c379;
+      ...
+
+Thread-Safety:
+    Both classes are frozen dataclasses. Once created, they cannot be
+    modified. Safe to share across threads.
+
+See Also:
+    rosettes.themes: Palette registry and built-in palettes
+    rosettes.themes._roles: SyntaxRole enum (what the colors are for)
 """
 
 from __future__ import annotations
@@ -23,6 +72,26 @@ class SyntaxPalette:
 
     Thread-safe by design. Defines ~20 semantic color slots
     instead of 100+ individual token colors.
+
+    Required Fields:
+        name: Unique identifier for the palette
+        background: Background color for code blocks
+        text: Default text color
+
+    Optional Fields:
+        All other fields default to empty string and are filled
+        by with_defaults() using sensible fallbacks.
+
+    Example:
+        >>> palette = SyntaxPalette(
+        ...     name="my-theme",
+        ...     background="#282c34",
+        ...     text="#abb2bf",
+        ...     string="#98c379",
+        ...     function="#61afef",
+        ... )
+        >>> filled = palette.with_defaults()
+        >>> css = filled.to_css_vars()
     """
 
     # Required fields
@@ -162,7 +231,36 @@ class SyntaxPalette:
 
 @dataclass(frozen=True, slots=True)
 class AdaptivePalette:
-    """Theme that adapts to light/dark mode preference."""
+    """Theme that adapts to light/dark mode preference.
+
+    Wraps two SyntaxPalette instances for light and dark mode.
+    Generates CSS with @media (prefers-color-scheme) queries.
+
+    Thread-safe: frozen dataclass containing frozen palettes.
+
+    Attributes:
+        name: Unique identifier for the adaptive palette
+        light: Palette for light mode (prefers-color-scheme: light)
+        dark: Palette for dark mode (prefers-color-scheme: dark)
+
+    Example:
+        >>> from rosettes.themes import GITHUB_LIGHT, GITHUB_DARK
+        >>> adaptive = AdaptivePalette(
+        ...     name="github-adaptive",
+        ...     light=GITHUB_LIGHT,
+        ...     dark=GITHUB_DARK,
+        ... )
+
+    CSS Generation:
+        Adaptive palettes generate CSS with media queries:
+
+        @media (prefers-color-scheme: light) {
+          :root { --syntax-bg: #ffffff; ... }
+        }
+        @media (prefers-color-scheme: dark) {
+          :root { --syntax-bg: #0d1117; ... }
+        }
+    """
 
     name: str
     light: SyntaxPalette

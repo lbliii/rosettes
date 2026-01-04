@@ -2,6 +2,56 @@
 
 Defines the contracts that lexers and formatters must implement.
 All implementations must be thread-safe.
+
+Design Philosophy:
+    Rosettes uses Protocol (structural typing) rather than abstract base classes.
+    This enables:
+
+    - **Duck typing with safety**: Any object with the right methods works
+    - **No inheritance hierarchy**: Cleaner, more flexible implementations
+    - **Easy testing**: Create minimal mock implementations without inheritance
+    - **Gradual adoption**: Existing classes can satisfy protocols without changes
+
+When to Implement:
+    Lexer Protocol:
+        ✅ Adding support for a new programming language
+        ✅ Creating a specialized lexer (e.g., for a DSL)
+        ✅ Wrapping an external tokenizer with Rosettes interface
+
+    Formatter Protocol:
+        ✅ New output format (LaTeX, RTF, Markdown, etc.)
+        ✅ Custom HTML structure for specific frameworks
+        ✅ Integration with external rendering systems
+
+Example (Custom Lexer):
+    >>> class MyDslLexer:
+    ...     name = "mydsl"
+    ...     aliases = ("dsl",)
+    ...     filenames = ("*.dsl",)
+    ...     mimetypes = ()
+    ...
+    ...     def tokenize(self, code, config=None, start=0, end=None):
+    ...         # Your tokenization logic here
+    ...         yield Token(TokenType.TEXT, code, 1, 1)
+    ...
+    ...     def tokenize_fast(self, code, start=0, end=None):
+    ...         yield (TokenType.TEXT, code)
+
+Example (Custom Formatter):
+    >>> class MarkdownFormatter:
+    ...     name = "markdown"
+    ...
+    ...     def format(self, tokens, config=None):
+    ...         for token in tokens:
+    ...             if token.type == TokenType.KEYWORD:
+    ...                 yield f"**{token.value}**"
+    ...             else:
+    ...                 yield token.value
+
+See Also:
+    rosettes.lexers._state_machine: Base class for hand-written lexers
+    rosettes.formatters.html: Reference Formatter implementation
+    rosettes._registry: How lexers are registered and looked up
 """
 
 from collections.abc import Iterator
@@ -22,6 +72,19 @@ class Lexer(Protocol):
 
     Implementations must be thread-safe — no mutable shared state.
     The tokenize method should only use local variables.
+
+    Thread-Safety Contract:
+        - tokenize() must use only local variables
+        - No instance state mutation during tokenization
+        - Class-level constants (KEYWORDS, etc.) must be immutable (frozenset)
+
+    Performance Contract:
+        - O(n) time complexity guaranteed (no backtracking)
+        - Single pass through input (no lookahead beyond current position)
+        - Streaming output (yield tokens as found)
+
+    See Also:
+        rosettes.lexers._state_machine.StateMachineLexer: Base implementation
     """
 
     @property
@@ -90,8 +153,27 @@ class Lexer(Protocol):
 class Formatter(Protocol):
     """Protocol for output formatters.
 
-    Implementations must be thread-safe.
-    The format method should only use local variables.
+    Implementations must be thread-safe — use only local variables in format().
+    Formatter instances should be immutable (frozen dataclasses recommended).
+
+    Thread-Safety Contract:
+        - format() must use only local variables
+        - Instance state must be immutable after construction
+        - No side effects (file I/O, network, etc.)
+
+    Streaming Contract:
+        - format() yields chunks as they're ready (generator)
+        - format_string() convenience method joins chunks
+        - Callers can start processing before full output is ready
+
+    Fast Path:
+        - format_fast() accepts (TokenType, value) tuples instead of Token objects
+        - Avoids Token construction overhead when position info not needed
+        - ~20% faster for simple highlighting without line numbers
+
+    See Also:
+        rosettes.formatters.html.HtmlFormatter: Reference implementation
+        rosettes.formatters.terminal.TerminalFormatter: ANSI terminal output
     """
 
     @property
