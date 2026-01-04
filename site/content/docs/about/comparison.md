@@ -29,7 +29,7 @@ A detailed comparison of Rosettes and Pygments for syntax highlighting.
 | **ReDoS safe** | ✅ Yes | ❌ Some lexers vulnerable |
 | **Free-threading** | ✅ Optimized | ❌ Not tested |
 | **Dependencies** | None | None |
-| **Maturity** | New (2024) | Established (2006) |
+| **Maturity** | New (2026) | Established (2006) |
 
 ---
 

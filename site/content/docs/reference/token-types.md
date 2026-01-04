@@ -62,7 +62,7 @@ Complete reference for the `TokenType` enumeration. Each token type maps to a Py
 | TokenType | Pygments Class | Description | Example |
 |-----------|----------------|-------------|---------|
 | `LITERAL` | `.l` | Generic literal | |
-| `LITERAL_DATE` | `.ld` | Date literal | `2024-01-01` |
+| `LITERAL_DATE` | `.ld` | Date literal | `2026-01-01` |
 
 ## Strings
 

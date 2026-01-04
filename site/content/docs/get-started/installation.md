@@ -46,7 +46,7 @@ pip install -e .
 
 ```python
 import rosettes
-print(rosettes.__version__)  # 0.3.0
+print(rosettes.__version__)  # 0.1.0
 ```
 
 Or from the command line:

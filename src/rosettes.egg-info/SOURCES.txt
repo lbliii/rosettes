@@ -4,6 +4,7 @@ pyproject.toml
 src/rosettes/__init__.py
 src/rosettes/_config.py
 src/rosettes/_escape.py
+src/rosettes/_formatter_registry.py
 src/rosettes/_parallel.py
 src/rosettes/_protocol.py
 src/rosettes/_registry.py
@@ -16,6 +17,8 @@ src/rosettes.egg-info/dependency_links.txt
 src/rosettes.egg-info/top_level.txt
 src/rosettes/formatters/__init__.py
 src/rosettes/formatters/html.py
+src/rosettes/formatters/null.py
+src/rosettes/formatters/terminal.py
 src/rosettes/lexers/__init__.py
 src/rosettes/lexers/_scanners.py
 src/rosettes/lexers/_state_machine.py

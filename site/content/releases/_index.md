@@ -29,12 +29,12 @@ Release notes for Rosettes versions.
 Rosettes follows [Semantic Versioning](https://semver.org/):
 
 - **Major** (1.0.0): Breaking changes
-- **Minor** (0.1.0): New features, backward compatible
-- **Patch** (0.0.1): Bug fixes, backward compatible
+- **Minor** (0.2.0): New features, backward compatible
+- **Patch** (0.1.1): Bug fixes, backward compatible
 
 ## Current Version
 
-**v0.3.0** — Initial public release
+**v0.1.0** — Initial public release
 
 ## Release History
 

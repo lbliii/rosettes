@@ -21,78 +21,182 @@ Build custom formatters for terminal output, LaTeX, or any other format.
 
 ## The Formatter Protocol
 
-Formatters implement a simple protocol:
+Formatters implement the `Formatter` protocol defined in `rosettes._protocol`:
 
 ```python
-from typing import Protocol, Iterable
-from rosettes import Token, FormatConfig
+from collections.abc import Iterator
+from typing import Protocol
+from rosettes import Token, TokenType, FormatConfig
 
 class Formatter(Protocol):
+    @property
+    def name(self) -> str:
+        """Canonical formatter name (e.g., 'html', 'terminal')."""
+        ...
+
+    def format(
+        self,
+        tokens: Iterator[Token],
+        config: FormatConfig | None = None,
+    ) -> Iterator[str]:
+        """Stream formatted output from full Token objects."""
+        ...
+
+    def format_fast(
+        self,
+        tokens: Iterator[tuple[TokenType, str]],
+        config: FormatConfig | None = None,
+    ) -> Iterator[str]:
+        """Stream formatted output from (type, value) tuples.
+        
+        Used by the fast path when line numbers aren't needed.
+        """
+        ...
+
     def format_string(
         self,
-        tokens: Iterable[Token],
-        config: FormatConfig,
-    ) -> str: ...
+        tokens: Iterator[Token],
+        config: FormatConfig | None = None,
+    ) -> str:
+        """Format tokens and return as a single string."""
+        ...
+
+    def format_string_fast(
+        self,
+        tokens: Iterator[tuple[TokenType, str]],
+        config: FormatConfig | None = None,
+    ) -> str:
+        """Fast format and return as a single string."""
+        ...
 ```
 
-## Example: Terminal Formatter
-
-A formatter that outputs ANSI-colored terminal text:
+All four methods are required. The `format_string*` methods are typically implemented as:
 
 ```python
+def format_string(self, tokens, config=None):
+    return "".join(self.format(tokens, config))
+
+def format_string_fast(self, tokens, config=None):
+    return "".join(self.format_fast(tokens, config))
+```
+
+## Example: Simple ANSI Formatter
+
+A minimal formatter that outputs ANSI-colored terminal text:
+
+```python
+from collections.abc import Iterator
+from dataclasses import dataclass
 from rosettes import tokenize, Token, TokenType, FormatConfig
 
 # ANSI color codes
 COLORS = {
-    TokenType.KEYWORD: "\033[95m",      # Magenta
+    TokenType.KEYWORD: "\033[95m",       # Magenta
     TokenType.NAME_FUNCTION: "\033[92m", # Green
     TokenType.STRING: "\033[93m",        # Yellow
-    TokenType.COMMENT: "\033[90m",       # Gray
-    TokenType.NUMBER: "\033[94m",        # Blue
 }
 RESET = "\033[0m"
 
-class TerminalFormatter:
-    def format_string(
+
+@dataclass(frozen=True, slots=True)
+class SimpleAnsiFormatter:
+    """Thread-safe ANSI formatter using frozen dataclass."""
+
+    @property
+    def name(self) -> str:
+        return "simple-ansi"
+
+    def format(
         self,
-        tokens: Iterable[Token],
-        config: FormatConfig,
-    ) -> str:
-        result = []
+        tokens: Iterator[Token],
+        config: FormatConfig | None = None,
+    ) -> Iterator[str]:
         for token in tokens:
             color = COLORS.get(token.type, "")
             if color:
-                result.append(f"{color}{token.value}{RESET}")
+                yield f"{color}{token.value}{RESET}"
             else:
-                result.append(token.value)
-        return "".join(result)
+                yield token.value
 
-# Usage
-tokens = tokenize("def hello(): print('world')", "python")
-formatter = TerminalFormatter()
-output = formatter.format_string(tokens, FormatConfig())
-print(output)  # Colored terminal output
+    def format_fast(
+        self,
+        tokens: Iterator[tuple[TokenType, str]],
+        config: FormatConfig | None = None,
+    ) -> Iterator[str]:
+        for tt, value in tokens:
+            color = COLORS.get(tt, "")
+            if color:
+                yield f"{color}{value}{RESET}"
+            else:
+                yield value
+
+    def format_string(self, tokens, config=None):
+        return "".join(self.format(tokens, config))
+
+    def format_string_fast(self, tokens, config=None):
+        return "".join(self.format_fast(tokens, config))
+
+
+# Usage with highlight()
+from rosettes import highlight
+
+formatter = SimpleAnsiFormatter()
+output = highlight("x = 1", "python", formatter=formatter)
 ```
+
+Rosettes includes a full-featured `TerminalFormatter` with semantic role mapping — see [[docs/formatters/terminal|Terminal Formatter]].
 
 ## Example: Markdown Formatter
 
 A formatter that outputs fenced code blocks:
 
 ```python
+from collections.abc import Iterator
+from dataclasses import dataclass
+from rosettes import Token, TokenType, FormatConfig
+
+
+@dataclass(frozen=True, slots=True)
 class MarkdownFormatter:
-    def format_string(
+    """Wraps code in a fenced markdown block."""
+
+    @property
+    def name(self) -> str:
+        return "markdown"
+
+    def format(
         self,
-        tokens: Iterable[Token],
-        config: FormatConfig,
-    ) -> str:
-        code = "".join(token.value for token in tokens)
-        lang = config.data_language or ""
-        return f"```{lang}\n{code}\n```"
+        tokens: Iterator[Token],
+        config: FormatConfig | None = None,
+    ) -> Iterator[str]:
+        lang = config.data_language if config else ""
+        yield f"```{lang}\n"
+        for token in tokens:
+            yield token.value
+        yield "\n```"
+
+    def format_fast(
+        self,
+        tokens: Iterator[tuple[TokenType, str]],
+        config: FormatConfig | None = None,
+    ) -> Iterator[str]:
+        lang = config.data_language if config else ""
+        yield f"```{lang}\n"
+        for _, value in tokens:
+            yield value
+        yield "\n```"
+
+    def format_string(self, tokens, config=None):
+        return "".join(self.format(tokens, config))
+
+    def format_string_fast(self, tokens, config=None):
+        return "".join(self.format_fast(tokens, config))
+
 
 # Usage
-tokens = tokenize("x = 1", "python")
-formatter = MarkdownFormatter()
-output = formatter.format_string(tokens, FormatConfig(data_language="python"))
+from rosettes import highlight
+
+output = highlight("x = 1", "python", formatter=MarkdownFormatter())
 # ```python
 # x = 1
 # ```
@@ -104,14 +208,25 @@ Export tokens as JSON for analysis:
 
 ```python
 import json
-from rosettes import tokenize, FormatConfig
+from collections.abc import Iterator
+from dataclasses import dataclass
+from rosettes import Token, TokenType, FormatConfig
 
+
+@dataclass(frozen=True, slots=True)
 class JsonFormatter:
-    def format_string(
+    """Exports tokens as a JSON array."""
+
+    @property
+    def name(self) -> str:
+        return "json"
+
+    def format(
         self,
-        tokens: Iterable[Token],
-        config: FormatConfig,
-    ) -> str:
+        tokens: Iterator[Token],
+        config: FormatConfig | None = None,
+    ) -> Iterator[str]:
+        # Collect tokens for JSON serialization
         token_list = [
             {
                 "type": token.type.name,
@@ -121,12 +236,28 @@ class JsonFormatter:
             }
             for token in tokens
         ]
-        return json.dumps(token_list, indent=2)
+        yield json.dumps(token_list, indent=2)
+
+    def format_fast(
+        self,
+        tokens: Iterator[tuple[TokenType, str]],
+        config: FormatConfig | None = None,
+    ) -> Iterator[str]:
+        # Fast path has no position info
+        token_list = [{"type": tt.name, "value": value} for tt, value in tokens]
+        yield json.dumps(token_list, indent=2)
+
+    def format_string(self, tokens, config=None):
+        return "".join(self.format(tokens, config))
+
+    def format_string_fast(self, tokens, config=None):
+        return "".join(self.format_fast(tokens, config))
+
 
 # Usage
-tokens = tokenize("x = 1", "python")
-formatter = JsonFormatter()
-print(formatter.format_string(tokens, FormatConfig()))
+from rosettes import highlight
+
+output = highlight("x = 1", "python", formatter=JsonFormatter())
 ```
 
 Output:
@@ -143,18 +274,13 @@ Output:
 
 ## Using Custom Formatters
 
-Custom formatters work with `tokenize()`:
+Pass custom formatter instances directly to `highlight()`:
 
 ```python
-from rosettes import tokenize, FormatConfig
+from rosettes import highlight
 
-def highlight_custom(code: str, language: str, formatter) -> str:
-    tokens = tokenize(code, language)
-    config = FormatConfig(data_language=language)
-    return formatter.format_string(tokens, config)
-
-# Usage
-output = highlight_custom("def foo(): pass", "python", TerminalFormatter())
+formatter = MarkdownFormatter()
+output = highlight("def foo(): pass", "python", formatter=formatter)
 ```
 
 ## Token Type Reference

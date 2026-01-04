@@ -24,12 +24,13 @@ Complete reference for all public functions and classes.
 
 ### `highlight()`
 
-Highlight source code and return HTML.
+Highlight source code and return formatted output.
 
 ```python
 def highlight(
     code: str,
     language: str,
+    formatter: str | Formatter = "html",
     *,
     hl_lines: set[int] | frozenset[int] | None = None,
     show_linenos: bool = False,
@@ -46,30 +47,31 @@ def highlight(
 |-----------|------|---------|-------------|
 | `code` | `str` | required | Source code to highlight |
 | `language` | `str` | required | Language name or alias |
+| `formatter` | `str \| Formatter` | `"html"` | Formatter name or instance |
 | `hl_lines` | `set[int] \| None` | `None` | 1-based line numbers to highlight |
 | `show_linenos` | `bool` | `False` | Include line numbers in output |
-| `css_class` | `str \| None` | `None` | Container CSS class (auto-detected from style) |
-| `css_class_style` | `str` | `"semantic"` | `"semantic"` or `"pygments"` |
+| `css_class` | `str \| None` | `None` | Container CSS class (HTML only) |
+| `css_class_style` | `str` | `"semantic"` | `"semantic"` or `"pygments"` (HTML only) |
 | `start` | `int` | `0` | Starting index in source string |
 | `end` | `int \| None` | `None` | Ending index in source string |
 
-**Returns:** HTML string with syntax-highlighted code.
+**Returns:** Formatted string with syntax-highlighted code.
 
-**Raises:** `LookupError` if language is not supported.
+**Raises:** `LookupError` if language or formatter is not supported.
 
 **Example:**
 
 ```python
 from rosettes import highlight
 
-# Basic usage
+# HTML output (default)
 html = highlight("def foo(): pass", "python")
 
-# With line highlighting
-html = highlight(code, "python", hl_lines={2, 3}, show_linenos=True)
+# Terminal output
+ansi = highlight("def foo(): pass", "python", formatter="terminal")
 
-# Pygments-compatible output
-html = highlight(code, "python", css_class_style="pygments")
+# With line highlighting (HTML only)
+html = highlight(code, "python", hl_lines={2, 3}, show_linenos=True)
 ```
 
 ---
@@ -122,6 +124,7 @@ Highlight multiple code blocks in parallel.
 def highlight_many(
     items: Iterable[tuple[str, str]],
     *,
+    formatter: str | Formatter = "html",
     max_workers: int | None = None,
     css_class_style: str = "semantic",
 ) -> list[str]: ...
@@ -132,8 +135,9 @@ def highlight_many(
 | Parameter | Type | Default | Description |
 |-----------|------|---------|-------------|
 | `items` | `Iterable[tuple[str, str]]` | required | (code, language) tuples |
+| `formatter` | `str \| Formatter` | `"html"` | Formatter name or instance |
 | `max_workers` | `int \| None` | `min(4, cpu_count)` | Thread count |
-| `css_class_style` | `str` | `"semantic"` | Class style for all blocks |
+| `css_class_style` | `str` | `"semantic"` | Class style for all blocks (HTML only) |
 
 **Returns:** List of HTML strings in same order as input.
 
@@ -255,6 +259,56 @@ supports_language("cobol")   # False
 
 ---
 
+### `get_formatter()`
+
+Get a formatter instance by name or alias.
+
+```python
+def get_formatter(name: str) -> Formatter: ...
+```
+
+**Parameters:**
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `name` | `str` | Formatter name or alias |
+
+**Returns:** Formatter instance.
+
+**Raises:** `LookupError` if formatter is not supported.
+
+---
+
+### `list_formatters()`
+
+List all supported formatter names.
+
+```python
+def list_formatters() -> list[str]: ...
+```
+
+**Returns:** Sorted list of canonical formatter names.
+
+---
+
+### `supports_formatter()`
+
+Check if a formatter is supported.
+
+```python
+def supports_formatter(name: str) -> bool: ...
+```
+
+**Parameters:**
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `name` | `str` | Formatter name or alias to check |
+
+**Returns:** `True` if supported, `False` otherwise.
+
+---
+
 ## Types
 
 ### `Token`
@@ -328,11 +382,19 @@ Protocol for formatter implementations.
 
 ```python
 class Formatter(Protocol):
-    def format_string(
+    name: str
+
+    def format(
         self,
-        tokens: Iterable[Token],
-        config: FormatConfig,
-    ) -> str: ...
+        tokens: Iterator[Token],
+        config: FormatConfig | None = None,
+    ) -> Iterator[str]: ...
+
+    def format_fast(
+        self,
+        tokens: Iterator[tuple[TokenType, str]],
+        config: FormatConfig | None = None,
+    ) -> Iterator[str]: ...
 ```
 
 ---
@@ -372,6 +434,6 @@ Current version string.
 
 ```python
 from rosettes import __version__
-print(__version__)  # "0.3.0"
+print(__version__)  # "0.1.0"
 ```
 

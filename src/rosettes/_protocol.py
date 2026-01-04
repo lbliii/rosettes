@@ -114,3 +114,55 @@ class Formatter(Protocol):
             String chunks of formatted output.
         """
         ...
+
+    def format_fast(
+        self,
+        tokens: Iterator[tuple[TokenType, str]],
+        config: FormatConfig | None = None,
+    ) -> Iterator[str]:
+        """Fast formatting without position tracking.
+
+        Args:
+            tokens: Stream of (TokenType, value) tuples.
+            config: Optional formatter configuration.
+
+        Yields:
+            String chunks of formatted output.
+        """
+        ...
+
+    def format_string(
+        self,
+        tokens: Iterator[Token],
+        config: FormatConfig | None = None,
+    ) -> str:
+        """Format tokens and return as a single string.
+
+        Convenience method that joins format() output.
+
+        Args:
+            tokens: Stream of tokens to format.
+            config: Optional formatter configuration.
+
+        Returns:
+            Complete formatted string.
+        """
+        ...
+
+    def format_string_fast(
+        self,
+        tokens: Iterator[tuple[TokenType, str]],
+        config: FormatConfig | None = None,
+    ) -> str:
+        """Fast format and return as a single string.
+
+        Convenience method that joins format_fast() output.
+
+        Args:
+            tokens: Stream of (TokenType, value) tuples.
+            config: Optional formatter configuration.
+
+        Returns:
+            Complete formatted string.
+        """
+        ...

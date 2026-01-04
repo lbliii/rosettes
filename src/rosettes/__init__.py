@@ -33,8 +33,13 @@ from concurrent.futures import ThreadPoolExecutor
 from typing import TYPE_CHECKING
 
 from rosettes._config import FormatConfig, HighlightConfig, LexerConfig
+from rosettes._formatter_registry import get_formatter, list_formatters, supports_formatter
 from rosettes._protocol import Formatter, Lexer
-from rosettes._registry import get_lexer, list_languages, supports_language
+from rosettes._registry import (
+    get_lexer,
+    list_languages,
+    supports_language,
+)
 from rosettes._types import Token, TokenType
 from rosettes.formatters import HtmlFormatter
 
@@ -60,6 +65,9 @@ __all__ = [
     "get_lexer",
     "list_languages",
     "supports_language",
+    "get_formatter",
+    "list_formatters",
+    "supports_formatter",
     # Formatters
     "HtmlFormatter",
     # High-level API
@@ -74,6 +82,7 @@ __all__ = [
 def highlight(
     code: str,
     language: str,
+    formatter: str | Formatter = "html",
     *,
     hl_lines: set[int] | frozenset[int] | None = None,
     show_linenos: bool = False,
@@ -82,7 +91,7 @@ def highlight(
     start: int = 0,
     end: int | None = None,
 ) -> str:
-    """Highlight source code and return HTML.
+    """Highlight source code and return formatted output.
 
     This is the primary high-level API for syntax highlighting.
     Thread-safe and suitable for concurrent use.
@@ -93,56 +102,75 @@ def highlight(
     Args:
         code: The source code to highlight.
         language: Language name or alias (e.g., 'python', 'py', 'js').
+        formatter: Formatter name ('html', 'terminal', 'null') or instance.
         hl_lines: Optional set of 1-based line numbers to highlight.
         show_linenos: If True, include line numbers in output.
-        css_class: Base CSS class for the code container.
+        css_class: Base CSS class for the code container (HTML only).
             Defaults to "rosettes" for semantic style, "highlight" for pygments.
-        css_class_style: Class naming style:
+        css_class_style: Class naming style (HTML only):
             - "semantic" (default): Uses readable classes like .syntax-function
             - "pygments": Uses Pygments-compatible classes like .nf
         start: Starting index in the source string.
         end: Optional ending index in the source string.
 
     Returns:
-        HTML string with syntax-highlighted code.
+        Formatted string with syntax-highlighted code.
 
     Raises:
-        LookupError: If the language is not supported.
+        LookupError: If the language or formatter is not supported.
 
     Example:
         >>> html = highlight("print('hello')", "python")
         >>> "rosettes" in html
         True
 
-        >>> # Use Pygments-compatible classes
-        >>> html = highlight("def foo(): pass", "python", css_class_style="pygments")
-        >>> "highlight" in html
+        >>> # Use terminal output
+        >>> ansi = highlight("print('hello')", "python", formatter="terminal")
+        >>> "\\033[" in ansi
         True
     """
     lexer = get_lexer(language)
-    canonical_language = lexer.name  # Get canonical name (e.g., 'python' from 'py')
+    canonical_language = lexer.name
+
+    # Resolve formatter
+    if isinstance(formatter, str):
+        formatter_inst = get_formatter(formatter)
+    else:
+        formatter_inst = formatter
 
     # Determine container class based on style
     if css_class is None:
         css_class = "rosettes" if css_class_style == "semantic" else "highlight"
 
-    format_config = FormatConfig(css_class=css_class, data_language=canonical_language)
-
-    # Fast path: no line highlighting needed
+    # Fast path: all formatters implement format_string_fast via protocol
+    # Requires: no line numbers, no highlighted lines
     if not hl_lines and not show_linenos:
-        formatter = HtmlFormatter(css_class_style=css_class_style)
-        return formatter.format_string_fast(
+        # Apply HTML-specific configuration if it's an HtmlFormatter
+        if isinstance(formatter_inst, HtmlFormatter):
+            if formatter_inst.css_class_style != css_class_style:
+                formatter_inst = HtmlFormatter(css_class_style=css_class_style)
+
+        format_config = FormatConfig(css_class=css_class, data_language=canonical_language)
+        return formatter_inst.format_string_fast(
             lexer.tokenize_fast(code, start=start, end=end), format_config
         )
 
-    # Slow path: line highlighting or line numbers
+    # Slow path: for line highlighting, line numbers, or formatters without fast path
+    format_config = FormatConfig(css_class=css_class, data_language=canonical_language)
     hl_config = HighlightConfig(
         hl_lines=frozenset(hl_lines) if hl_lines else frozenset(),
         show_linenos=show_linenos,
         css_class=css_class,
     )
-    formatter = HtmlFormatter(config=hl_config, css_class_style=css_class_style)
-    return formatter.format_string(lexer.tokenize(code, start=start, end=end), format_config)
+
+    # Re-instantiate HtmlFormatter with slow-path config if needed
+    if isinstance(formatter_inst, HtmlFormatter):
+        if formatter_inst.config != hl_config or formatter_inst.css_class_style != css_class_style:
+            formatter_inst = HtmlFormatter(config=hl_config, css_class_style=css_class_style)
+
+    return "".join(
+        formatter_inst.format(lexer.tokenize(code, start=start, end=end), config=format_config)
+    )
 
 
 def tokenize(
@@ -188,6 +216,7 @@ def tokenize(
 def highlight_many(
     items: Iterable[tuple[str, str]],
     *,
+    formatter: str | Formatter = "html",
     max_workers: int | None = None,
     css_class_style: str = "semantic",
 ) -> list[str]:
@@ -201,26 +230,22 @@ def highlight_many(
 
     Args:
         items: Iterable of (code, language) tuples.
+        formatter: Formatter name or instance.
         max_workers: Maximum number of threads. Defaults to min(4, CPU count),
             which benchmarking shows to be optimal.
-        css_class_style: Class naming style ("semantic" or "pygments").
+        css_class_style: Class naming style (HTML only).
 
     Returns:
-        List of HTML strings in the same order as input.
+        List of formatted strings in the same order as input.
 
     Example:
         >>> blocks = [
         ...     ("def foo(): pass", "python"),
         ...     ("const x = 1;", "javascript"),
-        ...     ("fn main() {}", "rust"),
         ... ]
         >>> results = highlight_many(blocks)
         >>> len(results)
-        3
-
-    Performance:
-        On 3.14t with 4+ cores, highlighting 50+ code blocks provides
-        1.5-2x speedup over sequential processing.
+        2
     """
     items_list = list(items)
 
@@ -229,11 +254,14 @@ def highlight_many(
 
     # For small batches, sequential is faster (thread overhead)
     if len(items_list) < 8:
-        return [highlight(code, lang, css_class_style=css_class_style) for code, lang in items_list]
+        return [
+            highlight(code, lang, formatter=formatter, css_class_style=css_class_style)
+            for code, lang in items_list
+        ]
 
     def _highlight_one(item: tuple[str, str]) -> str:
         code, language = item
-        return highlight(code, language, css_class_style=css_class_style)
+        return highlight(code, language, formatter=formatter, css_class_style=css_class_style)
 
     # Optimal worker count based on benchmarking: 4 workers is sweet spot
     if max_workers is None:

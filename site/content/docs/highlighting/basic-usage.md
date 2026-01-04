@@ -27,6 +27,9 @@ Generate HTML with syntax-highlighted code.
 from rosettes import highlight
 
 html = highlight("def hello(): pass", "python")
+
+# Use terminal output
+ansi = highlight("def hello(): pass", "python", formatter="terminal")
 ```
 
 ### Parameters
@@ -35,10 +38,11 @@ html = highlight("def hello(): pass", "python")
 |-----------|------|---------|-------------|
 | `code` | `str` | required | Source code to highlight |
 | `language` | `str` | required | Language name or alias |
+| `formatter` | `str \| Formatter` | `"html"` | Formatter name or instance |
 | `hl_lines` | `set[int]` | `None` | 1-based line numbers to highlight |
 | `show_linenos` | `bool` | `False` | Include line numbers |
-| `css_class` | `str` | `None` | Container CSS class |
-| `css_class_style` | `str` | `"semantic"` | `"semantic"` or `"pygments"` |
+| `css_class` | `str` | `None` | Container CSS class (HTML only) |
+| `css_class_style` | `str` | `"semantic"` | `"semantic"` or `"pygments"` (HTML only) |
 
 ### Language Aliases
 

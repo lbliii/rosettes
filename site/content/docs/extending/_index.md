@@ -1,6 +1,6 @@
 ---
 title: Extending
-description: Custom formatters and advanced integration
+description: Custom formatters, palettes, and advanced integration
 draft: false
 weight: 40
 lang: en
@@ -14,22 +14,23 @@ keywords:
 - extending
 - custom
 - formatter
+- palette
 icon: starburst
 ---
 
 # Extending
 
-Build custom formatters and integrate Rosettes into your application.
+Build custom formatters, color palettes, and integrate Rosettes into your application.
 
 ## Overview
 
-Rosettes is designed for extensibility:
+Rosettes provides three extension points:
 
 | Extension Point | Use Case |
 |-----------------|----------|
-| Custom Formatter | Terminal output, LaTeX, custom HTML |
-| Raw Tokens | Analysis, transformations, metrics |
-| Lexer Protocol | (Advanced) Custom language support |
+| Custom Formatter | Terminal output, LaTeX, JSON, custom HTML |
+| Custom Palette | Brand colors, new themes, CSS variable generation |
+| Raw Tokens | Code analysis, transformations, metrics |
 
 ## In This Section
 
