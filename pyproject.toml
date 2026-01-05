@@ -84,6 +84,7 @@ dev = [
     "pytest-cov>=6.0.0",
     "pytest-timeout>=2.3.0", # Prevent hung tests
     "ruff>=0.14.0",          # 0.14+ required for Python 3.14 support
+    "pre-commit>=4.0.0",     # For git hooks
     "hypothesis>=6.100.0",   # Property-based testing
 ]
 # Documentation site (uses bengal from PyPI)
