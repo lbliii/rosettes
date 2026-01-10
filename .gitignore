@@ -69,3 +69,8 @@ site/content/api/rosettes/
 # Logs
 *.log
 
+# Env 
+.env
+
+# Test artifacts (leaked mocks)
+MagicMock/
