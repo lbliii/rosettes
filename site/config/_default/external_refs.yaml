@@ -1,0 +1,38 @@
+# External References Configuration
+# ==================================
+# Enables cross-project documentation linking via [[ext:project:target]] syntax.
+# See: Bengal RFC plan/rfc-external-references.md
+
+external_refs:
+  enabled: true
+
+  # Export xref.json for other sites to consume
+  # This generates /xref.json with all pages, classes, functions indexed
+  export_index: true
+
+  # Cache directory for fetched indexes from other Bengal sites
+  cache_dir: ".bengal/cache/external_refs"
+  default_cache_days: 7
+
+  # URL templates for instant, offline resolution
+  templates:
+    # Python standard library
+    python: "https://docs.python.org/3/library/{module}.html#{name}"
+    typing: "https://docs.python.org/3/library/typing.html#{name}"
+
+    # Bengal ecosystem - URL templates for immediate resolution
+    kida: "https://kida.dev/{target}/"
+    bengal: "https://bengal.dev/{target}/"
+
+  # Bengal ecosystem indexes (for richer metadata when sites are deployed)
+  # During local development, use relative paths to sibling project output
+  indexes:
+    # Kida template engine
+    - name: kida
+      url: "../../../kida/public/xref.json"
+      cache_days: 7
+
+    # Bengal framework
+    - name: bengal
+      url: "../../../bengal/public/xref.json"
+      cache_days: 7
