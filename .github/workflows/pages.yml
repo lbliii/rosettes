@@ -38,7 +38,8 @@ jobs:
         with:
           path: site/.bengal
           # Include uv.lock hash to invalidate cache when Bengal version changes
-          key: bengal-${{ runner.os }}-${{ hashFiles('uv.lock', 'site/content/**', 'site/config/**') }}
+          # Include src/rosettes/** to invalidate cache when autodoc source changes
+          key: bengal-${{ runner.os }}-${{ hashFiles('uv.lock', 'site/content/**', 'site/config/**', 'src/rosettes/**') }}
           restore-keys: |
             bengal-${{ runner.os }}-
 
