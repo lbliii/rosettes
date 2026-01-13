@@ -51,11 +51,14 @@ markers = [
     "property: property-based tests (may take longer)",
 ]
 
-[tool.pyright]
-include = ["src"]
-pythonVersion = "3.14"
-typeCheckingMode = "strict"
-reportMissingTypeStubs = false
+[tool.mypy]
+python_version = "3.14"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+strict_optional = true
+disallow_any_generics = true
+disallow_incomplete_defs = true
 
 [tool.ruff]
 target-version = "py314"
@@ -83,6 +86,7 @@ dev = [
     "pytest>=9.0.2",
     "pytest-cov>=6.0.0",
     "pytest-timeout>=2.3.0", # Prevent hung tests
+    "mypy>=1.11.0",          # Type checking
     "ruff>=0.14.0",          # 0.14+ required for Python 3.14 support
     "pre-commit>=4.0.0",     # For git hooks
     "hypothesis>=6.100.0",   # Property-based testing
