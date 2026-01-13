@@ -4,7 +4,7 @@
 PYTHON_VERSION ?= 3.14t
 VENV_DIR ?= .venv
 
-.PHONY: all help setup install install-docs test test-cov bench lint lint-fix format typecheck clean shell docs docs-serve
+.PHONY: all help setup install install-docs test test-cov bench lint lint-fix format typecheck clean shell docs docs-serve build publish release
 
 all: help
 
@@ -26,6 +26,9 @@ help:
 	@echo "  make typecheck  - Run pyright type checking"
 	@echo "  make docs       - Build documentation site (requires bengal)"
 	@echo "  make docs-serve - Start dev server for docs (requires bengal)"
+	@echo "  make build      - Build distribution packages"
+	@echo "  make publish    - Publish to PyPI (uses .env for token)"
+	@echo "  make release    - Build and publish in one step"
 	@echo "  make clean      - Remove venv, build artifacts, and caches"
 	@echo "  make shell      - Start a shell with the environment activated"
 
@@ -78,6 +81,33 @@ docs: install-docs
 docs-serve: install-docs
 	@echo "Starting documentation dev server..."
 	cd site && uv run bengal serve
+
+# =============================================================================
+# Build & Release
+# =============================================================================
+
+build:
+	@echo "Building distribution packages..."
+	rm -rf dist/
+	uv build
+	@echo "✓ Built:"
+	@ls -la dist/
+
+publish:
+	@echo "Publishing to PyPI..."
+	@if [ -f .env ]; then \
+		export $$(cat .env | xargs) && uv publish; \
+	else \
+		echo "Warning: No .env file found, trying without token..."; \
+		uv publish; \
+	fi
+
+release: build publish
+	@echo "✓ Release complete"
+
+# =============================================================================
+# Cleanup
+# =============================================================================
 
 clean:
 	rm -rf $(VENV_DIR)
