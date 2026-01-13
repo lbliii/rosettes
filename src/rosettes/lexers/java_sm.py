@@ -2,30 +2,36 @@
 
 O(n) guaranteed, zero regex, thread-safe.
 
-Language Support:
-    - Java 21 syntax
-    - Text blocks (triple-quoted strings)
-    - Records, sealed classes, pattern matching
-    - Annotations (@Override, @FunctionalInterface)
-    - Lambda expressions
-    - All numeric literal formats including underscores
+**Language Support:**
 
-Architecture:
-    Uses C-style mixins. Java-specific additions:
-    - Annotations: @Name → NAME_DECORATOR
-    - Text blocks: triple-quoted multiline strings
-    - Package/import classification
-    - JavaDoc comments /** ... */ special handling
+- Java 21 syntax
+- Text blocks (triple-quoted strings)
+- Records, sealed classes, pattern matching
+- Annotations (`@Override`, `@FunctionalInterface`)
+- Lambda expressions
+- All numeric literal formats including underscores
 
-Performance:
-    ~50µs per 100-line file.
+**Architecture:**
 
-Thread-Safety:
-    All lookup tables are frozen sets.
+Uses C-style mixins. Java-specific additions:
 
-See Also:
-    rosettes.lexers.kotlin_sm: Kotlin lexer (JVM language)
-    rosettes.lexers.scala_sm: Scala lexer (JVM language)
+- Annotations: `@Name` → NAME_DECORATOR
+- Text blocks: triple-quoted multiline strings
+- Package/import classification
+- JavaDoc comments `/** ... */` special handling
+
+**Performance:**
+
+~50µs per 100-line file.
+
+**Thread-Safety:**
+
+All lookup tables are frozen sets.
+
+**See Also:**
+
+- `rosettes.lexers.kotlin_sm`: Kotlin lexer (JVM language)
+- `rosettes.lexers.scala_sm`: Scala lexer (JVM language)
 """
 
 from __future__ import annotations

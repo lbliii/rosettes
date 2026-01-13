@@ -2,38 +2,44 @@
 
 O(n) guaranteed, zero regex, thread-safe.
 
-Language Support:
-    - ECMAScript 2024 (ES15) syntax
-    - Template literals (backtick strings with ${} interpolation)
-    - BigInt literals (123n suffix)
-    - Optional chaining (?.) and nullish coalescing (??)
-    - async/await, generators, classes
-    - All standard operators including ** (exponentiation)
+**Language Support:**
 
-Architecture:
-    This lexer demonstrates the **mixin composition pattern**. Most scanning
-    logic is inherited from reusable mixins:
+- ECMAScript 2024 (ES15) syntax
+- Template literals (backtick strings with `${}` interpolation)
+- BigInt literals (123n suffix)
+- Optional chaining (`?.`) and nullish coalescing (`??`)
+- async/await, generators, classes
+- All standard operators including `**` (exponentiation)
 
-    - CStyleCommentsMixin: // and /* */ comments
-    - CStyleNumbersMixin: Hex, octal, binary, floats with exponents
-    - CStyleStringsMixin: Double/single quotes with escapes, backticks
-    - CStyleOperatorsMixin: Configurable multi-char operators
+**Architecture:**
 
-    Only language-specific parts are implemented in this class:
-    - Keyword classification
-    - Identifier handling ($ allowed)
-    - Language-specific token types
+This lexer demonstrates the **mixin composition pattern**. Most scanning
+logic is inherited from reusable mixins:
 
-Performance:
-    ~45µs per 100-line file, benefiting from optimized mixin code.
+- `CStyleCommentsMixin`: `//` and `/* */` comments
+- `CStyleNumbersMixin`: Hex, octal, binary, floats with exponents
+- `CStyleStringsMixin`: Double/single quotes with escapes, backticks
+- `CStyleOperatorsMixin`: Configurable multi-char operators
 
-Thread-Safety:
-    All lookup tables (_KEYWORDS, _BUILTINS, etc.) are frozen sets.
-    Mixins use only local variables in scanning methods.
+Only language-specific parts are implemented in this class:
 
-See Also:
-    rosettes.lexers._scanners: Mixin definitions and configuration
-    rosettes.lexers.typescript_sm: TypeScript extends this pattern
+- Keyword classification
+- Identifier handling (`$` allowed)
+- Language-specific token types
+
+**Performance:**
+
+~45µs per 100-line file, benefiting from optimized mixin code.
+
+**Thread-Safety:**
+
+All lookup tables (`_KEYWORDS`, `_BUILTINS`, etc.) are frozen sets.
+Mixins use only local variables in scanning methods.
+
+**See Also:**
+
+- `rosettes.lexers._scanners`: Mixin definitions and configuration
+- `rosettes.lexers.typescript_sm`: TypeScript extends this pattern
 """
 
 from __future__ import annotations

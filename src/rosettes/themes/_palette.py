@@ -3,54 +3,68 @@
 Provides frozen dataclasses for syntax highlighting palettes.
 All palettes are thread-safe by design.
 
-Design Philosophy:
-    Palettes define colors for semantic roles, not individual tokens.
-    This keeps themes manageable (~20 colors) while supporting 100+ token types.
+**Design Philosophy:**
 
-Architecture:
-    SyntaxPalette: Single theme with fixed colors
-        - ~20 color slots for semantic roles
-        - Style modifiers (bold, italic)
-        - CSS variable generation
+Palettes define colors for semantic roles, not individual tokens.
+This keeps themes manageable (~20 colors) while supporting 100+ token types.
 
-    AdaptivePalette: Light/dark mode support
-        - Contains two SyntaxPalette instances
-        - Generates @media (prefers-color-scheme) CSS
+**Architecture:**
 
-Creating Palettes:
-    Minimal (only required fields):
-        >>> palette = SyntaxPalette(
-        ...     name="minimal",
-        ...     background="#1a1a1a",
-        ...     text="#f0f0f0",
-        ... )
-        >>> filled = palette.with_defaults()  # Fills missing colors
+- `SyntaxPalette`: Single theme with fixed colors
+  - ~20 color slots for semantic roles
+  - Style modifiers (bold, italic)
+  - CSS variable generation
 
-    Complete (all roles specified):
-        >>> palette = SyntaxPalette(
-        ...     name="complete",
-        ...     background="#1a1a1a",
-        ...     text="#f0f0f0",
-        ...     string="#98c379",
-        ...     number="#d19a66",
-        ...     function="#61afef",
-        ...     # ... all other roles ...
-        ... )
+- `AdaptivePalette`: Light/dark mode support
+  - Contains two SyntaxPalette instances
+  - Generates `@media (prefers-color-scheme)` CSS
 
-CSS Generation:
-    >>> css_vars = palette.to_css_vars(indent=2)
-    >>> print(css_vars)
-      --syntax-bg: #1a1a1a;
-      --syntax-string: #98c379;
-      ...
+**Creating Palettes:**
 
-Thread-Safety:
-    Both classes are frozen dataclasses. Once created, they cannot be
-    modified. Safe to share across threads.
+Minimal (only required fields):
 
-See Also:
-    rosettes.themes: Palette registry and built-in palettes
-    rosettes.themes._roles: SyntaxRole enum (what the colors are for)
+```python
+>>> palette = SyntaxPalette(
+...     name="minimal",
+...     background="#1a1a1a",
+...     text="#f0f0f0",
+... )
+>>> filled = palette.with_defaults()  # Fills missing colors
+```
+
+Complete (all roles specified):
+
+```python
+>>> palette = SyntaxPalette(
+...     name="complete",
+...     background="#1a1a1a",
+...     text="#f0f0f0",
+...     string="#98c379",
+...     number="#d19a66",
+...     function="#61afef",
+...     # ... all other roles ...
+... )
+```
+
+**CSS Generation:**
+
+```python
+>>> css_vars = palette.to_css_vars(indent=2)
+>>> print(css_vars)
+  --syntax-bg: #1a1a1a;
+  --syntax-string: #98c379;
+  ...
+```
+
+**Thread-Safety:**
+
+Both classes are frozen dataclasses. Once created, they cannot be
+modified. Safe to share across threads.
+
+**See Also:**
+
+- `rosettes.themes`: Palette registry and built-in palettes
+- `rosettes.themes._roles`: SyntaxRole enum (what the colors are for)
 """
 
 from __future__ import annotations

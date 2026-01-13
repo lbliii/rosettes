@@ -2,34 +2,39 @@
 
 O(n) guaranteed, zero regex, thread-safe.
 
-Language Support:
-    - Go 1.21+ syntax
-    - Raw strings (backtick literals)
-    - Runes (character literals)
-    - Imaginary numbers (1i, 3.14i)
-    - Channel operator (<-)
-    - Short variable declaration (:=)
-    - All standard operators
+**Language Support:**
 
-Go-Specific Features:
-    Exported Names: Go convention is that exported (public) names start
-        with uppercase. The lexer detects this and classifies them as
-        NAME_CLASS for visual distinction.
+- Go 1.21+ syntax
+- Raw strings (backtick literals)
+- Runes (character literals)
+- Imaginary numbers (`1i`, `3.14i`)
+- Channel operator (`<-`)
+- Short variable declaration (`:=`)
+- All standard operators
 
-    Raw Strings: Backtick-delimited strings can span multiple lines
-        and contain literal newlines without escaping.
+**Go-Specific Features:**
 
-    Imaginary Numbers: Numbers can have 'i' suffix for complex literals.
+- **Exported Names**: Go convention is that exported (public) names start
+  with uppercase. The lexer detects this and classifies them as
+  NAME_CLASS for visual distinction.
 
-Performance:
-    ~40µs per 100-line file (Go has simple, regular syntax).
+- **Raw Strings**: Backtick-delimited strings can span multiple lines
+  and contain literal newlines without escaping.
 
-Thread-Safety:
-    All lookup tables are frozen sets. Scanning uses local variables only.
+- **Imaginary Numbers**: Numbers can have `i` suffix for complex literals.
 
-See Also:
-    rosettes.lexers.rust_sm: Similar systems language lexer
-    rosettes.lexers._scanners: Shared mixin implementations
+**Performance:**
+
+~40µs per 100-line file (Go has simple, regular syntax).
+
+**Thread-Safety:**
+
+All lookup tables are frozen sets. Scanning uses local variables only.
+
+**See Also:**
+
+- `rosettes.lexers.rust_sm`: Similar systems language lexer
+- `rosettes.lexers._scanners`: Shared mixin implementations
 """
 
 from __future__ import annotations

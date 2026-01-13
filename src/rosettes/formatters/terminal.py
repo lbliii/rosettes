@@ -3,45 +3,52 @@
 Generates ANSI-colored output for terminal consoles.
 Thread-safe and optimized for streaming.
 
-Design Philosophy:
-    The terminal formatter maps semantic syntax roles to ANSI color codes.
-    It uses the same role-based system as the HTML formatter, ensuring
-    visual consistency between terminal and web output.
+**Design Philosophy:**
 
-ANSI Color Mapping:
-    Control/Declaration: Magenta/Cyan (stand out for structure)
-    Strings: Green (universally recognized)
-    Numbers: Yellow (distinct from strings)
-    Functions: Blue (clear identifier category)
-    Comments: Gray (de-emphasized)
-    Errors: Red (universal error color)
+The terminal formatter maps semantic syntax roles to ANSI color codes.
+It uses the same role-based system as the HTML formatter, ensuring
+visual consistency between terminal and web output.
 
-Performance:
-    - Pre-computed token-to-ANSI mapping (~100 entries)
-    - O(1) color lookup per token
-    - Streaming output (yields chunks, no intermediate list)
+**ANSI Color Mapping:**
 
-    Benchmarks:
-        ~30µs per 100-line file (vs ~50µs for HTML)
+- **Control/Declaration**: Magenta/Cyan (stand out for structure)
+- **Strings**: Green (universally recognized)
+- **Numbers**: Yellow (distinct from strings)
+- **Functions**: Blue (clear identifier category)
+- **Comments**: Gray (de-emphasized)
+- **Errors**: Red (universal error color)
 
-Terminal Compatibility:
-    Uses standard ANSI SGR (Select Graphic Rendition) codes:
-    - \\033[XXm for color (30-37 normal, 90-97 bright)
-    - \\033[0m for reset
+**Performance:**
 
-    Compatible with:
-    - Modern terminals (iTerm2, Windows Terminal, GNOME Terminal)
-    - VS Code integrated terminal
-    - Most CI/CD log viewers
+- Pre-computed token-to-ANSI mapping (~100 entries)
+- O(1) color lookup per token
+- Streaming output (yields chunks, no intermediate list)
 
-Thread-Safety:
-    The formatter is a frozen dataclass with no mutable state.
-    Color mappings are module-level constants (immutable dicts).
+Benchmarks: ~30µs per 100-line file (vs ~50µs for HTML)
 
-See Also:
-    rosettes.formatters.html: HTML output (same role system)
-    rosettes.themes._roles: Semantic role definitions
-    rosettes.themes._mapping: TokenType → SyntaxRole mapping
+**Terminal Compatibility:**
+
+Uses standard ANSI SGR (Select Graphic Rendition) codes:
+
+- `\\033[XXm` for color (30-37 normal, 90-97 bright)
+- `\\033[0m` for reset
+
+Compatible with:
+
+- Modern terminals (iTerm2, Windows Terminal, GNOME Terminal)
+- VS Code integrated terminal
+- Most CI/CD log viewers
+
+**Thread-Safety:**
+
+The formatter is a frozen dataclass with no mutable state.
+Color mappings are module-level constants (immutable dicts).
+
+**See Also:**
+
+- `rosettes.formatters.html`: HTML output (same role system)
+- `rosettes.themes._roles`: Semantic role definitions
+- `rosettes.themes._mapping`: TokenType → SyntaxRole mapping
 """
 
 from __future__ import annotations

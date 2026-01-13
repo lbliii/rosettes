@@ -3,43 +3,53 @@
 Enables Zero-Copy Lexer Handoff (ZCLH) by bridging Patitas coordinate handoff
 to Rosettes state-machine lexers.
 
-Design Philosophy:
-    Zero-Copy Lexer Handoff (ZCLH) is a performance pattern where:
+**Design Philosophy:**
 
-    1. **Coordinate Handoff**: The markdown parser (Patitas) identifies
-       fenced code blocks and records (start, end) positions
-    2. **Zero Copy**: Instead of extracting substrings, we pass the
-       entire source string with start/end indices
-    3. **Delegate Pattern**: RosettesDelegate bridges the parser to
-       the syntax highlighter without tight coupling
+Zero-Copy Lexer Handoff (ZCLH) is a performance pattern where:
 
-    This eliminates string allocation for code content:
-    - Traditional: `code_block = source[start:end]` → allocates new string
-    - ZCLH: `tokenize(source, start=start, end=end)` → no allocation
+1. **Coordinate Handoff**: The markdown parser (Patitas) identifies
+   fenced code blocks and records (start, end) positions
+2. **Zero Copy**: Instead of extracting substrings, we pass the
+   entire source string with start/end indices
+3. **Delegate Pattern**: RosettesDelegate bridges the parser to
+   the syntax highlighter without tight coupling
 
-Performance Impact:
-    For a 10KB markdown file with 50 code blocks:
-    - Traditional extraction: ~5ms (50 allocations, GC pressure)
-    - ZCLH: ~3ms (0 allocations for content)
+This eliminates string allocation for code content:
 
-Thread-Safety:
-    RosettesDelegate is stateless — all methods use only their arguments.
-    Safe for concurrent use from multiple threads on Python 3.14t.
+- Traditional: `code_block = source[start:end]` → allocates new string
+- ZCLH: `tokenize(source, start=start, end=end)` → no allocation
 
-Integration:
-    This delegate is used by Patitas (the markdown parser) and Bengal
-    (the static site generator) to highlight fenced code blocks.
+**Performance Impact:**
 
-Example:
-    >>> delegate = RosettesDelegate()
-    >>> source = "# Header\\n```python\\ndef foo(): pass\\n```"
-    >>> # Parser identifies code block at positions 19-34
-    >>> if delegate.supports_language("python"):
-    ...     tokens = list(delegate.tokenize_range(source, 19, 34, "python"))
+For a 10KB markdown file with 50 code blocks:
 
-See Also:
-    rosettes.get_lexer: Lexer lookup used internally
-    rosettes.lexers._state_machine: How start/end are handled
+- Traditional extraction: ~5ms (50 allocations, GC pressure)
+- ZCLH: ~3ms (0 allocations for content)
+
+**Thread-Safety:**
+
+RosettesDelegate is stateless — all methods use only their arguments.
+Safe for concurrent use from multiple threads on Python 3.14t.
+
+**Integration:**
+
+This delegate is used by Patitas (the markdown parser) and Bengal
+(the static site generator) to highlight fenced code blocks.
+
+**Example:**
+
+```python
+>>> delegate = RosettesDelegate()
+>>> source = "# Header\\n```python\\ndef foo(): pass\\n```"
+>>> # Parser identifies code block at positions 19-34
+>>> if delegate.supports_language("python"):
+...     tokens = list(delegate.tokenize_range(source, 19, 34, "python"))
+```
+
+**See Also:**
+
+- `rosettes.get_lexer`: Lexer lookup used internally
+- `rosettes.lexers._state_machine`: How start/end are handled
 """
 
 from __future__ import annotations

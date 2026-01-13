@@ -3,61 +3,74 @@
 Semantic token system for syntax highlighting with modern CSS support.
 Provides palettes, CSS generation, and accessibility validation.
 
-Design Philosophy:
-    Rosettes uses a **semantic role system** instead of individual token colors:
+**Design Philosophy:**
 
-    1. **Roles over Tokens**: ~20 semantic roles (FUNCTION, STRING, COMMENT)
-       instead of 100+ token types. Themes define colors for roles.
+Rosettes uses a **semantic role system** instead of individual token colors:
 
-    2. **Separation of Concerns**: Token → Role mapping is language-agnostic.
-       Palettes define colors for roles, not specific syntax.
+1. **Roles over Tokens**: ~20 semantic roles (FUNCTION, STRING, COMMENT)
+   instead of 100+ token types. Themes define colors for roles.
 
-    3. **CSS Custom Properties**: Palettes generate CSS variables for runtime
-       theming without regenerating HTML.
+2. **Separation of Concerns**: Token → Role mapping is language-agnostic.
+   Palettes define colors for roles, not specific syntax.
 
-Quick Start:
-    >>> from rosettes.themes import MONOKAI, get_palette
-    >>> palette = get_palette("monokai")
-    >>> css_vars = palette.to_css_vars()
+3. **CSS Custom Properties**: Palettes generate CSS variables for runtime
+   theming without regenerating HTML.
 
-Architecture:
-    SyntaxRole: Semantic meaning of code elements (FUNCTION, STRING, etc.)
-    TokenType → Role: Mapping from fine-grained tokens to semantic roles
-    SyntaxPalette: Immutable color definitions for each role
-    AdaptivePalette: Light/dark mode support with CSS media queries
+**Quick Start:**
 
-Types:
-    - SyntaxRole: Enum of semantic roles
-    - SyntaxPalette: Immutable theme definition (~20 color slots)
-    - AdaptivePalette: Light/dark adaptive theme
+```python
+>>> from rosettes.themes import MONOKAI, get_palette
+>>> palette = get_palette("monokai")
+>>> css_vars = palette.to_css_vars()
+```
 
-Built-in Palettes:
-    Bengal Themes:
-        BENGAL_TIGER: Warm orange tones (default)
-        BENGAL_SNOW_LYNX: Cool light theme
-        BENGAL_CHARCOAL: Dark gray theme
-        BENGAL_BLUE: Cool blue tones
+**Architecture:**
 
-    Third-Party Compatible:
-        MONOKAI: Classic dark theme
-        DRACULA: Purple-accented dark theme
-        GITHUB: Light/dark GitHub-style themes
+- `SyntaxRole`: Semantic meaning of code elements (FUNCTION, STRING, etc.)
+- TokenType → Role: Mapping from fine-grained tokens to semantic roles
+- `SyntaxPalette`: Immutable color definitions for each role
+- `AdaptivePalette`: Light/dark mode support with CSS media queries
 
-Custom Palettes:
-    >>> from rosettes.themes import SyntaxPalette, register_palette
-    >>> my_theme = SyntaxPalette(
-    ...     name="my-theme",
-    ...     background="#1a1a1a",
-    ...     text="#f0f0f0",
-    ...     string="#98c379",
-    ...     function="#61afef",
-    ... )
-    >>> register_palette(my_theme)
+**Types:**
 
-See Also:
-    rosettes.themes._roles: SyntaxRole enum definition
-    rosettes.themes._mapping: TokenType → SyntaxRole mapping
-    rosettes.themes._palette: SyntaxPalette and AdaptivePalette classes
+- `SyntaxRole`: Enum of semantic roles
+- `SyntaxPalette`: Immutable theme definition (~20 color slots)
+- `AdaptivePalette`: Light/dark adaptive theme
+
+**Built-in Palettes:**
+
+Bengal Themes:
+
+- `BENGAL_TIGER`: Warm orange tones (default)
+- `BENGAL_SNOW_LYNX`: Cool light theme
+- `BENGAL_CHARCOAL`: Dark gray theme
+- `BENGAL_BLUE`: Cool blue tones
+
+Third-Party Compatible:
+
+- `MONOKAI`: Classic dark theme
+- `DRACULA`: Purple-accented dark theme
+- `GITHUB`: Light/dark GitHub-style themes
+
+**Custom Palettes:**
+
+```python
+>>> from rosettes.themes import SyntaxPalette, register_palette
+>>> my_theme = SyntaxPalette(
+...     name="my-theme",
+...     background="#1a1a1a",
+...     text="#f0f0f0",
+...     string="#98c379",
+...     function="#61afef",
+... )
+>>> register_palette(my_theme)
+```
+
+**See Also:**
+
+- `rosettes.themes._roles`: SyntaxRole enum definition
+- `rosettes.themes._mapping`: TokenType → SyntaxRole mapping
+- `rosettes.themes._palette`: SyntaxPalette and AdaptivePalette classes
 """
 
 from __future__ import annotations

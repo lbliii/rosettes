@@ -2,33 +2,38 @@
 
 Thread-safe string escaping for HTML output.
 
-Design Philosophy:
-    This module uses str.translate() with a pre-computed table for maximum
-    performance. This is faster than regex or multiple str.replace() calls:
+**Design Philosophy:**
 
-    - str.translate(): ~0.2µs per call (C-level implementation)
-    - regex sub(): ~1.5µs per call
-    - chained replace(): ~0.8µs per call
+This module uses `str.translate()` with a pre-computed table for maximum
+performance. This is faster than regex or multiple `str.replace()` calls:
 
-    For syntax highlighting, escape_html() is called once per token,
-    so performance here directly impacts overall throughput.
+- `str.translate()`: ~0.2µs per call (C-level implementation)
+- `regex sub()`: ~1.5µs per call
+- chained `replace()`: ~0.8µs per call
 
-Security:
-    Escapes the standard five HTML special characters:
-    - & → &amp;   (must be first to avoid double-escaping)
-    - < → &lt;    (prevents tag injection)
-    - > → &gt;   (prevents tag injection)
-    - " → &quot;  (prevents attribute injection)
-    - ' → &#x27;  (prevents attribute injection in single quotes)
+For syntax highlighting, `escape_html()` is called once per token,
+so performance here directly impacts overall throughput.
 
-    This provides protection against XSS when embedding code in HTML.
+**Security:**
 
-Thread-Safety:
-    The escape table is immutable (dict with int keys). The function
-    uses only the input string and the table — no shared mutable state.
+Escapes the standard five HTML special characters:
 
-See Also:
-    rosettes.formatters.html: Uses escape_html for all token values
+- `&` → `&amp;` (must be first to avoid double-escaping)
+- `<` → `&lt;` (prevents tag injection)
+- `>` → `&gt;` (prevents tag injection)
+- `"` → `&quot;` (prevents attribute injection)
+- `'` → `&#x27;` (prevents attribute injection in single quotes)
+
+This provides protection against XSS when embedding code in HTML.
+
+**Thread-Safety:**
+
+The escape table is immutable (dict with int keys). The function
+uses only the input string and the table — no shared mutable state.
+
+**See Also:**
+
+- `rosettes.formatters.html`: Uses `escape_html` for all token values
 """
 
 __all__ = ["escape_html"]

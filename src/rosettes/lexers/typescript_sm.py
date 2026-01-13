@@ -2,31 +2,37 @@
 
 O(n) guaranteed, zero regex, thread-safe.
 
-Language Support:
-    - TypeScript 5.x syntax
-    - All JavaScript ES2024 features (inherited from JS lexer pattern)
-    - Type annotations and generics (<T>, extends, etc.)
-    - TypeScript-specific keywords: type, interface, enum, namespace
-    - Utility types: Partial, Required, Readonly, Pick, Omit, etc.
-    - Decorators (@decorator)
-    - satisfies operator, const type parameters
+**Language Support:**
 
-Architecture:
-    Like the JavaScript lexer, uses mixin composition for C-style syntax.
-    TypeScript-specific additions:
-    - Type keywords (any, never, unknown, etc.)
-    - Decorator handling (@)
-    - Extended operator set (!. for non-null assertion)
+- TypeScript 5.x syntax
+- All JavaScript ES2024 features (inherited from JS lexer pattern)
+- Type annotations and generics (`<T>`, `extends`, etc.)
+- TypeScript-specific keywords: `type`, `interface`, `enum`, `namespace`
+- Utility types: `Partial`, `Required`, `Readonly`, `Pick`, `Omit`, etc.
+- Decorators (`@decorator`)
+- `satisfies` operator, const type parameters
 
-Performance:
-    ~50µs per 100-line file.
+**Architecture:**
 
-Thread-Safety:
-    All lookup tables are frozen sets. Scanning methods use local variables only.
+Like the JavaScript lexer, uses mixin composition for C-style syntax.
+TypeScript-specific additions:
 
-See Also:
-    rosettes.lexers.javascript_sm: Base JavaScript pattern
-    rosettes.lexers._scanners: Shared mixin implementations
+- Type keywords (`any`, `never`, `unknown`, etc.)
+- Decorator handling (`@`)
+- Extended operator set (`!.` for non-null assertion)
+
+**Performance:**
+
+~50µs per 100-line file.
+
+**Thread-Safety:**
+
+All lookup tables are frozen sets. Scanning methods use local variables only.
+
+**See Also:**
+
+- `rosettes.lexers.javascript_sm`: Base JavaScript pattern
+- `rosettes.lexers._scanners`: Shared mixin implementations
 """
 
 from __future__ import annotations

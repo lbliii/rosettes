@@ -4,45 +4,51 @@ Defines the semantic meaning of code elements, providing a layer
 between token types and colors. Themes define colors for roles,
 not individual tokens.
 
-Design Philosophy:
-    Why roles instead of individual token colors?
+**Design Philosophy:**
 
-    1. **Manageability**: Themes define ~20 colors, not 100+ token colors
-    2. **Consistency**: Same semantic meaning gets same color across languages
-    3. **Flexibility**: Change role→color without changing token→role
-    4. **Accessibility**: Easier to ensure contrast with fewer colors
+Why roles instead of individual token colors?
 
-Architecture:
+1. **Manageability**: Themes define ~20 colors, not 100+ token colors
+2. **Consistency**: Same semantic meaning gets same color across languages
+3. **Flexibility**: Change role→color without changing token→role
+4. **Accessibility**: Easier to ensure contrast with fewer colors
+
+**Architecture:**
+
     TokenType → SyntaxRole → Color
 
-    Example:
-        TokenType.KEYWORD_DECLARATION ("def")  →  SyntaxRole.DECLARATION  →  #61afef
-        TokenType.KEYWORD_NAMESPACE ("import") →  SyntaxRole.IMPORT       →  #c678dd
+Example:
 
-Role Categories:
-    Control & Structure: CONTROL_FLOW, DECLARATION, IMPORT
-        For keywords that affect program flow or structure
+- `TokenType.KEYWORD_DECLARATION` ("def") → `SyntaxRole.DECLARATION` → #61afef
+- `TokenType.KEYWORD_NAMESPACE` ("import") → `SyntaxRole.IMPORT` → #c678dd
 
-    Data & Literals: STRING, NUMBER, BOOLEAN
-        For literal values in code
+**Role Categories:**
 
-    Identifiers: TYPE, FUNCTION, VARIABLE, CONSTANT
-        For named code elements
+- **Control & Structure**: CONTROL_FLOW, DECLARATION, IMPORT
+  — For keywords that affect program flow or structure
 
-    Documentation: COMMENT, DOCSTRING
-        For human-readable annotations
+- **Data & Literals**: STRING, NUMBER, BOOLEAN
+  — For literal values in code
 
-    Feedback: ERROR, WARNING, ADDED, REMOVED
-        For diagnostic or diff highlighting
+- **Identifiers**: TYPE, FUNCTION, VARIABLE, CONSTANT
+  — For named code elements
 
-Thread-Safety:
-    StrEnum is immutable by design. SyntaxRole values are string constants
-    that can be safely shared across threads.
+- **Documentation**: COMMENT, DOCSTRING
+  — For human-readable annotations
 
-See Also:
-    rosettes.themes._mapping: TokenType → SyntaxRole mapping
-    rosettes.themes._palette: How roles get colors
-    rosettes.formatters.html: How roles become CSS classes
+- **Feedback**: ERROR, WARNING, ADDED, REMOVED
+  — For diagnostic or diff highlighting
+
+**Thread-Safety:**
+
+StrEnum is immutable by design. SyntaxRole values are string constants
+that can be safely shared across threads.
+
+**See Also:**
+
+- `rosettes.themes._mapping`: TokenType → SyntaxRole mapping
+- `rosettes.themes._palette`: How roles get colors
+- `rosettes.formatters.html`: How roles become CSS classes
 """
 
 from enum import StrEnum
@@ -60,18 +66,22 @@ class SyntaxRole(StrEnum):
     The value of each role is a short CSS-friendly identifier used in
     class names like `.syntax-function` or CSS variables like `--syntax-function`.
 
-    Categories:
-        Control & Structure: Program flow and declarations
-        Data & Literals: Values embedded in code
-        Identifiers: Named elements (functions, variables, types)
-        Documentation: Comments and docstrings
-        Feedback: Errors, warnings, diff markers
+    **Categories:**
 
-    Example:
-        >>> SyntaxRole.FUNCTION
-        <SyntaxRole.FUNCTION: 'function'>
-        >>> f".syntax-{SyntaxRole.FUNCTION}"
-        '.syntax-function'
+    - **Control & Structure**: Program flow and declarations
+    - **Data & Literals**: Values embedded in code
+    - **Identifiers**: Named elements (functions, variables, types)
+    - **Documentation**: Comments and docstrings
+    - **Feedback**: Errors, warnings, diff markers
+
+    **Example:**
+
+    ```python
+    >>> SyntaxRole.FUNCTION
+    <SyntaxRole.FUNCTION: 'function'>
+    >>> f".syntax-{SyntaxRole.FUNCTION}"
+    '.syntax-function'
+    ```
     """
 
     # Control & Structure

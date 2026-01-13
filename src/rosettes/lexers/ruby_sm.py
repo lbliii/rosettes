@@ -2,33 +2,39 @@
 
 O(n) guaranteed, zero regex, thread-safe.
 
-Language Support:
-    - Ruby 3.x syntax
-    - Symbols (:name, :"string")
-    - Regular expressions (/pattern/)
-    - Here-documents (<<EOF, <<-EOF, <<~EOF)
-    - String interpolation (#{expr})
-    - Instance variables (@var) and class variables (@@var)
-    - Global variables ($var)
-    - Percent strings (%q, %Q, %w, %W, %i, %I, %r, %s, %x)
+**Language Support:**
 
-Special Handling:
-    Ruby has complex string/regex syntax with multiple delimiters:
-    - Standard quotes: "string", 'string'
-    - Percent literals: %q{string}, %r(regex), etc.
-    - Here-documents: Multiline strings with custom delimiters
+- Ruby 3.x syntax
+- Symbols (`:name`, `:"string"`)
+- Regular expressions (`/pattern/`)
+- Here-documents (`<<EOF`, `<<-EOF`, `<<~EOF`)
+- String interpolation (`#{expr}`)
+- Instance variables (`@var`) and class variables (`@@var`)
+- Global variables (`$var`)
+- Percent strings (`%q`, `%Q`, `%w`, `%W`, `%i`, `%I`, `%r`, `%s`, `%x`)
 
-    Symbols can be barewords (:name) or quoted (:"name with spaces").
+**Special Handling:**
 
-Performance:
-    ~60µs per 100-line file (Ruby's syntax complexity adds overhead).
+Ruby has complex string/regex syntax with multiple delimiters:
 
-Thread-Safety:
-    All lookup tables are frozen sets.
+- Standard quotes: `"string"`, `'string'`
+- Percent literals: `%q{string}`, `%r(regex)`, etc.
+- Here-documents: Multiline strings with custom delimiters
 
-See Also:
-    rosettes.lexers.python_sm: Similar dynamic language
-    rosettes.lexers.perl_sm: Similar regex/string handling
+Symbols can be barewords (`:name`) or quoted (`:"name with spaces"`).
+
+**Performance:**
+
+~60µs per 100-line file (Ruby's syntax complexity adds overhead).
+
+**Thread-Safety:**
+
+All lookup tables are frozen sets.
+
+**See Also:**
+
+- `rosettes.lexers.python_sm`: Similar dynamic language
+- `rosettes.lexers.perl_sm`: Similar regex/string handling
 """
 
 from __future__ import annotations

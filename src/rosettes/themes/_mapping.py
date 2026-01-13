@@ -3,47 +3,56 @@
 Maps Pygments-compatible TokenType values to semantic SyntaxRole values.
 This provides the abstraction layer between tokens and colors.
 
-Design Philosophy:
-    This module is the bridge between fine-grained token types and
-    semantic color roles:
+**Design Philosophy:**
+
+This module is the bridge between fine-grained token types and
+semantic color roles:
 
     TokenType (100+ types) → SyntaxRole (20 roles) → Color
 
-    Why this indirection?
-    1. **Theme Simplicity**: Authors define ~20 colors, not 100+
-    2. **Consistency**: Related tokens get the same color
-    3. **Flexibility**: Can adjust mapping without changing themes
+Why this indirection?
 
-Mapping Strategy:
-    Keywords → Control/Declaration based on purpose:
-        - if/for/while → CONTROL_FLOW (affects execution)
-        - def/class → DECLARATION (defines structure)
-        - import/from → IMPORT (brings in dependencies)
+1. **Theme Simplicity**: Authors define ~20 colors, not 100+
+2. **Consistency**: Related tokens get the same color
+3. **Flexibility**: Can adjust mapping without changing themes
 
-    Names → Identity based on what they represent:
-        - function names → FUNCTION
-        - class names → TYPE
-        - variables → VARIABLE
+**Mapping Strategy:**
 
-    Literals → Data based on value type:
-        - strings → STRING
-        - numbers → NUMBER
-        - True/False/None → BOOLEAN
+Keywords → Control/Declaration based on purpose:
 
-Pygments Compatibility:
-    PYGMENTS_CLASS_MAP maps roles to Pygments CSS class suffixes.
-    This enables drop-in compatibility with Pygments themes:
+- `if`/`for`/`while` → CONTROL_FLOW (affects execution)
+- `def`/`class` → DECLARATION (defines structure)
+- `import`/`from` → IMPORT (brings in dependencies)
 
-        SyntaxRole.FUNCTION → "nf" → .nf { color: ... }
+Names → Identity based on what they represent:
 
-Thread-Safety:
-    All data structures are immutable dicts. Dict lookups are atomic
-    in CPython, so no synchronization is needed.
+- function names → FUNCTION
+- class names → TYPE
+- variables → VARIABLE
 
-See Also:
-    rosettes._types.TokenType: The fine-grained token types
-    rosettes.themes._roles.SyntaxRole: The semantic role enum
-    rosettes.themes._palette: How roles get colors
+Literals → Data based on value type:
+
+- strings → STRING
+- numbers → NUMBER
+- `True`/`False`/`None` → BOOLEAN
+
+**Pygments Compatibility:**
+
+`PYGMENTS_CLASS_MAP` maps roles to Pygments CSS class suffixes.
+This enables drop-in compatibility with Pygments themes:
+
+    SyntaxRole.FUNCTION → "nf" → .nf { color: ... }
+
+**Thread-Safety:**
+
+All data structures are immutable dicts. Dict lookups are atomic
+in CPython, so no synchronization is needed.
+
+**See Also:**
+
+- `rosettes._types.TokenType`: The fine-grained token types
+- `rosettes.themes._roles.SyntaxRole`: The semantic role enum
+- `rosettes.themes._palette`: How roles get colors
 """
 
 from rosettes._types import TokenType

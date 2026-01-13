@@ -3,55 +3,66 @@
 Defines the contracts that lexers and formatters must implement.
 All implementations must be thread-safe.
 
-Design Philosophy:
-    Rosettes uses Protocol (structural typing) rather than abstract base classes.
-    This enables:
+**Design Philosophy:**
 
-    - **Duck typing with safety**: Any object with the right methods works
-    - **No inheritance hierarchy**: Cleaner, more flexible implementations
-    - **Easy testing**: Create minimal mock implementations without inheritance
-    - **Gradual adoption**: Existing classes can satisfy protocols without changes
+Rosettes uses Protocol (structural typing) rather than abstract base classes.
+This enables:
 
-When to Implement:
-    Lexer Protocol:
-        ✅ Adding support for a new programming language
-        ✅ Creating a specialized lexer (e.g., for a DSL)
-        ✅ Wrapping an external tokenizer with Rosettes interface
+- **Duck typing with safety**: Any object with the right methods works
+- **No inheritance hierarchy**: Cleaner, more flexible implementations
+- **Easy testing**: Create minimal mock implementations without inheritance
+- **Gradual adoption**: Existing classes can satisfy protocols without changes
 
-    Formatter Protocol:
-        ✅ New output format (LaTeX, RTF, Markdown, etc.)
-        ✅ Custom HTML structure for specific frameworks
-        ✅ Integration with external rendering systems
+**When to Implement:**
 
-Example (Custom Lexer):
-    >>> class MyDslLexer:
-    ...     name = "mydsl"
-    ...     aliases = ("dsl",)
-    ...     filenames = ("*.dsl",)
-    ...     mimetypes = ()
-    ...
-    ...     def tokenize(self, code, config=None, start=0, end=None):
-    ...         # Your tokenization logic here
-    ...         yield Token(TokenType.TEXT, code, 1, 1)
-    ...
-    ...     def tokenize_fast(self, code, start=0, end=None):
-    ...         yield (TokenType.TEXT, code)
+Lexer Protocol:
 
-Example (Custom Formatter):
-    >>> class MarkdownFormatter:
-    ...     name = "markdown"
-    ...
-    ...     def format(self, tokens, config=None):
-    ...         for token in tokens:
-    ...             if token.type == TokenType.KEYWORD:
-    ...                 yield f"**{token.value}**"
-    ...             else:
-    ...                 yield token.value
+- ✅ Adding support for a new programming language
+- ✅ Creating a specialized lexer (e.g., for a DSL)
+- ✅ Wrapping an external tokenizer with Rosettes interface
 
-See Also:
-    rosettes.lexers._state_machine: Base class for hand-written lexers
-    rosettes.formatters.html: Reference Formatter implementation
-    rosettes._registry: How lexers are registered and looked up
+Formatter Protocol:
+
+- ✅ New output format (LaTeX, RTF, Markdown, etc.)
+- ✅ Custom HTML structure for specific frameworks
+- ✅ Integration with external rendering systems
+
+**Example (Custom Lexer):**
+
+```python
+class MyDslLexer:
+    name = "mydsl"
+    aliases = ("dsl",)
+    filenames = ("*.dsl",)
+    mimetypes = ()
+
+    def tokenize(self, code, config=None, start=0, end=None):
+        # Your tokenization logic here
+        yield Token(TokenType.TEXT, code, 1, 1)
+
+    def tokenize_fast(self, code, start=0, end=None):
+        yield (TokenType.TEXT, code)
+```
+
+**Example (Custom Formatter):**
+
+```python
+class MarkdownFormatter:
+    name = "markdown"
+
+    def format(self, tokens, config=None):
+        for token in tokens:
+            if token.type == TokenType.KEYWORD:
+                yield f"**{token.value}**"
+            else:
+                yield token.value
+```
+
+**See Also:**
+
+- `rosettes.lexers._state_machine`: Base class for hand-written lexers
+- `rosettes.formatters.html`: Reference Formatter implementation
+- `rosettes._registry`: How lexers are registered and looked up
 """
 
 from collections.abc import Iterator

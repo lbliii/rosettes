@@ -3,58 +3,64 @@
 Generates HTML output with semantic or Pygments-compatible CSS classes.
 Thread-safe by design — no mutable shared state.
 
-Features:
-    - Dual CSS class output: semantic (.syntax-function) or Pygments (.nf)
-    - CSS custom properties for runtime theming
-    - Line highlighting (hl_lines parameter)
-    - Streaming output (generator-based)
+**Features:**
 
-Design Philosophy:
-    The HTML formatter is optimized for the common case while supporting
-    advanced features when needed:
+- Dual CSS class output: semantic (.syntax-function) or Pygments (.nf)
+- CSS custom properties for runtime theming
+- Line highlighting (hl_lines parameter)
+- Streaming output (generator-based)
 
-    1. **Fast path**: format_fast() for simple highlighting (~50µs/block)
-    2. **Slow path**: format() for line highlighting, line numbers
-    3. **Immutable**: Frozen dataclass ensures thread-safety
-    4. **Streaming**: Yields chunks for memory-efficient processing
+**Design Philosophy:**
 
-CSS Class Styles:
-    semantic (default):
-        Human-readable class names: .syntax-function, .syntax-keyword
-        Better for custom themes and debugging
+The HTML formatter is optimized for the common case while supporting
+advanced features when needed:
 
-    pygments:
-        Pygments-compatible names: .nf, .k
-        Works with existing Pygments CSS themes
+1. **Fast path**: `format_fast()` for simple highlighting (~50µs/block)
+2. **Slow path**: `format()` for line highlighting, line numbers
+3. **Immutable**: Frozen dataclass ensures thread-safety
+4. **Streaming**: Yields chunks for memory-efficient processing
 
-Performance Optimizations:
-    1. Fast path when no line highlighting needed
-    2. Pre-computed escape table (C-level str.translate)
-    3. Pre-built span templates (avoid f-string in loop)
-    4. Direct token type value access (StrEnum)
-    5. Streaming output (generator, no intermediate list)
+**CSS Class Styles:**
 
-    Benchmarks (100-line Python file):
-        - format_fast(): ~50µs
-        - format() with hl_lines: ~80µs
-        - format() with line numbers: ~100µs
+- **semantic** (default): Human-readable class names like `.syntax-function`,
+  `.syntax-keyword`. Better for custom themes and debugging.
+- **pygments**: Pygments-compatible names like `.nf`, `.k`. Works with
+  existing Pygments CSS themes.
 
-Common Mistakes:
-    # ❌ WRONG: Calling format() and ignoring streaming
-    html = ""
-    for chunk in formatter.format(tokens):
-        html += chunk  # O(n²) string concatenation
+**Performance Optimizations:**
 
-    # ✅ CORRECT: Use format_string() or join()
-    html = formatter.format_string(tokens)
-    # or
-    html = "".join(formatter.format(tokens))
+1. Fast path when no line highlighting needed
+2. Pre-computed escape table (C-level `str.translate`)
+3. Pre-built span templates (avoid f-string in loop)
+4. Direct token type value access (StrEnum)
+5. Streaming output (generator, no intermediate list)
 
-See Also:
-    rosettes.formatters.terminal: ANSI terminal output formatter
-    rosettes.formatters.null: No-op formatter for testing
-    rosettes.themes: CSS generation for HTML themes
-    rosettes._escape: HTML entity escaping (used internally)
+Benchmarks (100-line Python file):
+
+- `format_fast()`: ~50µs
+- `format()` with hl_lines: ~80µs
+- `format()` with line numbers: ~100µs
+
+**Common Mistakes:**
+
+```python
+# ❌ WRONG: Calling format() and ignoring streaming
+html = ""
+for chunk in formatter.format(tokens):
+    html += chunk  # O(n²) string concatenation
+
+# ✅ CORRECT: Use format_string() or join()
+html = formatter.format_string(tokens)
+# or
+html = "".join(formatter.format(tokens))
+```
+
+**See Also:**
+
+- `rosettes.formatters.terminal`: ANSI terminal output formatter
+- `rosettes.formatters.null`: No-op formatter for testing
+- `rosettes.themes`: CSS generation for HTML themes
+- `rosettes._escape`: HTML entity escaping (used internally)
 """
 
 from __future__ import annotations

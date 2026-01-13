@@ -2,30 +2,35 @@
 
 O(n) guaranteed, zero regex, thread-safe.
 
-Language Support:
-    - Bash 5.x syntax
-    - POSIX shell compatibility
-    - Variable expansion ($var, ${var}, $(cmd))
-    - Here-documents (<<EOF)
-    - Process substitution (<(cmd), >(cmd))
-    - All control structures (if/fi, case/esac, for/done, etc.)
-    - Function definitions
-    - Arrays and associative arrays
+**Language Support:**
 
-Special Handling:
-    - Single-quoted strings: No escape sequences, literal content
-    - Double-quoted strings: Variable expansion, escape sequences
-    - $'...' strings: ANSI-C quoting
-    - Heredocs: Track delimiter for multiline content
+- Bash 5.x syntax
+- POSIX shell compatibility
+- Variable expansion (`$var`, `${var}`, `$(cmd)`)
+- Here-documents (`<<EOF`)
+- Process substitution (`<(cmd)`, `>(cmd)`)
+- All control structures (`if`/`fi`, `case`/`esac`, `for`/`done`, etc.)
+- Function definitions
+- Arrays and associative arrays
 
-Performance:
-    ~55µs per 100-line file (complex quoting rules add overhead).
+**Special Handling:**
 
-Thread-Safety:
-    All lookup tables are frozen sets.
+- **Single-quoted strings**: No escape sequences, literal content
+- **Double-quoted strings**: Variable expansion, escape sequences
+- **`$'...'` strings**: ANSI-C quoting
+- **Heredocs**: Track delimiter for multiline content
 
-See Also:
-    rosettes.lexers.powershell_sm: PowerShell lexer
+**Performance:**
+
+~55µs per 100-line file (complex quoting rules add overhead).
+
+**Thread-Safety:**
+
+All lookup tables are frozen sets.
+
+**See Also:**
+
+- `rosettes.lexers.powershell_sm`: PowerShell lexer
 """
 
 from __future__ import annotations

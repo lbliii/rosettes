@@ -2,76 +2,87 @@
 
 Thread-safe, O(n) guaranteed, zero regex.
 
-Design Philosophy:
-    Rosettes lexers are hand-written state machines rather than regex-based.
-    This design provides:
+**Design Philosophy:**
 
-    1. **Security**: No ReDoS vulnerability. Crafted input cannot cause
-       exponential backtracking because there IS no backtracking.
+Rosettes lexers are hand-written state machines rather than regex-based.
+This design provides:
 
-    2. **Performance**: O(n) guaranteed. Single pass, character by character.
-       Predictable performance regardless of input.
+1. **Security**: No ReDoS vulnerability. Crafted input cannot cause
+   exponential backtracking because there IS no backtracking.
 
-    3. **Thread-Safety**: Each tokenize() call uses only local variables.
-       No shared mutable state means true parallelism on Python 3.14t.
+2. **Performance**: O(n) guaranteed. Single pass, character by character.
+   Predictable performance regardless of input.
 
-    4. **Debuggability**: Explicit state transitions are easier to trace
-       than regex match failures.
+3. **Thread-Safety**: Each tokenize() call uses only local variables.
+   No shared mutable state means true parallelism on Python 3.14t.
 
-Architecture:
-    StateMachineLexer provides:
-        - Base class with shared character sets (DIGITS, IDENT_START, etc.)
-        - Default tokenize_fast() implementation
-        - Protocol-compatible interface
+4. **Debuggability**: Explicit state transitions are easier to trace
+   than regex match failures.
 
-    Helper functions provide common patterns:
-        - scan_while(): Advance while chars match set
-        - scan_until(): Advance until char in set
-        - scan_string(): Handle quoted strings with escapes
-        - scan_triple_string(): Handle triple-quoted strings
-        - scan_line_comment(): Scan to end of line
-        - scan_block_comment(): Scan to end marker
+**Architecture:**
 
-Adding New Languages:
-    To add a new language lexer:
+StateMachineLexer provides:
 
-    1. Create rosettes/lexers/{language}_sm.py
-    2. Subclass StateMachineLexer
-    3. Set name, aliases, filenames, mimetypes class attributes
-    4. Implement tokenize() method with character-by-character logic
-    5. Add entry to _LEXER_SPECS in rosettes/_registry.py
-    6. Add tests in tests/lexers/test_{language}_sm.py
+- Base class with shared character sets (DIGITS, IDENT_START, etc.)
+- Default `tokenize_fast()` implementation
+- Protocol-compatible interface
 
-    Example skeleton:
-        class MyLangStateMachineLexer(StateMachineLexer):
-            name = "mylang"
-            aliases = ("ml",)
-            filenames = ("*.ml",)
-            mimetypes = ("text/x-mylang",)
+Helper functions provide common patterns:
 
-            # Language-specific character sets
-            KEYWORDS = frozenset({"if", "else", "while"})
+- `scan_while()`: Advance while chars match set
+- `scan_until()`: Advance until char in set
+- `scan_string()`: Handle quoted strings with escapes
+- `scan_triple_string()`: Handle triple-quoted strings
+- `scan_line_comment()`: Scan to end of line
+- `scan_block_comment()`: Scan to end marker
 
-            def tokenize(self, code, config=None, start=0, end=None):
-                # Your tokenization logic here
-                ...
+**Adding New Languages:**
 
-    Key rules:
-        - Use only local variables (no self.state mutations)
-        - Yield tokens as you find them (streaming)
-        - Handle all characters (emit TEXT for unknown)
-        - Use helper functions for common patterns
+To add a new language lexer:
 
-Performance Tips:
-    - Use frozenset for keyword/operator lookups (O(1))
-    - Use scan_while/scan_until helpers for common patterns
-    - Avoid string slicing in hot loops (use start/end indices)
-    - Pre-compute character sets as class attributes
+1. Create `rosettes/lexers/{language}_sm.py`
+2. Subclass StateMachineLexer
+3. Set name, aliases, filenames, mimetypes class attributes
+4. Implement `tokenize()` method with character-by-character logic
+5. Add entry to `_LEXER_SPECS` in `rosettes/_registry.py`
+6. Add tests in `tests/lexers/test_{language}_sm.py`
 
-See Also:
-    rosettes/_protocol.Lexer: Protocol that all lexers must satisfy
-    rosettes/_registry: How lexers are registered and looked up
-    rosettes/lexers/python_sm.py: Reference implementation
+Example skeleton:
+
+```python
+class MyLangStateMachineLexer(StateMachineLexer):
+    name = "mylang"
+    aliases = ("ml",)
+    filenames = ("*.ml",)
+    mimetypes = ("text/x-mylang",)
+
+    # Language-specific character sets
+    KEYWORDS = frozenset({"if", "else", "while"})
+
+    def tokenize(self, code, config=None, start=0, end=None):
+        # Your tokenization logic here
+        ...
+```
+
+Key rules:
+
+- Use only local variables (no `self.state` mutations)
+- Yield tokens as you find them (streaming)
+- Handle all characters (emit TEXT for unknown)
+- Use helper functions for common patterns
+
+**Performance Tips:**
+
+- Use frozenset for keyword/operator lookups (O(1))
+- Use `scan_while`/`scan_until` helpers for common patterns
+- Avoid string slicing in hot loops (use start/end indices)
+- Pre-compute character sets as class attributes
+
+**See Also:**
+
+- `rosettes/_protocol.Lexer`: Protocol that all lexers must satisfy
+- `rosettes/_registry`: How lexers are registered and looked up
+- `rosettes/lexers/python_sm.py`: Reference implementation
 """
 
 from __future__ import annotations
@@ -97,62 +108,71 @@ __all__ = [
 class StateMachineLexer:
     """Base class for hand-written state machine lexers.
 
-    Thread-safe: tokenize() uses only local variables.
+    Thread-safe: `tokenize()` uses only local variables.
     O(n) guaranteed: single pass, no backtracking.
 
     Subclasses implement language-specific tokenization by overriding
-    the tokenize() method with character-by-character logic.
+    the `tokenize()` method with character-by-character logic.
 
-    Design Principles:
-        1. No regex — character matching only
-        2. Explicit state — no hidden backtracking
-        3. Local variables only — thread-safe by design
-        4. Single pass — O(n) guaranteed
+    **Design Principles:**
 
-    Class Attributes:
-        name: Canonical language name (e.g., 'python')
-        aliases: Alternative names for registry lookup (e.g., ('py', 'python3'))
-        filenames: Glob patterns for file detection (e.g., ('*.py',))
-        mimetypes: MIME types for content detection
+    1. No regex — character matching only
+    2. Explicit state — no hidden backtracking
+    3. Local variables only — thread-safe by design
+    4. Single pass — O(n) guaranteed
 
-    Shared Character Sets:
-        DIGITS: '0'-'9'
-        HEX_DIGITS: '0'-'9', 'a'-'f', 'A'-'F'
-        LETTERS: 'a'-'z', 'A'-'Z'
-        IDENT_START: Letters + '_'
-        IDENT_CONT: IDENT_START + digits
-        WHITESPACE: Space, tab, newline, etc.
+    **Class Attributes:**
 
-    Example Implementation:
-        class MyLangLexer(StateMachineLexer):
-            name = "mylang"
-            aliases = ("ml",)
-            KEYWORDS = frozenset({"if", "else"})
+    - `name`: Canonical language name (e.g., 'python')
+    - `aliases`: Alternative names for registry lookup (e.g., ('py', 'python3'))
+    - `filenames`: Glob patterns for file detection (e.g., ('*.py',))
+    - `mimetypes`: MIME types for content detection
 
-            def tokenize(self, code, config=None, start=0, end=None):
-                pos = start
-                end = end or len(code)
-                line, col = 1, 1
+    **Shared Character Sets:**
 
-                while pos < end:
-                    char = code[pos]
-                    # ... tokenization logic ...
-                    yield Token(TokenType.TEXT, char, line, col)
-                    pos += 1
-                    col += 1
+    - `DIGITS`: '0'-'9'
+    - `HEX_DIGITS`: '0'-'9', 'a'-'f', 'A'-'F'
+    - `LETTERS`: 'a'-'z', 'A'-'Z'
+    - `IDENT_START`: Letters + '_'
+    - `IDENT_CONT`: IDENT_START + digits
+    - `WHITESPACE`: Space, tab, newline, etc.
 
-    Common Mistakes:
-        # ❌ WRONG: Storing state in instance variables
-        self.current_line = 1  # NOT thread-safe!
+    **Example Implementation:**
 
-        # ✅ CORRECT: Use local variables
-        line = 1
+    ```python
+    class MyLangLexer(StateMachineLexer):
+        name = "mylang"
+        aliases = ("ml",)
+        KEYWORDS = frozenset({"if", "else"})
 
-        # ❌ WRONG: Using regex for matching
-        match = re.match(r'\\d+', code[pos:])  # ReDoS vulnerable!
+        def tokenize(self, code, config=None, start=0, end=None):
+            pos = start
+            end = end or len(code)
+            line, col = 1, 1
 
-        # ✅ CORRECT: Use scan_while helper
-        end_pos = scan_while(code, pos, self.DIGITS)
+            while pos < end:
+                char = code[pos]
+                # ... tokenization logic ...
+                yield Token(TokenType.TEXT, char, line, col)
+                pos += 1
+                col += 1
+    ```
+
+    **Common Mistakes:**
+
+    ```python
+    # ❌ WRONG: Storing state in instance variables
+    self.current_line = 1  # NOT thread-safe!
+
+    # ✅ CORRECT: Use local variables
+    line = 1
+
+    # ❌ WRONG: Using regex for matching
+    match = re.match(r'\\d+', code[pos:])  # ReDoS vulnerable!
+
+    # ✅ CORRECT: Use scan_while helper
+    end_pos = scan_while(code, pos, self.DIGITS)
+    ```
     """
 
     name: str = "base"

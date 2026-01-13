@@ -3,32 +3,40 @@
 Does nothing but return the raw text. Useful for timing or as a fallback.
 Thread-safe and optimized for streaming.
 
-Design Philosophy:
-    The null formatter exists for specific use cases where you need
-    the formatter interface but don't want any transformation:
+**Design Philosophy:**
 
-Use Cases:
-    1. **Benchmarking**: Measure lexer performance without formatter overhead
-    2. **Testing**: Verify tokenization without HTML/ANSI complexity
-    3. **Fallback**: Handle unsupported output formats gracefully
-    4. **Pipeline Integration**: When downstream expects raw text
+The null formatter exists for specific use cases where you need
+the formatter interface but don't want any transformation.
 
-Performance:
-    The absolute minimum overhead possible:
-    - format(): yield token.value (one attribute access per token)
-    - format_fast(): yield value (already unpacked)
+**Use Cases:**
 
-    ~5µs per 100-line file (vs ~50µs for HTML)
+1. **Benchmarking**: Measure lexer performance without formatter overhead
+2. **Testing**: Verify tokenization without HTML/ANSI complexity
+3. **Fallback**: Handle unsupported output formats gracefully
+4. **Pipeline Integration**: When downstream expects raw text
 
-Example:
-    >>> from rosettes import highlight
-    >>> raw = highlight("def foo(): pass", "python", formatter="null")
-    >>> raw
-    'def foo(): pass'
+**Performance:**
 
-See Also:
-    rosettes.formatters.html: HTML output with CSS classes
-    rosettes.formatters.terminal: ANSI terminal output
+The absolute minimum overhead possible:
+
+- `format()`: yield `token.value` (one attribute access per token)
+- `format_fast()`: yield value (already unpacked)
+
+~5µs per 100-line file (vs ~50µs for HTML)
+
+**Example:**
+
+```python
+>>> from rosettes import highlight
+>>> raw = highlight("def foo(): pass", "python", formatter="null")
+>>> raw
+'def foo(): pass'
+```
+
+**See Also:**
+
+- `rosettes.formatters.html`: HTML output with CSS classes
+- `rosettes.formatters.terminal`: ANSI terminal output
 """
 
 from __future__ import annotations
@@ -51,19 +59,23 @@ class NullFormatter:
     This is the simplest possible formatter — it just concatenates
     token values without any transformation.
 
-    Example:
-        >>> from rosettes import get_lexer
-        >>> from rosettes.formatters import NullFormatter
-        >>> lexer = get_lexer("python")
-        >>> formatter = NullFormatter()
-        >>> output = formatter.format_string(lexer.tokenize("x = 1"))
-        >>> output
-        'x = 1'
+    **Example:**
 
-    Use Cases:
-        - Benchmarking lexer performance
-        - Testing tokenization correctness
-        - Fallback when output format is unsupported
+    ```python
+    >>> from rosettes import get_lexer
+    >>> from rosettes.formatters import NullFormatter
+    >>> lexer = get_lexer("python")
+    >>> formatter = NullFormatter()
+    >>> output = formatter.format_string(lexer.tokenize("x = 1"))
+    >>> output
+    'x = 1'
+    ```
+
+    **Use Cases:**
+
+    - Benchmarking lexer performance
+    - Testing tokenization correctness
+    - Fallback when output format is unsupported
     """
 
     @property

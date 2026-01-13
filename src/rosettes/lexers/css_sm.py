@@ -2,32 +2,37 @@
 
 O(n) guaranteed, zero regex, thread-safe.
 
-Language Support:
-    - CSS3 syntax
-    - Selectors (class, id, element, pseudo, attribute)
-    - Properties and values
-    - At-rules (@media, @import, @keyframes, etc.)
-    - CSS custom properties (--var-name)
-    - Color formats (#hex, rgb(), hsl(), etc.)
-    - calc() and other functions
-    - Comments (/* */)
+**Language Support:**
 
-Token Classification:
-    - Selectors: .class → NAME_CLASS, #id → NAME_FUNCTION
-    - Properties: color, font-size → NAME_PROPERTY
-    - Values: blue, 12px, #fff → various (STRING, NUMBER, etc.)
-    - At-rules: @media → NAME_DECORATOR
-    - Variables: --custom-prop → NAME_VARIABLE
+- CSS3 syntax
+- Selectors (class, id, element, pseudo, attribute)
+- Properties and values
+- At-rules (`@media`, `@import`, `@keyframes`, etc.)
+- CSS custom properties (`--var-name`)
+- Color formats (`#hex`, `rgb()`, `hsl()`, etc.)
+- `calc()` and other functions
+- Comments (`/* */`)
 
-Performance:
-    ~50µs per 100-line file.
+**Token Classification:**
 
-Thread-Safety:
-    Uses only local variables in tokenize().
+- Selectors: `.class` → NAME_CLASS, `#id` → NAME_FUNCTION
+- Properties: `color`, `font-size` → NAME_PROPERTY
+- Values: `blue`, `12px`, `#fff` → various (STRING, NUMBER, etc.)
+- At-rules: `@media` → NAME_DECORATOR
+- Variables: `--custom-prop` → NAME_VARIABLE
 
-See Also:
-    rosettes.lexers.html_sm: HTML lexer (CSS in style tags)
-    rosettes.lexers.scss_sm: SCSS lexer (CSS preprocessor)
+**Performance:**
+
+~50µs per 100-line file.
+
+**Thread-Safety:**
+
+Uses only local variables in `tokenize()`.
+
+**See Also:**
+
+- `rosettes.lexers.html_sm`: HTML lexer (CSS in style tags)
+- `rosettes.lexers.scss_sm`: SCSS lexer (CSS preprocessor)
 """
 
 from __future__ import annotations

@@ -2,32 +2,38 @@
 
 O(n) guaranteed, zero regex, thread-safe.
 
-Language Support:
-    - YAML 1.2 syntax
-    - Block scalars (| and >)
-    - Flow sequences and mappings
-    - Anchors (&name) and aliases (*name)
-    - Tags (!tag)
-    - Multiple boolean spellings (yes/no, on/off, true/false)
+**Language Support:**
 
-Special Handling:
-    YAML is whitespace-sensitive, so the lexer tracks line-start context:
-    - Keys are identified by trailing ':'
-    - Block indicators (|, >) start multiline scalars
-    - Anchors/aliases use & and * prefixes
+- YAML 1.2 syntax
+- Block scalars (`|` and `>`)
+- Flow sequences and mappings
+- Anchors (`&name`) and aliases (`*name`)
+- Tags (`!tag`)
+- Multiple boolean spellings (`yes`/`no`, `on`/`off`, `true`/`false`)
 
-    Boolean values in YAML have many spellings (true, True, TRUE, yes, Yes,
-    YES, on, On, ON) — all are recognized as KEYWORD_CONSTANT.
+**Special Handling:**
 
-Performance:
-    ~60µs per 100-line file (YAML's complexity increases overhead).
+YAML is whitespace-sensitive, so the lexer tracks line-start context:
 
-Thread-Safety:
-    All lookup tables (_BOOL_VALUES, _NULL_VALUES) are frozen sets.
+- Keys are identified by trailing `:`
+- Block indicators (`|`, `>`) start multiline scalars
+- Anchors/aliases use `&` and `*` prefixes
 
-See Also:
-    rosettes.lexers.json_sm: JSON lexer (subset of YAML)
-    rosettes.lexers.toml_sm: TOML lexer (similar config format)
+Boolean values in YAML have many spellings (`true`, `True`, `TRUE`, `yes`, `Yes`,
+`YES`, `on`, `On`, `ON`) — all are recognized as KEYWORD_CONSTANT.
+
+**Performance:**
+
+~60µs per 100-line file (YAML's complexity increases overhead).
+
+**Thread-Safety:**
+
+All lookup tables (`_BOOL_VALUES`, `_NULL_VALUES`) are frozen sets.
+
+**See Also:**
+
+- `rosettes.lexers.json_sm`: JSON lexer (subset of YAML)
+- `rosettes.lexers.toml_sm`: TOML lexer (similar config format)
 """
 
 from __future__ import annotations

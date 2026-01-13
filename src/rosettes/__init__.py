@@ -4,85 +4,99 @@ A pure-Python syntax highlighter designed for free-threaded Python.
 All lexers are hand-written state machines with O(n) guaranteed performance
 and zero ReDoS vulnerability.
 
-Public API:
-    highlight(): Highlight code and return formatted HTML/terminal output
-    tokenize(): Get raw tokens for analysis or custom formatting
-    highlight_many(): Parallel highlighting for multiple code blocks
-    tokenize_many(): Parallel tokenization for multiple code blocks
+**Public API:**
 
-Example:
-    >>> from rosettes import highlight
-    >>> html = highlight("def foo(): pass", "python")
-    >>> print(html)
-    <div class="highlight">...</div>
+- `highlight()`: Highlight code and return formatted HTML/terminal output
+- `tokenize()`: Get raw tokens for analysis or custom formatting
+- `highlight_many()`: Parallel highlighting for multiple code blocks
+- `tokenize_many()`: Parallel tokenization for multiple code blocks
 
-Design Philosophy:
-    Why hand-written state machines instead of regex?
+**Example:**
 
-    1. **Security**: Regex-based lexers are vulnerable to ReDoS attacks where
-       crafted input causes exponential backtracking. State machines have O(n)
-       guaranteed performance — no input can cause slowdown.
+```python
+>>> from rosettes import highlight
+>>> html = highlight("def foo(): pass", "python")
+>>> print(html)
+<div class="highlight">...</div>
+```
 
-    2. **Thread-Safety**: Each tokenize() call uses only local variables.
-       No shared mutable state means true parallelism on Python 3.14t without
-       locks or synchronization.
+**Design Philosophy:**
 
-    3. **Predictability**: Single-pass, character-by-character processing.
-       No hidden backtracking, no surprising performance cliffs.
+Why hand-written state machines instead of regex?
 
-    4. **Debuggability**: Explicit state transitions are easier to trace
-       than regex match failures.
+1. **Security**: Regex-based lexers are vulnerable to ReDoS attacks where
+   crafted input causes exponential backtracking. State machines have O(n)
+   guaranteed performance — no input can cause slowdown.
 
-Architecture:
-    Lexer Pipeline::
+2. **Thread-Safety**: Each tokenize() call uses only local variables.
+   No shared mutable state means true parallelism on Python 3.14t without
+   locks or synchronization.
 
-        code → Lexer.tokenize() → Token stream → Formatter.format() → HTML/ANSI
+3. **Predictability**: Single-pass, character-by-character processing.
+   No hidden backtracking, no surprising performance cliffs.
 
-    Key Components:
-        rosettes._registry: Lazy lexer loading with O(1) alias lookup
-        rosettes._protocol: Lexer/Formatter contracts (Protocol-based)
-        rosettes.lexers._state_machine: Base class for all lexers
-        rosettes.formatters.html: Primary HTML output with semantic classes
-        rosettes.themes: Color palettes and CSS generation
+4. **Debuggability**: Explicit state transitions are easier to trace
+   than regex match failures.
 
-    Memory Model:
-        - Lexers: Stateless singletons (cached via functools.cache)
-        - Formatters: Immutable frozen dataclasses
-        - Tokens: NamedTuples (minimal memory, hashable)
+**Architecture:**
 
-Thread-Safety:
-    All public APIs are thread-safe by design:
+Lexer Pipeline:
 
-    - Lexers use only local variables during tokenization
-    - Formatter state is immutable (frozen dataclasses)
-    - Registry uses functools.cache for thread-safe memoization
+    code → Lexer.tokenize() → Token stream → Formatter.format() → HTML/ANSI
 
-    Common Mistakes:
-        # ❌ WRONG: Caching lexer instances (already cached internally)
-        my_lexer_cache = {}
-        my_lexer_cache["python"] = get_lexer("python")
+Key Components:
 
-        # ✅ CORRECT: Just call get_lexer() — it's cached via functools.cache
-        lexer = get_lexer("python")
+- `rosettes._registry`: Lazy lexer loading with O(1) alias lookup
+- `rosettes._protocol`: Lexer/Formatter contracts (Protocol-based)
+- `rosettes.lexers._state_machine`: Base class for all lexers
+- `rosettes.formatters.html`: Primary HTML output with semantic classes
+- `rosettes.themes`: Color palettes and CSS generation
 
-Parallel Processing (3.14t):
-    Rosettes supports parallel tokenization for maximum performance on
-    free-threaded Python. Use highlight_many() for multiple code blocks.
+Memory Model:
 
-    Performance Notes:
-        - Sequential: ~50µs per small code block
-        - Parallel (4 workers): ~15µs per block for batches of 100+
-        - Thread overhead makes parallel slower for < 8 items
+- **Lexers**: Stateless singletons (cached via functools.cache)
+- **Formatters**: Immutable frozen dataclasses
+- **Tokens**: NamedTuples (minimal memory, hashable)
 
-Free-Threading Declaration:
-    This module declares itself safe for free-threaded Python via
-    the _Py_mod_gil attribute (PEP 703).
+**Thread-Safety:**
 
-See Also:
-    rosettes._protocol: Lexer and Formatter protocol definitions
-    rosettes._registry: Language registry with alias support
-    rosettes.formatters.html: HTML formatter with semantic CSS classes
-    rosettes.themes: Theme palettes and CSS generation
+All public APIs are thread-safe by design:
+
+- Lexers use only local variables during tokenization
+- Formatter state is immutable (frozen dataclasses)
+- Registry uses functools.cache for thread-safe memoization
+
+```python
+# ❌ WRONG: Caching lexer instances (already cached internally)
+my_lexer_cache = {}
+my_lexer_cache["python"] = get_lexer("python")
+
+# ✅ CORRECT: Just call get_lexer() — it's cached via functools.cache
+lexer = get_lexer("python")
+```
+
+**Parallel Processing (3.14t):**
+
+Rosettes supports parallel tokenization for maximum performance on
+free-threaded Python. Use `highlight_many()` for multiple code blocks.
+
+Performance Notes:
+
+- **Sequential**: ~50µs per small code block
+- **Parallel (4 workers)**: ~15µs per block for batches of 100+
+- Thread overhead makes parallel slower for < 8 items
+
+**Free-Threading Declaration:**
+
+This module declares itself safe for free-threaded Python via
+the `_Py_mod_gil` attribute (PEP 703).
+
+**See Also:**
+
+- `rosettes._protocol`: Lexer and Formatter protocol definitions
+- `rosettes._registry`: Language registry with alias support
+- `rosettes.formatters.html`: HTML formatter with semantic CSS classes
+- `rosettes.themes`: Theme palettes and CSS generation
 """
 
 from __future__ import annotations

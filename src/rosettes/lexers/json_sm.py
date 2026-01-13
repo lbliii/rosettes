@@ -2,36 +2,42 @@
 
 O(n) guaranteed, zero regex, thread-safe.
 
-Design Philosophy:
-    JSON has a minimal grammar (7 token types), so this lexer is optimized
-    for raw speed rather than code reuse. All scanning is inlined to
-    minimize function call overhead.
+**Design Philosophy:**
 
-Language Support:
-    - Standard JSON (RFC 8259)
-    - Strings with escape sequences
-    - Numbers (integers and floats with exponents)
-    - Literals: true, false, null
-    - Arrays and objects
+JSON has a minimal grammar (7 token types), so this lexer is optimized
+for raw speed rather than code reuse. All scanning is inlined to
+minimize function call overhead.
 
-Performance:
-    ~25µs per 100-line file — fastest lexer in Rosettes due to JSON's
-    simple grammar. No mixin overhead, all hot paths inlined.
+**Language Support:**
 
-Token Types Used:
-    - STRING: "string values"
-    - NUMBER: 123, 3.14, 1e10
-    - KEYWORD_CONSTANT: true, false, null
-    - PUNCTUATION: [ ] { } : ,
-    - WHITESPACE: spaces, tabs, newlines
-    - ERROR: invalid characters
+- Standard JSON (RFC 8259)
+- Strings with escape sequences
+- Numbers (integers and floats with exponents)
+- Literals: `true`, `false`, `null`
+- Arrays and objects
 
-Thread-Safety:
-    Uses only local variables in tokenize(). No class-level mutable state.
+**Performance:**
 
-See Also:
-    rosettes.lexers.yaml_sm: YAML lexer (superset of JSON)
-    rosettes.lexers.toml_sm: TOML lexer (similar config format)
+~25µs per 100-line file — fastest lexer in Rosettes due to JSON's
+simple grammar. No mixin overhead, all hot paths inlined.
+
+**Token Types Used:**
+
+- STRING: `"string values"`
+- NUMBER: `123`, `3.14`, `1e10`
+- KEYWORD_CONSTANT: `true`, `false`, `null`
+- PUNCTUATION: `[ ] { } : ,`
+- WHITESPACE: spaces, tabs, newlines
+- ERROR: invalid characters
+
+**Thread-Safety:**
+
+Uses only local variables in `tokenize()`. No class-level mutable state.
+
+**See Also:**
+
+- `rosettes.lexers.yaml_sm`: YAML lexer (superset of JSON)
+- `rosettes.lexers.toml_sm`: TOML lexer (similar config format)
 """
 
 from __future__ import annotations

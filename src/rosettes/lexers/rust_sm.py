@@ -2,40 +2,45 @@
 
 O(n) guaranteed, zero regex, thread-safe.
 
-Language Support:
-    - Rust 2021 edition syntax
-    - Lifetimes ('a, 'static)
-    - Raw strings (r#"..."#) with arbitrary hash counts
-    - Byte strings (b"...") and byte characters (b'...')
-    - Type suffixes on numbers (42i32, 3.14f64)
-    - Attributes (#[...] and #![...])
-    - Macros (name! invocation)
-    - All operators including ..=, ::, ->
+**Language Support:**
 
-Special Handling:
-    Rust has several unique syntactic features:
+- Rust 2021 edition syntax
+- Lifetimes (`'a`, `'static`)
+- Raw strings (`r#"..."#`) with arbitrary hash counts
+- Byte strings (`b"..."`) and byte characters (`b'...'`)
+- Type suffixes on numbers (`42i32`, `3.14f64`)
+- Attributes (`#[...]` and `#![...]`)
+- Macros (`name!` invocation)
+- All operators including `..=`, `::`, `->`
 
-    Lifetimes: 'a is a lifetime, not a character literal.
-        Detected by ' followed by identifier character.
+**Special Handling:**
 
-    Raw Strings: r#"..."# with matching hash counts.
-        Scans for end marker with same number of hashes.
+Rust has several unique syntactic features:
 
-    Macros: Trailing ! indicates macro invocation.
-        Yields NAME_FUNCTION_MAGIC for macro names.
+- **Lifetimes**: `'a` is a lifetime, not a character literal.
+  Detected by `'` followed by identifier character.
 
-    Type Suffixes: Numbers can have type suffixes (i32, f64, etc.)
-        Scanned after numeric literal body.
+- **Raw Strings**: `r#"..."#` with matching hash counts.
+  Scans for end marker with same number of hashes.
 
-Performance:
-    ~55µs per 100-line file due to Rust's complex literals.
+- **Macros**: Trailing `!` indicates macro invocation.
+  Yields NAME_FUNCTION_MAGIC for macro names.
 
-Thread-Safety:
-    All lookup tables (_KEYWORDS, _TYPES) are frozen sets.
+- **Type Suffixes**: Numbers can have type suffixes (`i32`, `f64`, etc.)
+  Scanned after numeric literal body.
 
-See Also:
-    rosettes.lexers._scanners: C-style mixin implementations
-    rosettes.lexers.go_sm: Similar systems language lexer
+**Performance:**
+
+~55µs per 100-line file due to Rust's complex literals.
+
+**Thread-Safety:**
+
+All lookup tables (`_KEYWORDS`, `_TYPES`) are frozen sets.
+
+**See Also:**
+
+- `rosettes.lexers._scanners`: C-style mixin implementations
+- `rosettes.lexers.go_sm`: Similar systems language lexer
 """
 
 from __future__ import annotations
