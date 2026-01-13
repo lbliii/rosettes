@@ -1,46 +1,45 @@
 ---
 title: Releases
-description: Release notes and changelog
-draft: false
+description: Stay up to date with Rosettes' latest features, improvements, and fixes. Each release includes detailed notes about what's new, what changed, and how to upgrade.
+type: changelog
 weight: 90
+draft: false
 lang: en
-type: doc
+icon: calendar
+tags: [releases, changelog, version history]
+keywords: [releases, changelog, version, updates]
+category: changelog
 cascade:
-  type: doc
-tags:
-- releases
-- changelog
-keywords:
-- releases
-- changelog
-- versions
+  type: changelog
 menu:
   main:
     weight: 50
-icon: tag
 ---
 
-# Releases
+## Quick Upgrade
 
-Release notes for Rosettes versions.
+To upgrade to the latest version:
 
-## Versioning
+:::{tab-set}
+:::{tab-item} UV
 
-Rosettes follows [Semantic Versioning](https://semver.org/):
+```bash
+uv pip install --upgrade rosettes
+```
 
-- **Major** (1.0.0): Breaking changes
-- **Minor** (0.2.0): New features, backward compatible
-- **Patch** (0.1.1): Bug fixes, backward compatible
-
-## Current Version
-
-**v0.1.0** — Initial public release
-
-## Release History
-
-:::{child-cards}
-:columns: 1
-:include: pages
-:fields: title, description
 :::
+
+:::{tab-item} pip
+
+```bash
+pip install --upgrade rosettes
+```
+
+:::
+
+:::{/tab-set}
+
+## Browse Releases
+
+Releases appear below in reverse chronological order (newest first). Click any release to read the full details.
 
