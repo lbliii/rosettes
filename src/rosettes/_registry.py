@@ -66,7 +66,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from functools import cache
 from importlib import import_module
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, cast
 
 if TYPE_CHECKING:
     from .lexers._state_machine import StateMachineLexer
@@ -469,7 +469,7 @@ def _get_lexer_by_canonical(canonical: str) -> StateMachineLexer:
     spec = _LEXER_SPECS[canonical]
     module = import_module(spec.module)
     lexer_class = getattr(module, spec.class_name)
-    return lexer_class()
+    return cast("StateMachineLexer", lexer_class())
 
 
 def list_languages() -> list[str]:

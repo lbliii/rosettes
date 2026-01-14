@@ -126,6 +126,7 @@ ROLE_MAPPING: dict[TokenType, SyntaxRole] = {
     TokenType.PUNCTUATION_MARKER: SyntaxRole.PUNCTUATION,
     # Comments → Documentation
     TokenType.COMMENT: SyntaxRole.COMMENT,
+    TokenType.COMMENT_DOC: SyntaxRole.DOCSTRING,
     TokenType.COMMENT_HASHBANG: SyntaxRole.COMMENT,
     TokenType.COMMENT_MULTILINE: SyntaxRole.COMMENT,
     TokenType.COMMENT_PREPROC: SyntaxRole.ATTRIBUTE,

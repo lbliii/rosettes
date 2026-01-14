@@ -103,7 +103,7 @@ from __future__ import annotations
 
 import os
 from concurrent.futures import ThreadPoolExecutor
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Literal
 
 from rosettes._config import FormatConfig, HighlightConfig, LexerConfig
 from rosettes._formatter_registry import get_formatter, list_formatters, supports_formatter
@@ -160,7 +160,7 @@ def highlight(
     hl_lines: set[int] | frozenset[int] | None = None,
     show_linenos: bool = False,
     css_class: str | None = None,
-    css_class_style: str = "semantic",
+    css_class_style: Literal["semantic", "pygments"] = "semantic",
     start: int = 0,
     end: int | None = None,
 ) -> str:
@@ -291,7 +291,7 @@ def highlight_many(
     *,
     formatter: str | Formatter = "html",
     max_workers: int | None = None,
-    css_class_style: str = "semantic",
+    css_class_style: Literal["semantic", "pygments"] = "semantic",
 ) -> list[str]:
     """Highlight multiple code blocks in parallel.
 

@@ -50,7 +50,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from functools import cache
 from importlib import import_module
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, cast
 
 if TYPE_CHECKING:
     from ._protocol import Formatter
@@ -129,7 +129,7 @@ def _get_formatter_by_canonical(canonical: str) -> Formatter:
     spec = _FORMATTER_SPECS[canonical]
     module = import_module(spec.module)
     formatter_class = getattr(module, spec.class_name)
-    return formatter_class()
+    return cast("Formatter", formatter_class())
 
 
 def list_formatters() -> list[str]:

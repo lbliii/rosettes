@@ -202,22 +202,6 @@ class HtmlFormatter:
         prefix = config.class_prefix
         container = config.css_class if config.css_class else self.container_class
 
-        if is_semantic:
-            span_open = _SEMANTIC_SPAN_OPEN
-            role_mapping = ROLE_MAPPING
-        else:
-            span_open = _SPAN_OPEN
-            role_mapping = None
-
-        # Use prefixed templates if needed
-        if prefix and not is_semantic:
-            span_open = {k: f'<span class="{prefix}{k}">' for k in span_open}
-        elif prefix and is_semantic:
-            span_open = {
-                k: f'<span class="{prefix}{v.split(">")[0].split(chr(34))[1]}">'
-                for k, v in span_open.items()
-            }
-
         span_close = _SPAN_CLOSE
 
         # Opening tags
@@ -229,12 +213,18 @@ class HtmlFormatter:
 
         # Hot path - format each token
         if is_semantic:
+            semantic_span_open: dict[SyntaxRole, str] = _SEMANTIC_SPAN_OPEN
+            if prefix:
+                semantic_span_open = {
+                    k: f'<span class="{prefix}{v.split(">")[0].split(chr(34))[1]}">'
+                    for k, v in semantic_span_open.items()
+                }
             for token_type, value in tokens:
                 if token_type in no_span:
                     yield escape(value)
                 else:
-                    role = role_mapping.get(token_type, SyntaxRole.TEXT)
-                    template = span_open.get(role)
+                    role = ROLE_MAPPING.get(token_type, SyntaxRole.TEXT)
+                    template = semantic_span_open.get(role)
                     if template:
                         yield template
                         yield escape(value)
@@ -242,12 +232,15 @@ class HtmlFormatter:
                     else:
                         yield escape(value)
         else:
+            pygments_span_open: dict[str, str] = _SPAN_OPEN
+            if prefix:
+                pygments_span_open = {k: f'<span class="{prefix}{k}">' for k in pygments_span_open}
             for token_type, value in tokens:
                 if token_type in no_span:
                     yield escape(value)
                 else:
                     tv = token_type.value
-                    template = span_open.get(tv)
+                    template = pygments_span_open.get(tv)
                     if template:
                         yield template
                         yield escape(value)
@@ -286,15 +279,16 @@ class HtmlFormatter:
         hl_span_open = f'<span class="{hl_line_class}">'
         span_close = _SPAN_CLOSE
 
-        if is_semantic:
-            span_open = _SEMANTIC_SPAN_OPEN
-            role_mapping = ROLE_MAPPING
-        else:
-            span_open = _SPAN_OPEN
-            role_mapping = None
+        # Prepare span lookup tables
+        semantic_span_open: dict[SyntaxRole, str] | None = None
+        pygments_span_open: dict[str, str] | None = None
 
-        if prefix and not is_semantic:
-            span_open = {k: f'<span class="{prefix}{k}">' for k in span_open}
+        if is_semantic:
+            semantic_span_open = _SEMANTIC_SPAN_OPEN
+        else:
+            pygments_span_open = _SPAN_OPEN
+            if prefix:
+                pygments_span_open = {k: f'<span class="{prefix}{k}">' for k in pygments_span_open}
 
         if config.wrap_code:
             data_lang_attr = (
@@ -324,11 +318,13 @@ class HtmlFormatter:
             if token.type in no_span:
                 yield escaped
             else:
-                if is_semantic:
-                    role = role_mapping.get(token.type, SyntaxRole.TEXT)
-                    template = span_open.get(role)
+                if is_semantic and semantic_span_open is not None:
+                    role = ROLE_MAPPING.get(token.type, SyntaxRole.TEXT)
+                    template = semantic_span_open.get(role)
+                elif pygments_span_open is not None:
+                    template = pygments_span_open.get(token.type.value)
                 else:
-                    template = span_open.get(token.type.value)
+                    template = None
 
                 if template:
                     yield template

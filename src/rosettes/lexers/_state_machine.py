@@ -196,6 +196,7 @@ class StateMachineLexer:
         self,
         code: str,
         config: LexerConfig | None = None,
+        *,
         start: int = 0,
         end: int | None = None,
     ) -> Iterator[Token]:

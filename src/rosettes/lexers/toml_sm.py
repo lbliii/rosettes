@@ -239,7 +239,7 @@ class TomlStateMachineLexer(
                 # Time component?
                 if pos < length and code[pos] in "T ":
                     pos += 1
-                    while pos < length and code[pos] in DIGITS + ":":
+                    while pos < length and (code[pos] in DIGITS or code[pos] == ":"):
                         pos += 1
                     # Fractional seconds
                     if pos < length and code[pos] == ".":
@@ -249,7 +249,7 @@ class TomlStateMachineLexer(
                     # Timezone
                     if pos < length and code[pos] in "Z+-":
                         pos += 1
-                        while pos < length and code[pos] in DIGITS + ":":
+                        while pos < length and (code[pos] in DIGITS or code[pos] == ":"):
                             pos += 1
                 return TokenType.LITERAL_DATE, pos
 

@@ -135,6 +135,7 @@ class TokenType(StrEnum):
 
     # Comments
     COMMENT = "c"
+    COMMENT_DOC = "cd"
     COMMENT_HASHBANG = "ch"
     COMMENT_MULTILINE = "cm"
     COMMENT_PREPROC = "cp"
