@@ -255,6 +255,21 @@ pytest
 
 ---
 
+## The Bengal Cat Family
+
+The Bengal Cat Family's core components are written in pure Python:
+
+| | | |
+|--:|---|---|
+| **ᓚᘏᗢ** | [Bengal](https://github.com/lbliii/bengal) | Static site generator |
+| **)彡** | [Kida](https://github.com/lbliii/kida) | Template engine |
+| **⌾⌾⌾** | **Rosettes** | Syntax highlighter ← You are here |
+| **ฅᨐฅ** | [Patitas](https://github.com/lbliii/patitas) | Markdown parser |
+
+Python-native. Free-threading ready. No npm required.
+
+---
+
 ## License
 
 MIT License — see [LICENSE](LICENSE) for details.
