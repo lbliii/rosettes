@@ -75,6 +75,7 @@ Third-Party Compatible:
 
 from __future__ import annotations
 
+import threading
 from typing import TYPE_CHECKING
 
 from rosettes.themes._mapping import (
@@ -136,35 +137,37 @@ __all__ = [
 Palette = SyntaxPalette | AdaptivePalette
 
 
-# Palette registry (populated with built-ins)
-_PALETTES: dict[str, Palette] = {}
-
-
-def _init_registry() -> None:
-    """Initialize the palette registry with built-in palettes."""
-    global _PALETTES
-
+# Palette registry — eagerly initialized for thread-safety.
+# All built-in palette imports are at the top of this module, so there is
+# no startup cost saved by deferring. Eager init eliminates the race
+# condition where two threads call get_palette() before _init_registry().
+_PALETTES: dict[str, Palette] = {
     # Bengal themes
-    _PALETTES["bengal-tiger"] = BENGAL_TIGER
-    _PALETTES["bengal-snow-lynx"] = BENGAL_SNOW_LYNX
-    _PALETTES["bengal-charcoal"] = BENGAL_CHARCOAL
-    _PALETTES["bengal-blue"] = BENGAL_BLUE
-
+    "bengal-tiger": BENGAL_TIGER,
+    "bengal-snow-lynx": BENGAL_SNOW_LYNX,
+    "bengal-charcoal": BENGAL_CHARCOAL,
+    "bengal-blue": BENGAL_BLUE,
     # Third-party themes
-    _PALETTES["monokai"] = MONOKAI
-    _PALETTES["dracula"] = DRACULA
-    _PALETTES["github"] = GITHUB
-    _PALETTES["github-light"] = GITHUB_LIGHT
-    _PALETTES["github-dark"] = GITHUB_DARK
+    "monokai": MONOKAI,
+    "dracula": DRACULA,
+    "github": GITHUB,
+    "github-light": GITHUB_LIGHT,
+    "github-dark": GITHUB_DARK,
+}
+
+_PALETTES_LOCK = threading.Lock()
 
 
 def register_palette(palette: Palette) -> None:
     """Register a custom palette.
 
+    Thread-safe: protected by a lock since it mutates shared state.
+
     Args:
         palette: The palette to register.
     """
-    _PALETTES[palette.name] = palette
+    with _PALETTES_LOCK:
+        _PALETTES[palette.name] = palette
 
 
 def get_palette(name: str) -> Palette:
@@ -179,10 +182,6 @@ def get_palette(name: str) -> Palette:
     Raises:
         LookupError: If the palette is not registered.
     """
-    # Lazy init
-    if not _PALETTES:
-        _init_registry()
-
     if name not in _PALETTES:
         available = ", ".join(sorted(_PALETTES.keys()))
         raise LookupError(f"Unknown syntax theme: {name!r}. Available: {available}")
@@ -196,8 +195,4 @@ def list_palettes() -> list[str]:
     Returns:
         Sorted list of palette names.
     """
-    # Lazy init
-    if not _PALETTES:
-        _init_registry()
-
     return sorted(_PALETTES.keys())
