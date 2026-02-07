@@ -114,18 +114,30 @@ _SEMANTIC_CLASS: dict[SyntaxRole, str] = {
     SyntaxRole.ESCAPE: "syntax-escape",
 }
 
-# Pre-build span templates for Pygments compatibility
-_SPAN_OPEN: dict[str, str] = {}
 _SPAN_CLOSE = "</span>"
-for _tt in TokenType:
-    if _tt not in _NO_SPAN_TYPES:
-        _SPAN_OPEN[_tt.value] = f'<span class="{_tt.value}">'
 
-# Pre-build semantic span templates
-_SEMANTIC_SPAN_OPEN: dict[SyntaxRole, str] = {}
-for _role, _class_name in _SEMANTIC_CLASS.items():
-    if _class_name:
-        _SEMANTIC_SPAN_OPEN[_role] = f'<span class="{_class_name}">'
+
+def _build_semantic_spans(prefix: str = "") -> dict[SyntaxRole, str]:
+    """Build semantic span open tags from class names, with optional prefix."""
+    return {
+        role: f'<span class="{prefix}{class_name}">'
+        for role, class_name in _SEMANTIC_CLASS.items()
+        if class_name
+    }
+
+
+def _build_pygments_spans(prefix: str = "") -> dict[str, str]:
+    """Build Pygments span open tags from token types, with optional prefix."""
+    return {
+        tt.value: f'<span class="{prefix}{tt.value}">'
+        for tt in TokenType
+        if tt not in _NO_SPAN_TYPES
+    }
+
+
+# Pre-build default (no-prefix) span templates
+_SPAN_OPEN: dict[str, str] = _build_pygments_spans()
+_SEMANTIC_SPAN_OPEN: dict[SyntaxRole, str] = _build_semantic_spans()
 
 
 @dataclass(frozen=True, slots=True)
@@ -213,12 +225,9 @@ class HtmlFormatter:
 
         # Hot path - format each token
         if is_semantic:
-            semantic_span_open: dict[SyntaxRole, str] = _SEMANTIC_SPAN_OPEN
-            if prefix:
-                semantic_span_open = {
-                    k: f'<span class="{prefix}{v.split(">")[0].split(chr(34))[1]}">'
-                    for k, v in semantic_span_open.items()
-                }
+            semantic_span_open: dict[SyntaxRole, str] = (
+                _build_semantic_spans(prefix) if prefix else _SEMANTIC_SPAN_OPEN
+            )
             for token_type, value in tokens:
                 if token_type in no_span:
                     yield escape(value)
@@ -232,9 +241,9 @@ class HtmlFormatter:
                     else:
                         yield escape(value)
         else:
-            pygments_span_open: dict[str, str] = _SPAN_OPEN
-            if prefix:
-                pygments_span_open = {k: f'<span class="{prefix}{k}">' for k in pygments_span_open}
+            pygments_span_open: dict[str, str] = (
+                _build_pygments_spans(prefix) if prefix else _SPAN_OPEN
+            )
             for token_type, value in tokens:
                 if token_type in no_span:
                     yield escape(value)
@@ -284,11 +293,13 @@ class HtmlFormatter:
         pygments_span_open: dict[str, str] | None = None
 
         if is_semantic:
-            semantic_span_open = _SEMANTIC_SPAN_OPEN
+            semantic_span_open = (
+                _build_semantic_spans(prefix) if prefix else _SEMANTIC_SPAN_OPEN
+            )
         else:
-            pygments_span_open = _SPAN_OPEN
-            if prefix:
-                pygments_span_open = {k: f'<span class="{prefix}{k}">' for k in pygments_span_open}
+            pygments_span_open = (
+                _build_pygments_spans(prefix) if prefix else _SPAN_OPEN
+            )
 
         if config.wrap_code:
             data_lang_attr = (
