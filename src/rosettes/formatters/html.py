@@ -261,45 +261,70 @@ class HtmlFormatter:
         if config.wrap_code:
             yield "</code></pre></div>"
 
+    def _resolve_span_table(
+        self,
+        prefix: str,
+    ) -> tuple[dict[SyntaxRole, str] | None, dict[str, str] | None]:
+        """Resolve the correct span lookup table for the current CSS class style.
+
+        Returns a (semantic, pygments) tuple where exactly one is non-None.
+        """
+        if self.css_class_style == "semantic":
+            return (
+                _build_semantic_spans(prefix) if prefix else _SEMANTIC_SPAN_OPEN,
+                None,
+            )
+        return (
+            None,
+            _build_pygments_spans(prefix) if prefix else _SPAN_OPEN,
+        )
+
     def format(
         self,
         tokens: Iterator[Token],
         config: FormatConfig | None = None,
     ) -> Iterator[str]:
-        """Format tokens as HTML with streaming output."""
+        """Format tokens as HTML with streaming output.
+
+        Dispatches to the fast path when no line highlighting is needed,
+        otherwise delegates to _format_with_hl_lines().
+        """
         if config is None:
             config = FormatConfig()
 
-        hl_lines = self.config.hl_lines
-        is_semantic = self.css_class_style == "semantic"
-        container = config.css_class if config.css_class else self.container_class
-
         # Fast path: no line highlighting
-        if not hl_lines:
+        if not self.config.hl_lines:
             fast_tokens = ((t.type, t.value) for t in tokens)
             yield from self.format_fast(fast_tokens, config)
             return
 
         # Slow path: line highlighting
+        yield from self._format_with_hl_lines(tokens, config)
+
+    def _format_with_hl_lines(
+        self,
+        tokens: Iterator[Token],
+        config: FormatConfig,
+    ) -> Iterator[str]:
+        """Format tokens with line highlighting support.
+
+        Handles span open/close around highlighted lines, newline tracking,
+        and token formatting. Called only when hl_lines is non-empty.
+        """
+        hl_lines = self.config.hl_lines
+        is_semantic = self.css_class_style == "semantic"
+        container = config.css_class if config.css_class else self.container_class
+
+        # Cache hot-path lookups
         no_span = _NO_SPAN_TYPES
         escape = escape_html
-        prefix = config.class_prefix
-        hl_line_class = self.config.hl_line_class
-        hl_span_open = f'<span class="{hl_line_class}">'
+        hl_span_open = f'<span class="{self.config.hl_line_class}">'
         span_close = _SPAN_CLOSE
 
-        # Prepare span lookup tables
-        semantic_span_open: dict[SyntaxRole, str] | None = None
-        pygments_span_open: dict[str, str] | None = None
-
-        if is_semantic:
-            semantic_span_open = (
-                _build_semantic_spans(prefix) if prefix else _SEMANTIC_SPAN_OPEN
-            )
-        else:
-            pygments_span_open = (
-                _build_pygments_spans(prefix) if prefix else _SPAN_OPEN
-            )
+        # Resolve span lookup tables
+        semantic_span_open, pygments_span_open = self._resolve_span_table(
+            config.class_prefix,
+        )
 
         if config.wrap_code:
             data_lang_attr = (
