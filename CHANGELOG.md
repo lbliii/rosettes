@@ -5,6 +5,27 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Changed
+
+- **HTML Formatter**: Pre-compute prefixed span templates from class name mappings
+  instead of parsing HTML strings at runtime — fixes a fragility in the hot path
+- **HTML Formatter**: Extract `_format_with_hl_lines()` and `_resolve_span_table()`
+  from `format()` for better maintainability of the line-highlighting slow path
+- **Theme Registry**: Eager initialization of palette registry at module scope
+  with `threading.Lock` on `register_palette()` — closes a thread-safety gap
+- **CI**: Replace mypy with ty in the typecheck workflow to match project tooling
+
+### Added
+
+- **Core API**: `_validate_range()` bounds checking for `start`/`end` parameters
+  in `highlight()` and `tokenize()` — raises `ValueError` on invalid ranges
+
+### Removed
+
+- Dead `TYPE_CHECKING` block in HTML formatter
+
 ## [0.1.0] - 2026-01-02
 
 Initial public release of Rosettes, extracted from the Bengal static site generator.
