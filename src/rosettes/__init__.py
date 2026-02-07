@@ -152,6 +152,30 @@ __all__ = [
 ]
 
 
+def _validate_range(code: str, start: int, end: int | None) -> tuple[int, int]:
+    """Validate and normalize start/end range for code slicing.
+
+    Args:
+        code: The source string.
+        start: Starting index (must be >= 0 and <= len(code)).
+        end: Ending index (must be >= start and <= len(code)), or None for end of string.
+
+    Returns:
+        Tuple of (start, end) with end resolved to an integer.
+
+    Raises:
+        ValueError: If start or end is out of range.
+    """
+    length = len(code)
+    if end is None:
+        end = length
+    if start < 0 or start > length:
+        raise ValueError(f"start={start} out of range for code of length {length}")
+    if end < start or end > length:
+        raise ValueError(f"end={end} out of range (start={start}, length={length})")
+    return start, end
+
+
 def highlight(
     code: str,
     language: str,
@@ -191,6 +215,7 @@ def highlight(
 
     Raises:
         LookupError: If the language or formatter is not supported.
+        ValueError: If start/end are out of range.
 
     Example:
         >>> html = highlight("print('hello')", "python")
@@ -202,6 +227,7 @@ def highlight(
         >>> "\\033[" in ansi
         True
     """
+    start, end = _validate_range(code, start, end)
     lexer = get_lexer(language)
     canonical_language = lexer.name
 
@@ -271,12 +297,14 @@ def tokenize(
 
     Raises:
         LookupError: If the language is not supported.
+        ValueError: If start/end are out of range.
 
     Example:
         >>> tokens = tokenize("x = 1", "python")
         >>> tokens[0].type
         <TokenType.NAME: 'n'>
     """
+    start, end = _validate_range(code, start, end)
     lexer = get_lexer(language)
     return list(lexer.tokenize(code, start=start, end=end))
 
