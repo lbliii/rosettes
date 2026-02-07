@@ -67,16 +67,13 @@ from __future__ import annotations
 
 from collections.abc import Iterator
 from dataclasses import dataclass, field
-from typing import TYPE_CHECKING, Literal
+from typing import Literal
 
 from rosettes._config import FormatConfig, HighlightConfig
 from rosettes._escape import escape_html
 from rosettes._types import Token, TokenType
 from rosettes.themes._mapping import ROLE_MAPPING
 from rosettes.themes._roles import SyntaxRole
-
-if TYPE_CHECKING:
-    pass
 
 __all__ = ["HtmlFormatter"]
 
