@@ -103,6 +103,7 @@ from __future__ import annotations
 
 import os
 from concurrent.futures import ThreadPoolExecutor
+from time import perf_counter as _perf_counter
 from typing import TYPE_CHECKING, Literal
 
 from rosettes._config import FormatConfig, HighlightConfig, LexerConfig
@@ -115,6 +116,7 @@ from rosettes._registry import (
 )
 from rosettes._types import Token, TokenType
 from rosettes.formatters import HtmlFormatter
+from rosettes.profiling import HighlightAccumulator, get_accumulator, profiled_highlight
 
 if TYPE_CHECKING:
     from collections.abc import Iterable
@@ -149,6 +151,10 @@ __all__ = [
     # Parallel API (3.14t optimized)
     "highlight_many",
     "tokenize_many",
+    # Profiling
+    "HighlightAccumulator",
+    "profiled_highlight",
+    "get_accumulator",
 ]
 
 
@@ -238,6 +244,9 @@ def highlight(
     if css_class is None:
         css_class = "rosettes" if css_class_style == "semantic" else "highlight"
 
+    # Profiling: check if accumulator is active (None check = zero overhead when disabled)
+    acc = get_accumulator()
+
     # Fast path: all formatters implement format_string_fast via protocol
     # Requires: no line numbers, no highlighted lines
     if not hl_lines and not show_linenos:
@@ -249,6 +258,22 @@ def highlight(
             formatter_inst = HtmlFormatter(css_class_style=css_class_style)
 
         format_config = FormatConfig(css_class=css_class, data_language=canonical_language)
+
+        if acc is not None:
+            t0 = _perf_counter()
+            tokens = lexer.tokenize_fast(code, start=start, end=end)
+            t1 = _perf_counter()
+            result = formatter_inst.format_string_fast(tokens, format_config)
+            t2 = _perf_counter()
+            acc.record(
+                language=canonical_language,
+                lexer_ms=(t1 - t0) * 1000,
+                formatter_ms=(t2 - t1) * 1000,
+                total_ms=(t2 - t0) * 1000,
+                code_length=end - start,
+            )
+            return result
+
         return formatter_inst.format_string_fast(
             lexer.tokenize_fast(code, start=start, end=end), format_config
         )
@@ -266,6 +291,21 @@ def highlight(
         formatter_inst.config != hl_config or formatter_inst.css_class_style != css_class_style
     ):
         formatter_inst = HtmlFormatter(config=hl_config, css_class_style=css_class_style)
+
+    if acc is not None:
+        t0 = _perf_counter()
+        tokens = list(lexer.tokenize(code, start=start, end=end))
+        t1 = _perf_counter()
+        result = "".join(formatter_inst.format(iter(tokens), config=format_config))
+        t2 = _perf_counter()
+        acc.record(
+            language=canonical_language,
+            lexer_ms=(t1 - t0) * 1000,
+            formatter_ms=(t2 - t1) * 1000,
+            total_ms=(t2 - t0) * 1000,
+            code_length=end - start,
+        )
+        return result
 
     return "".join(
         formatter_inst.format(lexer.tokenize(code, start=start, end=end), config=format_config)

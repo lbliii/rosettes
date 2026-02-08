@@ -10,6 +10,7 @@ src/rosettes/_protocol.py
 src/rosettes/_registry.py
 src/rosettes/_types.py
 src/rosettes/delegate.py
+src/rosettes/profiling.py
 src/rosettes/py.typed
 src/rosettes.egg-info/PKG-INFO
 src/rosettes.egg-info/SOURCES.txt
@@ -83,6 +84,7 @@ src/rosettes/themes/_palette.py
 src/rosettes/themes/_roles.py
 src/rosettes/themes/palettes/__init__.py
 tests/test_parallel.py
+tests/test_profiling.py
 tests/test_registry.py
 tests/test_thread_safety.py
 tests/test_types.py
