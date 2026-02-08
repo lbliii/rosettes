@@ -72,5 +72,9 @@ site/content/api/rosettes/
 # Env 
 .env
 
+# DORI (local/ephemeral)
+.dori/local/
+.dori/events/
+
 # Test artifacts (leaked mocks)
 MagicMock/
