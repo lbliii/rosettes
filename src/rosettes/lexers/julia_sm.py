@@ -113,7 +113,7 @@ _CONSTANTS: frozenset[str] = frozenset(
         "NaN64",
         "pi",
         "π",
-        "ℯ",
+        "ℯ",  # noqa: RUF001 - Julia's Euler's number constant
         "im",
     }
 )
@@ -376,7 +376,7 @@ class JuliaStateMachineLexer(
                 continue
 
             # Operators
-            if char in "=<>!&|+-*/%^~÷∈∉∋∌⊆⊇⊂⊃∪∩":
+            if char in "=<>!&|+-*/%^~÷∈∉∋∌⊆⊇⊂⊃∪∩":  # noqa: RUF001
                 start = pos
                 # Multi-char operators
                 if pos + 2 < length and code[pos : pos + 3] in ("===", "!==", "<=>", ">>>"):

@@ -410,8 +410,7 @@ class SyntaxPalette:
             props.extend(extra_props)
 
             css_parts.append(f"{class_name} {{")
-            for prop in props:
-                css_parts.append(f"  {prop};")
+            css_parts.extend(f"  {prop};" for prop in props)
             css_parts.append("}")
 
         return "\n".join(css_parts)
@@ -506,18 +505,14 @@ class AdaptivePalette:
         css_parts.append("@media (prefers-color-scheme: light) {")
         light_css = self.light.generate_css(class_style=class_style)
         # Indent the light CSS
-        for line in light_css.split("\n"):
-            if line.strip():
-                css_parts.append(f"  {line}")
+        css_parts.extend(f"  {line}" for line in light_css.split("\n") if line.strip())
         css_parts.append("}")
         css_parts.append("")
 
         # Dark mode
         css_parts.append("@media (prefers-color-scheme: dark) {")
         dark_css = self.dark.generate_css(class_style=class_style)
-        for line in dark_css.split("\n"):
-            if line.strip():
-                css_parts.append(f"  {line}")
+        css_parts.extend(f"  {line}" for line in dark_css.split("\n") if line.strip())
         css_parts.append("}")
 
         return "\n".join(css_parts)
