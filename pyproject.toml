@@ -94,4 +94,4 @@ dev = [
     "hypothesis>=6.100.0",   # Property-based testing
 ]
 # Documentation site (uses bengal from PyPI)
-docs = ["bengal>=0.1.10"]
+docs = ["bengal>=0.2.0"]
