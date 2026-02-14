@@ -20,15 +20,15 @@ icon: zap
 
 Rosettes is designed for predictable, high performance. State machine lexers provide O(n) time complexity with no worst-case surprises.
 
-## Benchmarks vs Pygments
+## Benchmarks
 
 Tested on a 10,000-line Python file:
 
-| Operation | Rosettes | Pygments | Speedup |
-|-----------|----------|----------|---------|
-| Tokenize | 12ms | 45ms | **3.75x** |
-| Highlight | 18ms | 52ms | **2.89x** |
-| Parallel (8 blocks) | 22ms | 48ms | **2.18x** |
+| Operation | Time |
+|-----------|------|
+| Tokenize | 12ms |
+| Highlight | 18ms |
+| Parallel (8 blocks) | 22ms |
 
 *Benchmarked on Apple M1 Pro, Python 3.14. Results vary by hardware—run `python -m benchmarks.benchmark_vs_pygments` to measure on your system.*
 
@@ -49,9 +49,9 @@ Rosettes processes each character exactly once:
 
 Linear scaling—no exponential blowup.
 
-### Comparison with Regex
+### Why State Machines?
 
-Regex-based highlighters can exhibit catastrophic backtracking:
+Regex-based parsing can exhibit catastrophic backtracking:
 
 ```
 Pattern: (a+)+$
@@ -190,21 +190,19 @@ print(f"Average: {time/100*1000:.2f}ms")
 
 ---
 
-## Comparison Table
+## Characteristics
 
-| Feature | Rosettes | Pygments |
-|---------|----------|----------|
-| Time complexity | O(n) | O(n) typical, O(2^n) worst |
-| ReDoS vulnerable | No | Yes (some lexers) |
-| Parallel support | Native | Manual only |
-| Free-threading | Optimized | Not tested |
-| Memory per token | 72 bytes | ~200 bytes |
-| Dependencies | None | None |
+| Feature | Rosettes |
+|---------|----------|
+| Time complexity | O(n) guaranteed |
+| ReDoS vulnerable | No |
+| Parallel support | Native `highlight_many()` |
+| Free-threading | Optimized |
+| Memory per token | 72 bytes |
+| Dependencies | None |
 
 ---
 
 ## Next Steps
-
-- [[docs/about/comparison|Comparison]] — Detailed Rosettes vs Pygments comparison
 - [[docs/highlighting/parallel|Parallel Processing]] — Using `highlight_many()`
 

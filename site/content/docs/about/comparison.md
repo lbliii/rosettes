@@ -1,200 +1,50 @@
 ---
-title: Rosettes vs Pygments
-description: Feature and performance comparison
+title: Choosing Rosettes
+description: When Rosettes fits and what it offers
 draft: false
 weight: 40
 lang: en
 type: doc
 tags:
-- comparison
-- pygments
+- choosing
+- features
 keywords:
-- comparison
-- pygments
-- versus
-- differences
+- choosing
+- features
+- migration
 icon: bar-chart
 ---
 
-# Rosettes vs Pygments
+# Choosing Rosettes
 
-A detailed comparison of Rosettes and Pygments for syntax highlighting.
+Rosettes is a good fit when you need syntax highlighting with predictable performance and security.
 
-## Summary
+## What Rosettes Offers
 
-| Aspect | Rosettes | Pygments |
-|--------|----------|----------|
-| **Languages** | 55 | 500+ |
-| **Performance** | 2-4x faster | Baseline |
-| **ReDoS safe** | ✅ Yes | ❌ Some lexers vulnerable |
-| **Free-threading** | ✅ Optimized | ❌ Not tested |
-| **Dependencies** | None | None |
-| **Maturity** | New (2026) | Established (2006) |
+- **O(n) guaranteed** — State machine lexers, no regex backtracking
+- **ReDoS safe** — Safe for untrusted input in web apps and APIs
+- **55 languages** — Python, JavaScript, Rust, Go, and other popular languages
+- **Free-threading ready** — Optimized for Python 3.14t
+- **Parallel highlighting** — `highlight_many()` for multiple blocks
+- **Zero dependencies** — Pure Python
+- **Pygments CSS compatibility** — Use existing themes with `css_class_style="pygments"`
 
----
+## When Rosettes Fits
 
-## When to Choose Rosettes
+- Web applications highlighting user code or documentation
+- Static site generators (e.g., Bengal)
+- Python 3.14+ projects using free-threading
+- Projects where security and predictable performance matter
 
-✅ **Choose Rosettes when:**
+## Limitations
 
-- You need guaranteed O(n) performance
-- Security is critical (no ReDoS risk)
-- You're using Python 3.14t with free-threading
-- You're highlighting common languages (Python, JS, Rust, etc.)
-- You want parallel highlighting for many code blocks
+- **55 languages** — Covers popular languages; not the 500+ that some tools support
+- **HTML and terminal output** — No built-in LaTeX, RTF, or SVG formatters
+- **Python 3.14+** — Requires modern Python
 
-❌ **Choose Pygments when:**
+## Migration from Pygments
 
-- You need obscure language support (500+ languages)
-- You need output formats beyond HTML and terminal (LaTeX, RTF, SVG)
-- You're on Python < 3.14
-- You need battle-tested stability
-
----
-
-## Feature Comparison
-
-### Language Support
-
-| Category | Rosettes | Pygments |
-|----------|----------|----------|
-| Total languages | 55 | 500+ |
-| Popular languages | ✅ Full coverage | ✅ Full coverage |
-| Obscure languages | ❌ Limited | ✅ Extensive |
-| Quality | Hand-written, optimized | Variable |
-
-**Rosettes covers:** Python, JavaScript, TypeScript, Rust, Go, C, C++, Java, Ruby, PHP, and 45 more popular languages.
-
-**Pygments adds:** COBOL, Fortran, Ada, dozens of DSLs, legacy languages, and specialized formats.
-
-### Output Formats
-
-| Format | Rosettes | Pygments |
-|--------|----------|----------|
-| HTML | ✅ | ✅ |
-| Terminal/ANSI | ✅ | ✅ |
-| LaTeX | ❌ | ✅ |
-| RTF | ❌ | ✅ |
-| SVG | ❌ | ✅ |
-| IRC | ❌ | ✅ |
-
-Rosettes supports HTML and terminal (ANSI) output. For LaTeX, RTF, SVG, or IRC, use Pygments.
-
-### CSS Compatibility
-
-| Style | Rosettes | Pygments |
-|-------|----------|----------|
-| Pygments classes | ✅ `css_class_style="pygments"` | ✅ Native |
-| Semantic classes | ✅ `css_class_style="semantic"` | ❌ N/A |
-| Theme compatibility | ✅ Full | ✅ Native |
-
-Rosettes can use any Pygments CSS theme with `css_class_style="pygments"`.
-
----
-
-## Performance Comparison
-
-### Single Block Highlighting
-
-| File Size | Rosettes | Pygments | Speedup |
-|-----------|----------|----------|---------|
-| 100 lines | 0.5ms | 1.5ms | 3x |
-| 1,000 lines | 2ms | 8ms | 4x |
-| 10,000 lines | 18ms | 52ms | 2.9x |
-
-### Parallel Highlighting (8 blocks)
-
-| Scenario | Rosettes | Pygments | Speedup |
-|----------|----------|----------|---------|
-| GIL Python | 22ms | 48ms | 2.2x |
-| Free-threading | 12ms | N/A | N/A |
-
-Pygments doesn't have built-in parallel support, requiring manual thread pool setup.
-
----
-
-## Security Comparison
-
-### ReDoS Vulnerability
-
-**Rosettes:** Not vulnerable. State machine lexers process each character exactly once.
-
-**Pygments:** Some lexers are vulnerable. Crafted input can cause exponential processing time.
-
-Example vulnerable pattern (simplified):
-
-```python
-# Pygments regex pattern (hypothetical)
-r'(a+)+$'
-
-# Malicious input
-"aaaaaaaaaaaaaaaaaaaaaaaaaaaa!"
-
-# Result: Exponential backtracking
-```
-
-Rosettes eliminates this entire category of vulnerability by design.
-
----
-
-## API Comparison
-
-### Basic Highlighting
-
-**Rosettes:**
-```python
-from rosettes import highlight
-
-# HTML output (default)
-html = highlight("def foo(): pass", "python")
-
-# Terminal output (ANSI colors)
-ansi = highlight("def foo(): pass", "python", formatter="terminal")
-```
-
-**Pygments:**
-```python
-from pygments import highlight
-from pygments.lexers import PythonLexer
-from pygments.formatters import HtmlFormatter
-
-html = highlight("def foo(): pass", PythonLexer(), HtmlFormatter())
-```
-
-### Tokenization
-
-**Rosettes:**
-```python
-from rosettes import tokenize
-tokens = tokenize("x = 1", "python")
-```
-
-**Pygments:**
-```python
-from pygments.lexers import PythonLexer
-tokens = list(PythonLexer().get_tokens("x = 1"))
-```
-
-### Parallel Highlighting
-
-**Rosettes:**
-```python
-from rosettes import highlight_many
-results = highlight_many(blocks)  # Built-in
-```
-
-**Pygments:**
-```python
-from concurrent.futures import ThreadPoolExecutor
-from pygments import highlight
-# ... manual setup required
-```
-
----
-
-## Migration Path
-
-Switching from Pygments to Rosettes is straightforward for HTML output:
+Switching to Rosettes is straightforward for HTML output:
 
 ```python
 # Before (Pygments)
@@ -215,38 +65,3 @@ html = highlight(code, "python", css_class_style="pygments")
 Your existing CSS themes work without changes.
 
 See [[docs/tutorials/migrate-from-pygments|Migration Guide]] for a complete walkthrough.
-
----
-
-## Ecosystem
-
-### Pygments Ecosystem
-
-- Sphinx integration
-- Jupyter integration
-- Many editor plugins
-- 18+ years of community themes
-- Extensive documentation
-
-### Rosettes Ecosystem
-
-- Bengal static site generator
-- Pygments CSS theme compatibility
-- Growing documentation
-- Modern Python 3.14+ focus
-
----
-
-## Conclusion
-
-| Priority | Recommendation |
-|----------|----------------|
-| **Security** | Rosettes |
-| **Performance** | Rosettes |
-| **Language coverage** | Pygments |
-| **Output formats** | Pygments (more formats) |
-| **Modern Python** | Rosettes |
-| **Stability** | Pygments |
-
-For most web applications highlighting popular languages, Rosettes provides better performance and security. For specialized needs (obscure languages, LaTeX/RTF output), Pygments remains the comprehensive choice.
-

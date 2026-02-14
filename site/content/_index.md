@@ -38,7 +38,7 @@ html = highlight("def hello(): print('world')", "python")
 
 ---
 
-## Why Rosettes?
+## What's good about it
 
 :::{cards}
 :columns: 2
@@ -89,13 +89,13 @@ results = highlight_many(blocks)  # 1.5-2x speedup on 3.14t
 
 ## Performance
 
-Benchmarked against Pygments ([source](https://github.com/lbliii/rosettes/tree/main/benchmarks)):
+| File Size | Time |
+|-----------|------|
+| ~50 lines | ~0.5ms |
+| ~500 lines | ~5ms |
+| 10,000 lines | ~220ms |
 
-| File Size | Rosettes | Pygments | Speedup |
-|-----------|----------|----------|---------|
-| ~50 lines | 0.5ms | 1.5ms | 2.8x |
-| ~500 lines | 5ms | 15ms | 3.2x |
-| 10,000 lines | 220ms | 860ms | 3.9x |
+[Benchmark source](https://github.com/lbliii/rosettes/tree/main/benchmarks)
 
 ---
 
