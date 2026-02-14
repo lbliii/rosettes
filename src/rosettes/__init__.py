@@ -126,40 +126,40 @@ if TYPE_CHECKING:
 __version__ = "0.2.0"
 
 __all__ = [
-    # Version
-    "__version__",
+    "FormatConfig",
+    "Formatter",
+    # Profiling
+    "HighlightAccumulator",
+    "HighlightConfig",
+    # Parallel API (3.14t optimized)
+    "HighlightItem",
+    # Formatters
+    "HtmlFormatter",
+    # Protocols
+    "Lexer",
+    # Configuration
+    "LexerConfig",
     # Types
     "Token",
     "TokenType",
-    # Protocols
-    "Lexer",
-    "Formatter",
-    # Configuration
-    "LexerConfig",
-    "FormatConfig",
-    "HighlightConfig",
-    # Registry
-    "get_lexer",
-    "list_languages",
-    "supports_language",
-    "get_formatter",
-    "list_formatters",
-    "supports_formatter",
-    # Formatters
-    "HtmlFormatter",
-    # High-level API
-    "highlight",
-    "tokenize",
-    # Parallel API (3.14t optimized)
-    "HighlightItem",
-    "highlight_many",
-    "tokenize_many",
-    # Profiling
-    "HighlightAccumulator",
-    "profiled_highlight",
-    "get_accumulator",
+    # Version
+    "__version__",
     # Cache keys
     "content_hash",
+    "get_accumulator",
+    "get_formatter",
+    # Registry
+    "get_lexer",
+    # High-level API
+    "highlight",
+    "highlight_many",
+    "list_formatters",
+    "list_languages",
+    "profiled_highlight",
+    "supports_formatter",
+    "supports_language",
+    "tokenize",
+    "tokenize_many",
 ]
 
 
@@ -256,7 +256,8 @@ def highlight(
             Defaults to "rosettes" for semantic style, "highlight" for pygments.
         css_class_style: Class naming style (HTML only):
             - "semantic" (default): Uses readable classes like .syntax-function
-            - "semantic-hybrid": Role + token-type classes (e.g. .syntax-function .syntax-name-builtin)
+            - "semantic-hybrid": Role + token-type classes
+              (e.g. .syntax-function .syntax-name-builtin)
             - "pygments": Uses Pygments-compatible classes like .nf
         start: Starting index in the source string.
         end: Optional ending index in the source string.
