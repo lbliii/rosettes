@@ -15,12 +15,16 @@ html = highlight("def hello(): print('world')", "python")
 
 ---
 
-## Why Rosettes?
+## What is Rosettes?
+
+Rosettes is a syntax highlighter for Python 3.14t. Hand-written state machines, O(n) guaranteed, zero ReDoS risk. Safe for untrusted input in web apps and APIs.
+
+**What's good about it:**
 
 - **O(n) guaranteed** — Hand-written state machines, no regex backtracking
 - **Zero ReDoS** — No exploitable patterns, safe for untrusted input
 - **Thread-safe** — Immutable state, optimized for Python 3.14t free-threading
-- **Pygments compatible** — Drop-in CSS class compatibility
+- **Pygments compatible** — Drop-in CSS class compatibility for existing themes
 - **55 languages** — Python, JavaScript, Rust, Go, and 51 more
 
 ---
@@ -220,13 +224,11 @@ All public APIs are thread-safe:
 
 ## Performance
 
-Benchmarked against Pygments on a 10,000-line Python file:
+On a 10,000-line Python file:
 
-| Operation | Rosettes | Pygments | Speedup |
-|-----------|----------|----------|---------|
-| Tokenize | 12ms | 45ms | **3.75x** |
-| Highlight | 18ms | 52ms | **2.89x** |
-| Parallel (8 blocks) | 22ms | 48ms | **2.18x** |
+- **Tokenize** — ~12ms
+- **Highlight** — ~18ms
+- **Parallel (8 blocks)** — ~22ms (1.5–2x speedup on Python 3.14t free-threading)
 
 ---
 

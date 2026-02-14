@@ -27,6 +27,7 @@ src/rosettes/lexers/bash_sm.py
 src/rosettes/lexers/c_sm.py
 src/rosettes/lexers/clojure_sm.py
 src/rosettes/lexers/cpp_sm.py
+src/rosettes/lexers/csharp_sm.py
 src/rosettes/lexers/css_sm.py
 src/rosettes/lexers/csv_sm.py
 src/rosettes/lexers/cuda_sm.py
@@ -35,6 +36,7 @@ src/rosettes/lexers/dart_sm.py
 src/rosettes/lexers/diff_sm.py
 src/rosettes/lexers/dockerfile_sm.py
 src/rosettes/lexers/elixir_sm.py
+src/rosettes/lexers/env_sm.py
 src/rosettes/lexers/gleam_sm.py
 src/rosettes/lexers/go_sm.py
 src/rosettes/lexers/graphql_sm.py
@@ -42,6 +44,7 @@ src/rosettes/lexers/groovy_sm.py
 src/rosettes/lexers/haskell_sm.py
 src/rosettes/lexers/hcl_sm.py
 src/rosettes/lexers/html_sm.py
+src/rosettes/lexers/http_sm.py
 src/rosettes/lexers/ini_sm.py
 src/rosettes/lexers/java_sm.py
 src/rosettes/lexers/javascript_sm.py
@@ -53,6 +56,7 @@ src/rosettes/lexers/kotlin_sm.py
 src/rosettes/lexers/lua_sm.py
 src/rosettes/lexers/makefile_sm.py
 src/rosettes/lexers/markdown_sm.py
+src/rosettes/lexers/merge_sm.py
 src/rosettes/lexers/mojo_sm.py
 src/rosettes/lexers/nginx_sm.py
 src/rosettes/lexers/nim_sm.py
@@ -67,6 +71,7 @@ src/rosettes/lexers/r_sm.py
 src/rosettes/lexers/ruby_sm.py
 src/rosettes/lexers/rust_sm.py
 src/rosettes/lexers/scala_sm.py
+src/rosettes/lexers/solidity_sm.py
 src/rosettes/lexers/sql_sm.py
 src/rosettes/lexers/stan_sm.py
 src/rosettes/lexers/swift_sm.py
@@ -79,10 +84,12 @@ src/rosettes/lexers/xml_sm.py
 src/rosettes/lexers/yaml_sm.py
 src/rosettes/lexers/zig_sm.py
 src/rosettes/themes/__init__.py
+src/rosettes/themes/_contrast.py
 src/rosettes/themes/_mapping.py
 src/rosettes/themes/_palette.py
 src/rosettes/themes/_roles.py
 src/rosettes/themes/palettes/__init__.py
+tests/test_content_hash.py
 tests/test_parallel.py
 tests/test_profiling.py
 tests/test_registry.py
