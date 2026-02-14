@@ -289,9 +289,7 @@ def highlight(
     # Determine container class based on style
     if css_class is None:
         css_class = (
-            "rosettes"
-            if css_class_style in ("semantic", "semantic-hybrid")
-            else "highlight"
+            "rosettes" if css_class_style in ("semantic", "semantic-hybrid") else "highlight"
         )
 
     # Profiling: check if accumulator is active (None check = zero overhead when disabled)

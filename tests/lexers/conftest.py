@@ -34,13 +34,65 @@ FIXTURES_DIR = Path(__file__).parent.parent / "fixtures"
 
 # Extension mapping for finding source files
 EXTENSIONS = [
-    ".py", ".js", ".ts", ".rs", ".go", ".java", ".kt", ".swift", ".rb", ".pl",
-    ".lua", ".scala", ".ex", ".hs", ".nim", ".zig", ".v", ".dart", ".gleam",
-    ".yaml", ".json", ".php", ".sh", ".sql", ".toml", ".xml", ".html", ".css",
-    ".md", ".kida", ".c", ".cpp", ".h", ".hpp", ".cs", ".sol", ".dockerfile",
-    ".graphql", ".tf", ".groovy", ".r", ".jl", ".ini", ".csv", ".diff",
-    ".makefile", ".nginx", ".proto", ".mojo", ".triton", ".cu", ".stan",
-    ".pkl", ".cue", ".clj", ".jinja", ".tree", ".ps1", ".txt"
+    ".py",
+    ".js",
+    ".ts",
+    ".rs",
+    ".go",
+    ".java",
+    ".kt",
+    ".swift",
+    ".rb",
+    ".pl",
+    ".lua",
+    ".scala",
+    ".ex",
+    ".hs",
+    ".nim",
+    ".zig",
+    ".v",
+    ".dart",
+    ".gleam",
+    ".yaml",
+    ".json",
+    ".php",
+    ".sh",
+    ".sql",
+    ".toml",
+    ".xml",
+    ".html",
+    ".css",
+    ".md",
+    ".kida",
+    ".c",
+    ".cpp",
+    ".h",
+    ".hpp",
+    ".cs",
+    ".sol",
+    ".dockerfile",
+    ".graphql",
+    ".tf",
+    ".groovy",
+    ".r",
+    ".jl",
+    ".ini",
+    ".csv",
+    ".diff",
+    ".makefile",
+    ".nginx",
+    ".proto",
+    ".mojo",
+    ".triton",
+    ".cu",
+    ".stan",
+    ".pkl",
+    ".cue",
+    ".clj",
+    ".jinja",
+    ".tree",
+    ".ps1",
+    ".txt",
 ]
 
 
@@ -59,6 +111,7 @@ def load_fixture():
         def test_something(load_fixture):
             code, expected_tokens = load_fixture("python", "keywords")
     """
+
     def _load(language: str, name: str) -> tuple[str, list[dict]]:
         lang_dir = FIXTURES_DIR / language
 

@@ -20,9 +20,7 @@ class TestPhpBasics:
         code = "<?php $name = 'test'; ?>"
         tokens = list(lexer.tokenize(code))
         types = [t.type for t in tokens]
-        assert TokenType.NAME_VARIABLE in types or any(
-            t.value.startswith("$") for t in tokens
-        )
+        assert TokenType.NAME_VARIABLE in types or any(t.value.startswith("$") for t in tokens)
 
     def test_functions(self) -> None:
         lexer = get_lexer("php")
@@ -186,4 +184,3 @@ $binary = 0b1010;
         tokens = list(lexer.tokenize(code))
         types = [t.type for t in tokens]
         assert TokenType.NUMBER in types or TokenType.NUMBER_INTEGER in types
-

@@ -212,9 +212,7 @@ class TestKidaBuiltins:
         match_tokens = [t for t in tokens if t.value == "match"]
         assert len(match_tokens) >= 1
         # match is in both _KEYWORDS (block) and _BUILTIN_TESTS; lexer yields KEYWORD first
-        assert all(
-            t.type in (TokenType.KEYWORD, TokenType.NAME_BUILTIN) for t in match_tokens
-        )
+        assert all(t.type in (TokenType.KEYWORD, TokenType.NAME_BUILTIN) for t in match_tokens)
 
     def test_new_filters_slug_skip(self, kida_lexer) -> None:
         """New filters (slug, skip, compact) should be NAME_FUNCTION."""

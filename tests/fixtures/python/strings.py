@@ -1,5 +1,5 @@
 x = "hello"
-y = 'world'
+y = "world"
 z = """multiline
 string"""
 f = f"interpolated {value}"

@@ -470,9 +470,7 @@ class AdaptivePalette:
         """
         failures: dict[str, str] = {}
         for prefix, palette in [("light.", self.light), ("dark.", self.dark)]:
-            for role, msg in palette.validate_contrast(
-                level=level, large_text=large_text
-            ).items():
+            for role, msg in palette.validate_contrast(level=level, large_text=large_text).items():
                 failures[f"{prefix}{role}"] = msg
         return failures
 

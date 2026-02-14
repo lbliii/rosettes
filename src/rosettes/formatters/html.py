@@ -192,9 +192,7 @@ class HtmlFormatter:
     def container_class(self) -> str:
         """Get the container CSS class based on style."""
         return (
-            "rosettes"
-            if self.css_class_style in ("semantic", "semantic-hybrid")
-            else "highlight"
+            "rosettes" if self.css_class_style in ("semantic", "semantic-hybrid") else "highlight"
         )
 
     def format_fast(

@@ -19,9 +19,7 @@ class TestContrastRatio:
 
     def test_white_black_same_as_black_white(self) -> None:
         """Contrast ratio is symmetric."""
-        assert contrast_ratio("#ffffff", "#000000") == contrast_ratio(
-            "#000000", "#ffffff"
-        )
+        assert contrast_ratio("#ffffff", "#000000") == contrast_ratio("#000000", "#ffffff")
 
     def test_same_color_min_contrast(self) -> None:
         """Same color should give 1:1."""

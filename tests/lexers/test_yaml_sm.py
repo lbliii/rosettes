@@ -154,4 +154,3 @@ key: value
         tokens = list(lexer.tokenize(code))
         types = [t.type for t in tokens]
         assert TokenType.STRING in types or TokenType.STRING_SINGLE in types
-

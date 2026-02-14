@@ -122,4 +122,3 @@ class TestTokenTypeConsistency:
             assert isinstance(token.type, TokenType), (
                 f"Invalid token type {token.type} for {language}"
             )
-
