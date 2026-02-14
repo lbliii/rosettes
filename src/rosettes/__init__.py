@@ -234,7 +234,7 @@ def highlight(
     hl_lines: set[int] | frozenset[int] | None = None,
     show_linenos: bool = False,
     css_class: str | None = None,
-    css_class_style: Literal["semantic", "pygments"] = "semantic",
+    css_class_style: Literal["semantic", "pygments", "semantic-hybrid"] = "semantic",
     start: int = 0,
     end: int | None = None,
 ) -> str:
@@ -256,6 +256,7 @@ def highlight(
             Defaults to "rosettes" for semantic style, "highlight" for pygments.
         css_class_style: Class naming style (HTML only):
             - "semantic" (default): Uses readable classes like .syntax-function
+            - "semantic-hybrid": Role + token-type classes (e.g. .syntax-function .syntax-name-builtin)
             - "pygments": Uses Pygments-compatible classes like .nf
         start: Starting index in the source string.
         end: Optional ending index in the source string.
@@ -286,7 +287,11 @@ def highlight(
 
     # Determine container class based on style
     if css_class is None:
-        css_class = "rosettes" if css_class_style == "semantic" else "highlight"
+        css_class = (
+            "rosettes"
+            if css_class_style in ("semantic", "semantic-hybrid")
+            else "highlight"
+        )
 
     # Profiling: check if accumulator is active (None check = zero overhead when disabled)
     acc = get_accumulator()
@@ -435,7 +440,7 @@ def highlight_many(
     *,
     formatter: str | Formatter = "html",
     max_workers: int | None = None,
-    css_class_style: Literal["semantic", "pygments"] = "semantic",
+    css_class_style: Literal["semantic", "pygments", "semantic-hybrid"] = "semantic",
 ) -> list[str]:
     """Highlight multiple code blocks in parallel.
 
@@ -506,7 +511,7 @@ def _highlight_one_normalized(
     normalized: tuple[str, str, frozenset[int] | None, bool],
     *,
     formatter: str | Formatter = "html",
-    css_class_style: Literal["semantic", "pygments"] = "semantic",
+    css_class_style: Literal["semantic", "pygments", "semantic-hybrid"] = "semantic",
 ) -> str:
     """Highlight a single block from normalized (code, lang, hl_lines, show_linenos)."""
     code, language, hl_lines, show_linenos = normalized

@@ -21,118 +21,141 @@ Rosettes outputs two class styles: semantic (readable) and Pygments (compatible)
 
 ## Semantic Classes
 
-Self-documenting class names that describe what the token represents.
+Semantic mode uses role-based class names. Each token maps to a `SyntaxRole`, which determines the CSS class. Themes define colors for roles, not individual token types.
 
-### Keywords
+### Control & Structure
 
-| Class | Description | Example |
-|-------|-------------|---------|
-| `.syntax-keyword` | Language keywords | `def`, `class`, `if` |
-| `.syntax-keyword-constant` | Constant keywords | `True`, `False`, `None` |
-| `.syntax-keyword-declaration` | Declaration keywords | `let`, `const`, `var` |
-| `.syntax-keyword-namespace` | Namespace keywords | `import`, `from`, `as` |
-| `.syntax-keyword-type` | Type keywords | `int`, `str`, `bool` |
+| Class | Role | Example Tokens |
+|-------|------|----------------|
+| `.syntax-control` | CONTROL_FLOW | `if`, `for`, `while`, `return`, `and`, `or` |
+| `.syntax-declaration` | DECLARATION | `def`, `class`, `let`, `const`, `var` |
+| `.syntax-import` | IMPORT | `import`, `from`, `as`, `#include` |
 
-### Names
+### Data & Literals
 
-| Class | Description | Example |
-|-------|-------------|---------|
-| `.syntax-function` | Function names | `print`, `len` |
-| `.syntax-class` | Class names | `MyClass` |
-| `.syntax-decorator` | Decorators | `@property` |
-| `.syntax-builtin` | Built-in names | `print`, `len`, `range` |
-| `.syntax-variable` | Variable names | `my_var` |
-| `.syntax-attribute` | Attributes | `.name`, `.value` |
+| Class | Role | Example Tokens |
+|-------|------|----------------|
+| `.syntax-string` | STRING | `"hello"`, `'world'`, `` `backtick` `` |
+| `.syntax-docstring` | DOCSTRING | `"""docstring"""`, `/** comment */` |
+| `.syntax-number` | NUMBER | `42`, `3.14`, `0xff`, `0b1010` |
+| `.syntax-boolean` | BOOLEAN | `True`, `False`, `None` |
 
-### Literals
+### Identifiers
 
-| Class | Description | Example |
-|-------|-------------|---------|
-| `.syntax-string` | String literals | `"hello"`, `'world'` |
-| `.syntax-string-escape` | Escape sequences | `\n`, `\t` |
-| `.syntax-string-interpol` | Interpolation | `{name}` in f-strings |
-| `.syntax-number` | All numbers | `42`, `3.14`, `0xff` |
-| `.syntax-number-float` | Float numbers | `3.14` |
-| `.syntax-number-hex` | Hex numbers | `0xff` |
+| Class | Role | Example Tokens |
+|-------|------|----------------|
+| `.syntax-type` | TYPE | `MyClass`, `int`, `str`, `ValueError` |
+| `.syntax-function` | FUNCTION | `foo`, `print`, `len`, `range` |
+| `.syntax-variable` | VARIABLE | `my_var`, `x`, `count` |
+| `.syntax-constant` | CONSTANT | `PI`, `MAX_SIZE`, `self`, `__name__` |
+| `.syntax-attribute` | ATTRIBUTE | `@property`, `.name`, `.value` |
+| `.syntax-namespace` | NAMESPACE | `package.module`, `std.io` |
+| `.syntax-tag` | TAG | HTML/XML tag names |
 
-### Comments
+### Documentation
 
-| Class | Description | Example |
-|-------|-------------|---------|
-| `.syntax-comment` | All comments | `# comment` |
-| `.syntax-comment-single` | Single-line | `# comment` |
-| `.syntax-comment-multiline` | Multi-line | `/* ... */` |
-| `.syntax-comment-doc` | Doc comments | `"""docstring"""` |
+| Class | Role | Example Tokens |
+|-------|------|----------------|
+| `.syntax-comment` | COMMENT | `# comment`, `// comment`, `/* ... */` |
+| `.syntax-docstring` | DOCSTRING | `"""docstring"""` |
 
 ### Operators & Punctuation
 
-| Class | Description | Example |
-|-------|-------------|---------|
-| `.syntax-operator` | Operators | `+`, `-`, `=` |
-| `.syntax-punctuation` | Punctuation | `(`, `)`, `,` |
+| Class | Role | Example Tokens |
+|-------|------|----------------|
+| `.syntax-operator` | OPERATOR | `+`, `-`, `=`, `*`, `/` |
+| `.syntax-punctuation` | PUNCTUATION | `(`, `)`, `,`, `;`, `:` |
 
 ### Special
 
-| Class | Description | Example |
-|-------|-------------|---------|
-| `.syntax-text` | Plain text | Unclassified text |
-| `.syntax-whitespace` | Whitespace | Spaces, tabs |
-| `.syntax-error` | Error tokens | Invalid syntax |
+| Class | Role | Example Tokens |
+|-------|------|----------------|
+| `.syntax-string` | STRING (escape) | `\n`, `\t` in strings |
+| `.syntax-regex` | REGEX | `/pattern/` in JavaScript |
+| `.syntax-error` | ERROR | Invalid syntax tokens |
+| `.syntax-warning` | WARNING | Diagnostic markers |
+| `.syntax-added` | ADDED | `+added` in diffs |
+| `.syntax-removed` | REMOVED | `-removed` in diffs |
+| `.syntax-muted` | MUTED | Less prominent elements |
+
+Note: Plain text and whitespace receive no span (no class). They use the default text color.
 
 ---
 
 ## Pygments Classes
 
-For drop-in compatibility with Pygments themes.
+For drop-in compatibility with Pygments themes, use `css_class_style="pygments"`. Token types map directly to Pygments CSS class suffixes.
 
 ### Keywords
 
-| Pygments | Semantic Equivalent | Description |
-|----------|---------------------|-------------|
-| `.k` | `.syntax-keyword` | Keyword |
-| `.kc` | `.syntax-keyword-constant` | Keyword.Constant |
-| `.kd` | `.syntax-keyword-declaration` | Keyword.Declaration |
-| `.kn` | `.syntax-keyword-namespace` | Keyword.Namespace |
-| `.kt` | `.syntax-keyword-type` | Keyword.Type |
+| Pygments | Semantic Role | Description |
+|----------|---------------|-------------|
+| `.k` | `.syntax-control` | Keyword |
+| `.kc` | `.syntax-boolean` | Keyword.Constant |
+| `.kd` | `.syntax-declaration` | Keyword.Declaration |
+| `.kn` | `.syntax-import` | Keyword.Namespace |
+| `.kt` | `.syntax-type` | Keyword.Type |
 
 ### Names
 
-| Pygments | Semantic Equivalent | Description |
-|----------|---------------------|-------------|
-| `.n` | `.syntax-name` | Name |
+| Pygments | Semantic Role | Description |
+|----------|---------------|-------------|
+| `.n` | `.syntax-variable` | Name |
 | `.nf` | `.syntax-function` | Name.Function |
-| `.nc` | `.syntax-class` | Name.Class |
-| `.nd` | `.syntax-decorator` | Name.Decorator |
-| `.nb` | `.syntax-builtin` | Name.Builtin |
+| `.nc` | `.syntax-type` | Name.Class |
+| `.nd` | `.syntax-attribute` | Name.Decorator |
+| `.nb` | `.syntax-function` | Name.Builtin |
 | `.nv` | `.syntax-variable` | Name.Variable |
 | `.na` | `.syntax-attribute` | Name.Attribute |
 
 ### Literals
 
-| Pygments | Semantic Equivalent | Description |
-|----------|---------------------|-------------|
+| Pygments | Semantic Role | Description |
+|----------|---------------|-------------|
 | `.s` | `.syntax-string` | String |
-| `.se` | `.syntax-string-escape` | String.Escape |
-| `.si` | `.syntax-string-interpol` | String.Interpol |
+| `.se` | `.syntax-escape` | String.Escape |
+| `.si` | `.syntax-escape` | String.Interpol |
 | `.m` | `.syntax-number` | Number |
-| `.mf` | `.syntax-number-float` | Number.Float |
-| `.mh` | `.syntax-number-hex` | Number.Hex |
+| `.mf` | `.syntax-number` | Number.Float |
+| `.mh` | `.syntax-number` | Number.Hex |
 
 ### Comments
 
-| Pygments | Semantic Equivalent | Description |
-|----------|---------------------|-------------|
+| Pygments | Semantic Role | Description |
+|----------|---------------|-------------|
 | `.c` | `.syntax-comment` | Comment |
-| `.c1` | `.syntax-comment-single` | Comment.Single |
-| `.cm` | `.syntax-comment-multiline` | Comment.Multiline |
-| `.sd` | `.syntax-comment-doc` | String.Doc |
+| `.c1` | `.syntax-comment` | Comment.Single |
+| `.cm` | `.syntax-comment` | Comment.Multiline |
+| `.sd` | `.syntax-docstring` | String.Doc |
 
 ### Operators & Punctuation
 
-| Pygments | Semantic Equivalent | Description |
-|----------|---------------------|-------------|
+| Pygments | Semantic Role | Description |
+|----------|---------------|-------------|
 | `.o` | `.syntax-operator` | Operator |
 | `.p` | `.syntax-punctuation` | Punctuation |
+
+---
+
+## Hybrid Mode
+
+Use `css_class_style="semantic-hybrid"` to emit both role and token-type classes. This lets themes distinguish e.g. builtins from user-defined functions:
+
+```python
+>>> from rosettes import highlight
+>>> html = highlight("print(x)", "python", css_class_style="semantic-hybrid")
+>>> "syntax-function" in html and "syntax-name-builtin" in html
+True
+```
+
+Output: `class="syntax-function syntax-name-builtin"` for `print`, `class="syntax-variable syntax-name"` for `x`.
+
+Override in CSS:
+
+```css
+.syntax-name-builtin { color: var(--syntax-builtin); }
+.syntax-function { color: var(--syntax-function); }
+```
 
 ---
 
@@ -160,4 +183,3 @@ The HTML output is wrapped in a container:
 
 - [[docs/styling/pygments-themes|Pygments Themes]] — Use existing Pygments themes
 - [[docs/styling/custom-themes|Custom Themes]] — Build your own theme
-

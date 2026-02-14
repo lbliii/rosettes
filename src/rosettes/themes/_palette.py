@@ -72,10 +72,42 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import TYPE_CHECKING
 
+from rosettes.themes._contrast import contrast_ratio, passes_aa, passes_aaa
+from rosettes.themes._roles import SyntaxRole
+
 if TYPE_CHECKING:
     from typing import Literal
 
     CssClassStyle = Literal["semantic", "pygments"]
+
+# Role -> palette attribute for contrast validation
+_ROLE_TO_PALETTE_ATTR: dict[SyntaxRole, str] = {
+    SyntaxRole.CONTROL_FLOW: "control_flow",
+    SyntaxRole.DECLARATION: "declaration",
+    SyntaxRole.IMPORT: "import_",
+    SyntaxRole.STRING: "string",
+    SyntaxRole.DOCSTRING: "docstring",
+    SyntaxRole.NUMBER: "number",
+    SyntaxRole.BOOLEAN: "boolean",
+    SyntaxRole.TYPE: "type_",
+    SyntaxRole.FUNCTION: "function",
+    SyntaxRole.VARIABLE: "variable",
+    SyntaxRole.CONSTANT: "constant",
+    SyntaxRole.COMMENT: "comment",
+    SyntaxRole.ERROR: "error",
+    SyntaxRole.WARNING: "warning",
+    SyntaxRole.ADDED: "added",
+    SyntaxRole.REMOVED: "removed",
+    SyntaxRole.TEXT: "text",
+    SyntaxRole.MUTED: "muted",
+    SyntaxRole.PUNCTUATION: "punctuation",
+    SyntaxRole.OPERATOR: "operator",
+    SyntaxRole.ATTRIBUTE: "attribute",
+    SyntaxRole.NAMESPACE: "namespace",
+    SyntaxRole.TAG: "tag",
+    SyntaxRole.REGEX: "regex",
+    SyntaxRole.ESCAPE: "escape",
+}
 
 __all__ = ["SyntaxPalette", "AdaptivePalette"]
 
@@ -157,8 +189,10 @@ class SyntaxPalette:
     # Style modifiers
     bold_control: bool = True
     bold_declaration: bool = True
+    bold_type: bool = False
     italic_comment: bool = True
     italic_docstring: bool = True
+    italic_variable: bool = False
 
     def __post_init__(self) -> None:
         """Validate palette after initialization."""
@@ -202,9 +236,53 @@ class SyntaxPalette:
             escape=self.escape or self.string or self.text,
             bold_control=self.bold_control,
             bold_declaration=self.bold_declaration,
+            bold_type=self.bold_type,
             italic_comment=self.italic_comment,
             italic_docstring=self.italic_docstring,
+            italic_variable=self.italic_variable,
         )
+
+    def validate_contrast(
+        self,
+        *,
+        level: Literal["AA", "AAA"] = "AA",
+        large_text: bool = False,
+    ) -> dict[str, str]:
+        """Return dict of role -> message for roles failing WCAG contrast.
+
+        Args:
+            level: "AA" (4.5:1 normal, 3:1 large) or "AAA" (7:1 normal, 4.5:1 large)
+            large_text: If True, use large-text thresholds.
+
+        Returns:
+            Empty dict if all roles pass. Otherwise role name -> failure message.
+
+        Example:
+            >>> palette = get_palette("bengal-tiger")
+            >>> failures = palette.validate_contrast()
+            >>> if failures:
+            ...     for role, msg in failures.items():
+            ...         print(f"{role}: {msg}")
+        """
+        filled = self.with_defaults()
+        passes = passes_aaa if level == "AAA" else passes_aa
+        min_ratio = (4.5 if large_text else 7.0) if level == "AAA" else (3.0 if large_text else 4.5)
+        failures: dict[str, str] = {}
+
+        for role, attr in _ROLE_TO_PALETTE_ATTR.items():
+            color = getattr(filled, attr)
+            if not color:
+                continue
+            try:
+                ratio = contrast_ratio(color, filled.background)
+                if not passes(ratio, large_text=large_text):
+                    failures[role.value] = (
+                        f"contrast {ratio:.1f}:1 (need {min_ratio}:1 for {level})"
+                    )
+            except ValueError:
+                failures[role.value] = "invalid hex color"
+
+        return failures
 
     def to_css_vars(self, indent: int = 0) -> str:
         """Generate CSS custom property declarations."""
@@ -262,25 +340,30 @@ class SyntaxPalette:
             >>> ".syntax-function" in css
             True
         """
-        from rosettes.themes._roles import SyntaxRole
         from rosettes.themes._mapping import PYGMENTS_CLASS_MAP
 
         filled = self.with_defaults()
 
         # Map roles to their colors and CSS properties
+        def _bold(x: bool) -> list[str]:
+            return ["font-weight: bold"] if x else []
+
+        def _italic(x: bool) -> list[str]:
+            return ["font-style: italic"] if x else []
+
         role_colors: dict[SyntaxRole, tuple[str, list[str]]] = {
-            SyntaxRole.CONTROL_FLOW: (filled.control_flow, ["font-weight: bold"] if filled.bold_control else []),
-            SyntaxRole.DECLARATION: (filled.declaration, ["font-weight: bold"] if filled.bold_declaration else []),
+            SyntaxRole.CONTROL_FLOW: (filled.control_flow, _bold(filled.bold_control)),
+            SyntaxRole.DECLARATION: (filled.declaration, _bold(filled.bold_declaration)),
             SyntaxRole.IMPORT: (filled.import_, []),
             SyntaxRole.STRING: (filled.string, []),
-            SyntaxRole.DOCSTRING: (filled.docstring, ["font-style: italic"] if filled.italic_docstring else []),
+            SyntaxRole.DOCSTRING: (filled.docstring, _italic(filled.italic_docstring)),
             SyntaxRole.NUMBER: (filled.number, []),
             SyntaxRole.BOOLEAN: (filled.boolean, []),
-            SyntaxRole.TYPE: (filled.type_, []),
+            SyntaxRole.TYPE: (filled.type_, _bold(filled.bold_type)),
             SyntaxRole.FUNCTION: (filled.function, []),
-            SyntaxRole.VARIABLE: (filled.variable, []),
+            SyntaxRole.VARIABLE: (filled.variable, _italic(filled.italic_variable)),
             SyntaxRole.CONSTANT: (filled.constant, []),
-            SyntaxRole.COMMENT: (filled.comment, ["font-style: italic"] if filled.italic_comment else []),
+            SyntaxRole.COMMENT: (filled.comment, _italic(filled.italic_comment)),
             SyntaxRole.ERROR: (filled.error, []),
             SyntaxRole.WARNING: (filled.warning, []),
             SyntaxRole.ADDED: (filled.added, []),
@@ -375,6 +458,24 @@ class AdaptivePalette:
         """Validate adaptive palette."""
         if not self.name:
             raise ValueError("Palette name is required")
+
+    def validate_contrast(
+        self,
+        *,
+        level: Literal["AA", "AAA"] = "AA",
+        large_text: bool = False,
+    ) -> dict[str, str]:
+        """Return contrast failures for both light and dark palettes.
+
+        Combines results with "light." and "dark." prefix for adaptive palettes.
+        """
+        failures: dict[str, str] = {}
+        for prefix, palette in [("light.", self.light), ("dark.", self.dark)]:
+            for role, msg in palette.validate_contrast(
+                level=level, large_text=large_text
+            ).items():
+                failures[f"{prefix}{role}"] = msg
+        return failures
 
     def generate_css(self, *, class_style: CssClassStyle = "semantic") -> str:
         """Generate adaptive CSS with light/dark mode support.

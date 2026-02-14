@@ -129,7 +129,7 @@ ROLE_MAPPING: dict[TokenType, SyntaxRole] = {
     TokenType.COMMENT_DOC: SyntaxRole.DOCSTRING,
     TokenType.COMMENT_HASHBANG: SyntaxRole.COMMENT,
     TokenType.COMMENT_MULTILINE: SyntaxRole.COMMENT,
-    TokenType.COMMENT_PREPROC: SyntaxRole.ATTRIBUTE,
+    TokenType.COMMENT_PREPROC: SyntaxRole.IMPORT,
     TokenType.COMMENT_PREPROCFILE: SyntaxRole.STRING,
     TokenType.COMMENT_SINGLE: SyntaxRole.COMMENT,
     TokenType.COMMENT_SPECIAL: SyntaxRole.DOCSTRING,

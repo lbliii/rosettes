@@ -93,9 +93,11 @@ palette = SyntaxPalette(
     
     # Style modifiers
     bold_control=True,           # bold keywords
-    bold_declaration=True,       # bold def/class
-    italic_comment=True,         # italic comments
-    italic_docstring=True,       # italic docstrings
+    bold_declaration=True,      # bold def/class
+    bold_type=False,            # bold type names (optional)
+    italic_comment=True,        # italic comments
+    italic_docstring=True,      # italic docstrings
+    italic_variable=False,      # italic variables (optional)
 )
 ```
 

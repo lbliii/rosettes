@@ -37,10 +37,10 @@ EXTENSIONS = [
     ".py", ".js", ".ts", ".rs", ".go", ".java", ".kt", ".swift", ".rb", ".pl",
     ".lua", ".scala", ".ex", ".hs", ".nim", ".zig", ".v", ".dart", ".gleam",
     ".yaml", ".json", ".php", ".sh", ".sql", ".toml", ".xml", ".html", ".css",
-    ".md", ".kida", ".c", ".cpp", ".h", ".hpp", ".dockerfile", ".graphql", ".tf",
-    ".groovy", ".r", ".jl", ".ini", ".csv", ".diff", ".makefile", ".nginx",
-    ".proto", ".mojo", ".triton", ".cu", ".stan", ".pkl", ".cue", ".clj",
-    ".jinja", ".tree", ".ps1", ".txt"
+    ".md", ".kida", ".c", ".cpp", ".h", ".hpp", ".cs", ".sol", ".dockerfile",
+    ".graphql", ".tf", ".groovy", ".r", ".jl", ".ini", ".csv", ".diff",
+    ".makefile", ".nginx", ".proto", ".mojo", ".triton", ".cu", ".stan",
+    ".pkl", ".cue", ".clj", ".jinja", ".tree", ".ps1", ".txt"
 ]
 
 

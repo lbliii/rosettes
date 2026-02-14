@@ -5,6 +5,7 @@ from __future__ import annotations
 import pytest
 
 from rosettes.themes import get_palette, list_palettes
+from rosettes.themes._palette import SyntaxPalette
 
 
 class TestPaletteApi:
@@ -117,6 +118,30 @@ class TestCssGeneration:
         assert ".nf" in css  # function
         assert ".s" in css  # string
         assert ".c" in css  # comment
+
+    def test_bold_type_modifier(self) -> None:
+        """bold_type=True should add font-weight: bold to .syntax-type."""
+        palette = SyntaxPalette(
+            name="test-bold-type",
+            background="#000",
+            text="#fff",
+            bold_type=True,
+        )
+        css = palette.generate_css(class_style="semantic")
+        assert ".syntax-type" in css
+        assert "font-weight: bold" in css
+
+    def test_italic_variable_modifier(self) -> None:
+        """italic_variable=True should add font-style: italic to .syntax-variable."""
+        palette = SyntaxPalette(
+            name="test-italic-var",
+            background="#000",
+            text="#fff",
+            italic_variable=True,
+        )
+        css = palette.generate_css(class_style="semantic")
+        assert ".syntax-variable" in css
+        assert "font-style: italic" in css
 
 
 class TestCssVars:

@@ -378,7 +378,7 @@
     "column": 3
   },
   {
-    "type": "NAME_VARIABLE",
+    "type": "NAME_FUNCTION",
     "value": "count",
     "line": 7,
     "column": 4

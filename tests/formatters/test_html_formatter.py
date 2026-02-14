@@ -38,6 +38,19 @@ class TestHtmlFormatterBasics:
         html = highlight("def foo(): pass", "python", css_class_style="pygments")
         assert 'class="highlight"' in html
 
+    def test_semantic_hybrid_emits_both_role_and_token_type(self) -> None:
+        """semantic-hybrid mode should emit both role and token-type classes."""
+        html = highlight("print(x)", "python", css_class_style="semantic-hybrid")
+        assert "syntax-function" in html
+        assert "syntax-name-builtin" in html
+        assert "syntax-variable" in html
+        assert "syntax-name" in html
+
+    def test_wrapper_class_semantic_hybrid(self) -> None:
+        """semantic-hybrid mode should use 'rosettes' wrapper class."""
+        html = highlight("x = 1", "python", css_class_style="semantic-hybrid")
+        assert 'class="rosettes"' in html
+
 
 class TestHtmlFormatterLineHighlighting:
     """Test line highlighting functionality."""
