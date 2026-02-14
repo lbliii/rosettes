@@ -156,6 +156,21 @@ _LEXER_SPECS: dict[str, LexerSpec] = {
         "DiffStateMachineLexer",
         aliases=("patch", "udiff"),
     ),
+    "env": LexerSpec(
+        "rosettes.lexers.env_sm",
+        "EnvStateMachineLexer",
+        aliases=("dotenv", ".env"),
+    ),
+    "http": LexerSpec(
+        "rosettes.lexers.http_sm",
+        "HttpStateMachineLexer",
+        aliases=("http-request", "http-response"),
+    ),
+    "merge": LexerSpec(
+        "rosettes.lexers.merge_sm",
+        "MergeStateMachineLexer",
+        aliases=("merge-conflict", "conflict"),
+    ),
     # Systems languages
     "c": LexerSpec(
         "rosettes.lexers.c_sm",
@@ -202,6 +217,16 @@ _LEXER_SPECS: dict[str, LexerSpec] = {
         "rosettes.lexers.groovy_sm",
         "GroovyStateMachineLexer",
         aliases=("gradle", "gvy"),
+    ),
+    "csharp": LexerSpec(
+        "rosettes.lexers.csharp_sm",
+        "CSharpStateMachineLexer",
+        aliases=("cs", "c#"),
+    ),
+    "solidity": LexerSpec(
+        "rosettes.lexers.solidity_sm",
+        "SolidityStateMachineLexer",
+        aliases=("sol",),
     ),
     "clojure": LexerSpec(
         "rosettes.lexers.clojure_sm",

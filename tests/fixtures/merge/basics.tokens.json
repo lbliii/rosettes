@@ -1,0 +1,56 @@
+[
+  {
+    "type": "GENERIC_DELETED",
+    "value": "<<<<<<< HEAD",
+    "line": 1,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 1,
+    "column": 13
+  },
+  {
+    "type": "TEXT",
+    "value": "our changes",
+    "line": 2,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 2,
+    "column": 12
+  },
+  {
+    "type": "GENERIC_HEADING",
+    "value": "=======",
+    "line": 3,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 3,
+    "column": 8
+  },
+  {
+    "type": "TEXT",
+    "value": "their changes",
+    "line": 4,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 4,
+    "column": 14
+  },
+  {
+    "type": "GENERIC_INSERTED",
+    "value": ">>>>>>> feature-branch",
+    "line": 5,
+    "column": 1
+  }
+]

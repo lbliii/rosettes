@@ -814,6 +814,33 @@ public class User {
     .map(String::toUpperCase)
     .collect(Collectors.toList());''',
     },
+    "csharp": {
+        "basics": '''using System;
+
+namespace Foo {
+    class Bar {
+        public void M() {
+            var x = "hello";
+            var y = $"interpolated {name}";
+            var z = @"verbatim";
+            var w = @class;
+        }
+    }
+}''',
+    },
+    "solidity": {
+        "basics": '''pragma solidity ^0.8.0;
+
+contract Token {
+    mapping(address => uint) public balances;
+    event Transfer(address from, address to, uint amount);
+
+    function transfer(address to, uint amount) public returns (bool) {
+        emit Transfer(msg.sender, to, amount);
+        return true;
+    }
+}''',
+    },
     "cpp": {
         "classes": '''template<typename T>
 class Container {
@@ -1565,6 +1592,26 @@ Bob,25,bob@example.com''',
 +another added
  unchanged''',
     },
+    "env": {
+        "basics": '''# Database config
+DATABASE_URL=postgres://localhost/mydb
+export API_KEY="secret-key-with\\"quotes\\""
+DEBUG=true''',
+    },
+    "http": {
+        "basics": '''GET /api/users HTTP/1.1
+Host: example.com
+Accept: application/json
+
+{"id": 1}''',
+    },
+    "merge": {
+        "basics": '''<<<<<<< HEAD
+our changes
+=======
+their changes
+>>>>>>> feature-branch''',
+    },
     "makefile": {
         "basics": '''CC = gcc
 CFLAGS = -Wall -g
@@ -1839,6 +1886,9 @@ EXTENSIONS: dict[str, str] = {
     "ini": ".ini",
     "csv": ".csv",
     "diff": ".diff",
+    "env": ".env",
+    "http": ".txt",
+    "merge": ".txt",
     "makefile": ".makefile",
     "nginx": ".nginx",
     "pkl": ".pkl",
@@ -1853,6 +1903,8 @@ EXTENSIONS: dict[str, str] = {
     "cuda": ".cu",
     "gleam": ".gleam",
     "groovy": ".groovy",
+    "csharp": ".cs",
+    "solidity": ".sol",
 }
 
 

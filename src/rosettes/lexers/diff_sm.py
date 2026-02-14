@@ -10,6 +10,7 @@ from collections.abc import Iterator
 
 from rosettes._config import LexerConfig
 from rosettes._types import Token, TokenType
+from rosettes.lexers._scanners import scan_line
 from rosettes.lexers._state_machine import StateMachineLexer
 
 __all__ = ["DiffStateMachineLexer"]
@@ -18,7 +19,7 @@ __all__ = ["DiffStateMachineLexer"]
 class DiffStateMachineLexer(StateMachineLexer):
     """Diff/Patch lexer optimized with C-level str.find().
 
-    Line-based format - uses find() to scan lines without allocating intermediate lists.
+    Line-based format - uses scan_line() for fast line scanning.
     """
 
     name = "diff"
@@ -39,15 +40,7 @@ class DiffStateMachineLexer(StateMachineLexer):
         line = 1
 
         while pos < length:
-            # Use C-level find to get line end - much faster than char-by-char
-            line_end = code.find("\n", pos, length)
-            if line_end == -1:
-                line_end = length
-                has_newline = False
-            else:
-                has_newline = True
-
-            content = code[pos:line_end]
+            content, pos, has_newline = scan_line(code, pos, length)
 
             # Classify line by first character - most common cases first
             if content:
@@ -88,11 +81,7 @@ class DiffStateMachineLexer(StateMachineLexer):
 
                 yield Token(token_type, content, line, 1)
 
-            pos = line_end
-
-            # Handle newline
             if has_newline:
                 col = len(content) + 1 if content else 1
                 yield Token(TokenType.WHITESPACE, "\n", line, col)
-                pos += 1
                 line += 1

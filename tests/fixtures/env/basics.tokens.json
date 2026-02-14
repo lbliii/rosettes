@@ -1,0 +1,74 @@
+[
+  {
+    "type": "COMMENT_SINGLE",
+    "value": "# Database config",
+    "line": 1,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 1,
+    "column": 18
+  },
+  {
+    "type": "NAME_ATTRIBUTE",
+    "value": "DATABASE_URL",
+    "line": 2,
+    "column": 1
+  },
+  {
+    "type": "OPERATOR",
+    "value": "=",
+    "line": 2,
+    "column": 13
+  },
+  {
+    "type": "STRING",
+    "value": "postgres://localhost/mydb",
+    "line": 2,
+    "column": 14
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 2,
+    "column": 39
+  },
+  {
+    "type": "KEYWORD",
+    "value": "export ",
+    "line": 3,
+    "column": 1
+  },
+  {
+    "type": "STRING",
+    "value": "API_KEY=\"secret-key-with\\\"quotes\\\"\"",
+    "line": 3,
+    "column": 8
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 3,
+    "column": 43
+  },
+  {
+    "type": "NAME_ATTRIBUTE",
+    "value": "DEBUG",
+    "line": 4,
+    "column": 1
+  },
+  {
+    "type": "OPERATOR",
+    "value": "=",
+    "line": 4,
+    "column": 6
+  },
+  {
+    "type": "STRING",
+    "value": "true",
+    "line": 4,
+    "column": 7
+  }
+]
