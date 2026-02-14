@@ -58,7 +58,7 @@ in CPython, so no synchronization is needed.
 from rosettes._types import TokenType
 from rosettes.themes._roles import SyntaxRole
 
-__all__ = ["ROLE_MAPPING", "PYGMENTS_CLASS_MAP", "get_role"]
+__all__ = ["PYGMENTS_CLASS_MAP", "ROLE_MAPPING", "get_role"]
 
 
 # TokenType → SyntaxRole mapping
@@ -129,7 +129,7 @@ ROLE_MAPPING: dict[TokenType, SyntaxRole] = {
     TokenType.COMMENT_DOC: SyntaxRole.DOCSTRING,
     TokenType.COMMENT_HASHBANG: SyntaxRole.COMMENT,
     TokenType.COMMENT_MULTILINE: SyntaxRole.COMMENT,
-    TokenType.COMMENT_PREPROC: SyntaxRole.ATTRIBUTE,
+    TokenType.COMMENT_PREPROC: SyntaxRole.IMPORT,
     TokenType.COMMENT_PREPROCFILE: SyntaxRole.STRING,
     TokenType.COMMENT_SINGLE: SyntaxRole.COMMENT,
     TokenType.COMMENT_SPECIAL: SyntaxRole.DOCSTRING,

@@ -774,7 +774,7 @@
     "column": 11
   },
   {
-    "type": "NAME_VARIABLE",
+    "type": "KEYWORD",
     "value": "empty",
     "line": 12,
     "column": 12

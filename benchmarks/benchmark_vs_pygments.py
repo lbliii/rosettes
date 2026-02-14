@@ -415,7 +415,7 @@ def run_cli_benchmark() -> None:
         (GO_CODE, "go"),
     ] * 2  # 8 blocks
 
-    print(f"\n📊 8 mixed code blocks")
+    print("\n📊 8 mixed code blocks")
 
     rosettes_result = benchmark_function(
         "Rosettes highlight_many",

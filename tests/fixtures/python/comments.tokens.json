@@ -121,20 +121,8 @@
   },
   {
     "type": "WHITESPACE",
-    "value": "\n    ",
+    "value": "\n",
     "line": 10,
     "column": 30
-  },
-  {
-    "type": "KEYWORD",
-    "value": "pass",
-    "line": 11,
-    "column": 5
-  },
-  {
-    "type": "WHITESPACE",
-    "value": "\n",
-    "line": 11,
-    "column": 9
   }
 ]

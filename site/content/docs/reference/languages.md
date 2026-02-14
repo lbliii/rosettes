@@ -1,6 +1,6 @@
 ---
 title: Supported Languages
-description: All 55 supported languages with aliases
+description: All 60 supported languages and formats with aliases
 draft: false
 weight: 30
 lang: en
@@ -17,7 +17,7 @@ icon: globe
 
 # Supported Languages
 
-Rosettes supports 55 languages with hand-written state machine lexers.
+Rosettes supports 60 languages and formats with hand-written state machine lexers.
 
 ## Language List
 
@@ -35,6 +35,9 @@ Rosettes supports 55 languages with hand-written state machine lexers.
 | `html` | | HTML markup |
 | `css` | | CSS stylesheets |
 | `diff` | `patch` | Unified diff format |
+| `env` | `dotenv`, `.env` | Environment variable files |
+| `http` | `http-request`, `http-response` | HTTP request/response |
+| `merge` | `merge-conflict`, `conflict` | Git merge conflict markers |
 
 ### Systems Languages
 
@@ -45,6 +48,12 @@ Rosettes supports 55 languages with hand-written state machine lexers.
 | `rust` | `rs` | Rust programming language |
 | `go` | `golang` | Go programming language |
 | `zig` | | Zig programming language |
+
+### DotNET
+
+| Language | Aliases | Description |
+|----------|---------|-------------|
+| `csharp` | `cs`, `c#` | C# programming language |
 
 ### JVM Languages
 
@@ -120,6 +129,12 @@ Rosettes supports 55 languages with hand-written state machine lexers.
 | `nim` | | Nim programming language |
 | `gleam` | | Gleam programming language |
 | `v` | `vlang` | V programming language |
+
+### Web3
+
+| Language | Aliases | Description |
+|----------|---------|-------------|
+| `solidity` | `sol` | Solidity smart contract language |
 
 ### AI/ML Languages
 

@@ -36,6 +36,7 @@ __all__ = ["KidaStateMachineLexer"]
 
 
 # Kida keywords (superset of Jinja2 + Kida-specific)
+# Matches kida/parser/statements.py _BLOCK_PARSERS (and _END_KEYWORDS, _CONTINUATION_KEYWORDS)
 _KEYWORDS: frozenset[str] = frozenset(
     {
         # Control flow
@@ -43,8 +44,12 @@ _KEYWORDS: frozenset[str] = frozenset(
         "elif",
         "else",
         "for",
+        "while",
+        "unless",
+        "empty",
         "break",
         "continue",
+        "async",
         # Kida unified ending
         "end",
         # Jinja2 compatibility endings (also supported)
@@ -61,6 +66,15 @@ _KEYWORDS: frozenset[str] = frozenset(
         "endtrans",
         "endcache",
         "endspaceless",
+        "endunless",
+        "endwhile",
+        "endcapture",
+        "endmatch",
+        "endembed",
+        "endfragment",
+        "endglobals",
+        "enddef",
+        "endslot",
         # Pattern matching (Kida-specific)
         "match",
         "case",
@@ -70,6 +84,8 @@ _KEYWORDS: frozenset[str] = frozenset(
         "export",  # Kida: export from inner scope
         # Blocks and inheritance
         "block",
+        "fragment",
+        "globals",
         "extends",
         "include",
         "import",
@@ -79,7 +95,8 @@ _KEYWORDS: frozenset[str] = frozenset(
         "macro",  # Jinja2 compatibility
         "call",
         "slot",  # Kida: slot in functions
-        "endslot",
+        "capture",
+        "embed",
         # Filters
         "filter",
         # Caching (Kida-specific)
@@ -126,7 +143,7 @@ _CONSTANTS: frozenset[str] = frozenset(
     }
 )
 
-# Built-in tests (is X)
+# Built-in tests (is X) — matches kida/environment/tests.py DEFAULT_TESTS
 _BUILTIN_TESTS: frozenset[str] = frozenset(
     {
         "defined",
@@ -143,18 +160,28 @@ _BUILTIN_TESTS: frozenset[str] = frozenset(
         "callable",
         "sameas",
         "eq",
+        "equalto",
         "ne",
         "lt",
+        "lessthan",
         "le",
         "gt",
+        "greaterthan",
         "ge",
         "escaped",
         "lower",
         "upper",
+        "true",
+        "false",
+        "match",
+        # HTMX integration (Feature 1.2)
+        "hx_request",
+        "hx_target",
+        "hx_boosted",
     }
 )
 
-# Built-in filters (Jinja2 + Kida additions)
+# Built-in filters (Jinja2 + Kida) — matches kida/environment/filters/_impl.py DEFAULT_FILTERS
 _BUILTIN_FILTERS: frozenset[str] = frozenset(
     {
         # String filters
@@ -183,6 +210,8 @@ _BUILTIN_FILTERS: frozenset[str] = frozenset(
         "wordwrap",
         "e",
         "slugify",  # Kida
+        "slug",  # Kida (alias)
+        "strip",  # alias for trim
         # List/collection filters
         "batch",
         "first",
@@ -208,12 +237,19 @@ _BUILTIN_FILTERS: frozenset[str] = frozenset(
         "unique",
         "take",  # Kida
         "where",  # Kida
+        "skip",
+        "classes",
+        "compact",
+        "count",  # alias for length
         # Number filters
         "abs",
         "filesizeformat",
         "float",
         "int",
         "round",
+        "decimal",
+        "format_number",
+        "commas",
         # Type conversion (Kida)
         "string",
         "bool",
@@ -227,6 +263,12 @@ _BUILTIN_FILTERS: frozenset[str] = frozenset(
         "tojson",
         "xmlattr",
         "markdownify",  # Kida
+        "date",
+        "pluralize",
+        "require",
+        "debug",
+        "get",
+        "shuffle",
     }
 )
 

@@ -181,7 +181,7 @@ const bigint = 100n;
         "comments": '''// Single line comment
 const x = 1; // inline comment
 
-/* 
+/*
  * Multi-line comment
  * spanning multiple lines
  */
@@ -259,21 +259,21 @@ class Service<T> {
         "keywords": '''fn main() {
     let x = 42;
     let mut y = 0;
-    
+
     if x > 0 {
         println!("positive");
     } else {
         println!("non-positive");
     }
-    
+
     for i in 0..10 {
         continue;
     }
-    
+
     loop {
         break;
     }
-    
+
     match x {
         0 => println!("zero"),
         _ => println!("other"),
@@ -328,14 +328,14 @@ let float_typed = 3.14f32;
         "comments": '''// Single line comment
 let x = 1; // inline comment
 
-/* 
+/*
  * Multi-line comment
  */
 
 /// Documentation comment for function
-/// 
+///
 /// # Examples
-/// 
+///
 /// ```
 /// let x = example();
 /// ```
@@ -510,12 +510,12 @@ use App\\Traits\\Loggable;
 class User {
     public string $name;
     private int $age;
-    
+
     public function __construct(string $name, int $age) {
         $this->name = $name;
         $this->age = $age;
     }
-    
+
     public function greet(): string {
         return "Hello, {$this->name}!";
     }
@@ -556,11 +556,11 @@ func (u *User) Greet() string {
 func main() {
     user := &User{Name: "John", Age: 30}
     fmt.Println(user.Greet())
-    
+
     for i := 0; i < 10; i++ {
         fmt.Println(i)
     }
-    
+
     switch user.Age {
     case 0:
         fmt.Println("newborn")
@@ -778,7 +778,7 @@ def hello():
 }''',
         "generics": '''public class Box<T extends Comparable<T>> {
     private T value;
-    
+
     public <U> void process(List<? super U> items) {
         // Generic method
     }
@@ -786,7 +786,7 @@ def hello():
         "keywords": '''abstract class Example implements Runnable {
     private final int count;
     protected volatile boolean running;
-    
+
     synchronized void process() throws Exception {
         if (running) {
             try {
@@ -805,7 +805,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    
+
     @Column(nullable = false)
     private String name;
 }''',
@@ -814,15 +814,42 @@ public class User {
     .map(String::toUpperCase)
     .collect(Collectors.toList());''',
     },
+    "csharp": {
+        "basics": '''using System;
+
+namespace Foo {
+    class Bar {
+        public void M() {
+            var x = "hello";
+            var y = $"interpolated {name}";
+            var z = @"verbatim";
+            var w = @class;
+        }
+    }
+}''',
+    },
+    "solidity": {
+        "basics": '''pragma solidity ^0.8.0;
+
+contract Token {
+    mapping(address => uint) public balances;
+    event Transfer(address from, address to, uint amount);
+
+    function transfer(address to, uint amount) public returns (bool) {
+        emit Transfer(msg.sender, to, amount);
+        return true;
+    }
+}''',
+    },
     "cpp": {
         "classes": '''template<typename T>
 class Container {
 public:
     explicit Container(T value) : value_(std::move(value)) {}
-    
+
     T& get() noexcept { return value_; }
     const T& get() const noexcept { return value_; }
-    
+
 private:
     T value_;
 };''',
@@ -867,12 +894,12 @@ int main(int argc, char *argv[]) {
     "ruby": {
         "basics": '''class User
   attr_accessor :name, :email
-  
+
   def initialize(name, email)
     @name = name
     @email = email
   end
-  
+
   def greet
     puts "Hello, #{@name}!"
   end
@@ -955,7 +982,7 @@ protocol Container {
 struct Clamped<Value: Comparable> {
     var value: Value
     let range: ClosedRange<Value>
-    
+
     var wrappedValue: Value {
         get { value }
         set { value = min(max(newValue, range.lowerBound), range.upperBound) }
@@ -1084,14 +1111,14 @@ directive @auth(requires: Role = ADMIN) on FIELD_DEFINITION''',
     "hcl": {
         "basics": '''terraform {
   required_version = ">= 1.0"
-  
+
   required_providers {
     aws = {
       source  = "hashicorp/aws"
       version = "~> 5.0"
     }
   }
-  
+
   backend "s3" {
     bucket = "terraform-state"
     key    = "prod/terraform.tfstate"
@@ -1113,12 +1140,12 @@ resource "aws_instance" "web" {
   count         = var.instance_count
   ami           = data.aws_ami.ubuntu.id
   instance_type = "t3.micro"
-  
+
   tags = {
     Name        = "web-${count.index}"
     Environment = var.environment
   }
-  
+
   lifecycle {
     create_before_destroy = true
   }
@@ -1126,7 +1153,7 @@ resource "aws_instance" "web" {
 
 data "aws_ami" "ubuntu" {
   most_recent = true
-  
+
   filter {
     name   = "name"
     values = ["ubuntu/images/hvm-ssd/ubuntu-*-amd64-server-*"]
@@ -1148,7 +1175,7 @@ locals {
 module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
   version = "5.0.0"
-  
+
   name = "my-vpc"
   cidr = "10.0.0.0/16"
 }''',
@@ -1277,12 +1304,12 @@ end''',
         "basics": '''class User {
     String name
     String email
-    
+
     User(String name, String email) {
         this.name = name
         this.email = email
     }
-    
+
     String greet() {
         "Hello, ${name}!"
     }
@@ -1358,13 +1385,13 @@ area(s::Rectangle) = s.width * s.height''',
     "elixir": {
         "basics": '''defmodule User do
   @moduledoc "User module"
-  
+
   defstruct [:id, :name, :email]
-  
+
   def new(name, email) do
     %__MODULE__{id: UUID.uuid4(), name: name, email: email}
   end
-  
+
   def greet(%__MODULE__{name: name}) do
     "Hello, #{name}!"
   end
@@ -1492,9 +1519,9 @@ fn (c Circle) draw() {
   final int id;
   final String name;
   final String? email;
-  
+
   User(this.id, this.name, this.email);
-  
+
   String greet() {
     return "Hello, $name!";
   }
@@ -1565,6 +1592,26 @@ Bob,25,bob@example.com''',
 +another added
  unchanged''',
     },
+    "env": {
+        "basics": '''# Database config
+DATABASE_URL=postgres://localhost/mydb
+export API_KEY="secret-key-with\\"quotes\\""
+DEBUG=true''',
+    },
+    "http": {
+        "basics": '''GET /api/users HTTP/1.1
+Host: example.com
+Accept: application/json
+
+{"id": 1}''',
+    },
+    "merge": {
+        "basics": '''<<<<<<< HEAD
+our changes
+=======
+their changes
+>>>>>>> feature-branch''',
+    },
     "makefile": {
         "basics": '''CC = gcc
 CFLAGS = -Wall -g
@@ -1586,12 +1633,12 @@ clean:
         "basics": '''server {
     listen 80;
     server_name example.com;
-    
+
     location / {
         root /var/www/html;
         index index.html;
     }
-    
+
     location /api {
         proxy_pass http://localhost:8080;
     }
@@ -1646,7 +1693,7 @@ service UserService {
     var id: Int
     var name: String
     var email: String
-    
+
     fn __init__(inout self, id: Int, name: String, email: String):
         self.id = id
         self.name = name
@@ -1786,10 +1833,10 @@ int main() {
     cudaMalloc(&d_a, n * sizeof(float));
     cudaMalloc(&d_b, n * sizeof(float));
     cudaMalloc(&d_c, n * sizeof(float));
-    
+
     addKernel<<<blocks, threads>>>(d_a, d_b, d_c, n);
     cudaDeviceSynchronize();
-    
+
     return 0;
 }''',
     },
@@ -1839,6 +1886,9 @@ EXTENSIONS: dict[str, str] = {
     "ini": ".ini",
     "csv": ".csv",
     "diff": ".diff",
+    "env": ".env",
+    "http": ".txt",
+    "merge": ".txt",
     "makefile": ".makefile",
     "nginx": ".nginx",
     "pkl": ".pkl",
@@ -1852,7 +1902,8 @@ EXTENSIONS: dict[str, str] = {
     "plaintext": ".txt",
     "cuda": ".cu",
     "gleam": ".gleam",
-    "groovy": ".groovy",
+    "csharp": ".cs",
+    "solidity": ".sol",
 }
 
 

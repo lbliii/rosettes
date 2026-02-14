@@ -36,3 +36,8 @@ class TestRoleMapping:
         """Comment types should map to COMMENT."""
         role = ROLE_MAPPING.get(TokenType.COMMENT)
         assert role == SyntaxRole.COMMENT
+
+    def test_comment_preproc_maps_to_import(self) -> None:
+        """Preprocessor directives (#include, #define) should map to IMPORT."""
+        role = ROLE_MAPPING.get(TokenType.COMMENT_PREPROC)
+        assert role == SyntaxRole.IMPORT

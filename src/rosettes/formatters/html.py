@@ -77,10 +77,17 @@ from rosettes.themes._roles import SyntaxRole
 
 __all__ = ["HtmlFormatter"]
 
-CssClassStyle = Literal["semantic", "pygments"]
+CssClassStyle = Literal["semantic", "pygments", "semantic-hybrid"]
 
 # Pre-compute token types that don't need spans
 _NO_SPAN_TYPES = frozenset({TokenType.TEXT, TokenType.WHITESPACE})
+
+# TokenType -> syntax-{name} for hybrid mode (e.g. NAME_BUILTIN -> syntax-name-builtin)
+_TOKEN_TYPE_CLASS: dict[TokenType, str] = {
+    tt: f"syntax-{tt.name.lower().replace('_', '-')}"
+    for tt in TokenType
+    if tt not in _NO_SPAN_TYPES
+}
 
 # Semantic class names for roles
 _SEMANTIC_CLASS: dict[SyntaxRole, str] = {
@@ -184,7 +191,9 @@ class HtmlFormatter:
     @property
     def container_class(self) -> str:
         """Get the container CSS class based on style."""
-        return "rosettes" if self.css_class_style == "semantic" else "highlight"
+        return (
+            "rosettes" if self.css_class_style in ("semantic", "semantic-hybrid") else "highlight"
+        )
 
     def format_fast(
         self,
@@ -204,6 +213,7 @@ class HtmlFormatter:
             config = FormatConfig()
 
         is_semantic = self.css_class_style == "semantic"
+        is_semantic_hybrid = self.css_class_style == "semantic-hybrid"
 
         # Cache lookups
         no_span = _NO_SPAN_TYPES
@@ -221,7 +231,25 @@ class HtmlFormatter:
             yield f'<div class="{container}"{data_lang_attr}><pre><code>'
 
         # Hot path - format each token
-        if is_semantic:
+        if is_semantic_hybrid:
+            for token_type, value in tokens:
+                if token_type in no_span:
+                    yield escape(value)
+                else:
+                    role = ROLE_MAPPING.get(token_type, SyntaxRole.TEXT)
+                    role_class = _SEMANTIC_CLASS.get(role)
+                    token_type_class = _TOKEN_TYPE_CLASS.get(token_type)
+                    if token_type_class:
+                        parts = [f"{prefix}{token_type_class}"]
+                        if role_class:
+                            parts.insert(0, f"{prefix}{role_class}")
+                        class_attr = " ".join(parts)
+                        yield f'<span class="{class_attr}">'
+                        yield escape(value)
+                        yield span_close
+                    else:
+                        yield escape(value)
+        elif is_semantic:
             semantic_span_open: dict[SyntaxRole, str] = (
                 _build_semantic_spans(prefix) if prefix else _SEMANTIC_SPAN_OPEN
             )
@@ -264,13 +292,16 @@ class HtmlFormatter:
     ) -> tuple[dict[SyntaxRole, str] | None, dict[str, str] | None]:
         """Resolve the correct span lookup table for the current CSS class style.
 
-        Returns a (semantic, pygments) tuple where exactly one is non-None.
+        Returns a (semantic, pygments) tuple. For semantic-hybrid, semantic is None
+        (handled dynamically in _format_with_hl_lines).
         """
         if self.css_class_style == "semantic":
             return (
                 _build_semantic_spans(prefix) if prefix else _SEMANTIC_SPAN_OPEN,
                 None,
             )
+        if self.css_class_style == "semantic-hybrid":
+            return (None, None)  # Handled dynamically
         return (
             None,
             _build_pygments_spans(prefix) if prefix else _SPAN_OPEN,
@@ -310,6 +341,8 @@ class HtmlFormatter:
         """
         hl_lines = self.config.hl_lines
         is_semantic = self.css_class_style == "semantic"
+        is_semantic_hybrid = self.css_class_style == "semantic-hybrid"
+        prefix = config.class_prefix
         container = config.css_class if config.css_class else self.container_class
 
         # Cache hot-path lookups
@@ -350,6 +383,20 @@ class HtmlFormatter:
             escaped = escape(token.value)
             if token.type in no_span:
                 yield escaped
+            elif is_semantic_hybrid:
+                role = ROLE_MAPPING.get(token.type, SyntaxRole.TEXT)
+                role_class = _SEMANTIC_CLASS.get(role)
+                token_type_class = _TOKEN_TYPE_CLASS.get(token.type)
+                if token_type_class:
+                    parts = [f"{prefix}{token_type_class}"]
+                    if role_class:
+                        parts.insert(0, f"{prefix}{role_class}")
+                    class_attr = " ".join(parts)
+                    yield f'<span class="{class_attr}">'
+                    yield escaped
+                    yield span_close
+                else:
+                    yield escaped
             else:
                 if is_semantic and semantic_span_open is not None:
                     role = ROLE_MAPPING.get(token.type, SyntaxRole.TEXT)

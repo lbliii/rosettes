@@ -53,6 +53,18 @@ def kida_lexer():
     return get_lexer("kida")
 
 
+@pytest.fixture
+def csharp_lexer():
+    """Get C# lexer instance."""
+    return get_lexer("csharp")
+
+
+@pytest.fixture
+def solidity_lexer():
+    """Get Solidity lexer instance."""
+    return get_lexer("solidity")
+
+
 def load_fixture(language: str, fixture_name: str) -> tuple[str, list[dict]]:
     """Load a test fixture.
 
@@ -91,6 +103,8 @@ def _get_extension(language: str) -> str:
         "rust": "rs",
         "go": "go",
         "kida": "kida",
+        "csharp": "cs",
+        "solidity": "sol",
         "html": "html",
         "css": "css",
         "yaml": "yml",

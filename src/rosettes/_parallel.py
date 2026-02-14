@@ -68,7 +68,7 @@ from rosettes._types import Token
 if TYPE_CHECKING:
     from rosettes.lexers._state_machine import StateMachineLexer
 
-__all__ = ["tokenize_parallel", "is_free_threaded"]
+__all__ = ["is_free_threaded", "tokenize_parallel"]
 
 
 def is_free_threaded() -> bool:

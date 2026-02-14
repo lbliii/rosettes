@@ -303,7 +303,6 @@ class GroovyStateMachineLexer(
                     yield Token(TokenType.STRING_REGEX, code[start:pos], line, col)
                     continue
                 # If we broke out, fall through to operators
-                pass
 
             # Numbers
             token, new_pos = self._try_number(code, pos, line, col)

@@ -2,8 +2,6 @@
 
 from __future__ import annotations
 
-import pytest
-
 from rosettes import TokenType, get_lexer
 
 
@@ -22,9 +20,7 @@ class TestPhpBasics:
         code = "<?php $name = 'test'; ?>"
         tokens = list(lexer.tokenize(code))
         types = [t.type for t in tokens]
-        assert TokenType.NAME_VARIABLE in types or any(
-            t.value.startswith("$") for t in tokens
-        )
+        assert TokenType.NAME_VARIABLE in types or any(t.value.startswith("$") for t in tokens)
 
     def test_functions(self) -> None:
         lexer = get_lexer("php")
@@ -38,7 +34,7 @@ class TestPhpBasics:
         code = """<?php
 class User {
     public $name;
-    
+
     public function __construct($name) {
         $this->name = $name;
     }
@@ -188,4 +184,3 @@ $binary = 0b1010;
         tokens = list(lexer.tokenize(code))
         types = [t.type for t in tokens]
         assert TokenType.NUMBER in types or TokenType.NUMBER_INTEGER in types
-

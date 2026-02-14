@@ -2,7 +2,7 @@
 
 from concurrent.futures import ThreadPoolExecutor
 
-from rosettes import highlight, highlight_many
+from rosettes import highlight
 from rosettes.profiling import (
     HighlightAccumulator,
     HighlightTiming,

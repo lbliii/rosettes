@@ -101,8 +101,10 @@ the `_Py_mod_gil` attribute (PEP 703).
 
 from __future__ import annotations
 
+import hashlib
 import os
 from concurrent.futures import ThreadPoolExecutor
+from dataclasses import dataclass
 from time import perf_counter as _perf_counter
 from typing import TYPE_CHECKING, Literal
 
@@ -121,41 +123,83 @@ from rosettes.profiling import HighlightAccumulator, get_accumulator, profiled_h
 if TYPE_CHECKING:
     from collections.abc import Iterable
 
-__version__ = "0.1.0"
+__version__ = "0.2.0"
 
 __all__ = [
-    # Version
-    "__version__",
+    "FormatConfig",
+    "Formatter",
+    # Profiling
+    "HighlightAccumulator",
+    "HighlightConfig",
+    # Parallel API (3.14t optimized)
+    "HighlightItem",
+    # Formatters
+    "HtmlFormatter",
+    # Protocols
+    "Lexer",
+    # Configuration
+    "LexerConfig",
     # Types
     "Token",
     "TokenType",
-    # Protocols
-    "Lexer",
-    "Formatter",
-    # Configuration
-    "LexerConfig",
-    "FormatConfig",
-    "HighlightConfig",
+    # Version
+    "__version__",
+    # Cache keys
+    "content_hash",
+    "get_accumulator",
+    "get_formatter",
     # Registry
     "get_lexer",
-    "list_languages",
-    "supports_language",
-    "get_formatter",
-    "list_formatters",
-    "supports_formatter",
-    # Formatters
-    "HtmlFormatter",
     # High-level API
     "highlight",
-    "tokenize",
-    # Parallel API (3.14t optimized)
     "highlight_many",
-    "tokenize_many",
-    # Profiling
-    "HighlightAccumulator",
+    "list_formatters",
+    "list_languages",
     "profiled_highlight",
-    "get_accumulator",
+    "supports_formatter",
+    "supports_language",
+    "tokenize",
+    "tokenize_many",
 ]
+
+
+def content_hash(
+    code: str,
+    language: str,
+    hl_lines: frozenset[int] | set[int] | list[int] | None = None,
+    show_linenos: bool = False,
+) -> str:
+    """Compute deterministic hash for (code, language, hl_lines, show_linenos) for cache keys.
+
+    Use for block-level caching: same inputs always yield same hash.
+    No normalization — whitespace changes produce different hashes (correct
+    for cache invalidation).
+
+    Args:
+        code: Source code string.
+        language: Language identifier.
+        hl_lines: Optional set of 1-based line numbers to highlight.
+        show_linenos: Whether line numbers are shown.
+
+    Returns:
+        64-character hex digest (SHA-256).
+
+    Example:
+        >>> h = content_hash("def foo(): pass", "python")
+        >>> len(h)
+        64
+        >>> content_hash("def foo(): pass", "python") == h
+        True
+        >>> content_hash("x", "py", hl_lines=frozenset({1, 3}))
+        ...
+    """
+    parts: list[str] = [language, code]
+    if hl_lines:
+        parts.append(",".join(str(i) for i in sorted(hl_lines)))
+    if show_linenos:
+        parts.append("linenos")
+    payload = "\0".join(parts).encode("utf-8")
+    return hashlib.sha256(payload).hexdigest()
 
 
 def _validate_range(code: str, start: int, end: int | None) -> tuple[int, int]:
@@ -190,7 +234,7 @@ def highlight(
     hl_lines: set[int] | frozenset[int] | None = None,
     show_linenos: bool = False,
     css_class: str | None = None,
-    css_class_style: Literal["semantic", "pygments"] = "semantic",
+    css_class_style: Literal["semantic", "pygments", "semantic-hybrid"] = "semantic",
     start: int = 0,
     end: int | None = None,
 ) -> str:
@@ -212,6 +256,8 @@ def highlight(
             Defaults to "rosettes" for semantic style, "highlight" for pygments.
         css_class_style: Class naming style (HTML only):
             - "semantic" (default): Uses readable classes like .syntax-function
+            - "semantic-hybrid": Role + token-type classes
+              (e.g. .syntax-function .syntax-name-builtin)
             - "pygments": Uses Pygments-compatible classes like .nf
         start: Starting index in the source string.
         end: Optional ending index in the source string.
@@ -242,7 +288,9 @@ def highlight(
 
     # Determine container class based on style
     if css_class is None:
-        css_class = "rosettes" if css_class_style == "semantic" else "highlight"
+        css_class = (
+            "rosettes" if css_class_style in ("semantic", "semantic-hybrid") else "highlight"
+        )
 
     # Profiling: check if accumulator is active (None check = zero overhead when disabled)
     acc = get_accumulator()
@@ -354,12 +402,44 @@ def tokenize(
 # =============================================================================
 
 
+@dataclass(frozen=True, slots=True)
+class HighlightItem:
+    """Item for highlight_many() with optional line highlighting.
+
+    Use for blocks that need hl_lines or show_linenos. Simple (code, lang)
+    tuples remain supported for backward compatibility.
+    """
+
+    code: str
+    language: str
+    hl_lines: frozenset[int] | None = None
+    show_linenos: bool = False
+
+
+HighlightItemInput = tuple[str, str] | HighlightItem
+
+
+def _normalize_highlight_item(
+    item: HighlightItemInput,
+) -> tuple[str, str, frozenset[int] | None, bool]:
+    """Normalize item to (code, language, hl_lines, show_linenos)."""
+    if isinstance(item, tuple):
+        code, lang = item
+        return code, lang, None, False
+    return (
+        item.code,
+        item.language,
+        item.hl_lines,
+        item.show_linenos,
+    )
+
+
 def highlight_many(
-    items: Iterable[tuple[str, str]],
+    items: Iterable[HighlightItemInput],
     *,
     formatter: str | Formatter = "html",
     max_workers: int | None = None,
-    css_class_style: Literal["semantic", "pygments"] = "semantic",
+    css_class_style: Literal["semantic", "pygments", "semantic-hybrid"] = "semantic",
 ) -> list[str]:
     """Highlight multiple code blocks in parallel.
 
@@ -370,7 +450,8 @@ def highlight_many(
     Thread-safe by design: each lexer uses only local variables.
 
     Args:
-        items: Iterable of (code, language) tuples.
+        items: Iterable of (code, language) tuples or HighlightItem instances.
+            HighlightItem supports hl_lines and show_linenos.
         formatter: Formatter name or instance.
         max_workers: Maximum number of threads. Defaults to min(4, CPU count),
             which benchmarking shows to be optimal.
@@ -387,6 +468,12 @@ def highlight_many(
         >>> results = highlight_many(blocks)
         >>> len(results)
         2
+
+        >>> # With line highlighting
+        >>> items = [
+        ...     HighlightItem("x = 1", "python", hl_lines=frozenset({1})),
+        ... ]
+        >>> results = highlight_many(items)
     """
     items_list = list(items)
 
@@ -396,13 +483,20 @@ def highlight_many(
     # For small batches, sequential is faster (thread overhead)
     if len(items_list) < 8:
         return [
-            highlight(code, lang, formatter=formatter, css_class_style=css_class_style)
-            for code, lang in items_list
+            _highlight_one_normalized(
+                _normalize_highlight_item(it),
+                formatter=formatter,
+                css_class_style=css_class_style,
+            )
+            for it in items_list
         ]
 
-    def _highlight_one(item: tuple[str, str]) -> str:
-        code, language = item
-        return highlight(code, language, formatter=formatter, css_class_style=css_class_style)
+    def _highlight_one(item: HighlightItemInput) -> str:
+        return _highlight_one_normalized(
+            _normalize_highlight_item(item),
+            formatter=formatter,
+            css_class_style=css_class_style,
+        )
 
     # Optimal worker count based on benchmarking: 4 workers is sweet spot
     if max_workers is None:
@@ -410,6 +504,24 @@ def highlight_many(
 
     with ThreadPoolExecutor(max_workers=max_workers) as executor:
         return list(executor.map(_highlight_one, items_list))
+
+
+def _highlight_one_normalized(
+    normalized: tuple[str, str, frozenset[int] | None, bool],
+    *,
+    formatter: str | Formatter = "html",
+    css_class_style: Literal["semantic", "pygments", "semantic-hybrid"] = "semantic",
+) -> str:
+    """Highlight a single block from normalized (code, lang, hl_lines, show_linenos)."""
+    code, language, hl_lines, show_linenos = normalized
+    return highlight(
+        code,
+        language,
+        formatter=formatter,
+        hl_lines=hl_lines,
+        show_linenos=show_linenos,
+        css_class_style=css_class_style,
+    )
 
 
 def tokenize_many(

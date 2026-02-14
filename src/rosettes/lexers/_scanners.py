@@ -79,21 +79,22 @@ if TYPE_CHECKING:
     pass
 
 __all__ = [
+    "CStyleCommentsMixin",
+    "CStyleNumbersMixin",
+    "CStyleOperatorsMixin",
+    "CStyleStringsMixin",
+    "CommentConfig",
+    "HashCommentsMixin",
     # Configuration dataclasses
     "NumberConfig",
-    "StringConfig",
-    "CommentConfig",
     "OperatorConfig",
+    "StringConfig",
     # Mixin classes
     "WhitespaceMixin",
-    "CStyleCommentsMixin",
-    "HashCommentsMixin",
-    "CStyleNumbersMixin",
-    "CStyleStringsMixin",
-    "CStyleOperatorsMixin",
     # Standalone scanners
     "scan_c_style_number",
     "scan_identifier",
+    "scan_line",
     "scan_operators",
 ]
 
@@ -216,6 +217,23 @@ def scan_whitespace(code: str, pos: int) -> tuple[int, int]:
             newlines += 1
         pos += 1
     return pos, newlines
+
+
+def scan_line(code: str, pos: int, end: int) -> tuple[str, int, bool]:
+    """Get next line. Returns (content, new_pos, has_newline).
+
+    Args:
+        code: Source code string.
+        pos: Starting position.
+        end: End position (exclusive).
+
+    Returns:
+        Tuple of (line content without newline, position after line, has_newline).
+    """
+    line_end = code.find("\n", pos, end)
+    if line_end == -1:
+        return code[pos:end], end, False
+    return code[pos:line_end], line_end + 1, True
 
 
 def scan_line_comment(code: str, pos: int) -> int:

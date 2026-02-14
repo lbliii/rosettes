@@ -74,7 +74,7 @@ from ._types import Token, TokenType
 if TYPE_CHECKING:
     pass
 
-__all__ = ["Lexer", "Formatter"]
+__all__ = ["Formatter", "Lexer"]
 
 
 @runtime_checkable

@@ -105,31 +105,31 @@ if TYPE_CHECKING:
     CssClassStyle = Literal["semantic", "pygments"]
 
 __all__ = [
-    # Core types
-    "SyntaxRole",
-    "SyntaxPalette",
-    "AdaptivePalette",
-    # Mappings
-    "ROLE_MAPPING",
-    "PYGMENTS_CLASS_MAP",
-    "get_role",
+    "BENGAL_BLUE",
+    "BENGAL_CHARCOAL",
+    "BENGAL_SNOW_LYNX",
     # Bengal palettes
     "BENGAL_TIGER",
-    "BENGAL_SNOW_LYNX",
-    "BENGAL_CHARCOAL",
-    "BENGAL_BLUE",
-    # Third-party palettes
-    "MONOKAI",
     "DRACULA",
     "GITHUB",
-    "GITHUB_LIGHT",
     "GITHUB_DARK",
-    # Registry
-    "register_palette",
-    "get_palette",
-    "list_palettes",
+    "GITHUB_LIGHT",
+    # Third-party palettes
+    "MONOKAI",
+    "PYGMENTS_CLASS_MAP",
+    # Mappings
+    "ROLE_MAPPING",
+    "AdaptivePalette",
     # Type alias
     "Palette",
+    "SyntaxPalette",
+    # Core types
+    "SyntaxRole",
+    "get_palette",
+    "get_role",
+    "list_palettes",
+    # Registry
+    "register_palette",
 ]
 
 

@@ -7,10 +7,10 @@ regardless of language. Uses hypothesis to generate diverse inputs.
 from __future__ import annotations
 
 import pytest
-from hypothesis import given, settings, strategies as st
+from hypothesis import given, settings
+from hypothesis import strategies as st
 
 from rosettes import TokenType, get_lexer, list_languages
-
 
 # Strategy: Generate plausible source code
 code_strategy = st.text(
@@ -122,4 +122,3 @@ class TestTokenTypeConsistency:
             assert isinstance(token.type, TokenType), (
                 f"Invalid token type {token.type} for {language}"
             )
-

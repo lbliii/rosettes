@@ -6,6 +6,6 @@ This is a docstring
 spanning multiple lines
 """
 
+
 def foo():
     """Function docstring."""
-    pass

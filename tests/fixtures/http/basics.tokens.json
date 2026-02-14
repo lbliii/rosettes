@@ -1,0 +1,74 @@
+[
+  {
+    "type": "GENERIC_HEADING",
+    "value": "GET /api/users HTTP/1.1",
+    "line": 1,
+    "column": 1
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 1,
+    "column": 24
+  },
+  {
+    "type": "NAME_ATTRIBUTE",
+    "value": "Host",
+    "line": 2,
+    "column": 1
+  },
+  {
+    "type": "OPERATOR",
+    "value": ": ",
+    "line": 2,
+    "column": 5
+  },
+  {
+    "type": "STRING",
+    "value": "example.com",
+    "line": 2,
+    "column": 7
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 2,
+    "column": 18
+  },
+  {
+    "type": "NAME_ATTRIBUTE",
+    "value": "Accept",
+    "line": 3,
+    "column": 1
+  },
+  {
+    "type": "OPERATOR",
+    "value": ": ",
+    "line": 3,
+    "column": 7
+  },
+  {
+    "type": "STRING",
+    "value": "application/json",
+    "line": 3,
+    "column": 9
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 3,
+    "column": 25
+  },
+  {
+    "type": "WHITESPACE",
+    "value": "\n",
+    "line": 4,
+    "column": 1
+  },
+  {
+    "type": "TEXT",
+    "value": "{\"id\": 1}",
+    "line": 5,
+    "column": 1
+  }
+]

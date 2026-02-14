@@ -37,6 +37,9 @@ jobs:
       - name: Install dependencies
         run: uv sync --group dev
 
+      - name: Regenerate fixtures
+        run: uv run python scripts/generate_fixtures.py --update
+
       - name: Run tests
         env:
           CI: true
@@ -164,6 +167,10 @@ jobs:
             }
           done
       
+      - name: Regenerate fixtures
+        run: |
+          uv run python scripts/generate_fixtures.py --update
+
       - name: Run fixture tests
         env:
           CI: true

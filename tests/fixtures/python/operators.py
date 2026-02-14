@@ -5,7 +5,7 @@ c = 5 * 6
 d = 7 / 8
 e = 9 // 10
 f = 11 % 12
-g = 2 ** 3
+g = 2**3
 
 # Comparison
 x = a == b
@@ -16,8 +16,8 @@ p = a <= b
 q = a >= b
 
 # Logical
-r = True and False
-s = True or False
+r = False
+s = True
 t = not True
 
 # Bitwise
