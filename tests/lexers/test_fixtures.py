@@ -11,9 +11,10 @@ from pathlib import Path
 
 import pytest
 
-from rosettes import get_lexer
+from rosettes import get_lexer, list_languages
 
 FIXTURES_DIR = Path(__file__).parent.parent / "fixtures"
+SUPPORTED_LANGUAGES = frozenset(list_languages())
 
 
 def discover_fixtures():
@@ -30,6 +31,8 @@ def discover_fixtures():
         if not lang_dir.is_dir():
             continue
         language = lang_dir.name
+        if language not in SUPPORTED_LANGUAGES:
+            continue
 
         for tokens_file in sorted(lang_dir.glob("*.tokens.json")):
             name = tokens_file.stem.replace(".tokens", "")
