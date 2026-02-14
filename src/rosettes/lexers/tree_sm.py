@@ -95,7 +95,7 @@ class TreeStateMachineLexer(StateMachineLexer):
                 while pos < length and (code[pos].isalnum() or code[pos] in "_-!?"):
                     pos += 1
                 word = code[start + 1 : pos]
-                if word in _PREDICATES or word.endswith("?") or word.endswith("!"):
+                if word in _PREDICATES or word.endswith(("?", "!")):
                     yield Token(TokenType.NAME_BUILTIN, code[start:pos], line, col)
                 else:
                     yield Token(TokenType.NAME_FUNCTION, code[start:pos], line, col)

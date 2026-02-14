@@ -95,7 +95,6 @@ _KEYWORDS: frozenset[str] = frozenset(
         "macro",  # Jinja2 compatibility
         "call",
         "slot",  # Kida: slot in functions
-        "endslot",
         "capture",
         "embed",
         # Filters

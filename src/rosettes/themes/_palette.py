@@ -109,7 +109,7 @@ _ROLE_TO_PALETTE_ATTR: dict[SyntaxRole, str] = {
     SyntaxRole.ESCAPE: "escape",
 }
 
-__all__ = ["SyntaxPalette", "AdaptivePalette"]
+__all__ = ["AdaptivePalette", "SyntaxPalette"]
 
 
 @dataclass(frozen=True, slots=True)

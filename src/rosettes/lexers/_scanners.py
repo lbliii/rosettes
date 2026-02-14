@@ -79,18 +79,18 @@ if TYPE_CHECKING:
     pass
 
 __all__ = [
+    "CStyleCommentsMixin",
+    "CStyleNumbersMixin",
+    "CStyleOperatorsMixin",
+    "CStyleStringsMixin",
+    "CommentConfig",
+    "HashCommentsMixin",
     # Configuration dataclasses
     "NumberConfig",
-    "StringConfig",
-    "CommentConfig",
     "OperatorConfig",
+    "StringConfig",
     # Mixin classes
     "WhitespaceMixin",
-    "CStyleCommentsMixin",
-    "HashCommentsMixin",
-    "CStyleNumbersMixin",
-    "CStyleStringsMixin",
-    "CStyleOperatorsMixin",
     # Standalone scanners
     "scan_c_style_number",
     "scan_identifier",

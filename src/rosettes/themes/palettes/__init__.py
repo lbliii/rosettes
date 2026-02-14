@@ -17,17 +17,17 @@ Third-party palettes:
 from rosettes.themes._palette import AdaptivePalette, SyntaxPalette
 
 __all__ = [
+    "BENGAL_BLUE",
+    "BENGAL_CHARCOAL",
+    "BENGAL_SNOW_LYNX",
     # Bengal palettes
     "BENGAL_TIGER",
-    "BENGAL_SNOW_LYNX",
-    "BENGAL_CHARCOAL",
-    "BENGAL_BLUE",
+    "DRACULA",
+    "GITHUB",
+    "GITHUB_DARK",
+    "GITHUB_LIGHT",
     # Third-party palettes
     "MONOKAI",
-    "DRACULA",
-    "GITHUB_LIGHT",
-    "GITHUB_DARK",
-    "GITHUB",
 ]
 
 # =============================================================================

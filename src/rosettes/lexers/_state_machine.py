@@ -98,10 +98,10 @@ if TYPE_CHECKING:
 
 __all__ = [
     "StateMachineLexer",
-    "scan_while",
-    "scan_until",
     "scan_string",
     "scan_triple_string",
+    "scan_until",
+    "scan_while",
 ]
 
 

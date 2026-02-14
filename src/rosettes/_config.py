@@ -30,7 +30,7 @@ See Also:
 
 from dataclasses import dataclass
 
-__all__ = ["LexerConfig", "FormatConfig", "HighlightConfig"]
+__all__ = ["FormatConfig", "HighlightConfig", "LexerConfig"]
 
 
 @dataclass(frozen=True, slots=True)

@@ -42,7 +42,7 @@ See Also:
 from enum import StrEnum
 from typing import NamedTuple
 
-__all__ = ["TokenType", "Token"]
+__all__ = ["Token", "TokenType"]
 
 
 class TokenType(StrEnum):

@@ -67,11 +67,11 @@ class DiffStateMachineLexer(StateMachineLexer):
                 elif first_char == "i" and content.startswith("index "):
                     token_type = TokenType.COMMENT_SINGLE
                 elif (
-                    first_char == "I"
-                    and content.startswith("Index: ")
-                    or first_char in "=*"
+                    (first_char == "I"
+                    and content.startswith("Index: "))
+                    or (first_char in "=*"
                     and len(content) >= 3
-                    and content[:3] in ("===", "***")
+                    and content[:3] in ("===", "***"))
                 ):
                     token_type = TokenType.GENERIC_HEADING
                 elif first_char == "!":

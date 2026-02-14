@@ -7,7 +7,10 @@ import pytest
 try:
     from rosettes.lexers._scanners import scan_line
 except ImportError:
-    pytest.skip("scan_line not in installed rosettes (use pip install -e .)", allow_module_level=True)
+    pytest.skip(
+        "scan_line not in installed rosettes (use pip install -e .)",
+        allow_module_level=True,
+    )
 
 
 class TestScanLine:

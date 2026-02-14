@@ -2,8 +2,6 @@
 
 from __future__ import annotations
 
-import pytest
-
 from rosettes import TokenType, get_lexer
 
 
@@ -16,7 +14,11 @@ class TestYamlBasics:
         tokens = list(lexer.tokenize(code))
         types = [t.type for t in tokens]
         # YAML keys are NAME_ATTRIBUTE, values are STRING
-        assert TokenType.NAME_ATTRIBUTE in types or TokenType.NAME in types or TokenType.NAME_TAG in types
+        assert (
+            TokenType.NAME_ATTRIBUTE in types
+            or TokenType.NAME in types
+            or TokenType.NAME_TAG in types
+        )
 
     def test_nested_mapping(self) -> None:
         lexer = get_lexer("yaml")

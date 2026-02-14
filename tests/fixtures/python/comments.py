@@ -8,4 +8,3 @@ spanning multiple lines
 
 def foo():
     """Function docstring."""
-    pass

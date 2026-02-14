@@ -16,8 +16,8 @@ p = a <= b
 q = a >= b
 
 # Logical
-r = True and False
-s = True or False
+r = False
+s = True
 t = not True
 
 # Bitwise

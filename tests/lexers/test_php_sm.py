@@ -2,8 +2,6 @@
 
 from __future__ import annotations
 
-import pytest
-
 from rosettes import TokenType, get_lexer
 
 
@@ -38,7 +36,7 @@ class TestPhpBasics:
         code = """<?php
 class User {
     public $name;
-    
+
     public function __construct($name) {
         $this->name = $name;
     }

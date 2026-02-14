@@ -40,4 +40,4 @@ from rosettes.formatters.html import HtmlFormatter
 from rosettes.formatters.null import NullFormatter
 from rosettes.formatters.terminal import TerminalFormatter
 
-__all__ = ["HtmlFormatter", "TerminalFormatter", "NullFormatter"]
+__all__ = ["HtmlFormatter", "NullFormatter", "TerminalFormatter"]

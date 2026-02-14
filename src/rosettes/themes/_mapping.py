@@ -58,7 +58,7 @@ in CPython, so no synchronization is needed.
 from rosettes._types import TokenType
 from rosettes.themes._roles import SyntaxRole
 
-__all__ = ["ROLE_MAPPING", "PYGMENTS_CLASS_MAP", "get_role"]
+__all__ = ["PYGMENTS_CLASS_MAP", "ROLE_MAPPING", "get_role"]
 
 
 # TokenType → SyntaxRole mapping
