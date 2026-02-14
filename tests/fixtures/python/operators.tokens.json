@@ -841,39 +841,15 @@
   },
   {
     "type": "KEYWORD_CONSTANT",
-    "value": "True",
+    "value": "False",
     "line": 19,
     "column": 5
   },
   {
     "type": "WHITESPACE",
-    "value": " ",
-    "line": 19,
-    "column": 9
-  },
-  {
-    "type": "KEYWORD",
-    "value": "and",
-    "line": 19,
-    "column": 10
-  },
-  {
-    "type": "WHITESPACE",
-    "value": " ",
-    "line": 19,
-    "column": 13
-  },
-  {
-    "type": "KEYWORD_CONSTANT",
-    "value": "False",
-    "line": 19,
-    "column": 14
-  },
-  {
-    "type": "WHITESPACE",
     "value": "\n",
     "line": 19,
-    "column": 19
+    "column": 10
   },
   {
     "type": "NAME",
@@ -907,33 +883,9 @@
   },
   {
     "type": "WHITESPACE",
-    "value": " ",
-    "line": 20,
-    "column": 9
-  },
-  {
-    "type": "KEYWORD",
-    "value": "or",
-    "line": 20,
-    "column": 10
-  },
-  {
-    "type": "WHITESPACE",
-    "value": " ",
-    "line": 20,
-    "column": 12
-  },
-  {
-    "type": "KEYWORD_CONSTANT",
-    "value": "False",
-    "line": 20,
-    "column": 13
-  },
-  {
-    "type": "WHITESPACE",
     "value": "\n",
     "line": 20,
-    "column": 18
+    "column": 9
   },
   {
     "type": "NAME",
