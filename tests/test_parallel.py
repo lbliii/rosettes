@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from rosettes import highlight_many, tokenize_many
+from rosettes import HighlightItem, highlight_many, tokenize_many
 
 
 class TestHighlightMany:
@@ -48,6 +48,26 @@ class TestHighlightMany:
         # Verify order preserved
         for i, result in enumerate(results):
             assert str(i) in result
+
+    def test_highlight_many_with_highlight_item(self) -> None:
+        """highlight_many() should accept HighlightItem with hl_lines."""
+        items = [
+            HighlightItem("x = 1\ny = 2", "python", hl_lines=frozenset({1})),
+        ]
+        results = highlight_many(items)
+        assert len(results) == 1
+        assert "hll" in results[0]
+
+    def test_highlight_many_mixed_tuple_and_item(self) -> None:
+        """highlight_many() should accept mixed (code, lang) and HighlightItem."""
+        items = [
+            ("def foo(): pass", "python"),
+            HighlightItem("x = 1", "python", show_linenos=True),
+        ]
+        results = highlight_many(items)
+        assert len(results) == 2
+        assert "foo" in results[0]
+        assert "1" in results[1]
 
 
 class TestTokenizeMany:

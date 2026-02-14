@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-02-13
+
+### Added
+
+- **Core API**: `content_hash(code, language)` — deterministic SHA-256 hash for
+  (code, language) pairs, for block-level cache keys
+- **Core API**: `content_hash()` now accepts optional `hl_lines` and `show_linenos`
+  for cache keys of complex blocks (line highlighting, line numbers)
+- **Parallel API**: `HighlightItem` dataclass and extended `highlight_many()` —
+  supports `hl_lines` and `show_linenos` for full parallel batch highlighting
+
 ### Changed
 
 - **HTML Formatter**: Pre-compute prefixed span templates from class name mappings
@@ -71,5 +82,6 @@ Initial public release of Rosettes, extracted from the Bengal static site genera
 - `py.typed` marker for type checking
 - Comprehensive test suite
 
+[0.2.0]: https://github.com/lbliii/rosettes/releases/tag/v0.2.0
 [0.1.0]: https://github.com/lbliii/rosettes/releases/tag/v0.1.0
 
