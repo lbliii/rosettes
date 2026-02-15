@@ -36,7 +36,8 @@ All public APIs are safe for concurrent use:
 
 ## How It Works
 
-### 1. Immutable Tokens
+:::{steps}
+:::{step} Immutable tokens
 
 The `Token` type is a `NamedTuple`, which is immutable:
 
@@ -50,7 +51,8 @@ class Token(NamedTuple):
 
 Tokens cannot be modified after creation, eliminating data races.
 
-### 2. Local-Only Lexer State
+:::{/step}
+:::{step} Local-only lexer state
 
 Lexers use only local variables during tokenization:
 
@@ -68,7 +70,8 @@ def tokenize(self, code: str) -> Iterator[Token]:
 
 No instance variables or global state are modified during tokenization.
 
-### 3. Cached Registry
+:::{/step}
+:::{step} Cached registry
 
 The lexer registry uses a two-layer design with `functools.cache` for thread-safe memoization:
 
@@ -88,7 +91,8 @@ def _get_lexer_by_canonical(canonical: str) -> StateMachineLexer:
 
 This provides thread-safe memoization—the same lexer instance is returned for the same name across all threads. Lexers are loaded lazily on first access.
 
-### 4. Immutable Configuration
+:::{/step}
+:::{step} Immutable configuration
 
 All configuration classes are frozen dataclasses with slots for memory efficiency:
 
@@ -100,6 +104,9 @@ class FormatConfig:
     class_prefix: str = ""
     data_language: str | None = None
 ```
+
+:::{/step}
+:::{/steps}
 
 ---
 

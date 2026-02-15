@@ -24,19 +24,13 @@ Rosettes uses hand-written state machine lexers instead of regular expressions. 
 
 Every lexer is a finite state machine that processes input character-by-character:
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│                    State Machine Lexer                       │
-│                                                              │
-│  ┌─────────┐   char    ┌─────────┐   char    ┌─────────┐   │
-│  │ INITIAL │ ────────► │ STRING  │ ────────► │ ESCAPE  │   │
-│  │ STATE   │           │ STATE   │           │ STATE   │   │
-│  └─────────┘           └─────────┘           └─────────┘   │
-│      │                      │                     │         │
-│      │ emit                 │ emit                │ emit    │
-│      ▼                      ▼                     ▼         │
-│  [Token]               [Token]               [Token]        │
-└─────────────────────────────────────────────────────────────┘
+```mermaid
+flowchart LR
+    INITIAL[INITIAL] -->|char| STRING[STRING]
+    STRING -->|char| ESCAPE[ESCAPE]
+    INITIAL -->|emit| T1[Token]
+    STRING -->|emit| T2[Token]
+    ESCAPE -->|emit| T3[Token]
 ```
 
 ### Key Properties
@@ -52,7 +46,8 @@ Every lexer is a finite state machine that processes input character-by-characte
 
 ## How It Works
 
-### 1. Character-by-Character Processing
+:::{steps}
+:::{step} Character-by-character processing
 
 The lexer reads one character at a time, deciding what to do based on the current state and the character:
 
@@ -83,7 +78,8 @@ def tokenize(self, code: str) -> Iterator[Token]:
         pos += 1
 ```
 
-### 2. No Backtracking
+:::{/step}
+:::{step} No backtracking
 
 Unlike regex engines that may backtrack on failed matches, state machines make irrevocable decisions:
 
@@ -99,7 +95,8 @@ State Machine:
             No backtracking needed
 ```
 
-### 3. Predictable Performance
+:::{/step}
+:::{step} Predictable performance
 
 Because each character is processed exactly once, time complexity is always O(n):
 
@@ -109,6 +106,9 @@ Because each character is processed exactly once, time complexity is always O(n)
 | 1,000 chars | 0.1ms | 0.1ms |
 | 10,000 chars | 1ms | 1-10ms |
 | 100,000 chars | 10ms | 10ms - ∞ (ReDoS) |
+
+:::{/step}
+:::{/steps}
 
 ---
 
@@ -207,9 +207,23 @@ def _get_lexer_by_canonical(canonical: str) -> StateMachineLexer:
 
 To add a new language lexer:
 
-1. Create `rosettes/lexers/mylang_sm.py` with a state machine class
-2. Register in `rosettes/_registry.py` with a `LexerSpec` entry
-3. Add tests in `tests/lexers/test_mylang.py`
+:::{steps}
+:::{step} Create lexer module
+
+Create `rosettes/lexers/mylang_sm.py` with a state machine class.
+
+:::{/step}
+:::{step} Register in registry
+
+Add a `LexerSpec` entry in `rosettes/_registry.py`.
+
+:::{/step}
+:::{step} Add tests
+
+Add tests in `tests/lexers/test_mylang.py`.
+
+:::{/step}
+:::{/steps}
 
 Example minimal lexer:
 
