@@ -1,12 +1,12 @@
 ---
 title: Rosettes
-description: Modern syntax highlighting for Python 3.14t
+description: A Python syntax highlighter and Pygments alternative for secure code highlighting and existing CSS themes
 template: home.html
 weight: 100
 type: page
 draft: false
 lang: en
-keywords: [rosettes, syntax highlighting, python, free-threading, pygments]
+keywords: [rosettes, python syntax highlighter, code highlighting, pygments alternative, secure syntax highlighting, pygments compatible]
 category: home
 
 # Hero configuration
@@ -24,11 +24,14 @@ cta_buttons:
 show_recent_posts: false
 ---
 
-## Syntax Highlighting, Reinvented
+## Python Syntax Highlighter for Secure Code Highlighting
 
-**O(n) guaranteed. Zero ReDoS. Thread-safe by design.**
+**Pygments alternative. O(n) guaranteed. Safe for untrusted input.**
 
-Rosettes is a pure-Python syntax highlighter built for the free-threaded era. Every lexer is a hand-written state machine—no regex backtracking, no exponential blowup, no security vulnerabilities.
+Rosettes is a pure-Python syntax highlighter for HTML output, documentation sites, and
+web applications. Every lexer is a hand-written state machine with no regex
+backtracking, making it a good fit for secure code highlighting and Pygments-style
+migration paths.
 
 ```python
 from rosettes import highlight
@@ -38,7 +41,7 @@ html = highlight("def hello(): print('world')", "python")
 
 ---
 
-## What's good about it
+## Why Use Rosettes
 
 :::{cards}
 :columns: 2
@@ -65,6 +68,14 @@ Drop-in CSS class compatibility. Use your existing Pygments themes or Rosettes' 
 :::{/card}
 
 :::{/cards}
+
+## Common Use Cases
+
+- Highlighting code blocks for documentation sites and blogs
+- Replacing or evaluating Pygments in Python applications
+- Rendering untrusted code snippets in web applications
+- Processing many code blocks in parallel with `highlight_many()`
+- Keeping existing themes while moving to a Python-native highlighter
 
 ---
 

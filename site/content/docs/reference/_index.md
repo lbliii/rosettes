@@ -1,6 +1,6 @@
 ---
 title: Reference
-description: Complete API documentation and specifications
+description: Complete API documentation for Rosettes highlighting functions, token types, languages, and configuration
 draft: false
 weight: 50
 lang: en
@@ -14,6 +14,8 @@ keywords:
 - api
 - reference
 - documentation
+- syntax highlighter api
+- tokenization
 menu:
   main:
     weight: 30

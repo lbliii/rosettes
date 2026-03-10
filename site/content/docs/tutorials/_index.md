@@ -1,6 +1,6 @@
 ---
 title: Tutorials
-description: Step-by-step guides for common scenarios
+description: Step-by-step guides for common Rosettes workflows, styling, and migration scenarios
 draft: false
 weight: 45
 lang: en
@@ -13,12 +13,15 @@ keywords:
 - tutorials
 - guides
 - learning
+- pygments migration
+- code highlighting
 icon: notepad
 ---
 
 # Tutorials
 
-Step-by-step guides for common Rosettes use cases.
+Step-by-step guides for common Rosettes use cases, migration paths, and highlighting
+workflows.
 
 ## Available Tutorials
 

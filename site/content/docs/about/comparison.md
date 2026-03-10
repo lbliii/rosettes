@@ -1,6 +1,6 @@
 ---
 title: Choosing Rosettes
-description: When Rosettes fits and what it offers
+description: When Rosettes fits, how it compares to Pygments-style highlighters, and when to choose alternatives
 draft: false
 weight: 40
 lang: en
@@ -12,12 +12,15 @@ keywords:
 - choosing
 - features
 - migration
+- pygments alternative
+- python syntax highlighter
 icon: bar-chart
 ---
 
 # Choosing Rosettes
 
-Rosettes is a good fit when you need syntax highlighting with predictable performance and security.
+Rosettes is a good fit when you need syntax highlighting with predictable performance,
+security, and a straightforward path from Pygments-compatible themes.
 
 ## What Rosettes Offers
 
@@ -28,6 +31,7 @@ Rosettes is a good fit when you need syntax highlighting with predictable perfor
 - **Parallel highlighting** — `highlight_many()` for multiple blocks
 - **Zero dependencies** — Pure Python
 - **Pygments CSS compatibility** — Use existing themes with `css_class_style="pygments"`
+- **Python-native integration** — Easy to use from docs pipelines and web applications
 
 ## When Rosettes Fits
 
@@ -35,6 +39,7 @@ Rosettes is a good fit when you need syntax highlighting with predictable perfor
 - Static site generators (e.g., Bengal)
 - Python 3.14+ projects using free-threading
 - Projects where security and predictable performance matter
+- Teams that want a Pygments alternative without changing CSS themes
 
 ## Limitations
 
