@@ -1,6 +1,6 @@
 ---
 title: Get Started
-description: Install Rosettes and highlight your first code block
+description: Install Rosettes and highlight your first code block with a Python syntax highlighter built for secure HTML output
 draft: false
 weight: 10
 lang: en
@@ -12,6 +12,9 @@ keywords:
 - getting started
 - installation
 - quickstart
+- python syntax highlighter
+- code highlighting
+- pygments alternative
 category: onboarding
 cascade:
   type: doc

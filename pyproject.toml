@@ -5,15 +5,17 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "rosettes"
 version = "0.2.0"
-description = "Modern syntax highlighting for Python 3.14t — O(n) guaranteed, zero ReDoS"
+description = "Python syntax highlighter and Pygments alternative for secure code highlighting and existing CSS themes"
 readme = "README.md"
 requires-python = ">=3.14"
 license = "MIT"
 keywords = [
     "syntax-highlighting",
+    "python-syntax-highlighter",
     "lexer",
     "free-threading",
     "pygments",
+    "pygments-alternative",
     "code-highlighting",
 ]
 authors = [{ name = "Bengal Contributors" }]
@@ -30,8 +32,8 @@ classifiers = [
 dependencies = [] # Pure Python, no runtime deps
 
 [project.urls]
-Homepage = "https://github.com/lbliii/rosettes"
-Documentation = "https://github.com/lbliii/rosettes"
+Homepage = "https://lbliii.github.io/rosettes/"
+Documentation = "https://lbliii.github.io/rosettes/"
 Repository = "https://github.com/lbliii/rosettes"
 Issues = "https://github.com/lbliii/rosettes/issues"
 

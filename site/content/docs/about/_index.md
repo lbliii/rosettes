@@ -1,6 +1,6 @@
 ---
 title: About
-description: Architecture, design philosophy, and background
+description: Architecture, comparisons, and design philosophy for the Rosettes Python syntax highlighter
 draft: false
 weight: 00
 lang: en
@@ -14,12 +14,16 @@ keywords:
 - about
 - architecture
 - philosophy
+- python syntax highlighter
+- pygments alternative
 icon: info
 ---
 
 # About Rosettes
 
-Rosettes is a modern syntax highlighter designed for Python 3.14's free-threading era. Every design decision prioritizes safety, predictability, and performance.
+Rosettes is a modern syntax highlighter designed for Python 3.14's free-threading era.
+This section explains why it fits teams that care about safe highlighting,
+predictable performance, and Pygments-compatible output.
 
 ## Core Principles
 

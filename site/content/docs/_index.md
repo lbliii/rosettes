@@ -7,10 +7,13 @@ cascade:
   type: doc
   variant: standard
 category: documentation
-description: Rosettes documentation
+description: Documentation for the Rosettes Python syntax highlighter, including code highlighting, styling, and Pygments migration
 keywords:
 - documentation
 - syntax highlighting
+- python syntax highlighter
+- code highlighting
+- pygments alternative
 - api
 menu:
   main:
@@ -25,7 +28,8 @@ icon: book-open
 
 ## Start Here
 
-New to Rosettes? Install and highlight your first code block in under 2 minutes.
+New to Rosettes? Start here to highlight code, style the HTML output, process many
+blocks in parallel, and migrate from Pygments-compatible themes when needed.
 
 :::{cards}
 :columns: 2
@@ -47,7 +51,8 @@ New to Rosettes? Install and highlight your first code block in under 2 minutes.
 
 ## Use Rosettes
 
-Learn how to highlight code, process blocks in parallel, and style your output.
+Learn how to highlight code, process blocks in parallel, style the output, and extend
+Rosettes for your workflows.
 
 :::{cards}
 :columns: 2
@@ -74,7 +79,7 @@ Learn how to highlight code, process blocks in parallel, and style your output.
 :::{card} Tutorials
 :icon: notepad
 :link: ./tutorials/
-:description: Step-by-step guides for common scenarios
+:description: Step-by-step guides for common scenarios and migrations
 :::{/card}
 
 :::{/cards}
@@ -96,7 +101,7 @@ Technical specifications, supported languages, and architecture details.
 :::{card} About
 :icon: info
 :link: ./about/
-:description: Architecture, performance, and design philosophy
+:description: Architecture, performance, comparisons, and design philosophy
 :::{/card}
 
 :::{/cards}

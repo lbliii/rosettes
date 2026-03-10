@@ -224,6 +224,15 @@ else:
 
 ---
 
+## Code References
+
+| Pattern | File |
+|---------|------|
+| PEP 703 declaration | [src/rosettes/__init__.py](https://github.com/lbliii/rosettes/blob/main/src/rosettes/__init__.py) |
+| Token (immutable NamedTuple) | [src/rosettes/_types.py](https://github.com/lbliii/rosettes/blob/main/src/rosettes/_types.py) |
+| Lexer registry (functools.cache) | [src/rosettes/_registry.py](https://github.com/lbliii/rosettes/blob/main/src/rosettes/_registry.py) |
+| highlight_many (parallel) | [src/rosettes/_parallel.py](https://github.com/lbliii/rosettes/blob/main/src/rosettes/_parallel.py) |
+
 ## Next Steps
 
 - [[docs/highlighting/parallel|Parallel Processing]] — Using `highlight_many()`

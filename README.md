@@ -5,7 +5,7 @@
 [![Python 3.14+](https://img.shields.io/badge/python-3.14+-blue.svg)](https://pypi.org/project/rosettes/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-**Modern syntax highlighting for Python 3.14t**
+**A Python syntax highlighter and Pygments alternative for secure code highlighting and existing CSS themes.**
 
 ```python
 from rosettes import highlight
@@ -17,15 +17,24 @@ html = highlight("def hello(): print('world')", "python")
 
 ## What is Rosettes?
 
-Rosettes is a syntax highlighter for Python 3.14t. Hand-written state machines, O(n) guaranteed, zero ReDoS risk. Safe for untrusted input in web apps and APIs.
+Rosettes is a syntax highlighter for Python 3.14t. Hand-written state machines, O(n)
+guaranteed, zero ReDoS risk. Safe for untrusted input in web apps and APIs.
 
-**What's good about it:**
+**Why people pick it:**
 
 - **O(n) guaranteed** — Hand-written state machines, no regex backtracking
 - **Zero ReDoS** — No exploitable patterns, safe for untrusted input
 - **Free-threading native** — All lexer state is local variables, keyword tables are `frozenset`, tokens are immutable. Highlight from any number of threads with zero contention.
 - **Pygments compatible** — Drop-in CSS class compatibility for existing themes
 - **55 languages** — Python, JavaScript, Rust, Go, and 51 more
+
+## Use Rosettes For
+
+- **HTML code highlighting** — Highlight source code for docs, blogs, and web apps
+- **Pygments migration paths** — Keep existing CSS themes with Pygments-compatible classes
+- **Security-sensitive rendering** — Highlight untrusted input without regex backtracking risk
+- **Parallel highlighting** — Process many code blocks across threads with `highlight_many()`
+- **Python-native docs stacks** — Use with Bengal, Patitas, or custom site generators
 
 ---
 
@@ -54,6 +63,7 @@ Requires Python 3.14+
 
 | Feature | Description | Docs |
 |---------|-------------|------|
+| **Choosing Rosettes** | When it fits, migration from Pygments, and tradeoffs | [Choosing Rosettes →](https://lbliii.github.io/rosettes/docs/about/comparison/) |
 | **Basic Highlighting** | `highlight()` and `tokenize()` functions | [Highlighting →](https://lbliii.github.io/rosettes/docs/highlighting/) |
 | **Parallel Processing** | `highlight_many()` for multi-core systems | [Parallel →](https://lbliii.github.io/rosettes/docs/highlighting/parallel/) |
 | **Line Highlighting** | Highlight specific lines, add line numbers | [Lines →](https://lbliii.github.io/rosettes/docs/highlighting/line-highlighting/) |

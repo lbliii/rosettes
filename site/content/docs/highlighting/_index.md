@@ -1,6 +1,6 @@
 ---
 title: Highlighting
-description: Core highlighting APIs and patterns
+description: Core APIs and patterns for code highlighting, tokenization, and parallel highlighting in Rosettes
 draft: false
 weight: 20
 lang: en
@@ -14,6 +14,8 @@ keywords:
 - highlight
 - tokenize
 - syntax
+- code highlighting
+- parallel highlighting
 icon: code
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Styling
-description: CSS classes, themes, and visual customization
+description: CSS classes, themes, and visual customization for Rosettes and Pygments-compatible output
 draft: false
 weight: 30
 lang: en
@@ -16,6 +16,8 @@ keywords:
 - themes
 - styling
 - colors
+- pygments themes
+- syntax highlighting css
 icon: palette
 ---
 
