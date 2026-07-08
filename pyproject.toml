@@ -53,6 +53,9 @@ markers = [
     "property: property-based tests (may take longer)",
 ]
 
+[tool.coverage.report]
+fail_under = 79 # honest ratchet toward 80 — measured 79.30% on 2026-07-08
+
 [tool.ty.environment]
 python-version = "3.14"
 
